@@ -1,1 +1,1 @@
-export { AddRecipePage } from './AddRecipeForm';
+export { AddRecipeForm } from './AddRecipeForm';

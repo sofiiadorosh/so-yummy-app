@@ -1,4 +1,4 @@
-# Hello everyine and Welcome to our So Yummy App!
+# Hello everyone and Welcome to our So Yummy App!
 
 This project was bootstrapped
 with[Create React App](https://github.com/facebook/create-react-app). You can

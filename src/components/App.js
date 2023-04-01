@@ -27,6 +27,7 @@ export const App = () => {
           <Route path="signin" element={<SigninPage />} />
         </Route> */}
         <Route path="/" element={<SharedLayout />}>
+          <Route index element={<MainPage />} />
           <Route path="main" element={<MainPage />} />
           <Route path="categories/:categoryName" element={<CategoriesPage />} />
           <Route path="add" element={<AddRecipePage />} />

@@ -35,6 +35,7 @@ export const theme = Object.freeze({
     redValidation: '#E74A3B',
 
     lightBackground: '#fafafa',
+    whiteBackground: '#ffffff',
     primaryDarkBackground: '#1E1F28',
     secondaryDarkBackground: '#22252A',
   },

@@ -4,11 +4,11 @@ import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
 import { CategoriesPage } from 'pages/CategoriesPage';
 import { AddRecipePage } from 'pages/AddRecipePage';
-import { FavoritePage } from 'pages/FavoritePage';
 import { MyRecipesPage } from 'pages/MyRecipesPage';
-import { RecipePage } from 'pages/RecipePage';
-import { SearchPage } from 'pages/SearchPage';
+import { FavoritePage } from 'pages/FavoritePage';
 import { ShoppingListPage } from 'pages/ShoppingListPage';
+import { SearchPage } from 'pages/SearchPage';
+import { RecipePage } from 'pages/RecipePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 // import { WelcomePage } from 'pages/WelcomePage';
 // import { RegisterPage } from 'pages/RegisterPage';
@@ -29,13 +29,13 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
           <Route path="main" element={<MainPage />} />
-          <Route path="categories/:categoryName" element={<CategoriesPage />} />
+          <Route path="categories" element={<CategoriesPage />} />
           <Route path="add" element={<AddRecipePage />} />
-          <Route path="favorite" element={<FavoritePage />} />
-          <Route path="recipe/:recipeId" element={<RecipePage />} />
           <Route path="my" element={<MyRecipesPage />} />
-          <Route path="search" element={<SearchPage />} />
+          <Route path="favorite" element={<FavoritePage />} />
           <Route path="shopping-list" element={<ShoppingListPage />} />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="recipe/:recipeId" element={<RecipePage />} />
           <Route path="*" element={<Navigate to={<NotFoundPage />} />} />
         </Route>
       </Routes>

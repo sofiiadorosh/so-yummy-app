@@ -1,3 +1,5 @@
-export const MainPageTitle = () => {
-  return <div>MainPageTitle</div>;
+import { PageTitle } from './MainPageTitle.styled';
+
+export const MainPageTitle = ({ title }) => {
+  return <PageTitle>{title}</PageTitle>;
 };

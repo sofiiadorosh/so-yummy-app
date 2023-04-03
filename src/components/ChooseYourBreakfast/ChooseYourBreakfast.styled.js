@@ -27,7 +27,7 @@ const ChooseBlock = styled.div`
     height: 114px;
     position: absolute;
     right: 120px;
-    top: 462px;
+    top: 492px;
   }
 `;
 

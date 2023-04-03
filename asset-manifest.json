@@ -1,13 +1,19 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.7acaea2f.css",
-    "main.js": "/so-yummy-app/static/js/main.e21bdddf.js",
+    "main.js": "/so-yummy-app/static/js/main.83f2a525.js",
+    "static/media/mainpage-desktop-2x.png": "/so-yummy-app/static/media/mainpage-desktop-2x.906cdb4f2d00194ec785.png",
+    "static/media/mainpage-tablet-2x.png": "/so-yummy-app/static/media/mainpage-tablet-2x.1e3f8e77edef9f06bd13.png",
+    "static/media/mainpage-mobile-2x.png": "/so-yummy-app/static/media/mainpage-mobile-2x.d48be9cc28c1dcdfd6b1.png",
+    "static/media/mainpage-desktop-1x.png": "/so-yummy-app/static/media/mainpage-desktop-1x.7c9ba1d121fa87c3fbc3.png",
+    "static/media/mainpage-tablet-1x.png": "/so-yummy-app/static/media/mainpage-tablet-1x.a72e2a0525816c730bc6.png",
+    "static/media/mainpage-mobile-1x.png": "/so-yummy-app/static/media/mainpage-mobile-1x.65dcf270532f0a855f41.png",
     "index.html": "/so-yummy-app/index.html",
     "main.7acaea2f.css.map": "/so-yummy-app/static/css/main.7acaea2f.css.map",
-    "main.e21bdddf.js.map": "/so-yummy-app/static/js/main.e21bdddf.js.map"
+    "main.83f2a525.js.map": "/so-yummy-app/static/js/main.83f2a525.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.e21bdddf.js"
+    "static/js/main.83f2a525.js"
   ]
 }

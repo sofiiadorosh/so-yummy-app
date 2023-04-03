@@ -6,13 +6,13 @@ import bgrImageMobile2x from '../../images/mainpage-mobile-2x.png';
 import bgrImageTablet2x from '../../images/mainpage-tablet-2x.png';
 import bgrImageDesktop2x from '../../images/mainpage-desktop-2x.png';
 
-export const MainPageH1 = styled.h1`
+const Title = styled.h1`
   margin: 132px 12px 0px 12px;
-  color: '#22252A';
+  color: ${props => props.theme.colors.quaternaryDarkText};
   
   font-style: normal;
-  font-weight: 400;
-  font-size: 60px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: ${props => props.theme.fontSizes[12]}px;
   line-height: 60px;
   display: flex;
   text-align: center;
@@ -20,69 +20,69 @@ export const MainPageH1 = styled.h1`
   letter-spacing: -0.005em;
   @media (min-width: 768px) {
     margin: 204px 12px 0px 12px;
-    font-size: 72px;
+    font-size: ${props => props.theme.fontSizes[13]}px;
     line-height: 72px;
   }
   @media (min-width: 1440px) {
-    font-size: 100px;
+    font-size: ${props => props.theme.fontSizes[14]}px;
     line-height: 100px;
   }
 `;
 
-export const ColorWrap = styled.div`
-  background-color: #fafafa;
+const ColorWrap = styled.div`
+  background-color: ${props => props.theme.colors.primaryLightText};
 `;
 
-export const SpanGr = styled.span`
-  color: #8baa36;
+const Span = styled.span`
+  color: ${props => props.theme.colors.greenAccent};
   font-style: normal;
-  font-weight: 400;
-  font-size: 60px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: ${props => props.theme.fontSizes[12]}px;
   line-height: 60px;
   text-align: center;
   letter-spacing: -0.005em;
   @media (min-width: 768px) {
-    font-size: 72px;
+    font-size: ${props => props.theme.fontSizes[13]}px;
     line-height: 72px;
   }
   @media (min-width: 1440px) {
-    font-size: 100px;
+    font-size: ${props => props.theme.fontSizes[14]}px;
     line-height: 100px;
   }
 `;
 
-export const MainPageText = styled.p`
+const MainPageText = styled.p`
   margin: 14px 40px 157px 40px;
-  color: '#23262A';
+  color: ${props => props.theme.colors.primaryDarkText};
   
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: ${props => props.theme.fontSizes[3]}px;
   line-height: 18px;
   text-align: center;
   letter-spacing: '-0.02em';
   @media (min-width: 768px) {
     margin: 24px 40px 32px 12px;
-    font-size: 14px;
+    font-size: ${props => props.theme.fontSizes[3]}px;
     line-height: 18px;
     width: 465px;
     text-align: left;
   }
   @media (min-width: 1440px) {
     margin: 14px 55px 50px 24px;
-    font-size: 18px;
+    font-size: ${props => props.theme.fontSizes[5]}px;
     line-height: 24px;
     text-align: left;
     width: 362px;
   }
 `;
 
-export const MainPageBg = styled.div`
+const MainPageBackground = styled.div`
   background-image: url(${bgrImageMobile1x});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.primaryLightText};
   display: flex;
   height: 777px;
   margin-bottom: 60px;
@@ -115,7 +115,7 @@ export const MainPageBg = styled.div`
     }
   }
 `;
-export const MainPageDiv = styled.div`
+const MainPageContainer = styled.div`
   @media (min-width: 768px) {
     display: flex;
     margin-right: 368px;
@@ -125,4 +125,5 @@ export const MainPageDiv = styled.div`
   @media (min-width: 1440px) {
     margin-right: 830px;
   }
-`;
+`
+export { MainPageContainer, MainPageBackground, MainPageText, Span, ColorWrap, Title };

@@ -25,22 +25,22 @@ const RecipeDescr = styled.div`
 
   padding: 16px;
 
-  min-width: 307px;
+  width: 307px;
 
   background-color: ${props => props.theme.colors.whiteBackground};
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    min-width: 300px;
+    width: 300px;
   }
 
   @media screen and (min-width: 1440px) {
-    min-width: 268px;
+    width: 268px;
   }
 
   p {
     font-weight: ${props => props.theme.fontWeights.medium};
-    font-size: ${props => props.theme.fontSizes[4]};
+    font-size: ${props => props.theme.fontSizes[4]}px;
     line-height: 1.25;
     letter-spacing: -0.24px;
     text-align: left;

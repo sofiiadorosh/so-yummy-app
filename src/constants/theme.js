@@ -22,6 +22,8 @@ export const theme = Object.freeze({
     blackText: '#000000',
 
     primaryLightText: '#FAFAFA',
+    secondaryLightText: '#e0e0e0',
+    tertiaryLightText: '#BDBDBD',
 
     whiteText: '#ffffff',
 
@@ -38,5 +40,7 @@ export const theme = Object.freeze({
     whiteBackground: '#ffffff',
     primaryDarkBackground: '#1E1F28',
     secondaryDarkBackground: '#22252A',
+
+    line: '#e0e0e0',
   },
 });

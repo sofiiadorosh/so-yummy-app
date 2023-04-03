@@ -1,4 +1,8 @@
 import { MainContainer } from 'components/MainContainer';
+
+import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
+import {SearchForm} from '../../components/SearchForm'
+
 import {
   MainPageBackground,
   MainPageContainer,
@@ -7,8 +11,7 @@ import {
   Span,
   ColorWrap,
 } from './MainPage.styled';
-import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
-import {SearchForm} from '../../components/SearchForm'
+
 
 export const MainPage = () => {
   return (

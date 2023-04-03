@@ -12,7 +12,7 @@ const ChooseBlock = styled.div`
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[3]}px;
     padding: 12px;
-    line-height: 20px;
+    line-height: 1.42;
     letter-spacing: -0.24px;
     width: 261px;
     height: 100px;
@@ -21,7 +21,7 @@ const ChooseBlock = styled.div`
     top: 392px;
   }
   @media (min-width: 1440px) {
-    line-height: 20px;
+    line-height: 1.42;
     padding: 16px;
     width: 298px;
     height: 114px;
@@ -32,42 +32,38 @@ const ChooseBlock = styled.div`
 `;
 
 const ChooseText = styled.p`
-  
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes[2]}px;
-  line-height: 18px;
+  line-height: 1.5;
   letter-spacing: '-0.24px';
   color: ${props => props.theme.colors.secondaryDarkText};
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[3]}px;
-    line-height: 18px;
+    line-height: 1.5;
   }
   @media (min-width: 1440px) {
-    line-height: 20px;
+    line-height: 1.67;
   }
 `;
 
 const ChooseSpan = styled.span`
   color: ${props => props.theme.colors.greenAccent};
   
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes[2]}px;
-  line-height: 18px;
+  line-height: 1.5;
   letter-spacing: '-0.24px';
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[3]}px;
   }
   @media (min-width: 1440px) {
-    line-height: 20px;
+    line-height: 1.67;
   }
 `;
 const ChooseLink = styled(NavLink)`
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: ${props => props.theme.fontSizes[1]}px;
-  line-height: 12px;
+  line-height: 1.2;
   letter-spacing: '-0.02em';
   color: ${props => props.theme.colors.secondaryDarkText};
   margin-top: 4px;
@@ -78,7 +74,7 @@ const ChooseLink = styled(NavLink)`
     font-size: ${props => props.theme.fontSizes[3]}px;
   }
   @media (min-width: 1440px) {
-    line-height: 20px;
+    line-height: 2;
   }
 `;
 
@@ -88,7 +84,9 @@ const RightArrow = styled.svg`
   margin-left: 4px;
   display: flex;
   stroke: ${props => props.theme.colors.secondaryDarkText};
-  &:hover {
+  &:hover,
+  &:focus
+   {
     transform: scale(1.2);
   }
 `;

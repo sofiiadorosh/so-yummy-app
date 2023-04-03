@@ -10,10 +10,9 @@ const Title = styled.h1`
   margin: 132px 12px 0px 12px;
   color: ${props => props.theme.colors.quaternaryDarkText};
   
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: ${props => props.theme.fontSizes[12]}px;
-  line-height: 60px;
+  line-height: 1;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -21,11 +20,11 @@ const Title = styled.h1`
   @media (min-width: 768px) {
     margin: 204px 12px 0px 12px;
     font-size: ${props => props.theme.fontSizes[13]}px;
-    line-height: 72px;
+    line-height: 1;
   }
   @media (min-width: 1440px) {
     font-size: ${props => props.theme.fontSizes[14]}px;
-    line-height: 100px;
+    line-height: 1;
   }
 `;
 
@@ -35,19 +34,18 @@ const ColorWrap = styled.div`
 
 const Span = styled.span`
   color: ${props => props.theme.colors.greenAccent};
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: ${props => props.theme.fontSizes[12]}px;
-  line-height: 60px;
+  line-height: 1;
   text-align: center;
   letter-spacing: -0.005em;
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[13]}px;
-    line-height: 72px;
+    line-height: 1;
   }
   @media (min-width: 1440px) {
     font-size: ${props => props.theme.fontSizes[14]}px;
-    line-height: 100px;
+    line-height: 1;
   }
 `;
 
@@ -55,23 +53,22 @@ const MainPageText = styled.p`
   margin: 14px 40px 157px 40px;
   color: ${props => props.theme.colors.primaryDarkText};
   
-  font-style: normal;
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: ${props => props.theme.fontSizes[3]}px;
-  line-height: 18px;
+  line-height: 1.29;
   text-align: center;
   letter-spacing: '-0.02em';
   @media (min-width: 768px) {
     margin: 24px 40px 32px 12px;
     font-size: ${props => props.theme.fontSizes[3]}px;
-    line-height: 18px;
+    line-height: 1.29;
     width: 465px;
     text-align: left;
   }
   @media (min-width: 1440px) {
     margin: 14px 55px 50px 24px;
     font-size: ${props => props.theme.fontSizes[5]}px;
-    line-height: 24px;
+    line-height: 1.72;
     text-align: left;
     width: 362px;
   }

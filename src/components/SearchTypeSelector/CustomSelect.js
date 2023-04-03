@@ -9,7 +9,8 @@ const options = [
   { value: 'ingredient', label: 'Ingredient' },
 ];
 
-const portal = document.querySelector('#modalPortal');
+// const portal = document.querySelector('#modalPortal');
+const portal = document.body;
 
 export const CustomSelect = () => {
   const dispatch = useDispatch();

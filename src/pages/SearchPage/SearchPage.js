@@ -1,6 +1,5 @@
 import { MainPageTitle } from 'components/MainPageTitle';
-import { SearchBar } from 'components/SearchBar';
-import { SearchedRecipesList } from 'components/SearchedRecipesList';
+import { Search } from 'components/Search';
 import { Square } from 'components/Square';
 
 import { CategoriesSection, Container, Title } from './SearchPage.slyled';
@@ -14,8 +13,7 @@ export const SearchPage = () => {
           <Title>
             <MainPageTitle title="Search" />
           </Title>
-          <SearchBar />
-          <SearchedRecipesList />
+          <Search />
         </Container>
       </CategoriesSection>
     </>

@@ -1,3 +1,11 @@
+import { SearchBar } from 'components/SearchBar';
+import { SearchedRecipesList } from 'components/SearchedRecipesList';
+
 export const Search = () => {
-  return <div>Search</div>;
+  return (
+    <>
+      <SearchBar />
+      <SearchedRecipesList />
+    </>
+  );
 };

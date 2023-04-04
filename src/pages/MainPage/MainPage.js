@@ -2,6 +2,7 @@ import { MainContainer } from 'components/MainContainer';
 
 import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
 import {SearchForm} from '../../components/SearchForm'
+import { PreviewCategories } from 'components/PreviewCategories';
 
 import {
   MainPageBackground,
@@ -31,9 +32,12 @@ export const MainPage = () => {
               <ChooseYourBreakfast />
               <SearchForm styled={'black'}  />
             </MainPageContainer>
+            
           </MainContainer>
         </MainPageBackground>
+        <PreviewCategories />
       </ColorWrap>
+      
     </>
   );
 };

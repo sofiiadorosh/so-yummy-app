@@ -62,15 +62,16 @@ const MainPageText = styled.p`
     margin: 24px 40px 32px 12px;
     font-size: ${props => props.theme.fontSizes[3]}px;
     line-height: 1.29;
-    width: 465px;
+    max-width: 345px;
     text-align: left;
   }
   @media (min-width: 1440px) {
     margin: 14px 55px 50px 24px;
     font-size: ${props => props.theme.fontSizes[5]}px;
     line-height: 1.72;
+    max-width: 462px;
     text-align: left;
-    width: 362px;
+    // width: 362px;
   }
 `;
 

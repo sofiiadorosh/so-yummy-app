@@ -1,3 +1,5 @@
+import { RecipesList } from 'components/RecipesList';
+
 export const SearchedRecipesList = () => {
-  return <div>SearchedRecipesList</div>;
+  return <div>{/* <RecipesList /> */}</div>;
 };

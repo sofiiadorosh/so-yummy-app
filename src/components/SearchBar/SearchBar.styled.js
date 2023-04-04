@@ -1,65 +1,79 @@
 import styled from 'styled-components';
 
-const WrapperForm = styled.form`
-  position: relative;
-
-  border: 1px solid black;
+const SearchBlock = styled.div`
   width: 295px;
-  height: 53px;
-  border-top-left-radius: 18px 18px;
-  border-bottom-left-radius: 44px 44px;
-  border-bottom-right-radius: 18px 18px;
-  border-top-right-radius: 44px 44px;
-  background-color: green;
+  height: 52px;
+  background-color: '1px solid ${props => props.theme.colors.formBackground}';
+  border-top-left-radius: 30px;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 30px;
+  margin: 0 16px 83px;
+  border: '1px solid ${props => props.theme.colors.formBackground}';
+  color: '${props => props.theme.colors.tertiaryLightText}';
 
-  @media screen and (min-width: 768px) {
-    width: 362px;
-    height: 57px;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: ${props => props.theme.fontSizes[2]}px;
+  line-height: 1.5;
+  position: relative;
+  @media (min-width: 768px) {
+    width: 369px;
+    height: 59px;
+    font-size: ${props => props.theme.fontSizes[4]}px;
+    line-height: 1.5;
+    margin: 0 16px 195px;
   }
-
-  @media screen and (min-width: 1440px) {
+  @media (min-width: 1440px) {
     width: 510px;
     height: 71px;
-  }
-`;
-
-const Input = styled.input`
-  font-size: 12px;
-  line-height: 1.5;
-  padding: 0 20px;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  color: black;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: ${props => props.theme.fontSizes[4]}px;
     line-height: 1.5;
   }
 `;
 
-const ButtonWrapper = styled.div`
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 113px;
-  height: 53px;
-  font-size: 14px;
+const SearchInForm = styled.form`
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 30px, 80px;
+  height: 100%;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 80px;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 30px;
+  border: 1px solid ${props => props.theme.colors.formBackground};
+  background-color: ${props => props.theme.colors.lightBackground};
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: ${props => props.theme.fontSizes[2]}px;
   line-height: 1.5;
-
-  @media screen and (min-width: 768px) {
-    width: 161px;
-    height: 57px;
-    font-size: 16px;
-    line-height: 24px;
+  padding-left: 32px;
+  color: '${props => props.theme.colors.tertiaryLightText}';
+  @media (min-width: 768px) {
+    font-weight: ${props => props.theme.fontWeights.regular};
+    font-size: ${props => props.theme.fontSizes[4]}px;
+    line-height: 1.5;
   }
-
-  @media screen and (min-width: 1440px) {
-    width: 161px;
-    height: 71px;
+  &:hover {
+    border: none;
+    outline: none;
+  }
+  &:active {
+    border: none;
+    outline: none;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::placeholder {
+    font-weight: ${props => props.theme.fontWeights.regular};
+    font-size: ${props => props.theme.fontSizes[4]}px;
+    line-height: 1.5;
+    color: '${props => props.theme.colors.tertiaryLightText}';
   }
 `;
 
-export { WrapperForm, Input, ButtonWrapper };
+export { SearchInput, SearchInForm, SearchBlock };

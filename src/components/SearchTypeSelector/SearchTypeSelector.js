@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { updateSearchType } from 'redux/search/searchSlice';
 
 import { Search, SearchForm, Text } from './SearchTypeSelector.styled';
-// import { StyledSelect } from './CustomSelect.styled';
 
 const options = [
   { value: 'title', label: 'Title' },
@@ -27,16 +26,6 @@ export const SearchTypeSelector = () => {
     <Search>
       <SearchForm>
         <Text>Search by:</Text>
-
-        {/* <StyledSelect
-          value={selectedOption}
-          onChange={handleChange}
-          options={options}
-          placeholder="Select options"
-          menuPosition="absolute"
-          menuPortalTarget={portal}
-        /> */}
-
         <Select
           value={selectedOption}
           onChange={handleChange}
@@ -44,7 +33,6 @@ export const SearchTypeSelector = () => {
           placeholder="Select options"
           menuPosition="absolute"
           menuPortalTarget={portal}
-          // Custom styling for the Select component
           styles={{
             control: (provided, state) => ({
               ...provided,
@@ -81,9 +69,7 @@ export const SearchTypeSelector = () => {
             menu: () => ({
               border: 'none',
             }),
-            // menuPortal: () => ({
-            //   position: 'absolute',
-            // }),
+
             menuList: (provided, state) => ({
               display: 'flex',
               flexDirection: 'column',
@@ -96,13 +82,13 @@ export const SearchTypeSelector = () => {
               color: '#rgba(0, 0, 0, 0.5)',
               backgroundColor: '#ffffff',
               borderRadius: '6px',
-              border: 'none', // add this property to remove border
+              border: 'none',
               outline: 'none',
               borderStyle: 'none',
               borderColor: 'none',
               boxShadow: 'none',
               '&:hover': {
-                backgroundColor: '#ffffff', // remove the hover background color
+                backgroundColor: '#ffffff',
                 borderStyle: 'none',
                 borderColor: 'none',
                 boxShadow: 'none',
@@ -110,7 +96,7 @@ export const SearchTypeSelector = () => {
                 outline: 'none',
               },
               '&:focus': {
-                backgroundColor: '#ffffff', // remove the focus background color
+                backgroundColor: '#ffffff',
                 borderStyle: 'none',
                 borderColor: 'none',
                 boxShadow: 'none',
@@ -141,10 +127,10 @@ export const SearchTypeSelector = () => {
               '&:hover': {
                 color: '#8baa36',
                 opacity: '0.75',
-                backgroundColor: '#f2ecec', // remove the hover background color
+                backgroundColor: '#f2ecec',
               },
               '&:focus': {
-                backgroundColor: 'transparent', // remove the focus background color
+                backgroundColor: 'transparent',
               },
             }),
           }}

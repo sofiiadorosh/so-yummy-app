@@ -9,7 +9,7 @@ export const Recipes = styled.ul`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 32px;
   }
 

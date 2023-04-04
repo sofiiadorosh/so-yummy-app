@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
 import { CategoriesPage } from 'pages/CategoriesPage';
+import { CategoriesRecipes } from './CategoriesRecipes';
 import { AddRecipePage } from 'pages/AddRecipePage';
 import { MyRecipesPage } from 'pages/MyRecipesPage';
 import { FavoritePage } from 'pages/FavoritePage';
@@ -29,7 +30,9 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
           <Route path="main" element={<MainPage />} />
-          <Route path="categories" element={<CategoriesPage />} />
+          <Route path="categories" element={<CategoriesPage />}>
+            <Route path=":categoryName" element={<CategoriesRecipes />} />
+          </Route>
           <Route path="add" element={<AddRecipePage />} />
           <Route path="my" element={<MyRecipesPage />} />
           <Route path="favorite" element={<FavoritePage />} />

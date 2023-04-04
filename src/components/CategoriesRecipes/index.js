@@ -1,0 +1,1 @@
+export { CategoriesRecipes } from './CategoriesRecipes';

@@ -33,8 +33,8 @@ const Container = styled.div`
 const Title = styled.div`
   margin-bottom: 50px;
 
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 100px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
   }
 `;
 

@@ -91,8 +91,10 @@ export const Search = () => {
       <SearchBar />
       {searchResult.length === 0 && (
         <>
-          <NoRecipesImg />
-          {!isSearchResult && <NoRecipesText>Enter query</NoRecipesText>}
+          <NoRecipesImg></NoRecipesImg>
+          {!isSearchResult && (
+            <NoRecipesText>Enter your search query</NoRecipesText>
+          )}
           {isSearchResult && (
             <NoRecipesText>Try looking for something else..</NoRecipesText>
           )}

@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+import bgrImage from '../../images/searchPageImg.png';
+
 export const NoRecipesImg = styled.div`
   width: 208px;
   height: 133px;
   margin: auto;
-  /* background-image: url('../../assets/images/SearchBackground/noRecipesImg.png'); */
-  background-size: contain;
+
+  background-image: url(${bgrImage});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
   margin-bottom: 33px;
 
   @media screen and (min-width: 768px) {

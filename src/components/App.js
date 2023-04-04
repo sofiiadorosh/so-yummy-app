@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
@@ -39,7 +39,7 @@ export const App = () => {
           <Route path="shopping-list" element={<ShoppingListPage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="recipe/:recipeId" element={<RecipePage />} />
-          <Route path="*" element={<Navigate to={<NotFoundPage />} />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

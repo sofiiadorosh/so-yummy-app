@@ -40,6 +40,7 @@ export const theme = Object.freeze({
     whiteBackground: '#ffffff',
     primaryDarkBackground: '#1E1F28',
     secondaryDarkBackground: '#22252A',
+    switchBackground: '#efefef',
 
     line: '#e0e0e0',
   },

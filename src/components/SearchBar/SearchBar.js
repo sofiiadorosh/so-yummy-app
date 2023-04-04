@@ -4,9 +4,13 @@ import { useDispatch } from 'react-redux';
 import { updateSearchQuery } from 'redux/search/searchSlice';
 import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
-import { ButtonSearch } from 'components/ButtonSearch';
-
-import { SearchBlock, SearchInForm, SearchInput } from './SearchBar.styled';
+import {
+  SearchBlock,
+  SearchInForm,
+  SearchInput,
+  ButtonSearch,
+  Container,
+} from './SearchBar.styled';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
@@ -24,24 +28,22 @@ export const SearchBar = () => {
   };
 
   return (
-    <>
+    <Container>
       <SearchBlock>
         <SearchInForm onSubmit={onFormSubmit}>
           <SearchInput
             name="search"
             type="text"
             value={inputValue}
-            placeholder="Beef |"
+            placeholder="Enter query"
             onChange={handleInputChange}
           />
-          <ButtonSearch
-            type="submit"
-            text="Search"
-            // styled={styled}
-          ></ButtonSearch>
+          <ButtonSearch type="submit" text="Search">
+            Search
+          </ButtonSearch>
         </SearchInForm>
       </SearchBlock>
       <SearchTypeSelector />
-    </>
+    </Container>
   );
 };

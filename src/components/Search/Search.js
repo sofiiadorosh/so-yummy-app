@@ -19,6 +19,7 @@ import { getSearchByIngredients, getSearchByTitle } from 'services/soyummyAPI';
 
 import { RecipesList } from 'components/RecipesList';
 import { SearchBar } from 'components/SearchBar';
+import { Paginator } from 'components/Paginator/Paginator';
 import { NoRecipesImg, NoRecipesText, PaginationWrp } from './Search.styled';
 
 export const Search = () => {
@@ -31,9 +32,9 @@ export const Search = () => {
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
 
-  // const onPageChange = (e, page) => {
-  //   setPage(page);
-  // };
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
 
   useEffect(() => {
     return () => {
@@ -103,15 +104,11 @@ export const Search = () => {
       {searchResult.length !== 0 && (
         <>
           <RecipesList items={searchResult} />
-          {/* <PaginationWrp>
+          <PaginationWrp>
             {count > 1 && (
-              <BasicPagination
-                count={count}
-                page={page}
-                isChange={onPageChange}
-              />
+              <Paginator count={count} page={page} isChange={onPageChange} />
             )}
-          </PaginationWrp> */}
+          </PaginationWrp>
         </>
       )}
     </>

@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://so-yummy-app-backend.onrender.com/api/';
+
 export const getSearchByTitle = async (
   query,
   page = 1,

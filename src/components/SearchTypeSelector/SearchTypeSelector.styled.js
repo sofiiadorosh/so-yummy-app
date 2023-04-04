@@ -20,6 +20,7 @@ export const Text = styled.span`
   font-size: 12px;
   line-height: 1.33;
   /* color: ; */
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.33;

@@ -3,7 +3,7 @@ import Select from 'react-select';
 import styled from 'styled-components';
 
 export const StyledSelect = styled(Select)`
-  /* .Select__control {
+  .Select__control {
     border: none;
     border-radius: 6px;
     background-color: #f2ecec;
@@ -107,5 +107,5 @@ export const StyledSelect = styled(Select)`
     &:focus {
       background-color: transparent;
     }
-  } */
+  }
 `;

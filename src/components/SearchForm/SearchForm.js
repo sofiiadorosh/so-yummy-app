@@ -29,7 +29,11 @@ export const SearchForm = ({
           placeholder="Beef |"
           onChange={handleInputChange}
         />
-        <ButtonSearch type="submit" text="Search" styled={styled}></ButtonSearch>
+        <ButtonSearch
+          type="submit"
+          text="Search"
+          styled={styled}
+        ></ButtonSearch>
       </SearchInForm>
     </SearchBlock>
   );

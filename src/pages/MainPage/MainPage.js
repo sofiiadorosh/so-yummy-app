@@ -3,6 +3,7 @@ import { MainContainer } from 'components/MainContainer';
 import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
 import {SearchForm} from '../../components/SearchForm'
 import { PreviewCategories } from 'components/PreviewCategories';
+import { RecipePageHero } from 'components/RecipePageHero';
 
 import {
   MainPageBackground,
@@ -36,6 +37,7 @@ export const MainPage = () => {
           </MainContainer>
         </MainPageBackground>
         <PreviewCategories />
+        <RecipePageHero />
       </ColorWrap>
       
     </>

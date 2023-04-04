@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonSearchStyle = styled.button`
+const ButtonSearchStyle = styled.button`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -34,3 +34,4 @@ transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
   left: 350px;
 }
 `;
+export { ButtonSearchStyle };

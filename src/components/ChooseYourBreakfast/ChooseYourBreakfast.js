@@ -1,12 +1,11 @@
+import { BsArrowRight } from 'react-icons/bs';
+
 import {
   ChooseBlock,
   ChooseLink,
   ChooseSpan,
   ChooseText,
-  RightArrow,
 } from './ChooseYourBreakfast.styled';
-
-import { BsArrowRight } from 'react-icons/bs';
 
 export const ChooseYourBreakfast = () => {
   return (

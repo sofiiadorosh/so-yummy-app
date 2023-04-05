@@ -1,4 +1,9 @@
 import { MainContainer } from 'components/MainContainer';
+
+import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
+import {SearchForm} from '../../components/SearchForm'
+import { PreviewCategories } from 'components/PreviewCategories';
+
 import {
   MainPageBackground,
   MainPageContainer,
@@ -7,8 +12,7 @@ import {
   Span,
   ColorWrap,
 } from './MainPage.styled';
-import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast';
-import {SearchForm} from '../../components/SearchForm'
+
 
 export const MainPage = () => {
   return (
@@ -28,9 +32,12 @@ export const MainPage = () => {
               <ChooseYourBreakfast />
               <SearchForm styled={'black'}  />
             </MainPageContainer>
+            
           </MainContainer>
         </MainPageBackground>
+        <PreviewCategories />
       </ColorWrap>
+      
     </>
   );
 };

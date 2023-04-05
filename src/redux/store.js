@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import updateLocalStorage from 'services/auth/updateLocalStorage';
 import { authReducer } from './auth/slice';
+import { searchReducer } from './search/searchSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -31,6 +32,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    search: searchReducer,
   },
   middleware,
 });

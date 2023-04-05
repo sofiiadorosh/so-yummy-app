@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CategoriesSection = styled.section`
+const AddRecipeSection = styled.section`
   padding: 50px 0 100px;
 
   @media screen and (min-width: 768px) {
@@ -38,4 +38,4 @@ const Title = styled.div`
   }
 `;
 
-export { CategoriesSection, Container, Title };
+export { AddRecipeSection, Container, Title };

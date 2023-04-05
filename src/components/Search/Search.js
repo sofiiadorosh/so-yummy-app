@@ -51,17 +51,12 @@ export const Search = () => {
       if (searchQuery) {
         getSearchByTitle(searchQuery, page)
           .then(res => {
-            console.log(res);
-
             if (res.recipes.length === 0) {
               toast.warning('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-
-            const totalPages = Math.ceil(res.total / res.limit);
-            console.log(totalPages);
+            const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
-
             setIsSearchResult(true);
           })
           .catch(err => {
@@ -76,7 +71,7 @@ export const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
+            const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
             setIsSearchResult(true);
           })

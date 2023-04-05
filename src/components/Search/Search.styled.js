@@ -40,9 +40,14 @@ export const NoRecipesText = styled.p`
 `;
 
 export const PaginationWrp = styled.div`
-  padding-bottom: 100px;
+  margin-top: 40px;
+  margin-bottom: 100px;
 
+  @media screen and (min-width: 768px) {
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
   @media screen and (min-width: 1440px) {
-    padding-bottom: 200px;
+    margin-bottom: 100px;
   }
 `;

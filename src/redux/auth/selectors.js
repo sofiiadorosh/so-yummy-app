@@ -1,9 +1,8 @@
-const selectIsLoggedIn = state => state.auth.isLoggedIn;
-
-const selectUser = state => state.auth.user;
-
-const selectIsRefreshing = state => state.auth.isRefreshing;
-
+const selectUserName = state => state.auth.user.name;
+const selectUserEmail = state => state.auth.user.email;
+const selectUserAvatar = state => state.auth.user.avatarURL;
+const selectRefreshToken = state => state.auth.refreshToken;
+const selectLoading = state => state.auth.loading;
 const selectError = state => state.auth.error;
 
-export { selectIsLoggedIn, selectUser, selectIsRefreshing, selectError };
+export { selectUserName, selectUserEmail, selectUserAvatar, selectRefreshToken, selectLoading, selectError };

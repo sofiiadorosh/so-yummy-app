@@ -1,3 +1,10 @@
+import React from "react";
+
+import { SigninForm } from "components/SigninForm";
+
 export const SigninPage = () => {
-  return <div>SigninPage</div>;
+  return (
+     <SigninForm />
+  )
 };
+

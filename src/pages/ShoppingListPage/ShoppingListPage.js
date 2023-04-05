@@ -1,3 +1,12 @@
+import { Outlet } from 'react-router-dom';
+import { MainPageTitle } from 'components/MainPageTitle';
+
 export const ShoppingListPage = () => {
-  return <div>ShoppingListPage</div>;
+
+
+  return (
+    <ShoppingListSection>
+        <MainPageTitle title="Shopping list" />
+    </ShoppingListSection>
+  )
 };

@@ -18,7 +18,7 @@ const ChooseBlock = styled.div`
     height: 100px;
     position: absolute;
     right: 25px;
-    top: 392px;
+    top: 372px;
   }
   @media (min-width: 1440px) {
     line-height: 1.42;
@@ -27,7 +27,7 @@ const ChooseBlock = styled.div`
     height: 114px;
     position: absolute;
     right: 120px;
-    top: 492px;
+    top: 462px;
   }
 `;
 

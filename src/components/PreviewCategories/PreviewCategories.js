@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import {getCategoryRecipes} from 'services/soyummyAPI';
 
-// import { CategoryDishItem } from 'components/CategoryDishItem/CategoryDishItem';
+import { MealItem } from 'components/MealItem';
 import { Loader } from 'components/Loader';
 import { MainContainer } from 'components/MainContainer';
 import {
@@ -29,7 +29,7 @@ export const PreviewCategories = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        'https://so-yummy-app-backend.onrender.com/api/recipes/main-page' );
+        'https://soyummy-tw3y.onrender.com/api/v1/recipes/main-page' );
       const { data } = response.data;
      
       if (response) {
@@ -80,10 +80,17 @@ export const PreviewCategories = () => {
               return (
                 <li key={_id}>
                   <TitleList>{_id}</TitleList>
+                  
                   <CategoriesList>
                     {dishesList.map(({ _id, thumb, title }) => {
-                      
-                      //   <CategoryDishItem/>
+                        return (
+                          <MealItem
+                            key={_id}
+                            thumb={thumb}
+                            title={title}
+                            id={_id}
+                          />
+                        );
                     })}
                   </CategoriesList>
                   <Link to={`/categories/${_id}`}>See all</Link>

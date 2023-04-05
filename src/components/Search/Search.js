@@ -19,6 +19,7 @@ import { getSearchByIngredients, getSearchByTitle } from 'services/soyummyAPI';
 
 import { RecipesList } from 'components/RecipesList';
 import { SearchBar } from 'components/SearchBar';
+import { Paginator } from 'components/Paginator/Paginator';
 import { NoRecipesImg, NoRecipesText, PaginationWrp } from './Search.styled';
 
 export const Search = () => {
@@ -31,9 +32,9 @@ export const Search = () => {
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
 
-  // const onPageChange = (e, page) => {
-  //   setPage(page);
-  // };
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
 
   useEffect(() => {
     return () => {
@@ -54,7 +55,7 @@ export const Search = () => {
               toast.warning('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
+            const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
             setIsSearchResult(true);
           })
@@ -70,7 +71,7 @@ export const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
+            const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
             setIsSearchResult(true);
           })
@@ -86,13 +87,29 @@ export const Search = () => {
     searchType,
   ]);
 
+  const onFormSubmit = e => {
+    e.preventDefault();
+    const newSearchQuery = e.target.elements.search.value;
+    setPage(1);
+    if (
+      !newSearchQuery ||
+      (newSearchQuery === searchQuery && searchResult.length === 0)
+    ) {
+      toast.warning('Type new query');
+      return;
+    }
+    dispatch(updateSearchQuery(newSearchQuery));
+  };
+
   return (
     <>
-      <SearchBar />
+      <SearchBar onSubmit={onFormSubmit} />
       {searchResult.length === 0 && (
         <>
-          <NoRecipesImg />
-          {!isSearchResult && <NoRecipesText>Enter query</NoRecipesText>}
+          <NoRecipesImg></NoRecipesImg>
+          {!isSearchResult && (
+            <NoRecipesText>Enter your search query</NoRecipesText>
+          )}
           {isSearchResult && (
             <NoRecipesText>Try looking for something else..</NoRecipesText>
           )}
@@ -101,15 +118,11 @@ export const Search = () => {
       {searchResult.length !== 0 && (
         <>
           <RecipesList items={searchResult} />
-          {/* <PaginationWrp>
+          <PaginationWrp>
             {count > 1 && (
-              <BasicPagination
-                count={count}
-                page={page}
-                isChange={onPageChange}
-              />
+              <Paginator count={count} page={page} isChange={onPageChange} />
             )}
-          </PaginationWrp> */}
+          </PaginationWrp>
         </>
       )}
     </>

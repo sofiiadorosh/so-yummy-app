@@ -2,14 +2,38 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { register, login, logout, refreshUser } from './operations';
 
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null },
-    token: null,
+    user: { name: null, email: null, avatarURL: null },
+    refreshToken: null,
+    accessToken: null,
     isLoggedIn: false,
     isRefreshing: false,
     error: null,
+  },
+  reducers: {
+    updateDataUser(state, { payload }) {
+      state.accessToken = payload.accessToken;
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.user.avatarURL = payload.user.avatarURL;
+    },
+    updateTokens(state, { payload }) {
+      state.refreshToken = payload.refreshToken;
+      state.accessToken = payload.accessToken;
+    },
+    clearTokens(state, { _ }) {
+      state.refreshToken = null;
+      state.accessToken = null;
+    },
+    updateUserName(state, { payload }) {
+      state.user.name = payload;
+    },
+    updateUserAvatar(state, { payload }) {
+      state.user.avatarURL = payload;
+    },
   },
   extraReducers: builder =>
     builder

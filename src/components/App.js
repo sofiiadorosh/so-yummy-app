@@ -11,8 +11,8 @@ import { ShoppingListPage } from 'pages/ShoppingListPage';
 import { SearchPage } from 'pages/SearchPage';
 import { RecipePage } from 'pages/RecipePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
-// import { WelcomePage } from 'pages/WelcomePage';
-// import { RegisterPage } from 'pages/RegisterPage';
+import { WelcomePage } from 'pages/WelcomePage';
+import { RegisterPage } from 'pages/RegisterPage';
 // import { SigninPage } from 'pages/SigninPage';
 
 import { GlobalStyle } from './GlobalStyle';
@@ -22,13 +22,17 @@ export const App = () => {
     <div>
       <GlobalStyle />
       <Routes>
+
+    
         {/* routing changes depending on authorizing of user */}
         {/* <Route path="/" element={<WelcomePage />}>
           <Route path="register" element={<RegisterPage />} />
           <Route path="signin" element={<SigninPage />} />
         </Route> */}
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<MainPage />} />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="register" element={<RegisterPage />} />
+          {/* <Route index element={<MainPage />} /> */}
           <Route path="main" element={<MainPage />} />
           <Route path="categories" element={<CategoriesPage />}>
             <Route path=":categoryName" element={<CategoriesRecipes />} />

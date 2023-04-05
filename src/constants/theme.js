@@ -43,4 +43,5 @@ export const theme = Object.freeze({
 
     line: '#e0e0e0',
   },
+  
 });

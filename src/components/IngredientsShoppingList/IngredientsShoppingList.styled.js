@@ -8,7 +8,9 @@ const ListTitle = styled.div`
   /* width: 100vh; */
   height: 38px;
   display: flex;
+  align-item: center;
   padding: 10px 10px;
+  justify-content: space-between;
 
   &>p{
     font-weight: ${props => props.theme.fontWeights.semibold};
@@ -26,6 +28,20 @@ const ListTitle = styled.div`
     padding: 20px 40px;
 `;
 
+const ProductTitle = styled.p`
+
+ @media screen and (min-width: 1440px) {
+    margin-right: 750px;
+
+`
+
+const NumberTitle = styled.p`
+
+ @media screen and (min-width: 1440px) {
+    margin-right: 142px;
+
+`
 
 
-export { ListTitle };
+
+export { ListTitle, ProductTitle,NumberTitle };

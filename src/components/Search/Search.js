@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { toast } from 'react-toastify';
@@ -31,6 +31,7 @@ export const Search = () => {
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
+  const lastSearchQuery = useRef('');
 
   const onPageChange = (e, page) => {
     setPage(page);
@@ -47,17 +48,23 @@ export const Search = () => {
       dispatch(updateSearchType('ingredient'));
       location.state.ingredient = false;
     }
+
+    if (searchQuery && searchQuery !== lastSearchQuery.current) {
+      lastSearchQuery.current = searchQuery;
+    }
+
     if (searchType === 'title') {
       if (searchQuery) {
         getSearchByTitle(searchQuery, page)
           .then(res => {
-            if (res.recipes.length === 0) {
-              toast.warning('Nothing... Try another search query');
+            if (res === null) {
+              setIsSearchResult(true);
+              dispatch(updateSearchResult([]));
+              toast('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
-            setIsSearchResult(true);
           })
           .catch(err => {
             toast.warning('Bad query');
@@ -67,13 +74,14 @@ export const Search = () => {
       if (searchQuery) {
         getSearchByIngredients(searchQuery, page)
           .then(res => {
-            if (res.recipes.length === 0) {
+            if (res === null) {
+              setIsSearchResult(true);
+              dispatch(updateSearchResult([]));
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / 12);
             setCount(totalPages);
-            setIsSearchResult(true);
           })
           .catch(err => toast.warning('Bad query'));
       }

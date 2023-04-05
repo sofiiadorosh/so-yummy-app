@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { updateSearchQuery } from 'redux/search/searchSlice';
 import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
 import {
@@ -12,25 +9,17 @@ import {
   Container,
 } from './SearchBar.styled';
 
-export const SearchBar = () => {
-  const dispatch = useDispatch();
-
+export const SearchBar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
   }
 
-  const onFormSubmit = e => {
-    e.preventDefault();
-    const newSearchQuery = e.target.elements.search.value;
-    dispatch(updateSearchQuery(newSearchQuery));
-  };
-
   return (
     <Container>
       <SearchBlock>
-        <SearchInForm onSubmit={onFormSubmit}>
+        <SearchInForm onSubmit={onSubmit}>
           <SearchInput
             name="search"
             type="text"

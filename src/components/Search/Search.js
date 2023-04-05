@@ -51,12 +51,17 @@ export const Search = () => {
       if (searchQuery) {
         getSearchByTitle(searchQuery, page)
           .then(res => {
+            console.log(res);
+
             if (res.recipes.length === 0) {
               toast.warning('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
+
             const totalPages = Math.ceil(res.total / res.limit);
+            console.log(totalPages);
             setCount(totalPages);
+
             setIsSearchResult(true);
           })
           .catch(err => {
@@ -87,9 +92,23 @@ export const Search = () => {
     searchType,
   ]);
 
+  const onFormSubmit = e => {
+    e.preventDefault();
+    const newSearchQuery = e.target.elements.search.value;
+    setPage(1);
+    if (
+      !newSearchQuery ||
+      (newSearchQuery === searchQuery && searchResult.length === 0)
+    ) {
+      toast.warning('Type new query');
+      return;
+    }
+    dispatch(updateSearchQuery(newSearchQuery));
+  };
+
   return (
     <>
-      <SearchBar />
+      <SearchBar onSubmit={onFormSubmit} />
       {searchResult.length === 0 && (
         <>
           <NoRecipesImg></NoRecipesImg>

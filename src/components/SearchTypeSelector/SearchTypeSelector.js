@@ -46,6 +46,15 @@ export const SearchTypeSelector = () => {
             color: '#rgba(0, 0, 0, 0.5)',
             width: '146px',
             height: '34px',
+            '&:hover': {
+              backgroundColor: '#ffffff',
+              borderStyle: 'none',
+              borderColor: 'none',
+              boxShadow: 'none',
+              border: 'none',
+              outline: 'none',
+              boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',
+            },
             '@media (min-width: 768px)': {
               width: '175px',
               height: '41px',

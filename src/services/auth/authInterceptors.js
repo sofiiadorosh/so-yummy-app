@@ -80,7 +80,7 @@ const processFailedRequests = (failedRequests, accessToken) => {
   failedRequests = [];
 }
 
-export function setupInterceptors(store) {
+export const setupInterceptors = (store) => {
     axios.interceptors.request.use(
     config => setAuthorizationHeader(config, getAccessToken(store)),
     error => Promise.reject(error),

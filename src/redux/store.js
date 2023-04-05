@@ -24,7 +24,7 @@ const middleware = [
 ];
 
 const authPersistConfig = {
-  key: 'auth',
+  key: 'refresh-user',
   storage,
   whitelist: ['refreshToken', 'accessToken', 'user'],
 };

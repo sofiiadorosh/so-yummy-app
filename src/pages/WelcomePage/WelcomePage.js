@@ -1,8 +1,11 @@
-import { WelcomePageContainer, WelcomePageTitle, WelcomeText, ButtonContainer, RedirectButton} from './WelcomePage.styled';
+
+import { WelcomePageContainer, WelcomePageTitle, WelcomeText, ButtonContainer, RedirectButton, StyledLogo } from './WelcomePage.styled';
+
 
 export const WelcomePage = () => {
    return (
      <WelcomePageContainer>
+       <StyledLogo />
        <WelcomePageTitle> Welcome to the app! </WelcomePageTitle>
        <WelcomeText>
          This app offers more than just a collection of recipes - it is designed to be your very own digital cookbook.

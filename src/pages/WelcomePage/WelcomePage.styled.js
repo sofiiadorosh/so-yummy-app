@@ -1,6 +1,7 @@
 import styled from 'styled-components'; 
 import { Link } from 'react-router-dom'; 
 
+import { Logo } from 'components/Logo';
 import bgrImageMobile1x from '../../images/hero-mobile-1x.jpg';
 import bgrImageTablet1x from '../../images/hero-mobile-2x.jpg';
 import bgrImageDesktop1x from '../../images/hero-desktop-1x.jpg';
@@ -91,28 +92,38 @@ const WelcomePageContainer = styled.div`
   }   
 `; 
 
+const StyledLogo = styled(Logo)`
+  width: 68px;
+  height: 68px;
+`;
+
 const WelcomePageTitle = styled.h1`
+  margin-bottom: 14px;
+  margin-top: 28px;
+
   font-size: ${props => props.theme.fontSizes[8]}px;
   font-weight: ${props => props.theme.fontWeights.semibold};
   line-height: 1;
   letter-spacing: -0.02em;
-  margin-bottom: 14px;
   text-align: center;
 
-   color: ${props => props.theme.colors.primaryLightText};
+  color: ${props => props.theme.colors.primaryLightText};
 
   @media screen and (min-width: 769px) {
+    margin-top: 44px;
     font-size: ${props => props.theme.fontSizes[9]}px;
   }
 `; 
 
 const WelcomeText = styled.p`
+  margin-bottom: 40px;
+
+  width: 300px;
+
   font-size: ${props => props.theme.fontSizes[4]}px;
   line-height: 1.23;
   letter-spacing: -0.02em;
   text-align: center;
-  margin-bottom: 40px;
-  width: 300px;
   
   color: ${props => props.theme.colors.primaryLightText};
 
@@ -168,4 +179,4 @@ const RedirectButton = styled(Link)`
 
 
 
-export {WelcomePageContainer, WelcomePageTitle, WelcomeText, ButtonContainer, RedirectButton }
+export {WelcomePageContainer, StyledLogo, WelcomePageTitle, WelcomeText, ButtonContainer, RedirectButton }

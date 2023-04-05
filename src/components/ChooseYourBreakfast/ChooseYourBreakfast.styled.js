@@ -18,7 +18,7 @@ const ChooseBlock = styled.div`
     height: 100px;
     position: absolute;
     right: 25px;
-    top: 392px;
+    top: 372px;
   }
   @media (min-width: 1440px) {
     line-height: 1.42;
@@ -27,7 +27,7 @@ const ChooseBlock = styled.div`
     height: 114px;
     position: absolute;
     right: 120px;
-    top: 492px;
+    top: 462px;
   }
 `;
 
@@ -61,21 +61,26 @@ const ChooseSpan = styled.span`
   }
 `;
 const ChooseLink = styled(NavLink)`
-  font-weight: ${props => props.theme.fontWeights.regular};
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  line-height: 1.2;
-  letter-spacing: '-0.02em';
-  color: ${props => props.theme.colors.secondaryDarkText};
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  @media (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes[3]}px;
-  }
-  @media (min-width: 1440px) {
-    line-height: 2;
-  }
+cursor: pointer;
+height: 12px;
+display: flex;
+justify-content: flex-end;
+gap: 7px;
+align-items: center;
+background-color: transparent;
+border-radius: 24px 44px;
+border: none;
+color: ${props => props.theme.colors.secondaryDarkText};
+font-family: inherit;
+font-size: ${props => props.theme.fontSizes[1]}px;
+line-height: 1.2;
+letter-spacing: 0.2px;
+margin-left: auto;
+transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
+&:hover,
+&:focus {
+  color: ${props => props.theme.colors.greenAccent};
+}
 `;
 
 const RightArrow = styled.svg`

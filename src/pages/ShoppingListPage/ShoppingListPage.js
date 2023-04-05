@@ -1,12 +1,22 @@
 import { Outlet } from 'react-router-dom';
-import { MainPageTitle } from 'components/MainPageTitle';
+import { MainPageTitle, Container, Title } from 'components/MainPageTitle';
+
+import { Square } from 'components/Square';
+import { IngredientsShoppingList } from 'components/IngredientsShoppingList';
 
 export const ShoppingListPage = () => {
 
 
   return (
     <ShoppingListSection>
-        <MainPageTitle title="Shopping list" />
+      <Container>
+        <Square />
+        <Title>
+          <MainPageTitle title="Shopping list" />
+        </Title>
+        <IngredientsShoppingList />
+        <Outlet />
+      </Container>
     </ShoppingListSection>
   )
 };

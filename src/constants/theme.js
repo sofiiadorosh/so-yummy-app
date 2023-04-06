@@ -39,6 +39,7 @@ export const theme = Object.freeze({
     lightBackground: '#fafafa',
     whiteBackground: '#ffffff',
     primaryDarkBackground: '#1E1F28',
+    primaryGreenBackground: '#EBF3D4',
     secondaryDarkBackground: '#22252A',
     switchBackground: '#efefef',
     formBackground: '#F0F0F0',

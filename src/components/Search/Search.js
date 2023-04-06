@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { toast } from 'react-toastify';
+import { debounce } from 'lodash';
 
 import {
   selectSearchQuery,
@@ -31,6 +32,7 @@ export const Search = () => {
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
+  const [recipeLimit, setRecipeLimit] = useState(6);
   const lastSearchQuery = useRef('');
 
   const onPageChange = (e, page) => {
@@ -44,6 +46,27 @@ export const Search = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      console.log(width);
+      if (width >= 1440) {
+        setRecipeLimit(12);
+      } else {
+        setRecipeLimit(6);
+      }
+    };
+
+    const debouncedHandleResize = debounce(handleResize, 500);
+    debouncedHandleResize();
+
+    window.addEventListener('resize', debouncedHandleResize);
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
+      debouncedHandleResize.cancel();
+    };
+  }, [setRecipeLimit]);
+
+  useEffect(() => {
     if (location?.state?.ingredient) {
       dispatch(updateSearchType('ingredient'));
       location.state.ingredient = false;
@@ -55,15 +78,16 @@ export const Search = () => {
 
     if (searchType === 'title') {
       if (searchQuery) {
-        getSearchByTitle(searchQuery, page)
+        getSearchByTitle(searchQuery, page, recipeLimit)
           .then(res => {
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
               toast('Nothing... Try another search query');
             }
+            console.log(res);
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / 12);
+            const totalPages = Math.ceil(res.total / recipeLimit);
             setCount(totalPages);
           })
           .catch(err => {
@@ -72,15 +96,16 @@ export const Search = () => {
       }
     } else {
       if (searchQuery) {
-        getSearchByIngredients(searchQuery, page)
+        getSearchByIngredients(searchQuery, page, recipeLimit)
           .then(res => {
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
-              toast.warning(' Nothing... Try another search query');
+              toast.warning('Nothing... Try another search query');
             }
+            console.log(res);
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / 12);
+            const totalPages = Math.ceil(res.total / recipeLimit);
             setCount(totalPages);
           })
           .catch(err => toast.warning('Bad query'));
@@ -93,6 +118,7 @@ export const Search = () => {
     page,
     searchQuery,
     searchType,
+    recipeLimit,
   ]);
 
   const onFormSubmit = e => {

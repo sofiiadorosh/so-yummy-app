@@ -1,112 +1,44 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-// import {getCategoryRecipes} from 'services/soyummyAPI';
 
-import { MealItem } from 'components/MealItem';
-import { Loader } from 'components/Loader';
-import { MainContainer } from 'components/MainContainer';
+import { getCategoryRecipes } from 'services/soyummyAPI';
+
+import { RecipesList } from 'components/RecipesList';
+
 import {
-  MainList,
-  TitleList,
-  CategoriesList,
-  Link,
-  ButtonOtherCategory,
-  ErrorMessage,
+  CategoriesSection,
+  Container,
+  CategoriesRecipes,
+  Title,
+  Category,
+  SeeAllButton,
+  OtherButton,
 } from './PreviewCategories.styled';
-import { useMediaQuery } from 'react-responsive';
-
 
 export const PreviewCategories = () => {
-  const [dishes, setDishes] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const isDesktop = useMediaQuery({query: '(min-width: 1440px)'});
-  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isMobile = useMediaQuery({ query: '(min-width: 320px)' });
-
-  async function getDishes() {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        'https://soyummy-tw3y.onrender.com/api/v1/recipes/main-page' );
-      const { data } = response.data;
-     
-      if (response) {
-        setLoading(false);
-      }
-
-      const newData = data.reduce((acc, item) => {
-        if (item._id === 'Breakfast') {
-          acc[0] = item;
-        } else if (item._id === 'Miscellaneous') {
-          acc[1] = item;
-        } else if (item._id === 'Vegan') {
-          acc[2] = item;
-        } else if (item._id === 'Dessert') {
-          acc[3] = item;
-        }
-        return acc;
-      }, []);
-
-      setDishes(newData);
-    } catch (error) {
-      setLoading(false);
-      setError(error.message);
-      console.log(error);
-    }
-  }
+  const [categoryRecipes, setCategoryRecipes] = useState([]);
 
   useEffect(() => {
-    getDishes();
+    const getData = async () => {
+      const data = await getCategoryRecipes(4);
+      setCategoryRecipes(data.recipes);
+    };
+    getData();
   }, []);
 
   return (
-    
-      <MainContainer>
-        {dishes.length > 0 && (
-          <MainList>
-            {dishes.map(({ _id, documents }) => {
-              let dishesList;
-              if (isMobile) {
-                dishesList = [documents[0]];
-              }
-              if (isTablet) {
-                dishesList = [documents[0], documents[1]];
-              }
-              if (isDesktop) {
-                dishesList = documents;
-              }
-              return (
-                <li key={_id}>
-                  <TitleList>{_id}</TitleList>
-                  
-                  <CategoriesList>
-                    {dishesList.map(({ _id, thumb, title }) => {
-                        return (
-                          <MealItem
-                            key={_id}
-                            thumb={thumb}
-                            title={title}
-                            id={_id}
-                          />
-                        );
-                    })}
-                  </CategoriesList>
-                  <Link to={`/categories/${_id}`}>See all</Link>
-                </li>
-              );
-            })}
-          </MainList>
-        )}
-        {error && !loading && (
-          <ErrorMessage>Something wrong! Reload the page...</ErrorMessage>
-        )}
-        {loading && <Loader />}
-        <ButtonOtherCategory to="/categories/Beef">
-          Other categories
-        </ButtonOtherCategory>
-      </MainContainer>
-    
+    <CategoriesSection>
+      <Container>
+        <CategoriesRecipes>
+          {categoryRecipes.map(({ title, recipes }) => (
+            <Category key={title}>
+              <Title>{title}</Title>
+              <RecipesList items={recipes} />
+              <SeeAllButton to={`/categories/${title.toLowerCase()}`} />
+            </Category>
+          ))}
+        </CategoriesRecipes>
+        <OtherButton to="/categories/beef" />
+      </Container>
+    </CategoriesSection>
   );
 };

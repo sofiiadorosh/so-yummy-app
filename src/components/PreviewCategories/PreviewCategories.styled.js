@@ -1,122 +1,138 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const MainList = styled.ul`
+const CategoriesSection = styled.section`
+  padding: 57px 0 100px;
+
+  @media screen and (min-width: 768px) {
+    padding: 72px 0 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 100px 0 118px;
+  }
+`;
+
+const Container = styled.div`
+  width: 375px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding: 0 100px;
+  }
+`;
+
+const CategoriesRecipes = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+
   margin-bottom: 40px;
+
   @media screen and (min-width: 768px) {
     gap: 50px;
+
     margin-bottom: 32px;
   }
+
   @media screen and (min-width: 1440px) {
     gap: 100px;
+
     margin-bottom: 14px;
   }
 `;
 
-export const TitleList = styled.p`
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.tertiaryDarkText};
+const Title = styled.h2`
   margin-bottom: 32px;
-  @media screen and (min-width: 768px) {
-    font-size: 44px;
-    margin-bottom: 40px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 50px;
-  }
-`;
 
-export const CategoriesList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  margin-bottom: 24px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 50px;
-    flex-wrap: nowrap;
-    gap: 14px;
-  }
-`;
-
-export const Link = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 94px;
-  height: 38px;
-  background-color: ${props => props.theme.colors.greenAccent};
-  border: none;
-  color: ${props => props.theme.colors.primaryLightText};
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.29;
-  border-radius: 6px;
-  margin-left: auto;
-  transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.colors.quaternaryDarkText};
-  }
-`;
-
-export const ButtonOtherCategory = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 195px;
-  height: 46px;
-  background-color: transparent;
-  border-radius: 24px 44px;
-  border: 2px solid ${props => props.theme.colors.greenAccent};
-  color: ${props => props.theme.colors.quaternaryDarkText};
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-left: auto;
-  margin-right: auto;
-  transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.colors.greenAccent};
-    color: ${props => props.theme.colors.whiteTex};
-  }
-  @media screen and (min-width: 768px) {
-    width: 239px;
-    height: 61px;
-    font-size: 16px;
-  }
-`;
-
-export const ErrorMessage = styled.p`
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: ${props => props.theme.fontWeights.semibold};
+  font-size: ${props => props.theme.fontSizes[8]}px;
   line-height: 1;
   letter-spacing: -0.02em;
+
   color: ${props => props.theme.colors.tertiaryDarkText};
-  margin-bottom: 100px;
-  text-align: center;
+
   @media screen and (min-width: 768px) {
-    font-size: 36px;
-    margin-bottom: 140px;
-  }
-  @media screen and (min-width: 1440px) {
-    font-size: 44px;
-    margin-bottom: 180px;
+    margin: 0;
+
+    font-size: ${props => props.theme.fontSizes[10]}px;
   }
 `;
+
+const Category = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 50px;
+  }
+`;
+
+const SeeAllButton = styled(NavLink)`
+  display: block;
+  min-width: 94px;
+  margin-top: 24px;
+  margin-left: auto;
+  padding: 10px 24px;
+
+  font-family: inherit;
+  font-weight: ${props => props.theme.fontWeights.regular};
+  line-height: 1.29;
+
+  color: ${props => props.theme.color.primaryLightText};
+
+  background-color: ${props => props.theme.color.greenAccent};
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    margin-left: auto;
+  }
+`;
+
+const OtherButton = styled(NavLink)`
+  min-width: 195px;
+  margin: 0 auto;
+  padding: 14px 32px;
+
+  font-weight: ${props => props.theme.fontWeights.regular};
+  line-height: 1.5;
+
+  border: 2px solid #8baa36;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 80px;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 30px;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    min-width: 239px;
+    padding: 20px 52px;
+
+    font-size: ${props => props.theme.fontSizes[4]}px;
+  }
+`;
+
+export {
+  CategoriesSection,
+  Container,
+  CategoriesRecipes,
+  Title,
+  Category,
+  SeeAllButton,
+  OtherButton,
+};

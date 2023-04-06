@@ -1,5 +1,7 @@
 import SocialLinks from './SocialLinks/SocialLinks';
+
 import FooterNavigation from './FooterNavigation/FooterNavigation';
+
 import {
   LeafsOnFooter,
   FooterBlock,

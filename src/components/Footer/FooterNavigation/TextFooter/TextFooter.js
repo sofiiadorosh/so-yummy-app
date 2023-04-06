@@ -1,6 +1,8 @@
 import React from 'react';
-import Logo from '../LogoFooter/Logo';
 import { NavLink } from 'react-router-dom';
+
+import Logo from '../LogoFooter/Logo';
+
 import { LogoText, NavLeft } from './TextFooter.stylde';
 
 const TextFooter = () => {

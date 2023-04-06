@@ -1,13 +1,12 @@
-/* Компонент приймає пропс light, dark або green, 
-в залежності від того, на якому фоні рендериться компонент*/
 import { css } from 'styled-components';
 import React from 'react';
-import { Wrapper, Link, InstagramIcon } from './SocialLinks.styled';
 import clsx from 'clsx';
 
 import { ReactComponent as Facebook } from './images/Facebook.svg';
 import { ReactComponent as Youtube } from './images/Youtube.svg';
 import { ReactComponent as Twitter } from './images/Twitter.svg';
+
+import { Wrapper, Link, InstagramIcon } from './SocialLinks.styled';
 
 const SocialLinks = ({ type }) => {
   return (

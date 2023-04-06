@@ -39,7 +39,8 @@ export const Description = styled.div`
 
 export const ImgUploadWrap = styled.div`
   margin-bottom: 32px;
-   
+   display:flex;
+   justify-content: center;
 
   
 `;

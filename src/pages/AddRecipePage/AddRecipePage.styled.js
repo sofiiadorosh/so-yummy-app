@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const AddRecipeSection = styled.section`
-  padding: 50px 0 100px;
+  padding: 115px 0 100px;
 
   @media screen and (min-width: 768px) {
     padding: 72px 0 200px;
@@ -31,7 +31,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 1440px) {
     margin-bottom: 100px;

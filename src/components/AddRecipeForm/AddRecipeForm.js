@@ -4,7 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { Counter } from './Counter/Counter';
 import {
   InputUpload,
-  Title,
+
   Wrap,
   Form,
   ImgUploadWrap,
@@ -37,7 +37,7 @@ export const AddRecipeForm = () => {
     setCount(state => state - 1);
   };
  return ( <Wrap>
-  <Title>Add recipe</Title>
+
   <Form>
     <Description>
       <ImgUploadWrap>

@@ -1,15 +1,15 @@
 
 
-import { ListTitle, ProductTitle, NumberTitle } from './IngredientsShoppingList.styled'
+import { ListTitle, ProductTitle, NumberTitle, RemoveTitle } from './IngredientsShoppingList.styled'
 
 
 export const IngredientsShoppingList = () => {
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div >
       <ListTitle>
         <ProductTitle>Product</ProductTitle>
         <NumberTitle>Number</NumberTitle>
-        <p>Remove</p>
+        <RemoveTitle>Remove</RemoveTitle>
         
       </ListTitle>
     </div>

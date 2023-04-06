@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+
+import { Counter } from './Counter/Counter';
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
 export const AddRecipeForm = () => { 
@@ -18,6 +20,7 @@ export const AddRecipeForm = () => {
     <label htmlFor='file-input'>
       <img src={recipeButtonImage} alt="recipeButtonImage" />
     </label>
+    <input id="file-input" type='file' accept="image/png, image/jpeg" />
   </div>
   </>
  )

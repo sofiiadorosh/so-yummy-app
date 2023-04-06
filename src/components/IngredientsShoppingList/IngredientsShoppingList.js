@@ -1,5 +1,6 @@
 import { GrClose } from 'react-icons/gr';
 import plugIngr from '../../images/plugIngr.png';
+import { useDeleteIngridientsMutation } from '../../redux/ShoppingList/shoppingListAPI';
 
 import {
   ListTitle,
@@ -14,9 +15,12 @@ import {
   DeletIngrid
 } from './IngredientsShoppingList.styled'
 
-// import { delIngridSchoppingListById } from 'services/soyummyAPI';
 
-export const IngredientsShoppingList = ({id}) => {
+
+export const IngredientsShoppingList = ({ id }) => {
+
+  const [deleteIngridients] = useDeleteIngridientsMutation();
+  
   return (
     < >
       <ListTitle>
@@ -40,7 +44,7 @@ export const IngredientsShoppingList = ({id}) => {
           </PicterIngrid>
           <NameIngrid>Cucumber</NameIngrid>
           <QuantityIngrid>10000</QuantityIngrid>
-          <DeletIngrid><GrClose /></DeletIngrid>
+          <DeletIngrid onClick={() => deleteIngridients(id)} ><GrClose /></DeletIngrid>
         </ul>
       </ListIngrid>
 

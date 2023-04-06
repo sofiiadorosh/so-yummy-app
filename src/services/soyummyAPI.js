@@ -66,7 +66,7 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
 
 // const delIngridSchoppingListById = async id => {
 //   try {
-//     const response = await axios.get(`shoppingList/${id}`);
+//     const response = await axios.delete(`shoppingList/${id}`);
 //     return response.data;
 //   } catch (error) {
 //     console.log(error.message);

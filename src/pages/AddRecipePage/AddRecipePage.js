@@ -1,7 +1,8 @@
-import { MainPageTitle } from 'components/MainPageTitle';
 
+import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
 import { Header } from '../../components/Header';
+
 import { AddRecipeSection, Container, Title } from './AddRecipePage.styled';
 
 export const AddRecipePage = () => {

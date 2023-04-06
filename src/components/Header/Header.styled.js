@@ -59,6 +59,8 @@ const BurgerButton = styled.button`
   border: none;
   outline: none;
 
+  cursor: pointer;
+
   svg {
     fill: ${props => props.theme.colors.secondaryDarkBackground};
   }
@@ -75,7 +77,7 @@ const MobileMenu = styled.div`
 
   transform: translateY(-100%);
 
-  z-index: 1;
+  z-index: 3;
 
   display: flex;
   flex-direction: column;
@@ -172,8 +174,10 @@ const CrossButton = styled.button`
   border: none;
   outline: none;
 
+  cursor: pointer;
+
   svg {
-    fill: ${props => props.theme.colors.secondaryDarkBackground};
+    stroke: ${props => props.theme.colors.secondaryDarkBackground};
   }
 `;
 

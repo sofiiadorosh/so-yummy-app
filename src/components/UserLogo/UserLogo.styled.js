@@ -41,4 +41,23 @@ const UserName = styled.p`
   }
 `;
 
-export { UserLogoWrapper, UserLogoButton, UserName };
+const Modal = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+
+  z-index: 2;
+
+  transform: translateY(100%);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${({ status }) => {
+    return status
+      ? 'opacity: 1; pointer-events: auto; visibility: visible;'
+      : 'opacity: 0; pointer-events: none; visibility: hidden;';
+  }}
+`;
+
+export { UserLogoWrapper, UserLogoButton, UserName, Modal };

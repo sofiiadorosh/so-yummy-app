@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { toast } from 'react-toastify';
+import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 
 import {
@@ -88,7 +88,7 @@ export const Search = () => {
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
-              toast('Nothing... Try another search query');
+              Notiflix.Notify.warning('Try another search query');
             }
             console.log(res);
             dispatch(updateSearchResult(res.recipes));
@@ -97,7 +97,6 @@ export const Search = () => {
           })
           .catch(err => {
             setLoader(false);
-            toast.warning('Bad query');
           });
       }
     } else {
@@ -109,7 +108,7 @@ export const Search = () => {
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
-              toast.warning('Nothing... Try another search query');
+              Notiflix.Notify.warning('Try another search query');
             }
             console.log(res);
             dispatch(updateSearchResult(res.recipes));
@@ -118,7 +117,6 @@ export const Search = () => {
           })
           .catch(err => {
             setLoader(false);
-            toast.warning('Bad query');
           });
       }
     }
@@ -140,7 +138,7 @@ export const Search = () => {
       !newSearchQuery ||
       (newSearchQuery === searchQuery && searchResult.length === 0)
     ) {
-      toast.warning('Type new query');
+      Notiflix.Notify.warning('Type new query');
       return;
     }
     dispatch(updateSearchQuery(newSearchQuery));

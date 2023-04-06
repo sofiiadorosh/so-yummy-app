@@ -57,7 +57,7 @@ export const InputDescriptionWrap = styled.div`
 `;
 
 export const InputDescription = styled.input`
-  padding-bottom: 19px;
+  padding-bottom: 18px;
   width: 343px;
   height: 43px;
   border: none;
@@ -73,7 +73,16 @@ export const SelectDescription = styled.select`
   top: 0;
   right: 0;
   border: none;
-  background: transparent;
+  background-color: transparent;
+  box-shadow: none; 
+  cursor: pointer;
+`;
+export const SelectOption = styled.option`
+cursor: pointer;
+border: none;
+background-color: transparent;
+box-shadow: none; 
+border-color:transparent;
 `;
 
 export const MainWrapIngredients = styled.div`
@@ -108,13 +117,24 @@ export const InputIngredients = styled.input`
   padding-left: 16px;
   border: none;
   border-radius: 6px;
-
+background-color:#D9D9D9;
 `;
 
 export const SelectIngredients = styled.select`
   height: 53px;
   border: none;
+  background-color:#D9D9D9;
+  border-radius: 6px;
+  min-width:84px;
 
+`;
+
+export const SelectOptionIngredients = styled.option`
+  height: 53px;
+  border: none;
+  min-width:84px;
+  display:flex;
+  background-color:#fff;
 `;
 
 export const WrapPreparation = styled.div`
@@ -132,6 +152,8 @@ export const TextAreaPreparation = styled.textarea`
   padding-top: 10px;
   padding-left: 16px;
   width: 100%;
+  background-color:#D9D9D9;
+  border:none;
 `;
 
 export const WrapButtonAdd = styled.div`

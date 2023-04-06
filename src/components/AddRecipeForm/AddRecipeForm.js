@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 
+import {TimeTypeSelector} from "./Selectors/TimeSelector";
+import {CategorySearchSelector} from "./Selectors/CategorySelector";
+import{MeasureTypeSelector} from "./Selectors/MeasureSelector";
 import { Counter } from './Counter/Counter';
-import {
+import {SelectOptionIngredients,
   InputUpload,
-
+ 
   Wrap,
   Form,
   ImgUploadWrap,
   InputDescriptionWrap,
   InputDescription,
-  SelectDescription,
+  
   TitleIngredients,
   WrapIngredients,
   InputIngredientsWrap,
@@ -71,14 +74,7 @@ export const AddRecipeForm = () => {
                 placeholder="Category"
                 disabled
               />
-              <SelectDescription name="categories" id="categories">
-                <option value="Breakfast">Breakfast</option>
-                <option value="Beef">Beef</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Goat">Goat</option>
-                <option value="Lamb">Lamb</option>
-                <option value="Miscellaneous">Miscellaneous</option>
-              </SelectDescription>
+              <CategorySearchSelector/>
             </InputDescriptionWrap>
             <InputDescriptionWrap>
               <InputDescription
@@ -88,14 +84,9 @@ export const AddRecipeForm = () => {
                 placeholder="Cooking time"
                 disabled
               />
-              <SelectDescription name="cooking-time" id="cooking-time">
-                <option value="">40 min</option>
-                <option value="">30 min</option>
-                <option value="">20 min</option>
-                <option value="">15 min</option>
-                <option value="">10 min</option>
-                <option value="">5 min</option>
-              </SelectDescription>
+             
+                  <TimeTypeSelector/>
+              
             </InputDescriptionWrap>
           </div>
         </Description>
@@ -112,12 +103,7 @@ export const AddRecipeForm = () => {
           <InputIngredientsWrap>
             <div>
               <InputIngredients type="text" name="" id="" placeholder="" />
-              <SelectIngredients name="ingredients" id="ingredients">
-                <option value="Beef">tbs</option>
-                <option value="Breakfast">tsp</option>
-                <option value="Dessert">kg</option>
-                <option value="Goat">g</option>
-              </SelectIngredients>
+              <MeasureTypeSelector/>
             </div>
             <IoCloseOutline size={18} />
           </InputIngredientsWrap>
@@ -125,10 +111,10 @@ export const AddRecipeForm = () => {
             <div>
               <InputIngredients type="text" name="" id="" placeholder="" />
               <SelectIngredients name="ingredients" id="ingredients">
-                <option value="Beef">tbs</option>
-                <option value="Breakfast">tsp</option>
-                <option value="Dessert">kg</option>
-                <option value="Goat">g</option>
+                <option value="tbs">tbs</option>
+                <option value="tsp">tsp</option>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
               </SelectIngredients>
             </div>
             <IoCloseOutline size={18} />

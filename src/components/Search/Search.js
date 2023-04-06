@@ -21,8 +21,8 @@ import { getSearchByIngredients, getSearchByTitle } from 'services/soyummyAPI';
 import { RecipesList } from 'components/RecipesList';
 import { SearchBar } from 'components/SearchBar';
 import { Paginator } from 'components/Paginator/Paginator';
-import { NoRecipesImg, NoRecipesText, PaginationWrp } from './Search.styled';
 import { Loader } from 'components/Loader';
+import { NoRecipesImg, NoRecipesText, PaginationWrp } from './Search.styled';
 
 export const Search = () => {
   const location = useLocation();

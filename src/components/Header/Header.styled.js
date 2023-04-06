@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const AppBar = styled.header`
   position: absolute;
 
-  width: 100vw;
+  width: 100%;
   padding-top: 18px;
 `;
 

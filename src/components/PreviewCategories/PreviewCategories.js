@@ -33,11 +33,13 @@ export const PreviewCategories = () => {
             <Category key={title}>
               <Title>{title}</Title>
               <RecipesList items={recipes} />
-              <SeeAllButton to={`/categories/${title.toLowerCase()}`} />
+              <SeeAllButton to={`/categories/${title.toLowerCase()}`}>
+                See all
+              </SeeAllButton>
             </Category>
           ))}
         </CategoriesRecipes>
-        <OtherButton to="/categories/beef" />
+        <OtherButton to="/categories/beef">Other categories</OtherButton>
       </Container>
     </CategoriesSection>
   );

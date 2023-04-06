@@ -80,7 +80,7 @@ const Category = styled.div`
 
 const SeeAllButton = styled(NavLink)`
   display: block;
-  min-width: 94px;
+  width: 94px;
   margin-top: 24px;
   margin-left: auto;
   padding: 10px 24px;
@@ -89,9 +89,9 @@ const SeeAllButton = styled(NavLink)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 1.29;
 
-  color: ${props => props.theme.color.primaryLightText};
+  color: ${props => props.theme.colors.primaryLightText};
 
-  background-color: ${props => props.theme.color.greenAccent};
+  background-color: ${props => props.theme.colors.greenAccent};
 
   border-radius: 6px;
 
@@ -104,7 +104,8 @@ const SeeAllButton = styled(NavLink)`
 `;
 
 const OtherButton = styled(NavLink)`
-  min-width: 195px;
+  display: block;
+  width: 195px;
   margin: 0 auto;
   padding: 14px 32px;
 
@@ -119,9 +120,18 @@ const OtherButton = styled(NavLink)`
 
   cursor: pointer;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover:not(.active),
+  &:focus-visible:not(.active) {
+    color: ${props => props.theme.colors.primaryLightText};
+    background-color: ${props => props.theme.colors.greenAccent};
+  }
+
   @media screen and (min-width: 768px) {
-    min-width: 239px;
-    padding: 20px 52px;
+    width: 239px;
+    padding: 20px 50px;
 
     font-size: ${props => props.theme.fontSizes[4]}px;
   }

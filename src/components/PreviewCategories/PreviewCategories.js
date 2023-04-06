@@ -18,8 +18,16 @@ export const PreviewCategories = () => {
   const [categoryRecipes, setCategoryRecipes] = useState([]);
 
   useEffect(() => {
+    let quantity = 4;
+    if (window.innerWidth < 768) {
+      quantity = 1;
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+      quantity = 2;
+    } else {
+      quantity = 4;
+    }
     const getData = async () => {
-      const data = await getCategoryRecipes(4);
+      const data = await getCategoryRecipes(quantity);
       setCategoryRecipes(data.recipes);
     };
     getData();

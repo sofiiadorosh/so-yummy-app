@@ -49,6 +49,7 @@ const StyledLink = styled(NavLink)`
     @media screen and (min-width: 1440px) {
       font-size: ${props => props.theme.fontSizes[3]}px;
       line-height: 1.6;
+      letter-spacing: 0;
     }
   }
 

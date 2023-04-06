@@ -50,7 +50,6 @@ export const SearchTypeSelector = () => {
               backgroundColor: '#ffffff',
               borderStyle: 'none',
               borderColor: 'none',
-              boxShadow: 'none',
               border: 'none',
               outline: 'none',
               boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',

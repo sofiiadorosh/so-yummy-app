@@ -1,1 +1,0 @@
-export { MealItem } from './MealItem';

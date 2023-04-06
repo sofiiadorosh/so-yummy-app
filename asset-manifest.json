@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.97586a45.js",
+    "main.js": "/so-yummy-app/static/js/main.96c221d6.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
     "static/media/hero-tablet-1x.jpg": "/so-yummy-app/static/media/hero-tablet-1x.3a62a997a308bbf22d0a.jpg",
     "static/media/meal.png": "/so-yummy-app/static/media/meal.672d128e18901fb34ea4.png",
@@ -22,10 +22,10 @@
     "static/media/left-leaves-mobile.png": "/so-yummy-app/static/media/left-leaves-mobile.2781d5e75e2dea2fb74f.png",
     "index.html": "/so-yummy-app/index.html",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.97586a45.js.map": "/so-yummy-app/static/js/main.97586a45.js.map"
+    "main.96c221d6.js.map": "/so-yummy-app/static/js/main.96c221d6.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.97586a45.js"
+    "static/js/main.96c221d6.js"
   ]
 }

@@ -2,22 +2,22 @@ import { BsArrowRight } from 'react-icons/bs';
 
 import {
   ChooseBlock,
-  ChooseLink,
-  ChooseSpan,
-  ChooseText,
+  ChooseDescr,
+  ChooseAccent,
+  StyledLink,
 } from './ChooseYourBreakfast.styled';
 
 export const ChooseYourBreakfast = () => {
   return (
     <ChooseBlock>
-      <ChooseText>
-        <ChooseSpan>Delicious and healthy &nbsp;</ChooseSpan>
+      <ChooseDescr>
+        <ChooseAccent>Delicious and healthy </ChooseAccent>
         way to enjoy a variety of fresh ingredients in one satisfying meal
-      </ChooseText>
-      <ChooseLink to="/categories">
-        See recipes
-        <BsArrowRight size={12} />
-      </ChooseLink>
+      </ChooseDescr>
+      <StyledLink to="/categories/breakfast">
+        <span>See recipes</span>
+        <BsArrowRight size={18} />
+      </StyledLink>
     </ChooseBlock>
   );
 };

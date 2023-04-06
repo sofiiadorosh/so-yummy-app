@@ -14,9 +14,9 @@ import {
   DeletIngrid
 } from './IngredientsShoppingList.styled'
 
+// import { delIngridSchoppingListById } from 'services/soyummyAPI';
 
-
-export const IngredientsShoppingList = () => {
+export const IngredientsShoppingList = ({id}) => {
   return (
     < >
       <ListTitle>
@@ -39,7 +39,7 @@ export const IngredientsShoppingList = () => {
             <img src={plugIngr} alt="plugIngr" />
           </PicterIngrid>
           <NameIngrid>Cucumber</NameIngrid>
-          <QuantityIngrid>10</QuantityIngrid>
+          <QuantityIngrid>10000</QuantityIngrid>
           <DeletIngrid><GrClose /></DeletIngrid>
         </ul>
       </ListIngrid>

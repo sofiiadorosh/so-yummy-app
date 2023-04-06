@@ -6,7 +6,7 @@ import { Footer } from 'components/Footer';
 export const SharedLayout = () => {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Outlet />
       <Footer />
     </div>

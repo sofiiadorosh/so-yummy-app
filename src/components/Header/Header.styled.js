@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const AppBar = styled.header`
-  position: relative;
+  position: absolute;
 
+  width: 100%;
   padding-top: 18px;
 `;
 

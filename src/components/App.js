@@ -46,12 +46,12 @@ export const App = () => {
     <div>
       <GlobalStyle />
       <Routes>
-        
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/signin" element={<SigninPage />} />
-        
-         <Route path="/" element={<SharedLayout />} >
+
+        <Route path="/" element={<SharedLayout />}>
+          <Route path="main" element={<MainPage />} />
           <Route index element={<MainPage />} />
           <Route path="categories" element={<CategoriesPage />}>
             <Route path=":categoryName" element={<CategoriesRecipes />} />

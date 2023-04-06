@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import bgMobile from '../../images/bg-mobile.png';
+import bgTablet from '../../images/bg-tablet.png';
+
 const AppBar = styled.header`
   position: absolute;
 
@@ -87,7 +90,19 @@ const MobileMenu = styled.div`
 
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (max-width: 767px) {
+    background-image: url(${bgMobile});
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    background-image: url(${bgTablet});
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  @media screen and (min-width: 768px) {
     padding: 18px 32px 32px;
   }
 

@@ -14,8 +14,6 @@ const MainSection = styled.section`
   height: 784px;
   padding: 194px 0 18px;
 
-  background-image: url(${leftLeavesDesktop}), url(${rightLeavesDesktop}),
-    url(${squareDesktop});
   background-repeat: no-repeat;
 
   overflow: hidden;

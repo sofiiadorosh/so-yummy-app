@@ -8,7 +8,6 @@ import { ThemeProvider } from 'styled-components';
 
 import { App } from 'components/App';
 import { theme } from './constants';
-import { setupInterceptors } from 'services/auth/authInterceptors';
 
 import './index.css';
 
@@ -25,5 +24,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ThemeProvider>
   </React.StrictMode>
 );
-
-setupInterceptors(store);

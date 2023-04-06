@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { store } from 'redux/store';
+import { useSelector, useDispatch } from 'react-redux';
 
-// import PrivateRoute from 'routes/PrivateRoute';
-// import PublicRoute from 'routes/PublicRoute';
+import PrivateRoute from 'routes/PrivateRoute';
+import PublicRoute from 'routes/PublicRoute';
 
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
@@ -20,50 +20,54 @@ import { WelcomePage } from 'pages/WelcomePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { SigninPage } from 'pages/SigninPage';
 
-import { updateDataUser } from 'redux/auth/slice';
+import { selectIsLoggedIn, selectRefreshToken } from 'redux/auth/selectors';
+import { getCurrentUser } from 'redux/auth/operations';
 
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
-  useEffect(() => {
-    const onStorageChange = e => {
-      if (e.key === 'persist:refresh-user' && e.newValue !== e.oldValue) {
-        try {
-          const updatedLocalStorageData = JSON.parse(e.newValue);
-          store.dispatch(updateDataUser(updatedLocalStorageData));
-        } catch (error) {}
-      }
-    };
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectRefreshToken);
 
-    window.addEventListener('storage', onStorageChange);
+  const dispatch = useDispatch();
 
-    return () => {
-      window.removeEventListener('storage', onStorageChange);
-    };
-  }, []);
+    useEffect(() => {
+    if (token === null) return;
+    dispatch(getCurrentUser());
+  }, [dispatch, token]);
+
 
   return (
     <div>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<WelcomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/signin" element={<SigninPage />} />
-
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="main" element={<MainPage />} />
-          <Route index element={<MainPage />} />
-          <Route path="categories" element={<CategoriesPage />}>
-            <Route path=":categoryName" element={<CategoriesRecipes />} />
+        <Route path="/register" element={
+          <PublicRoute component={<RegisterPage />} />
+        } />
+        <Route path="/signin" element={
+          <PublicRoute component={<SigninPage />} />
+        } />
+        {isLoggedIn && (
+          <Route path="/" element={
+              <PrivateRoute component={<SharedLayout />} />
+            } >
+            <Route path="main" index element={
+              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+            } />
+            <Route path="categories" element={<CategoriesPage />}>
+              <Route path=":categoryName" element={<CategoriesRecipes />} />
+            </Route>
+            <Route path="add" element={<AddRecipePage />} />
+            <Route path="my" element={<MyRecipesPage />} />
+            <Route path="favorite" element={<FavoritePage />} />
+            <Route path="shopping-list" element={<ShoppingListPage />} />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="recipe/:recipeId" element={<RecipePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path="add" element={<AddRecipePage />} />
-          <Route path="my" element={<MyRecipesPage />} />
-          <Route path="favorite" element={<FavoritePage />} />
-          <Route path="shopping-list" element={<ShoppingListPage />} />
-          <Route path="search" element={<SearchPage />} />
-          <Route path="recipe/:recipeId" element={<RecipePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+        )}
+      
       </Routes>
     </div>
   );

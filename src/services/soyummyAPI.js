@@ -50,7 +50,7 @@ export const getSearchByTitle = async (query, page = 1, limit) => {
   }
 };
 
-export const getSearchByIngredients = async (query, page = 1, limit = 12) => {
+export const getSearchByIngredients = async (query, page = 1, limit) => {
   try {
     const response = await axios.get(
       `/search?ingredients=${query}&page=${page}&limit=${limit}`

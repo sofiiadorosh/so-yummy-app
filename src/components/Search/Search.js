@@ -22,17 +22,22 @@ import { RecipesList } from 'components/RecipesList';
 import { SearchBar } from 'components/SearchBar';
 import { Paginator } from 'components/Paginator/Paginator';
 import { NoRecipesImg, NoRecipesText, PaginationWrp } from './Search.styled';
+import { Loader } from 'components/Loader';
 
 export const Search = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+
   const searchQuery = useSelector(selectSearchQuery);
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
+
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
   const [recipeLimit, setRecipeLimit] = useState(6);
+  const [loader, setLoader] = useState(false);
+
   const lastSearchQuery = useRef('');
 
   const onPageChange = (e, page) => {
@@ -48,15 +53,13 @@ export const Search = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      console.log(width);
       if (width >= 1440) {
         setRecipeLimit(12);
       } else {
         setRecipeLimit(6);
       }
     };
-
-    const debouncedHandleResize = debounce(handleResize, 500);
+    const debouncedHandleResize = debounce(handleResize, 1000);
     debouncedHandleResize();
 
     window.addEventListener('resize', debouncedHandleResize);
@@ -78,8 +81,10 @@ export const Search = () => {
 
     if (searchType === 'title') {
       if (searchQuery) {
+        setLoader(true);
         getSearchByTitle(searchQuery, page, recipeLimit)
           .then(res => {
+            setLoader(false);
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
@@ -91,13 +96,16 @@ export const Search = () => {
             setCount(totalPages);
           })
           .catch(err => {
+            setLoader(false);
             toast.warning('Bad query');
           });
       }
     } else {
       if (searchQuery) {
+        setLoader(true);
         getSearchByIngredients(searchQuery, page, recipeLimit)
           .then(res => {
+            setLoader(false);
             if (res === null) {
               setIsSearchResult(true);
               dispatch(updateSearchResult([]));
@@ -108,7 +116,10 @@ export const Search = () => {
             const totalPages = Math.ceil(res.total / recipeLimit);
             setCount(totalPages);
           })
-          .catch(err => toast.warning('Bad query'));
+          .catch(err => {
+            setLoader(false);
+            toast.warning('Bad query');
+          });
       }
     }
   }, [
@@ -138,6 +149,7 @@ export const Search = () => {
   return (
     <>
       <SearchBar onSubmit={onFormSubmit} />
+      {loader && <Loader />}
       {searchResult.length === 0 && (
         <>
           <NoRecipesImg></NoRecipesImg>

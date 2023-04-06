@@ -11,9 +11,9 @@ const getCategoryList = async () => {
   }
 };
 
-const getCategoryRecipes = async () => {
+const getCategoryRecipes = async quantity => {
   try {
-    const response = await axios.get('recipes/main-page');
+    const response = await axios.get(`recipes/main-page?limit=${quantity}`);
     return response.data;
   } catch (error) {
     console.log(error.message);

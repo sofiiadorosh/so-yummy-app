@@ -1,81 +1,75 @@
 import styled from 'styled-components';
 
-
-const SearchBlock = styled.div`
-  width: 295px;
-  height: 52px;
-  background-color: '1px solid ${props => props.theme.colors.formBackground}';
-  border-top-left-radius: 30px;
-  border-top-right-radius: 80px;
-  border-bottom-left-radius: 80px;
-  border-bottom-right-radius: 30px;
-  margin: 0 16px 83px;
-  border: '1px solid ${props => props.theme.colors.formBackground}';
-  color: '${props => props.theme.colors.tertiaryLightText}';
-  
-  font-weight: ${props => props.theme.fontWeights.regular};
-  font-size: ${props => props.theme.fontSizes[2]}px;
-  line-height: 1.5;
+const SearchBar = styled.form`
   position: relative;
-  @media (min-width: 768px) {
-    width: 369px;
-    height: 59px;
-    font-size: ${props => props.theme.fontSizes[4]}px;
-    line-height: 1.5;
-    margin: 0 16px 195px;
-  }
-  @media (min-width: 1440px) {
-    width: 510px;
-    height: 71px;
-    font-size: ${props => props.theme.fontSizes[4]}px;
-    line-height: 1.5;
-  }
-`;
 
+  width: 295px;
 
-const SearchInForm = styled.form`
-  display: flex;
-  justify-content: flex-end;
-  border-radius: 30px, 80px;
-  height: 100%;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
   border-top-left-radius: 30px;
-  border-bottom-left-radius: 80px;
   border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
   border-bottom-right-radius: 30px;
-  border: 1px solid ${props => props.theme.colors.formBackground};
-  background-color: ${props => props.theme.colors.lightBackground};
-  font-weight: ${props => props.theme.fontWeights.regular};
-  font-size: ${props => props.theme.fontSizes[2]}px;
-  line-height: 1.5;
-  padding-left: 32px;
-  color: '${props => props.theme.colors.tertiaryLightText}';
-  @media (min-width: 768px) {
-    font-weight: ${props => props.theme.fontWeights.regular};
-    font-size: ${props => props.theme.fontSizes[4]}px;
-    line-height: 1.5;
+
+  @media screen and (min-width: 768px) {
+    width: 369px;
   }
-  &:hover {
-    border: none;
-    outline: none;
-  }
-  &:active {
-    border: none;
-    outline: none;
-  }
-  &:focus {
-    border: none;
-    outline: none;
-  }
-  &::placeholder {
-    font-weight: ${props => props.theme.fontWeights.regular};
-    font-size: ${props => props.theme.fontSizes[4]}px;
-    line-height: 1.5;
-    color: '${props => props.theme.colors.tertiaryLightText}';
+
+  @media screen and (min-width: 1440px) {
+    width: 510px;
   }
 `;
 
-export { SearchInput, SearchInForm, SearchBlock };
+const SearchField = styled.div`
+  label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
+  input {
+    width: 100%;
+    padding: 17px 113px 17px 32px;
+
+    font-family: inherit;
+
+    background-color: #fafafa;
+
+    border: 1px solid #f0f0f0;
+
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 30px;
+
+    outline: none;
+
+    @media screen and (min-width: 768px) {
+      padding: 18px 161px 18px 38px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding: 23px 161px 23px 48px;
+    }
+
+    &::placeholder {
+      font-weight: ${props => props.theme.fontWeights.regular};
+      font-size: ${props => props.theme.fontSizes[3]}px;
+      line-height: 1.5;
+
+      color: ${props => props.theme.colors.tertiaryLightText};
+
+      @media screen and (min-width: 768px) {
+        font-size: ${props => props.theme.fontSizes[4]}px;
+      }
+    }
+  }
+`;
+
+export { SearchBar, SearchField };

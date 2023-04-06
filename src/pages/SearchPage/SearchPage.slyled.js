@@ -32,9 +32,15 @@ const Container = styled.div`
 
 const Title = styled.div`
   margin-bottom: 50px;
+  margin-top: 114px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
+    margin-top: 136px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 164px;
   }
 `;
 

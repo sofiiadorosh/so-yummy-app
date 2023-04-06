@@ -5,15 +5,13 @@ import {TimeTypeSelector} from "./Selectors/TimeSelector";
 import {CategorySearchSelector} from "./Selectors/CategorySelector";
 import{MeasureTypeSelector} from "./Selectors/MeasureSelector";
 import { Counter } from './Counter/Counter';
-import {SelectOptionIngredients,
+import {
   InputUpload,
- 
   Wrap,
   Form,
   ImgUploadWrap,
   InputDescriptionWrap,
   InputDescription,
-  
   TitleIngredients,
   WrapIngredients,
   InputIngredientsWrap,
@@ -66,7 +64,7 @@ export const AddRecipeForm = () => {
                 placeholder="Enter about recipe"
               />
             </InputDescriptionWrap>
-            <InputDescriptionWrap>
+            <InputDescriptionWrap><CategorySearchSelector/>
               <InputDescription
                 type="text"
                 name=""
@@ -74,7 +72,7 @@ export const AddRecipeForm = () => {
                 placeholder="Category"
                 disabled
               />
-              <CategorySearchSelector/>
+              
             </InputDescriptionWrap>
             <InputDescriptionWrap>
               <InputDescription

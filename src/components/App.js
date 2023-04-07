@@ -1,6 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { store } from 'redux/store';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../constants';
 
 // import PrivateRoute from 'routes/PrivateRoute';
 // import PublicRoute from 'routes/PublicRoute';
@@ -42,29 +45,33 @@ export const App = () => {
     };
   }, []);
 
+  const { darkTheme } = useSelector(state => state.theme);
+
   return (
     <div>
-      <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/signin" element={<SigninPage />} />
+      <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
+        <GlobalStyle />
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/signin" element={<SigninPage />} />
 
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="main" element={<MainPage />} />
-          <Route index element={<MainPage />} />
-          <Route path="categories" element={<CategoriesPage />}>
-            <Route path=":categoryName" element={<CategoriesRecipes />} />
+          <Route path="/" element={<SharedLayout />}>
+            <Route path="main" element={<MainPage />} />
+            <Route index element={<MainPage />} />
+            <Route path="categories" element={<CategoriesPage />}>
+              <Route path=":categoryName" element={<CategoriesRecipes />} />
+            </Route>
+            <Route path="add" element={<AddRecipePage />} />
+            <Route path="my" element={<MyRecipesPage />} />
+            <Route path="favorite" element={<FavoritePage />} />
+            <Route path="shopping-list" element={<ShoppingListPage />} />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="recipe/:recipeId" element={<RecipePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path="add" element={<AddRecipePage />} />
-          <Route path="my" element={<MyRecipesPage />} />
-          <Route path="favorite" element={<FavoritePage />} />
-          <Route path="shopping-list" element={<ShoppingListPage />} />
-          <Route path="search" element={<SearchPage />} />
-          <Route path="recipe/:recipeId" element={<RecipePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </ThemeProvider>
     </div>
   );
 };

@@ -112,7 +112,7 @@ const NameField = styled.div`
       width: 18px;
       height: 18px;
 
-      stroke: #23262a;
+      stroke: ${props => props.theme.colors.primaryDarkText};
 
       @media screen and (min-width: 768px) {
         width: 24px;
@@ -131,8 +131,9 @@ const NameField = styled.div`
     letter-spacing: -0.02em;
 
     color: ${props => props.theme.colors.primaryDarkText};
+    background-color: transparent;
 
-    border: 1px solid #23262a;
+    border: 1px solid ${props => props.theme.colors.primaryDarkText};
     outline: none;
     border-radius: 6px;
 
@@ -175,7 +176,7 @@ const NameField = styled.div`
       width: 17px;
       height: 17px;
 
-      stroke: #23262a;
+      stroke: ${props => props.theme.colors.primaryDarkText};
 
       @media screen and (min-width: 768px) {
         width: 19px;

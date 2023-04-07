@@ -89,7 +89,7 @@ const CancelButton = styled.button`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 1.29;
 
-  color: ${props => props.theme.colors.primaryDarkText};
+  color: #23262a;
 
   background-color: ${props => props.theme.colors.normalGrey};
   border: 1px solid #d9d9d9;
@@ -103,7 +103,7 @@ const CancelButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: transparent;
+    background-color: #fafafa;
     border-color: ${props => props.theme.colors.primaryDarkText};
   }
 

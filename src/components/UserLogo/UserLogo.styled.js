@@ -39,6 +39,10 @@ const UserName = styled.p`
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[3]}px;
   }
+
+  @media screen and (min-width: 1440px) {
+    color: #22252a;
+  }
 `;
 
 const Modal = styled.div`

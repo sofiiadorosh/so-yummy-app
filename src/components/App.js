@@ -10,7 +10,6 @@ import PublicRoute from 'routes/PublicRoute';
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
 import { CategoriesPage } from 'pages/CategoriesPage';
-import { CategoriesRecipes } from './CategoriesRecipes';
 import { AddRecipePage } from 'pages/AddRecipePage';
 import { MyRecipesPage } from 'pages/MyRecipesPage';
 import { FavoritePage } from 'pages/FavoritePage';

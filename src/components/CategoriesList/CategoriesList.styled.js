@@ -11,9 +11,7 @@ const TabBar = styled.div`
   border-bottom: 0.29px solid;
   border-color: ${props => props.theme.colors.line};
 
-  overflow: auto;
-
-  scroll-behavior: smooth;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     display: none;

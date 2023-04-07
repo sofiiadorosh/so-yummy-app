@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getCategoryRecipes } from 'services/soyummyAPI';
 
 import { RecipesList } from 'components/RecipesList';
+import { Loader } from 'components/Loader';
 
 import {
   CategoriesSection,
@@ -16,8 +17,11 @@ import {
 
 export const PreviewCategories = () => {
   const [categoryRecipes, setCategoryRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
     let quantity = 4;
     if (window.innerWidth < 768) {
       quantity = 1;
@@ -27,8 +31,13 @@ export const PreviewCategories = () => {
       quantity = 4;
     }
     const getData = async () => {
-      const data = await getCategoryRecipes(quantity);
-      setCategoryRecipes(data.recipes);
+      try {
+        const data = await getCategoryRecipes(quantity);
+        setCategoryRecipes(data.recipes);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+      }
     };
     getData();
   }, []);
@@ -37,15 +46,24 @@ export const PreviewCategories = () => {
     <CategoriesSection>
       <Container>
         <CategoriesRecipes>
-          {categoryRecipes.map(({ title, recipes }) => (
-            <Category key={title}>
-              <Title>{title}</Title>
-              <RecipesList items={recipes} />
-              <SeeAllButton to={`/categories/${title.toLowerCase()}`}>
-                See all
-              </SeeAllButton>
-            </Category>
-          ))}
+          {isLoading && <Loader />}
+          {categoryRecipes.length > 0 &&
+            categoryRecipes.map(({ title, recipes }) => (
+              <Category key={title}>
+                <Title>{title}</Title>
+                <RecipesList items={recipes} />
+                <SeeAllButton
+                  to={
+                    title === 'Desserts'
+                      ? '/categories/dessert'
+                      : `/categories/${title.toLowerCase()}`
+                  }
+                >
+                  See all
+                </SeeAllButton>
+              </Category>
+            ))}
+          {error && <p>Whoops, something went wrong...</p>}
         </CategoriesRecipes>
         <OtherButton to="/categories/beef">Other categories</OtherButton>
       </Container>

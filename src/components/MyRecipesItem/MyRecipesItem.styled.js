@@ -71,6 +71,10 @@ const ItemBoxTime = styled.span`
   }
 `
 const LogoTrash = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,7 +91,7 @@ const LogoTrash = styled.button`
     width: 38px;
     height: 38px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     width: 44px;
     height: 44px;
   }
@@ -95,9 +99,52 @@ const LogoTrash = styled.button`
   &>img{
     width: 14px;
     height: 14px;
-
     stroke: #fafafa;
+
+    @media screen and (min-width: 768px) {
+      width: 22px;
+      height: 22px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 24px;
+      height: 24px;
+    }
   }
+`
+const ItemBoxButton = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 87px;
+  height: 27px;
+
+  background-color: ${props => props.theme.colors.greenAccent};
+  color: ${props => props.theme.colors.primaryLightText};
+
+  font-weight: ${props => props.theme.fontWeights.regular};
+  font-size: 10px;
+
+  border-radius: 24px 44px;
+  border: none;
+  cursor: pointer;  
+
+  @media screen and (min-width: 768px) {
+    width: 135px;
+    height: 45px;
+    font-size: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 172px;
+    height: 59px;
+    font-size: 16px;
+  }
+
+
 `
 
 
@@ -107,5 +154,6 @@ export {
   ItemBoxTitle,
   ItemBoxText,
   ItemBoxTime,
-  LogoTrash
+  LogoTrash,
+  ItemBoxButton
 }

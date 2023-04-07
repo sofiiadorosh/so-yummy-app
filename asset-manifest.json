@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.80afeca2.js",
+    "main.js": "/so-yummy-app/static/js/main.6529ca83.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
     "static/media/hero-tablet-1x.jpg": "/so-yummy-app/static/media/hero-tablet-1x.3a62a997a308bbf22d0a.jpg",
     "static/media/meal.png": "/so-yummy-app/static/media/meal.672d128e18901fb34ea4.png",
@@ -21,16 +21,17 @@
     "static/media/registration-tablet-1x.png": "/so-yummy-app/static/media/registration-tablet-1x.68dd66ae84b8d5e6687e.png",
     "static/media/error.png": "/so-yummy-app/static/media/error.cbf9823f2352379ffaa9.png",
     "static/media/registration-desktop-1x.png": "/so-yummy-app/static/media/registration-desktop-1x.137e80b877ba3f211a52.png",
+    "static/media/recExmpl.png": "/so-yummy-app/static/media/recExmpl.b2f97ca03d0c0579d22c.png",
     "static/media/hero-mobile-1x.jpg": "/so-yummy-app/static/media/hero-mobile-1x.9eae23ec0b0a5f98b09a.jpg",
     "static/media/registration-mobile-1x.png": "/so-yummy-app/static/media/registration-mobile-1x.b6fdf8797941ddb3d51c.png",
     "static/media/left-leaves-tablet.png": "/so-yummy-app/static/media/left-leaves-tablet.3d7becbc63ee72fc657f.png",
     "static/media/left-leaves-mobile.png": "/so-yummy-app/static/media/left-leaves-mobile.2781d5e75e2dea2fb74f.png",
     "index.html": "/so-yummy-app/index.html",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.80afeca2.js.map": "/so-yummy-app/static/js/main.80afeca2.js.map"
+    "main.6529ca83.js.map": "/so-yummy-app/static/js/main.6529ca83.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.80afeca2.js"
+    "static/js/main.6529ca83.js"
   ]
 }

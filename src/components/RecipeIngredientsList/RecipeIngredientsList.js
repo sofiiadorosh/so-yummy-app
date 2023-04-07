@@ -24,7 +24,7 @@ export const RecipeIngredientsList = ({ ingredients }) => {
     <SectionIngredients>
       <Container>
         <TitleWrap>
-          <Title children="Ingedients" />
+          <Title children="Ingredients" />
           <TitleTextWrap>
             <TitleText>Number</TitleText>
             <TitleText>Add to list</TitleText>

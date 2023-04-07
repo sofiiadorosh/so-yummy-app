@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { store } from 'redux/store';
+import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../constants';
 
@@ -29,17 +28,17 @@ import { getCurrentUser } from 'redux/auth/operations';
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const token = useSelector(selectAccessToken);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectAccessToken);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //   if (token === null) return;
-  //   dispatch(getCurrentUser());
-  // }, [dispatch, token]);
+    useEffect(() => {
+    if (token === null) return;
+    dispatch(getCurrentUser());
+  }, [dispatch, token]);
 
-  const { darkTheme } = useSelector(state => state.theme);
+
 
   const { darkTheme } = useSelector(state => state.theme);
 
@@ -48,13 +47,31 @@ export const App = () => {
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/signin" element={<SigninPage />} />
+                    <Route path="/" element={
+          <PublicRoute component={<WelcomePage  />} />
+        } />
+        {/* <Route path="/" element={<WelcomePage />} /> */}
+        <Route path="/register" element={
+          <PublicRoute component={<RegisterPage />} />
+        } />
+        <Route path="/signin" element={
+          <PublicRoute redirectTo="/main" component={<SigninPage />} />
+        } />
+            {/* <Route path="/" element={<SharedLayout />}>
+          <Route path="main" element={<MainPage />} />
+          <Route index element={<MainPage />} /> */}
+          
+          <Route path="/" element={
+              <PrivateRoute component={<SharedLayout />} />
+            } >
+            <Route path="main" index element={
+              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+            } />
+           {/* <Route index element={
+              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+            } /> */}
+          {/* <Route index element={<MainPage />} /> */}
 
-          <Route path="/" element={<SharedLayout />}>
-            <Route path="main" element={<MainPage />} />
-            <Route index element={<MainPage />} />
             <Route path="categories" element={<CategoriesPage />}>
               <Route path=":categoryName" element={<CategoriesRecipes />} />
             </Route>

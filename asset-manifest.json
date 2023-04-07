@@ -1,18 +1,21 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.8011ec3d.js",
+    "main.js": "/so-yummy-app/static/js/main.aad3b2a0.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
     "static/media/hero-tablet-1x.jpg": "/so-yummy-app/static/media/hero-tablet-1x.3a62a997a308bbf22d0a.jpg",
     "static/media/meal.png": "/so-yummy-app/static/media/meal.672d128e18901fb34ea4.png",
     "static/media/searchPageImg.png": "/so-yummy-app/static/media/searchPageImg.195c8cc165ac8d4aba1f.png",
     "static/media/hero-desktop-2x.jpg": "/so-yummy-app/static/media/hero-desktop-2x.7db9d38244e816d2af2e.jpg",
     "static/media/right-leaves-desktop.png": "/so-yummy-app/static/media/right-leaves-desktop.d776ad3a295a7fd52bef.png",
+    "static/media/section-leaves-desktop.png": "/so-yummy-app/static/media/section-leaves-desktop.71aa4efbe2723a9ce5f1.png",
     "static/media/right-leaves-tablet.png": "/so-yummy-app/static/media/right-leaves-tablet.22b89b791a78ca8811e2.png",
     "static/media/right-leaves-mobile.png": "/so-yummy-app/static/media/right-leaves-mobile.231c0404ca2a7f412cfb.png",
+    "static/media/section-leaves-tablet.png": "/so-yummy-app/static/media/section-leaves-tablet.3a8644064bee224ee73e.png",
     "static/media/bg-tablet.png": "/so-yummy-app/static/media/bg-tablet.8db77a7e945257a43777.png",
     "static/media/hero-mobile-2x.jpg": "/so-yummy-app/static/media/hero-mobile-2x.31c2199833ee6eea814b.jpg",
     "static/media/hero-desktop-1x.jpg": "/so-yummy-app/static/media/hero-desktop-1x.ffca1648725d3185906e.jpg",
+    "static/media/section-leaves-mobile.png": "/so-yummy-app/static/media/section-leaves-mobile.90a4034609ce8992e517.png",
     "static/media/bg-mobile.png": "/so-yummy-app/static/media/bg-mobile.c5e91fec6b4a5e7ac55c.png",
     "static/media/left-leaves-desktop.png": "/so-yummy-app/static/media/left-leaves-desktop.f1b4dd76088f409e52a0.png",
     "static/media/registration-tablet-1x.png": "/so-yummy-app/static/media/registration-tablet-1x.68dd66ae84b8d5e6687e.png",
@@ -24,10 +27,10 @@
     "static/media/left-leaves-mobile.png": "/so-yummy-app/static/media/left-leaves-mobile.2781d5e75e2dea2fb74f.png",
     "index.html": "/so-yummy-app/index.html",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.8011ec3d.js.map": "/so-yummy-app/static/js/main.8011ec3d.js.map"
+    "main.aad3b2a0.js.map": "/so-yummy-app/static/js/main.aad3b2a0.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.8011ec3d.js"
+    "static/js/main.aad3b2a0.js"
   ]
 }

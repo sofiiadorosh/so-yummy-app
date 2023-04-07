@@ -4,13 +4,13 @@ import {
   Title,
   TitleTextWrap,
   TitleText,
-  IngedientsList,
-  IngedientsItem,
+  IngredientsList,
+  IngredientsItem,
   Wrap,
-  IngedientsImg,
-  IngedientsTitle,
-  IngedientsMeasure,
-  IngedientsCheck,
+  IngredientImg,
+  IngredientsTitle,
+  IngredientsMeasure,
+  IngredientsCheck,
   Span,
   Label,
   Icon,
@@ -19,7 +19,7 @@ import {
 
 import DefaultIngredientsImg from "../../images/noPhoto.svg";
 
-const RecipeIngredientsList = ({ ingredients }) => {
+export const RecipeIngredientsList = ({ ingredients }) => {
   return (
     <SectionIngredients>
       <Container>
@@ -30,36 +30,34 @@ const RecipeIngredientsList = ({ ingredients }) => {
             <TitleText>Add to list</TitleText>
           </TitleTextWrap>
         </TitleWrap>
-        <IngedientsList>
+        <IngredientsList>
           {ingredients &&
             ingredients.map(({ image, _id, measure, name }) => {
               return (
-                <IngedientsItem key={_id}>
+                <IngredientsItem key={_id}>
                   <Wrap>
                     {
-                      <IngedientsImg
+                      <IngredientImg
                         src={image ? image : DefaultIngredientsImg}
                         alt="Ingredient"
                       />
                     }
-                    <IngedientsTitle>{name}</IngedientsTitle>
+                    <IngredientsTitle>{name}</IngredientsTitle>
                   </Wrap>
                   <Wrap>
-                    <IngedientsMeasure>{measure}</IngedientsMeasure>
+                    <IngredientsMeasure>{measure}</IngredientsMeasure>
                     <Label htmlFor={name}>
-                      <IngedientsCheck type="checkbox" id={name} />
+                      <IngredientsCheck type="checkbox" id={name} />
                       <Span>
                         <Icon />
                       </Span>
                     </Label>
                   </Wrap>
-                </IngedientsItem>
+                </IngredientsItem>
               );
             })}
-        </IngedientsList>
+        </IngredientsList>
       </Container>
     </SectionIngredients>
   );
 };
-
-export default RecipeIngredientsList;

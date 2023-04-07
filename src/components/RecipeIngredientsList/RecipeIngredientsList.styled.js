@@ -75,7 +75,7 @@ const TitleTextWrap = styled.div`
     gap: 109px;
   }
 `;
-const IngedientsList = styled.ul`
+const IngredientsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -84,7 +84,7 @@ const IngedientsList = styled.ul`
   }
 `;
 
-const IngedientsItem = styled.li`
+const IngredientsItem = styled.li`
   display: flex;
   width: 100%;
   background-color: ${props => props.theme.colors.backgroundAccent};
@@ -103,7 +103,7 @@ const Wrap = styled.div`
   align-items: center;
 `;
 
-const IngedientImg = styled.img`
+const IngredientImg = styled.img`
   width: 57px;
   height: 57px;
   margin-right: 12px;
@@ -119,7 +119,7 @@ const IngedientImg = styled.img`
   }
 `;
 
-const IngedientsTitle = styled.p`
+const IngredientsTitle = styled.p`
   font-family: "Poppins";
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes[2]}px;
@@ -136,7 +136,7 @@ const IngedientsTitle = styled.p`
   }
 `;
 
-const IngedientsMeasure = styled.span`
+const IngredientsMeasure = styled.span`
   margin-right: 28px;
   border-radius: 4px;
   padding: 4px;
@@ -172,7 +172,7 @@ const Span= styled.span`
   }
 `;
 
-const IngedientsCheck = styled.input`
+const IngredientsCheck = styled.input`
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -187,7 +187,7 @@ const IngedientsCheck = styled.input`
 
 const Label = styled.label`
   display: flex;
-  ${IngedientsCheck}:checked + ${Span} {
+  ${IngredientsCheck}:checked + ${Span} {
     color: ${props => props.theme.colors.greenAccent};
   }
 `;
@@ -201,4 +201,4 @@ const Icon = styled(BsCheck)`
   }
 `;
 
-export { Container, SectionIngredients, TitleWrap, Title, TitleText, TitleTextWrap, IngedientsTitle, IngedientsMeasure, Wrap, IngedientImg, IngedientsList, IngedientsItem, Span, IngedientsCheck, Label, Icon };
+export { Container, SectionIngredients, TitleWrap, Title, TitleText, TitleTextWrap, IngredientsTitle, IngredientsMeasure, Wrap, IngredientImg, IngredientsList, IngredientsItem, Span, IngredientsCheck, Label, Icon };

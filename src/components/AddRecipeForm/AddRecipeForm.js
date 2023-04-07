@@ -29,7 +29,7 @@ import {
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
 export const AddRecipeForm = () => { 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const handleIncrement = () => {
     setCount(state => state + 1);

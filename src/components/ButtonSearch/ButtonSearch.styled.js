@@ -18,7 +18,7 @@ const ButtonSearchStyle = styled.button`
   line-height: 1.5;
 
   color: ${props => props.theme.colors.primaryLightText};
-  background-color: ${props => props.theme.colors.quaternaryDarkText};
+  background-color: ${props => props.theme.colors.darkAccent};
 
   border-radius: 24px 44px;
   border: none;
@@ -34,8 +34,6 @@ const ButtonSearchStyle = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    left: 202px;
-
     width: 161px;
     height: 59px;
 
@@ -43,8 +41,6 @@ const ButtonSearchStyle = styled.button`
   }
 
   @media screen and (min-width: 1440px) {
-    left: 350px;
-
     height: 70px;
   }
 `;

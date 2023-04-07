@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { RxCross2 } from 'react-icons/rx';
+import { IoClose } from 'react-icons/io5';
 
 import { Overlay, ModalWindow, CloseButton } from './Modal.styled';
 
@@ -28,7 +28,7 @@ export function UserModal({ children, state, stateFn }) {
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
         <CloseButton type="button" onClick={() => stateFn('closed')}>
-          <RxCross2 size={20} />
+          <IoClose size={20} />
         </CloseButton>
         {children}
       </ModalWindow>

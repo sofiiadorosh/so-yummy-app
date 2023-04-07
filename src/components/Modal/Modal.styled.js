@@ -31,7 +31,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 
   svg {
-    stroke: #333333;
+    fill: ${props => props.theme.colors.primaryDarkText};
   }
 `;
 
@@ -40,7 +40,7 @@ const ModalWindow = styled.div`
   top: 50%;
   left: 50%;
 
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.lightBackground};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
 

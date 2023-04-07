@@ -22,7 +22,7 @@ const MainSection = styled.section`
     background-image: url(${leftLeavesMobile}), url(${rightLeavesMobile}),
       url(${squareMobile});
     background-repeat: no-repeat;
-    background-position: top left, bottom right, bottom right;
+    background-position: top left, bottom -128px right, bottom -80px right -20px;
   }
 
   @media screen and (min-width: 768px) {

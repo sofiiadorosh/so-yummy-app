@@ -9,7 +9,7 @@ const Modal = styled.div`
 
   padding: 18px;
 
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.lightBackground};
 
   border: 1px solid #8baa36;
   border-radius: 8px;

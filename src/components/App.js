@@ -20,14 +20,14 @@ import { WelcomePage } from 'pages/WelcomePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { SigninPage } from 'pages/SigninPage';
 
-import { selectIsLoggedIn, selectRefreshToken } from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
 import { getCurrentUser } from 'redux/auth/operations';
 
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectRefreshToken);
+  const token = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
 
@@ -41,20 +41,30 @@ export const App = () => {
     <div>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
+          <Route path="/" element={
+          <PublicRoute component={<WelcomePage  />} />
+        } />
+        {/* <Route path="/" element={<WelcomePage />} /> */}
         <Route path="/register" element={
           <PublicRoute component={<RegisterPage />} />
         } />
         <Route path="/signin" element={
-          <PublicRoute component={<SigninPage />} />
+          <PublicRoute redirectTo="/main" component={<SigninPage />} />
         } />
-        {isLoggedIn && (
+            {/* <Route path="/" element={<SharedLayout />}>
+          <Route path="main" element={<MainPage />} />
+          <Route index element={<MainPage />} /> */}
+          
           <Route path="/" element={
               <PrivateRoute component={<SharedLayout />} />
             } >
             <Route path="main" index element={
               <PrivateRoute redirectTo="/signin" component={<MainPage />} />
             } />
+           {/* <Route index element={
+              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+            } /> */}
+          {/* <Route index element={<MainPage />} /> */}
             <Route path="categories" element={<CategoriesPage />}>
               <Route path=":categoryName" element={<CategoriesRecipes />} />
             </Route>
@@ -66,7 +76,6 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-        )}
       
       </Routes>
     </div>

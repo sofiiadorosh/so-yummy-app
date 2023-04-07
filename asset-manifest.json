@@ -1,15 +1,21 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.9ccd9261.js",
+    "main.js": "/so-yummy-app/static/js/main.96e023de.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
+    "static/media/recipePage-desktop-2x.png": "/so-yummy-app/static/media/recipePage-desktop-2x.6904cb243428a2ffb577.png",
+    "static/media/recipePage-laptop-2x.png": "/so-yummy-app/static/media/recipePage-laptop-2x.399681fcf2a7135ce0e3.png",
     "static/media/hero-tablet-1x.jpg": "/so-yummy-app/static/media/hero-tablet-1x.3a62a997a308bbf22d0a.jpg",
+    "static/media/recipePage-desktop-1x.png": "/so-yummy-app/static/media/recipePage-desktop-1x.eea66f7b9ed4c3b762c2.png",
+    "static/media/recipePage-mobile-2x.png": "/so-yummy-app/static/media/recipePage-mobile-2x.7b1d75dc9c459bdc64bc.png",
     "static/media/meal.png": "/so-yummy-app/static/media/meal.672d128e18901fb34ea4.png",
     "static/media/searchPageImg.png": "/so-yummy-app/static/media/searchPageImg.195c8cc165ac8d4aba1f.png",
     "static/media/hero-desktop-2x.jpg": "/so-yummy-app/static/media/hero-desktop-2x.7db9d38244e816d2af2e.jpg",
     "static/media/right-leaves-desktop.png": "/so-yummy-app/static/media/right-leaves-desktop.d776ad3a295a7fd52bef.png",
+    "static/media/recipePage-laptop-1x.png": "/so-yummy-app/static/media/recipePage-laptop-1x.c209ffcbc7bc79dc5f06.png",
     "static/media/section-leaves-desktop.png": "/so-yummy-app/static/media/section-leaves-desktop.71aa4efbe2723a9ce5f1.png",
     "static/media/right-leaves-tablet.png": "/so-yummy-app/static/media/right-leaves-tablet.22b89b791a78ca8811e2.png",
+    "static/media/recipePage-mobile-1x.png": "/so-yummy-app/static/media/recipePage-mobile-1x.308ade3a3a6d55d4a7e2.png",
     "static/media/right-leaves-mobile.png": "/so-yummy-app/static/media/right-leaves-mobile.231c0404ca2a7f412cfb.png",
     "static/media/section-leaves-tablet.png": "/so-yummy-app/static/media/section-leaves-tablet.3a8644064bee224ee73e.png",
     "static/media/bg-tablet.png": "/so-yummy-app/static/media/bg-tablet.8db77a7e945257a43777.png",
@@ -26,12 +32,13 @@
     "static/media/registration-mobile-1x.png": "/so-yummy-app/static/media/registration-mobile-1x.b6fdf8797941ddb3d51c.png",
     "static/media/left-leaves-tablet.png": "/so-yummy-app/static/media/left-leaves-tablet.3d7becbc63ee72fc657f.png",
     "static/media/left-leaves-mobile.png": "/so-yummy-app/static/media/left-leaves-mobile.2781d5e75e2dea2fb74f.png",
+    "static/media/noPhoto.svg": "/so-yummy-app/static/media/noPhoto.d5abba0d2a5cd1f9bb1aa90c017384f8.svg",
     "index.html": "/so-yummy-app/index.html",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.9ccd9261.js.map": "/so-yummy-app/static/js/main.9ccd9261.js.map"
+    "main.96e023de.js.map": "/so-yummy-app/static/js/main.96e023de.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.9ccd9261.js"
+    "static/js/main.96e023de.js"
   ]
 }

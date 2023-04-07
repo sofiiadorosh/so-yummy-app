@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-const ShoppingListSection = styled.section`
-  padding: 114px 0 100px;
+const MyRecipesPageSection = styled.section`
+  padding: 114px 0 191px;
 
   @media screen and (min-width: 768px) {
-    padding: 136px 0 200px;
+    padding: 136px 0 305px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 164px;
+    padding: 164px 0 205px;;
   }
 `
 
@@ -38,6 +38,4 @@ const Title = styled.div`
   }
 `;
 
-
-
-export { ShoppingListSection, Container, Title };
+export { MyRecipesPageSection,Container,Title };

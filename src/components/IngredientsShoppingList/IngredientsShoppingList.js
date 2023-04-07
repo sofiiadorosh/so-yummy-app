@@ -30,22 +30,22 @@ export const IngredientsShoppingList = ({ id }) => {
       </ListTitle>
 
       <ListIngrid>
-        <ul style={{ display: 'flex' }}>
+        <li style={{ display: 'flex' }} >
           <PicterIngrid>
             <img src={plugIngr} alt="plugIngr" />
           </PicterIngrid>
           <NameIngrid>Salmon</NameIngrid>
           <QuantityIngrid>5</QuantityIngrid>
           <DeletIngrid><GrClose /></DeletIngrid>
-        </ul>
-        <ul  style={{ display: 'flex' }}>
+        </li>
+        <li  style={{ display: 'flex' }}>
           <PicterIngrid>
             <img src={plugIngr} alt="plugIngr" />
           </PicterIngrid>
           <NameIngrid>Cucumber</NameIngrid>
-          <QuantityIngrid>10000</QuantityIngrid>
+          <QuantityIngrid>1000000</QuantityIngrid>
           <DeletIngrid onClick={() => deleteIngridients(id)} ><GrClose /></DeletIngrid>
-        </ul>
+        </li>
       </ListIngrid>
 
 

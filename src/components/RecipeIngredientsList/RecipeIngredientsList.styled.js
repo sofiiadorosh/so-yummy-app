@@ -1,204 +1,252 @@
-import styled from "styled-components";
-import { BsCheck } from "react-icons/bs";
-
-
-const Container = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
- 
-  @media (min-width: 768px) {
-    padding: 0 32px;
-    width: 768px;
-  }
-  @media (min-width: 1440px) {
-    padding: 0 100px;
-    width: 1440px;
-  }
-`;
+import styled from 'styled-components';
 
 const SectionIngredients = styled.section`
   padding-top: 32px;
-  @media (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
     padding-top: 50px;
   }
 `;
 
-const TitleWrap = styled.div`
-  width: 100%;
-  background-color: ${props => props.theme.colors.greenAccent};
-  border-radius: 8px;
+const Container = styled.div`
+  width: 375px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding: 0 100px;
+  }
+`;
+
+const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+
   margin-bottom: 24px;
   padding: 12px 14px;
-  @media (min-width: 768px) {
+
+  background-color: ${props => props.theme.colors.greenAccent};
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
     margin-bottom: 32px;
     padding: 21px 32px;
   }
-  @media (min-width: 1440px) {
-    padding: 21px 40px;
+
+  @media screen and (min-width: 1440px) {
     margin-bottom: 50px;
+    padding: 21px 40px;
   }
 `;
 
 const Title = styled.h2`
-  font-family: "Poppins";
-  color: ${props => props.theme.colors.lightBackground};
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes[1]}px;
   line-height: 1.5;
-  @media (min-width: 768px) {
+  letter-spacing: 0.03em;
+
+  color: ${props => props.theme.colors.primaryLightText};
+
+  @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[5]}px;
   }
 `;
 
-const TitleText = styled.p`
-  font-family: "Poppins";
-  color: ${props => props.theme.colors.lightBackground};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  line-height: 1.5;
-  @media (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes[5]}px;
-  }
-`;
-
-const TitleTextWrap = styled.div`
+const TitleAddWrap = styled.div`
   display: flex;
   gap: 18px;
-  @media (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
     gap: 38px;
   }
-  @media (min-width: 1440px) {
+
+  @media screen and (min-width: 1440px) {
     gap: 109px;
   }
 `;
+
 const IngredientsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @media (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
     gap: 24px;
   }
 `;
 
 const IngredientsItem = styled.li`
   display: flex;
-  width: 100%;
-  background-color: ${props => props.theme.colors.backgroundAccent};
-  padding: 14px 29px 14px 14px;
   justify-content: space-between;
-  @media (min-width: 768px) {
-    padding: 33px 58px 33px 40px;
+  align-items: center;
+
+  width: 100%;
+  padding: 10.5px 29px 10.5px 10px;
+
+  background-color: ${props => props.theme.colors.primaryGreenBackground};
+
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    padding: 16px 58px 16px 24px;
   }
-  @media (min-width: 768px) {
-    padding: 27px 70px 27px 58px;
+
+  @media screen and (min-width: 1440px) {
+    padding: 1px 70px 1px 32px;
   }
 `;
 
-const Wrap = styled.div`
+const ItemTitleWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
+  gap: 8px;
 
-const IngredientImg = styled.img`
-  width: 57px;
-  height: 57px;
-  margin-right: 12px;
-  @media (min-width: 768px) {
-    width: 112px;
-    height: 112px;
-    margin-right: 40px;
+  @media screen and (min-width: 768px) {
+    gap: 24px;
   }
-  @media (min-width: 1440px) {
-    width: 128px;
-    height: 128px;
-    margin-right: 66px;
+
+  @media screen and (min-width: 1440px) {
+    gap: 40px;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+
+    @media screen and (min-width: 768px) {
+      width: 144px;
+      height: 146px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 180px;
+      height: 180px;
+    }
   }
 `;
 
 const IngredientsTitle = styled.p`
-  font-family: "Poppins";
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes[2]}px;
-  line-height: 1.16;
-  max-width: 200px;
-  color: ${props => props.theme.colors.textSubTitle};
-  @media (min-width: 768px) {
-    max-width: 220px;
+  line-height: 1.17;
+  letter-spacing: -0.24px;
+
+  color: ${props => props.theme.colors.secondaryDarkText};
+
+  @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[7]}px;
     line-height: 1;
   }
-  @media (min-width: 1440px) {
-    max-width: 420px;
-  }
 `;
 
-const IngredientsMeasure = styled.span`
-  margin-right: 28px;
-  border-radius: 4px;
-  padding: 4px;
-  background-color: ${props => props.theme.colors.greenAccent};
-  font-family: "Poppins";
-  font-weight: ${props => props.theme.fontWeights.semibold};
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  line-height: 1.5;
-  color: ${props => props.theme.colors.textSubTitle};
-  @media (min-width: 768px) {
-    font-size: ${props => props.theme.fontSizes[5]}px;
-    line-height: 1.5;
-    padding: 4px 8px;
-    margin-right: 78px;
-  }
-  @media (min-width: 1440px) {
-    margin-right: 151px;
-  }
-`;
-
-const Span= styled.span`
-  border: 1px solid rgba(126, 126, 126, 0.5);
-  border-radius: 4px;
+const MeasureWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  color: transparent;
-  @media (min-width: 768px) {
-    width: 35px;
-    height: 35px;
+  gap: 28px;
+
+  @media screen and (min-width: 768px) {
+    gap: 78px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 151px;
+  }
+
+  p {
+    padding: 4px;
+
+    font-weight: ${props => props.theme.fontWeights.semibold};
+    font-size: ${props => props.theme.fontSizes[1]}px;
+    line-height: 1.5;
+
+    color: ${props => props.theme.colors.primaryLightText};
+    background-color: ${props => props.theme.colors.greenAccent};
+
+    border-radius: 4px;
+
+    @media screen and (min-width: 768px) {
+      padding: 3.5px 12px;
+
+      font-size: ${props => props.theme.fontSizes[5]}px;
+    }
+  }
+
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+
+    &:checked + span > svg {
+      opacity: 1;
+    }
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 18px;
+    height: 18px;
+
+    border: 1px solid rgba(126, 126, 126, 0.5);
+    border-radius: 4px;
+
+    @media screen and (min-width: 768px) {
+      width: 35px;
+      height: 35px;
+
+      border-width: 2px;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+
+      fill: ${props => props.theme.colors.greenAccent};
+
+      opacity: 0;
+
+      transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      @media screen and (min-width: 768px) {
+        width: 31px;
+        height: 31px;
+      }
+    }
   }
 `;
 
-const IngredientsCheck = styled.input`
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
-`;
-
-const Label = styled.label`
-  display: flex;
-  ${IngredientsCheck}:checked + ${Span} {
-    color: ${props => props.theme.colors.greenAccent};
-  }
-`;
-
-const Icon = styled(BsCheck)`
-  width: 18px;
-  height: 18px;
-  @media (min-width: 768px) {
-    width: 35px;
-    height: 35px;
-  }
-`;
-
-export { Container, SectionIngredients, TitleWrap, Title, TitleText, TitleTextWrap, IngredientsTitle, IngredientsMeasure, Wrap, IngredientImg, IngredientsList, IngredientsItem, Span, IngredientsCheck, Label, Icon };
+export {
+  SectionIngredients,
+  Container,
+  TitleWrapper,
+  Title,
+  TitleAddWrap,
+  IngredientsTitle,
+  ItemTitleWrapper,
+  MeasureWrapper,
+  IngredientsList,
+  IngredientsItem,
+};

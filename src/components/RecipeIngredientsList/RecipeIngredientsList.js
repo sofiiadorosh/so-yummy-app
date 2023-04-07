@@ -1,58 +1,54 @@
+import { GrFormCheckmark } from 'react-icons/gr';
+
 import {
   SectionIngredients,
-  TitleWrap,
+  Container,
+  TitleWrapper,
   Title,
-  TitleTextWrap,
-  TitleText,
+  TitleAddWrap,
   IngredientsList,
   IngredientsItem,
-  Wrap,
-  IngredientImg,
+  ItemTitleWrapper,
   IngredientsTitle,
-  IngredientsMeasure,
-  IngredientsCheck,
-  Span,
-  Label,
-  Icon,
-  Container,
-} from "./RecipeIngredientsList.styled";
+  MeasureWrapper,
+} from './RecipeIngredientsList.styled';
 
-import DefaultIngredientsImg from "../../images/noPhoto.svg";
+import defaultIngredientsImg from '../../images/noPhoto.svg';
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   return (
     <SectionIngredients>
       <Container>
-        <TitleWrap>
+        <TitleWrapper>
           <Title children="Ingredients" />
-          <TitleTextWrap>
-            <TitleText>Number</TitleText>
-            <TitleText>Add to list</TitleText>
-          </TitleTextWrap>
-        </TitleWrap>
+          <TitleAddWrap>
+            <Title children="Number" />
+            <Title children="Add to list" />
+          </TitleAddWrap>
+        </TitleWrapper>
         <IngredientsList>
           {ingredients &&
-            ingredients.map(({ image, _id, measure, name }) => {
+            ingredients.map(({ id: { _id, ttl, thb }, measure }) => {
               return (
                 <IngredientsItem key={_id}>
-                  <Wrap>
-                    {
-                      <IngredientImg
-                        src={image ? image : DefaultIngredientsImg}
+                  <ItemTitleWrapper>
+                    <div>
+                      <img
+                        src={thb ? thb : defaultIngredientsImg}
                         alt="Ingredient"
                       />
-                    }
-                    <IngredientsTitle>{name}</IngredientsTitle>
-                  </Wrap>
-                  <Wrap>
-                    <IngredientsMeasure>{measure}</IngredientsMeasure>
-                    <Label htmlFor={name}>
-                      <IngredientsCheck type="checkbox" id={name} />
-                      <Span>
-                        <Icon />
-                      </Span>
-                    </Label>
-                  </Wrap>
+                    </div>
+                    <IngredientsTitle children={ttl} />
+                  </ItemTitleWrapper>
+                  <MeasureWrapper>
+                    <p children={measure} />
+                    <label htmlFor={_id}>
+                      <input type="checkbox" id={_id} />
+                      <span>
+                        <GrFormCheckmark />
+                      </span>
+                    </label>
+                  </MeasureWrapper>
                 </IngredientsItem>
               );
             })}

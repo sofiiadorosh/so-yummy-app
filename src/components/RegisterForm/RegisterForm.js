@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Formik } from "formik";
 import * as yup from 'yup';
+import { useNavigate } from "react-router-dom";
 
 import { register } from 'redux/auth/operations';
 // import { selectError, selectLoading } from 'redux/auth/selectors';
 
 import { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, NameIcon, EmailIcon, PasswordIcon, FormInput, FormButton , AuthLink} from './RegisterForm.styled';
+
 
 
 let initialValues = {
@@ -22,6 +24,7 @@ export const RegisterForm = () => {
   // const erorMessage = useSelector(selectError);
 
   const dispatch = useDispatch();
+    const navigate = useNavigate();
 
   const nameRegExp = /^(?:[\p{L}\p{M}]+(?:[ '-][\p{L}\p{M}]+)*|\d+)$/u;
   const emailRegExp = /^\w+([.-]?\w+){2}@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -73,6 +76,7 @@ export const RegisterForm = () => {
           setSubmitting(false);
         } else {
           resetForm();
+          navigate('/signin');
         }
       });
   };

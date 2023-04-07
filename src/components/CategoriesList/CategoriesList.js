@@ -1,25 +1,34 @@
-import { useState, useEffect } from 'react';
-
-import { getCategoryList } from 'services/soyummyAPI';
+import { useRef } from 'react';
+import { useDraggable } from 'react-use-draggable-scroll';
 
 import { TabBar, TabItem } from './CategoriesList.styled';
 
 export const CategoriesList = () => {
-  const [categories, setCategories] = useState([]);
+  const categories = [
+    'Beef',
+    'Breakfast',
+    'Chicken',
+    'Dessert',
+    'Goat',
+    'Lamb',
+    'Miscellaneous',
+    'Pasta',
+    'Pork',
+    'Seafood',
+    'Side',
+    'Starter',
+    'Vegan',
+    'Vegetarian',
+  ];
 
-  useEffect(() => {
-    const getTabsLabels = async () => {
-      const tabsLabels = await getCategoryList();
-      setCategories(tabsLabels.categories);
-    };
-    getTabsLabels();
-  }, []);
+  const tabRef = useRef();
+  const { events } = useDraggable(tabRef);
 
   return (
     <div style={{ overflow: 'hidden' }}>
-      <TabBar>
+      <TabBar {...events} ref={tabRef}>
         {categories.map(category => (
-          <TabItem to={`${category.toLowerCase()}`} key={category}>
+          <TabItem to={`/categories/${category.toLowerCase()}`} key={category}>
             {category}
           </TabItem>
         ))}

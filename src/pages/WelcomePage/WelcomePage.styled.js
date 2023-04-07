@@ -1,7 +1,6 @@
 import styled from 'styled-components'; 
 import { Link } from 'react-router-dom'; 
 
-import { Logo } from 'components/Logo';
 import bgrImageMobile1x from '../../images/hero-mobile-1x.jpg';
 import bgrImageTablet1x from '../../images/hero-mobile-2x.jpg';
 import bgrImageDesktop1x from '../../images/hero-desktop-1x.jpg';
@@ -92,9 +91,14 @@ const WelcomePageContainer = styled.div`
   }   
 `; 
 
-const StyledLogo = styled(Logo)`
+const StyledLogo = styled.img`
+  width: 54px;
+  height: 54px;
+
+  @media (min-width: 768px) {
   width: 68px;
   height: 68px;
+  }
 `;
 
 const WelcomePageTitle = styled.h1`

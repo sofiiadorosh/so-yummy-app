@@ -145,7 +145,7 @@ const IngredientsMeasure = styled.span`
   font-weight: ${props => props.theme.fontWeights.semibold};
   font-size: ${props => props.theme.fontSizes[1]}px;
   line-height: 1.5;
-  color: ${props => props.theme.colors.primaryDarkText};
+  color: ${props => props.theme.colors.textSubTitle};
   @media (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[5]}px;
     line-height: 1.5;

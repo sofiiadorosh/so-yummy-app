@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-
-// axios.defaults.baseURL = 'https://so-yummy-app-backend.onrender.com/api/';
+Notify.init({
+  position: 'center-top',
+});
 
 const instance = axios.create({
   baseURL: 'https://so-yummy-app-backend.onrender.com/api/',
@@ -37,9 +38,10 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/users/register', credentials);
-      toast.success('You successfully registered!')
+       Notify.success('You successfully registered. You can log in to your account now!');
       return response.data.user;
     } catch (error) {
+      Notify.failure("Something went wrong, try again");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -52,25 +54,26 @@ export const login = createAsyncThunk(
       const { data } = await instance.post('/users/login', credentials);
       setToken(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken)
-      toast.success(`Welcome back, ${data.user.name}!`);
+      Notify.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
+      Notify.failure('Your email or password is incorrect. Try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-);
+); 
 
 export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/users/logout');
     clearAuthHeader();
-    toast.success('You successfully logged out!');
-    return; 
+    Notify.success('You successfully logged out! Hope to see you soon again!');
+    return;
   } catch (error) {
-    toast.warn('You logged out, please login again!');
+    Notify.warning('You logged out, please login again!')
     return thunkAPI.rejectWithValue(error.message);
   }
-});
+}); 
 
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
@@ -79,26 +82,26 @@ export const getCurrentUser = createAsyncThunk(
     const persistedAccessToken = state.auth.accessToken;
     if (!persistedAccessToken) {
       return ThunkAPI.rejectWithValue();
-  }
+    }
     try {
+      setToken(persistedAccessToken);
       const { data } = await instance.get('/users/current');
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error.message);
     }
   },
-);
+); 
 
 export const updateUserInfo = createAsyncThunk(
   'auth/update',
   async (user, ThunkAPI) => {
     try {
       const data = await instance.patch('/users/update');
+      Notify.success('You successfully updated your profile');
       return data;
     } catch (error) {
-      toast.error(`${error.response.data.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      Notify.failure('error.response.data.message');
       return ThunkAPI.rejectWithValue(error);
     }
   }

@@ -34,9 +34,11 @@ export const App = () => {
   const dispatch = useDispatch();
 
     useEffect(() => {
-    if (token === null) return;
-    dispatch(getCurrentUser());
-  }, [dispatch, token]);
+      if (token === null) return;
+      if (isLoggedIn && token) {
+         dispatch(getCurrentUser());
+      }
+  }, [dispatch, isLoggedIn, token]);
 
 
 
@@ -46,31 +48,24 @@ export const App = () => {
     <div>
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
-        <Routes>
-                    <Route path="/" element={
-          <PublicRoute component={<WelcomePage  />} />
-        } />
-        {/* <Route path="/" element={<WelcomePage />} /> */}
-        <Route path="/register" element={
-          <PublicRoute component={<RegisterPage />} />
-        } />
-        <Route path="/signin" element={
-          <PublicRoute redirectTo="/main" component={<SigninPage />} />
-        } />
-            {/* <Route path="/" element={<SharedLayout />}>
-          <Route path="main" element={<MainPage />} />
-          <Route index element={<MainPage />} /> */}
-          
+        <Routes> 
           <Route path="/" element={
-              <PrivateRoute component={<SharedLayout />} />
-            } >
-            <Route path="main" index element={
-              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
-            } />
-           {/* <Route index element={
-              <PrivateRoute redirectTo="/signin" component={<MainPage />} />
-            } /> */}
-          {/* <Route index element={<MainPage />} /> */}
+            <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
+          } /> 
+          <Route path="register" element={
+            <PublicRoute component={<RegisterPage />} restricted />
+          } />
+          <Route path="signin" element={
+            <PublicRoute component={<SigninPage />} restricted redirectTo="/main"  />
+          } />
+
+          <Route path="/" element={<SharedLayout/>} >
+             {/* <Route path="/" element={
+            <PrivateRoute component={<SharedLayout />} />
+          } > */}
+              <Route path="main" index element={
+                <PrivateRoute component={<MainPage />} />
+              } />
 
             <Route path="categories" element={<CategoriesPage />}>
               <Route path=":categoryName" element={<CategoriesRecipes />} />
@@ -83,8 +78,9 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
+         
         </Routes>
       </ThemeProvider>
     </div>
-  );
+  ); 
 };

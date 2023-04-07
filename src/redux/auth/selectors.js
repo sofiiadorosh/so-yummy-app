@@ -4,6 +4,6 @@ const selectUserAvatar = state => state.auth.user.avatarURL;
 const selectRefreshToken = state => state.auth.refreshToken;
 const selectAccessToken = state => state.auth.accessToken;
 const selectLoading = state => state.auth.loading;
-const selectIsLoggedIn = state => state.isLoggedIn;
+const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
 export { selectUserName, selectUserEmail, selectUserAvatar, selectRefreshToken, selectAccessToken, selectLoading,  selectIsLoggedIn };

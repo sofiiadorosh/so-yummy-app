@@ -63,20 +63,19 @@ export const InputDescription = styled.input`
   border: none;
   border-bottom: 1px solid grey;
   background: transparent;
-  
-
   }
 `;
 
-export const SelectDescription = styled.select`
-  position: absolute;
-  top: 0;
-  right: 0;
+export const UnderLane = styled.div`
+padding-bottom: 18px;
+  width: 343px;
   border: none;
-  background-color: transparent;
-  box-shadow: none; 
-  cursor: pointer;
+  border-bottom: 1px solid grey;
+  background: transparent;
+  }
 `;
+
+
 export const SelectOption = styled.option`
 cursor: pointer;
 border: none;

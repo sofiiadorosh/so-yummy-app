@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { updateSearchType } from 'redux/search/searchSlice';
 
-import { SearchForm, } from '../../SearchTypeSelector/SearchTypeSelector.styled';
+import { SearchForm, Text } from './CategorySelector.styled';
 
 const options = [
   { value: 'title', label: 'Title' },
@@ -24,7 +24,7 @@ export const CategorySearchSelector = () => {
 
   return (
     <SearchForm>
-      
+      <Text>Category</Text>
       <Select
         value={selectedOption}
         onChange={handleChange}
@@ -37,22 +37,22 @@ export const CategorySearchSelector = () => {
             ...provided,
             border: 'none',
             borderRadius: '6px',
-            backgroundColor: '#f2ecec',
-            opacity: '0.5',
+            backgroundColor: 'transparent',
+            
             borderStyle: 'none',
             outline: 'none',
             borderColor: state.isFocused ? 'none' : provided.borderColor,
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
-            color: '#rgba(0, 0, 0, 0.5)',
+            color: '#000',
             width: '146px',
             height: '34px',
             '&:hover': {
-              backgroundColor: '#ffffff',
+              backgroundColor: 'transparent',
               borderStyle: 'none',
               borderColor: 'none',
               border: 'none',
               outline: 'none',
-              boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',
+              
             },
             '@media (min-width: 768px)': {
               width: '175px',

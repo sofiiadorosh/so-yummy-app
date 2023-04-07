@@ -8,6 +8,7 @@ import { Counter } from './Counter/Counter';
 import {
   InputUpload,
   Wrap,
+  UnderLane,
   Form,
   ImgUploadWrap,
   InputDescriptionWrap,
@@ -24,6 +25,7 @@ import {
   ButtonAdd,
   WrapButtonAdd,
   Description,
+  
 } from './AddRecipeForm.styled';
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
@@ -64,17 +66,12 @@ export const AddRecipeForm = () => {
                 placeholder="Enter about recipe"
               />
             </InputDescriptionWrap>
-            <InputDescriptionWrap><CategorySearchSelector/>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Category"
-                disabled
-              />
-              
+            <InputDescriptionWrap>
+            <CategorySearchSelector/>
+             <UnderLane/>
             </InputDescriptionWrap>
             <InputDescriptionWrap>
+            <TimeTypeSelector/>
               <InputDescription
                 type="text"
                 name=""
@@ -82,9 +79,6 @@ export const AddRecipeForm = () => {
                 placeholder="Cooking time"
                 disabled
               />
-             
-                  <TimeTypeSelector/>
-              
             </InputDescriptionWrap>
           </div>
         </Description>

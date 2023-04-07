@@ -65,6 +65,10 @@ const StyledLink = styled(NavLink)`
 
       color: ${props => props.theme.colors.greenAccent};
     }
+
+    svg {
+      fill: ${props => props.theme.colors.greenAccent};
+    }
   }
 
   &:hover:not(.active),

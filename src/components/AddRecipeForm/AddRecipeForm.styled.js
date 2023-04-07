@@ -181,6 +181,7 @@ export const ButtonAdd = styled.button`
 
   &:hover,
   &:focus {
-
+background-color:#22252A;
+color:#fff;
   }
 `;

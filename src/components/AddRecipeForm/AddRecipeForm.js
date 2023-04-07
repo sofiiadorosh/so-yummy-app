@@ -4,6 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5';
 import {TimeTypeSelector} from "./Selectors/TimeSelector";
 import {CategorySearchSelector} from "./Selectors/CategorySelector";
 import{MeasureTypeSelector} from "./Selectors/MeasureSelector";
+import{IngredientsSelector} from "./Selectors/IngredientsSelector";
 import { Counter } from './Counter/Counter';
 import {
   InputUpload,
@@ -17,8 +18,6 @@ import {
   WrapIngredients,
   InputIngredientsWrap,
   MainWrapIngredients,
-  InputIngredients,
-  SelectIngredients,
   TitlePreparation,
   WrapPreparation,
   TextAreaPreparation,
@@ -67,18 +66,12 @@ export const AddRecipeForm = () => {
               />
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-            <CategorySearchSelector/>
-             <UnderLane/>
+                  <CategorySearchSelector/>
+                    <UnderLane/>
             </InputDescriptionWrap>
-            <InputDescriptionWrap>
-            <TimeTypeSelector/>
-              <InputDescription
-                type="text"
-                name=""
-                id="cooking-time"
-                placeholder="Cooking time"
-                disabled
-              />
+                <InputDescriptionWrap>
+                  <TimeTypeSelector/>
+                    <UnderLane/>
             </InputDescriptionWrap>
           </div>
         </Description>
@@ -93,22 +86,14 @@ export const AddRecipeForm = () => {
           </WrapIngredients>
 
           <InputIngredientsWrap>
-            <div>
-              <InputIngredients type="text" name="" id="" placeholder="" />
+            
+            <IngredientsSelector/>
               <MeasureTypeSelector/>
-            </div>
+            
             <IoCloseOutline size={18} />
           </InputIngredientsWrap>
           <InputIngredientsWrap>
-            <div>
-              <InputIngredients type="text" name="" id="" placeholder="" />
-              <SelectIngredients name="ingredients" id="ingredients">
-                <option value="tbs">tbs</option>
-                <option value="tsp">tsp</option>
-                <option value="kg">kg</option>
-                <option value="g">g</option>
-              </SelectIngredients>
-            </div>
+          <MeasureTypeSelector/>
             <IoCloseOutline size={18} />
           </InputIngredientsWrap>
 

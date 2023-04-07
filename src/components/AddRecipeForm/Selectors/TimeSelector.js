@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { updateSearchType } from 'redux/search/searchSlice';
 
-import { SearchForm,Text} from './CategorySelector.styled';
+import { SearchForm,Text} from './Selectors.styled';
 
 const options = [
   { value: '10 min', label: '10 min' },
@@ -54,7 +54,7 @@ export const TimeTypeSelector = () => {
             width: '146px',
             height: '34px',
             '&:hover': {
-              backgroundColor: '#8BAA36',
+              backgroundColor: 'transparent',
               borderStyle: 'none',
               borderColor: 'none',
               border: 'none',
@@ -69,6 +69,9 @@ export const TimeTypeSelector = () => {
               width: '198px',
               height: '49px',
             },
+          }),dropdownIndicator: (base, state) => ({
+            ...base,
+            color: '#8BAA36',
           }),
           indicatorSeparator: () => ({
             display: 'none',

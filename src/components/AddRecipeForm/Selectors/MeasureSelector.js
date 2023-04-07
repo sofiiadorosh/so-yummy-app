@@ -46,7 +46,7 @@ export const MeasureTypeSelector = () => {
             borderColor: state.isFocused ? 'none' : provided.borderColor,
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
             color: '#rgba(0, 0, 0, 0.5)',
-            width: '146px',
+            width: '84px',
             height: '34px',
             '&:hover': {
               backgroundColor: '#ffffff',

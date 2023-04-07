@@ -4,16 +4,18 @@ import { useDispatch } from 'react-redux';
 
 import { updateSearchType } from 'redux/search/searchSlice';
 
-import { SearchForm, Text } from './Selectors.styled';
+import { SearchForm,} from '../../SearchTypeSelector/SearchTypeSelector.styled';
 
 const options = [
-  { value: 'title', label: 'Title' },
-  { value: 'ingredient', label: 'Ingredient' },
+  { value: 'Chicken', label: 'Chicken' },
+  { value: 'tsp', label: 'tsp' },
+  { value: 'kg', label: 'kg' },
+  { value: 'g', label: 'g' },
 ];
 
 const portal = document.body;
 
-export const CategorySearchSelector = () => {
+export const IngredientsSelector = () => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -24,7 +26,7 @@ export const CategorySearchSelector = () => {
 
   return (
     <SearchForm>
-      <Text>Category</Text>
+      
       <Select
         value={selectedOption}
         onChange={handleChange}
@@ -37,22 +39,22 @@ export const CategorySearchSelector = () => {
             ...provided,
             border: 'none',
             borderRadius: '6px',
-            backgroundColor: 'transparent',
-            
+            backgroundColor: '#f2ecec',
+            opacity: '0.5',
             borderStyle: 'none',
             outline: 'none',
             borderColor: state.isFocused ? 'none' : provided.borderColor,
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
-            color: '#000',
-            width: '146px',
+            color: '#rgba(0, 0, 0, 0.5)',
+            width: '194px',
             height: '34px',
             '&:hover': {
-              backgroundColor: 'transparent',
+              backgroundColor: '#ffffff',
               borderStyle: 'none',
               borderColor: 'none',
               border: 'none',
               outline: 'none',
-              
+              boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',
             },
             '@media (min-width: 768px)': {
               width: '175px',
@@ -62,13 +64,12 @@ export const CategorySearchSelector = () => {
               width: '198px',
               height: '49px',
             },
-          }),dropdownIndicator: (base, state) => ({
-            ...base,
-            color: '#8BAA36',
-           
           }),
           indicatorSeparator: () => ({
             display: 'none',
+          }),dropdownIndicator: (base, state) => ({
+            ...base,
+            display:'none',
           }),
           input: (provided, state) => ({
             ...provided,

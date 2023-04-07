@@ -33,6 +33,13 @@ export const SearchTypeSelector = () => {
         menuPosition="absolute"
         menuPortalTarget={portal}
         styles={{
+          dropdownIndicator: (base, state) => ({
+            ...base,
+            color: state.isFocused ? 'green' : 'grey',
+            '&:hover': {
+              color: 'green',
+            },
+          }),
           control: (provided, state) => ({
             ...provided,
             border: 'none',
@@ -41,8 +48,8 @@ export const SearchTypeSelector = () => {
             opacity: '0.5',
             borderStyle: 'none',
             outline: 'none',
-            borderColor: state.isFocused ? 'none' : provided.borderColor,
-            boxShadow: state.isFocused ? 'none' : provided.boxShadow,
+            // borderColor: state.isFocused ? 'none' : provided.borderColor,
+            // boxShadow: state.isFocused ? 'none' : provided.boxShadow,
             color: '#rgba(0, 0, 0, 0.5)',
             width: '146px',
             height: '34px',

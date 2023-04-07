@@ -62,6 +62,36 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
   }
 };
 
+export const getAllFavorites = async (page, limit) => {
+  try {
+    const response = await axios.get(`/favorite?page=${page}&limit=${limit}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const addToFavorite = async id => {
+  try {
+    const response = await axios.post(`/favorite`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const deleteFromFavorite = async id => {
+  try {
+    const response = await axios.delete(`/favorite/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 export {
   getCategoryList,
   getCategoryRecipes,

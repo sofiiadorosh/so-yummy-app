@@ -74,6 +74,8 @@ export const darkTheme = Object.freeze({
     primaryLightText: '#FAFAFA',
     secondaryLightText: '#e0e0e0',
     tertiaryLightText: '#BDBDBD',
+    textSubTitle: "#3E4462",
+    backgroundAccent: "#EBF3D4",
 
     whiteText: '#ffffff',
 

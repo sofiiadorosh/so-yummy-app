@@ -11,7 +11,6 @@ import { theme } from '../constants';
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
 import { CategoriesPage } from 'pages/CategoriesPage';
-import { CategoriesRecipes } from './CategoriesRecipes';
 import { AddRecipePage } from 'pages/AddRecipePage';
 import { MyRecipesPage } from 'pages/MyRecipesPage';
 import { FavoritePage } from 'pages/FavoritePage';
@@ -59,9 +58,10 @@ export const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route path="main" element={<MainPage />} />
             <Route index element={<MainPage />} />
-            <Route path="categories" element={<CategoriesPage />}>
-              <Route path=":categoryName" element={<CategoriesRecipes />} />
-            </Route>
+            <Route
+              path="categories/:categoryName"
+              element={<CategoriesPage />}
+            />
             <Route path="add" element={<AddRecipePage />} />
             <Route path="my" element={<MyRecipesPage />} />
             <Route path="favorite" element={<FavoritePage />} />

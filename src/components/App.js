@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../constants';
 
 import PrivateRoute from 'routes/PrivateRoute';
 import PublicRoute from 'routes/PublicRoute';
@@ -36,9 +38,11 @@ export const App = () => {
     dispatch(getCurrentUser());
   }, [dispatch, token]);
 
+    const { darkTheme } = useSelector(state => state.theme);
 
   return (
     <div>
+       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
       <GlobalStyle />
       <Routes>
           <Route path="/" element={
@@ -77,7 +81,8 @@ export const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
       
-      </Routes>
+        </Routes>
+        </ThemeProvider>
     </div>
   );
 };

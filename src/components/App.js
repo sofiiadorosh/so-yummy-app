@@ -10,7 +10,6 @@ import PublicRoute from 'routes/PublicRoute';
 import { SharedLayout } from './SharedLayout';
 import { MainPage } from 'pages/MainPage';
 import { CategoriesPage } from 'pages/CategoriesPage';
-import { CategoriesRecipes } from './CategoriesRecipes';
 import { AddRecipePage } from 'pages/AddRecipePage';
 import { MyRecipesPage } from 'pages/MyRecipesPage';
 import { FavoritePage } from 'pages/FavoritePage';
@@ -33,11 +32,11 @@ export const App = () => {
 
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      if (token === null) return;
-      if (isLoggedIn && token) {
-         dispatch(getCurrentUser());
-      }
+  useEffect(() => {
+    if (token === null) return;
+    if (isLoggedIn && token) {
+      dispatch(getCurrentUser());
+    }
   }, [dispatch, isLoggedIn, token]);
 
 
@@ -48,28 +47,25 @@ export const App = () => {
     <div>
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
-        <Routes> 
+        <Routes>
           <Route path="/" element={
             <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
-          } /> 
+          } />
           <Route path="register" element={
             <PublicRoute component={<RegisterPage />} restricted />
           } />
           <Route path="signin" element={
-            <PublicRoute component={<SigninPage />} restricted redirectTo="/main"  />
+            <PublicRoute component={<SigninPage />} restricted redirectTo="/main" />
           } />
 
-          <Route path="/" element={<SharedLayout/>} >
-             {/* <Route path="/" element={
-            <PrivateRoute component={<SharedLayout />} />
-          } > */}
-              <Route path="main" index element={
-                <PrivateRoute component={<MainPage />} />
-              } />
-
-            <Route path="categories" element={<CategoriesPage />}>
-              <Route path=":categoryName" element={<CategoriesRecipes />} />
-            </Route>
+          <Route path="/" element={<SharedLayout />} >
+            <Route path="main" index element={
+              <PrivateRoute component={<MainPage />} />
+            } />
+            <Route
+              path="categories/:categoryName"
+              element={<CategoriesPage />}
+            />
             <Route path="add" element={<AddRecipePage />} />
             <Route path="my" element={<MyRecipesPage />} />
             <Route path="favorite" element={<FavoritePage />} />
@@ -82,5 +78,5 @@ export const App = () => {
         </Routes>
       </ThemeProvider>
     </div>
-  ); 
-};
+  );
+}; 

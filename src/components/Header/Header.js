@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { HiMenuAlt2 } from 'react-icons/hi';
-import { RxCross2 } from 'react-icons/rx';
+import { IoClose } from 'react-icons/io5';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { toggleTheme } from '../../redux/theme/themeSlice';
 
 import { Logo } from 'components/Logo';
 import { Navigation } from 'components/Navigation';
@@ -24,7 +27,9 @@ import {
 
 export const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [themeToggler, setThemeToggler] = useState(false);
+
+  const { darkTheme } = useSelector(state => state.theme);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const bodyEl = document.getElementById('body');
@@ -37,7 +42,7 @@ export const Header = () => {
   };
 
   const themeToggleHandler = () => {
-    return setThemeToggler(prevState => !prevState);
+    dispatch(toggleTheme());
   };
 
   return (
@@ -58,19 +63,19 @@ export const Header = () => {
           <MobileCloseHeader>
             <Logo />
             <CrossButton type="button" onClick={toggleMenuHandler}>
-              <RxCross2 size={32} />
+              <IoClose size={32} />
             </CrossButton>
           </MobileCloseHeader>
           <Navigation />
           <MobileThemeToggler>
-            <ThemeToggler status={themeToggler} onClick={themeToggleHandler} />
+            <ThemeToggler status={darkTheme} onClick={themeToggleHandler} />
           </MobileThemeToggler>
         </MobileMenu>
         <UserLogoWrapper>
           <UserLogo />
         </UserLogoWrapper>
         <DesktopThemeToggler>
-          <ThemeToggler status={themeToggler} onClick={themeToggleHandler} />
+          <ThemeToggler status={darkTheme} onClick={themeToggleHandler} />
         </DesktopThemeToggler>
       </Container>
     </AppBar>

@@ -89,9 +89,9 @@ const SeeAllButton = styled(NavLink)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 1.29;
 
-  color: ${props => props.theme.colors.primaryLightText};
+  color: #fafafa;
 
-  background-color: ${props => props.theme.colors.greenAccent};
+  background-color: #8baa36;
 
   border-radius: 6px;
 

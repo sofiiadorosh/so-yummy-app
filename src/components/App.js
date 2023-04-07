@@ -41,6 +41,8 @@ export const App = () => {
 
   const { darkTheme } = useSelector(state => state.theme);
 
+  const { darkTheme } = useSelector(state => state.theme);
+
   return (
     <div>
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>

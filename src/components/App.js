@@ -33,11 +33,11 @@ export const App = () => {
 
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      if (token === null) return;
-      if (isLoggedIn && token) {
-         dispatch(getCurrentUser());
-      }
+  useEffect(() => {
+    if (token === null) return;
+    if (isLoggedIn && token) {
+      dispatch(getCurrentUser());
+    }
   }, [dispatch, isLoggedIn, token]);
 
 
@@ -48,28 +48,19 @@ export const App = () => {
     <div>
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
-        <Routes> 
-          <Route path="/" element={
-            <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
-          } /> 
-          <Route path="register" element={
-            <PublicRoute component={<RegisterPage />} restricted />
-          } />
-          <Route path="signin" element={
-            <PublicRoute component={<SigninPage />} restricted redirectTo="/main"  />
-          } />
+        <Routes>
 
-          <Route path="/" element={<SharedLayout/>} >
-             {/* <Route path="/" element={
-            <PrivateRoute component={<SharedLayout />} />
-          } > */}
-              <Route path="main" index element={
-                <PrivateRoute component={<MainPage />} />
-              } />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/signin" element={<SigninPage />} />
 
-            <Route path="categories" element={<CategoriesPage />}>
-              <Route path=":categoryName" element={<CategoriesRecipes />} />
-            </Route>
+          <Route path="/" element={<SharedLayout />}>
+            <Route path="main" element={<MainPage />} />
+            <Route index element={<MainPage />} />
+            <Route
+              path="categories/:categoryName"
+              element={<CategoriesPage />}
+            />
             <Route path="add" element={<AddRecipePage />} />
             <Route path="my" element={<MyRecipesPage />} />
             <Route path="favorite" element={<FavoritePage />} />
@@ -78,9 +69,10 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
+        
          
         </Routes>
       </ThemeProvider>
     </div>
-  ); 
-};
+  );
+}; 

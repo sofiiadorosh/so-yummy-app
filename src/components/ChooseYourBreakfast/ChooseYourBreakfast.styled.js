@@ -5,7 +5,7 @@ const ChooseBlock = styled.div`
   width: 225px;
   padding: 8px;
 
-  background-color: #fafafa;
+  background-color: ${props => props.theme.colors.lightBackground};
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
@@ -40,7 +40,7 @@ const ChooseDescr = styled.p`
 `;
 
 const ChooseAccent = styled.span`
-  color: ${props => props.theme.colors.greenAccent};
+  color: #8baa36;
 `;
 const StyledLink = styled(NavLink)`
   display: flex;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const SwitchBody = styled.button`
+const SwitchBody = styled.label`
+  display: block;
+
   width: 61px;
   height: 27px;
 
@@ -9,10 +11,21 @@ const SwitchBody = styled.button`
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
 
-  border: none;
-  outline: none;
-
   cursor: pointer;
+
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 
   ${({ status }) => {
     return status ? 'background-color: #8BAA36;' : 'background-color: #EFEFEF;';

@@ -3,7 +3,7 @@ import { RiSearchLine } from 'react-icons/ri';
 import { NavList, NavItem, StyledLink } from './Navigation.styled';
 
 const navItems = [
-  { href: '/categories/beef', text: 'Categories' },
+  { href: '/categories', text: 'Categories' },
   { href: '/add', text: 'Add recipes' },
   { href: '/my', text: 'My recipes' },
   { href: '/favorite', text: 'Favorites' },

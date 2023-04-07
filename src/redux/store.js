@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import updateLocalStorage from 'services/auth/updateLocalStorage';
+
 import { authReducer } from './auth/slice';
 import { searchReducer } from './search/searchSlice';
 import { themeReducer } from './theme/themeSlice';
@@ -21,11 +21,11 @@ const middleware = [
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }).concat(updateLocalStorage),
+  })
 ];
 
 const authPersistConfig = {
-  key: 'refresh-user',
+  key: 'auth',
   storage,
   whitelist: ['refreshToken', 'accessToken', 'user'],
 };

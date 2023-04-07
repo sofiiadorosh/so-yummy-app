@@ -1,3 +1,4 @@
+import logo from '../../images/wp-logo.png';
 
 import { WelcomePageContainer, WelcomePageTitle, WelcomeText, ButtonContainer, RedirectButton, StyledLogo } from './WelcomePage.styled';
 
@@ -5,7 +6,7 @@ import { WelcomePageContainer, WelcomePageTitle, WelcomeText, ButtonContainer, R
 export const WelcomePage = () => {
    return (
      <WelcomePageContainer>
-       <StyledLogo />
+       <StyledLogo src={logo} alt='logo'/>
        <WelcomePageTitle> Welcome to the app! </WelcomePageTitle>
        <WelcomeText>
          This app offers more than just a collection of recipes - it is designed to be your very own digital cookbook.

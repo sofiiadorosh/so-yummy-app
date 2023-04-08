@@ -100,6 +100,7 @@ export const deleteFromFavorite = async id => {
 //     console.log(error.message);
 //   }
 // };
+
 export {
   getCategoryList,
   getCategoryRecipes,

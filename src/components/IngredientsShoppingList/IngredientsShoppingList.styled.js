@@ -80,7 +80,7 @@ const IngredientsItem = styled.li`
     padding: 0px 45px 43px 0px;;
   }
   @media screen and (min-width: 1440px) {
-    padding: 0px 43px 28px 0px;;
+    padding: 0px 28px 43px 0px;;
   }
 `
 const ItemTitleWrapper = styled.div`
@@ -129,10 +129,10 @@ const MeasureWrapper = styled.div`
   gap: 46px;
 
   @media screen and (min-width: 768px) {
-    gap: 100px;
+    gap: 110px;
   }
   @media screen and (min-width: 1440px) {
-    gap: 170px;
+    gap: 174px;
   }
 
   p{

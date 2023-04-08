@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 const SectionIngredients = styled.section`
+  margin-bottom: 50px;
   padding-top: 32px;
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 96px;
     padding-top: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 100px;
   }
 `;
 

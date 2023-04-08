@@ -1,24 +1,65 @@
 // import { useMediaQuery } from '@mui/material';
 // import { Link } from 'react-router-dom';
-// import css from './RecipesCard.module.css';
-// import TrashButton from './TrashButton/TrashButton';
 
-// export function getTimeFromMins(mins) {
-//   let minutes = mins;
-//   let hours = Math.trunc(mins / 60);
-//   if (mins >= 60 && mins < 1440) {
-//     minutes = mins % 60;
-//     return `${hours} hours ${minutes > 0 ? `${minutes} min` : ''}`;
-//   }
+import recExmpl from '../../images/recExmpl.png';
+import logoTrash from '../../images/logo-trash.png';
 
-//   if (hours >= 24) {
-//     let days = Math.trunc(hours / 24);
-//     hours = hours % 24;
-//     minutes = mins % 60;
-//     return `${days} day ${hours} hours  ${minutes} min`;
-//   }
-//   return `${minutes} min`;
-// }
+import {
+  PicterItem,
+  ItemBox,
+  ItemBoxTitle,
+  ItemBoxText,
+  ItemBoxTime,
+  LogoTrash,
+  ItemBoxButton,
+} from './RecipesCard.styled';
+
+export function getTimeFromMins(mins) {
+  let minutes = mins;
+  let hours = Math.trunc(mins / 60);
+  if (mins >= 60 && mins < 1440) {
+    minutes = mins % 60;
+    return `${hours} hours ${minutes > 0 ? `${minutes} min` : ''}`;
+  }
+
+  if (hours >= 24) {
+    let days = Math.trunc(hours / 24);
+    hours = hours % 24;
+    minutes = mins % 60;
+    return `${days} day ${hours} hours  ${minutes} min`;
+  }
+  return `${minutes} min`;
+}
+
+export const RecipesCard = ({
+  id,
+  title,
+  time,
+  text,
+  imgComponent,
+  trashClass,
+  onDelete,
+}) => {
+  return (
+    <li style={{ display: 'flex' }}>
+      <PicterItem src={recExmpl} alt="plugIngr" />
+      <ItemBox>
+        <ItemBoxTitle>Apple Frangipan Tart</ItemBoxTitle>
+        <ItemBoxText>
+          Apple Frangipane Tart is a classic and elegant treat fit for any
+          dessert table. A crisp, sweet-crust is filled with rich almond
+          frangipane filling, baked with sliced apples and finished with apricot
+          preserves.
+        </ItemBoxText>
+        <ItemBoxTime>20 min</ItemBoxTime>
+        <LogoTrash>
+          <img src={logoTrash} alt="logo" />
+        </LogoTrash>
+        <ItemBoxButton>See reecipe</ItemBoxButton>
+      </ItemBox>
+    </li>
+  );
+};
 
 // export const RecipesCard = ({
 //   id,
@@ -57,9 +98,7 @@
 //         <div className={css.bottomWrapper}>
 //           <p className={css.dishTime}>{getTimeFromMins(time)}</p>
 //           <div className={css.dishButton}>
-//             <Link to={`/recipe/${id}`}>
-//               <SuperBtn title={'See recipe'} dark />
-//             </Link>
+//             <Link to={`/recipe/${id}`}>recipe</Link>
 //           </div>
 //         </div>
 //       </div>

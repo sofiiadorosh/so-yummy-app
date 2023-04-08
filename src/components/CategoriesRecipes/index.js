@@ -1,1 +1,0 @@
-export { CategoriesRecipes } from './CategoriesRecipes';

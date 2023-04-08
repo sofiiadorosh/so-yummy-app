@@ -35,7 +35,7 @@ const SquareTwo = styled.div`
   width: 6px;
   height: 6px;
 
-  background-color: ${props => props.theme.colors.darkAccent};
+  background-color: ${props => props.theme.colors.quaternaryDarkText};
 
   border-radius: 3px;
   transform: rotate(-25deg);

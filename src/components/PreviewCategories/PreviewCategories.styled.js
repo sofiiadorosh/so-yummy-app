@@ -1,15 +1,31 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import leavesDesktop from '../../images/section-leaves-desktop.png';
+import leavesTablet from '../../images/section-leaves-tablet.png';
+import leavesMobile from '../../images/section-leaves-mobile.png';
 
 const CategoriesSection = styled.section`
   padding: 57px 0 100px;
 
+  @media screen and (max-width: 767px) {
+    background-image: url(${leavesMobile});
+    background-repeat: no-repeat;
+    background-position: bottom -224px left;
+  }
+
   @media screen and (min-width: 768px) {
     padding: 72px 0 100px;
+
+    background-image: url(${leavesTablet});
+    background-repeat: no-repeat;
+    background-position: bottom -370px left;
   }
 
   @media screen and (min-width: 1440px) {
     padding: 100px 0 118px;
+
+    background-image: url(${leavesDesktop});
+    background-position: bottom -520px left;
   }
 `;
 
@@ -89,9 +105,9 @@ const SeeAllButton = styled(NavLink)`
   font-weight: ${props => props.theme.fontWeights.regular};
   line-height: 1.29;
 
-  color: ${props => props.theme.colors.primaryLightText};
+  color: #fafafa;
 
-  background-color: ${props => props.theme.colors.greenAccent};
+  background-color: #8baa36;
 
   border-radius: 6px;
 

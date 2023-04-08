@@ -1,44 +1,49 @@
-import DefaultIngredientsImg from "../../images/noPhoto.svg";
+import { useState, useEffect } from 'react';
+
+import defaultIngredientsImg from '../../images/noPhoto.svg';
 
 import {
-  RecipePreparationWrapper,
-  CookingRecipe,
-  RecipeImageWrapper,
-  RecipePreparationBlock,
+  PreparationSection,
+  Container,
+  CookingDescr,
   CookingSteps,
-  CookingStep,
+  ListIdx,
+  StepDescr,
+  CookingPicture,
 } from './RecipePreparation.styled';
 
-export const RecipePreparation = ({ description, photo }) => {
-  let cookingSteps = [];
-  if (description) {
-    if (!description.includes('\r\n')) {
-      return;
-    } else {
-      cookingSteps = description.split('\n');
+export const RecipePreparation = ({ item: { title, instructions, thumb } }) => {
+  const [steps, setSteps] = useState([]);
+
+  useEffect(() => {
+    if (instructions) {
+      if (instructions.includes('\r\n\r\n')) {
+        return setSteps(instructions.split('\r\n\r\n'));
+      }
+      return setSteps(instructions.split('\r\n'));
     }
-  }
+  }, [instructions]);
 
   return (
-    <RecipePreparationWrapper>
-      <RecipePreparationBlock>
-        <h2>RecipePreparation</h2>
-        <CookingRecipe>
-          {cookingSteps.length > 0 ? (
-            <CookingSteps>
-              {cookingSteps.length > 0 &&
-                cookingSteps.map((step, idx) => (
-                  <CookingStep key={idx}>
-                    <p>{idx + 1}</p>
-                  </CookingStep>
-                ))}
-            </CookingSteps>
-          ) : (
-            description
-          )}
-        </CookingRecipe>
-      </RecipePreparationBlock>
-      <RecipeImageWrapper img={photo? photo : DefaultIngredientsImg}></RecipeImageWrapper>
-    </RecipePreparationWrapper>
+    <PreparationSection>
+      <Container>
+        <CookingDescr>
+          <h2>Recipe Preparation</h2>
+          <CookingSteps>
+            {steps.map((step, index) => (
+              <li key={index}>
+                <ListIdx>
+                  <span>{index + 1}</span>
+                </ListIdx>
+                <StepDescr>{step}</StepDescr>
+              </li>
+            ))}
+          </CookingSteps>
+        </CookingDescr>
+        <CookingPicture>
+          <img src={thumb ? thumb : defaultIngredientsImg} alt={title} />
+        </CookingPicture>
+      </Container>
+    </PreparationSection>
   );
 };

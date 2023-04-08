@@ -1,5 +1,6 @@
 import { GrClose } from 'react-icons/gr';
 import plugIngr from '../../images/plugIngr.png';
+import { useDeleteIngridientsMutation } from '../../redux/ShoppingList/shoppingListAPI';
 
 import {
   ListTitle,
@@ -16,7 +17,10 @@ import {
 
 
 
-export const IngredientsShoppingList = () => {
+export const IngredientsShoppingList = ({ id }) => {
+
+  const [deleteIngridients] = useDeleteIngridientsMutation();
+  
   return (
     < >
       <ListTitle>
@@ -26,22 +30,22 @@ export const IngredientsShoppingList = () => {
       </ListTitle>
 
       <ListIngrid>
-        <ul style={{ display: 'flex' }}>
+        <li style={{ display: 'flex' }} >
           <PicterIngrid>
             <img src={plugIngr} alt="plugIngr" />
           </PicterIngrid>
           <NameIngrid>Salmon</NameIngrid>
           <QuantityIngrid>5</QuantityIngrid>
           <DeletIngrid><GrClose /></DeletIngrid>
-        </ul>
-        <ul  style={{ display: 'flex' }}>
+        </li>
+        <li  style={{ display: 'flex' }}>
           <PicterIngrid>
             <img src={plugIngr} alt="plugIngr" />
           </PicterIngrid>
           <NameIngrid>Cucumber</NameIngrid>
-          <QuantityIngrid>10</QuantityIngrid>
-          <DeletIngrid><GrClose /></DeletIngrid>
-        </ul>
+          <QuantityIngrid>1000000</QuantityIngrid>
+          <DeletIngrid onClick={() => deleteIngridients(id)} ><GrClose /></DeletIngrid>
+        </li>
       </ListIngrid>
 
 

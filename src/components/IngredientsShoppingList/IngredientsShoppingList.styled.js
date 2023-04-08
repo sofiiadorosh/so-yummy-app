@@ -3,16 +3,15 @@ import styled from 'styled-components';
 
 const ListTitle = styled.div`
 
-  
   /* width: 100vh; */
   height: 38px;
   display: flex;
 
-  align-item: center;
+  align-items: center;
   padding: 10px 10px;
   align-items: center;
   margin-bottom: 32px;
-  background-color:${props => props.theme.colors.greenAccent}; ;
+  background-color:${props => props.theme.colors.greenAccent};
   border-radius:8px;
   
 
@@ -95,9 +94,7 @@ const ListIngrid = styled.ul`
 
 `
 
-// const ItemIngrid = styled.ul`
-//   display: flex;
-// `
+
 
 const PicterIngrid = styled.div`
   display: flex;
@@ -150,8 +147,9 @@ const QuantityIngrid = styled.span`
 	align-items: center;
   margin-right: 46px;
 
-  width: 37px;
+  min-width: 37px;
   height: 23px;
+  padding: 0px 3px;
 
   font-weight: ${props => props.theme.fontWeights.semibold};
   color: ${props => props.theme.colors.primaryLightText};
@@ -161,15 +159,13 @@ const QuantityIngrid = styled.span`
   border-radius:4px;
 
    @media screen and (min-width: 768px) {
-    width: 68px;
+    min-width: 68px;
     height: 35px;
     margin-right: 110px;
     
     font-size: 18px;
    }
    @media screen and (min-width: 1440px) {
-    width: 68px;
-    height: 35px;
     margin-right: 174px;
     
     font-size: 18px;

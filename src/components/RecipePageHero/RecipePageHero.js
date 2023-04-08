@@ -9,7 +9,6 @@ import {
   RecipeTime,
 } from './RecipePageHero.styled';
 
-
 export const RecipePageHero = () => {
   return (
     <RecipeHeroWrapper>

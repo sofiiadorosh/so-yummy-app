@@ -30,7 +30,6 @@ export const IngredientsShoppingList = ({ _id }) => {
       </TitleWrapper>
 
       <IngredientsList>
-
               <IngredientsItem >
                  <ItemTitleWrapper>
                     <div>
@@ -43,45 +42,60 @@ export const IngredientsShoppingList = ({ _id }) => {
                 </ItemTitleWrapper>
                 <MeasureWrapper>
                     <p children="100" />
-            <button onClick={() => deleteIngridients(_id)} ><GrClose /></button>
-                  </MeasureWrapper>
+                     <button onClick={() => deleteIngridients(_id)} ><GrClose /></button>
+                </MeasureWrapper>
             </IngredientsItem>
-        
-
-        
       </IngredientsList>
-
-
     </>
   )
-
 };
 
 
 
+// коли запроцює передаца ингридиентив на цю сторинку
+
+// export const IngredientsShoppingList = ({ingredients }) => {
+
+//   const [deleteIngridients] = useDeleteIngridientsMutation();
+
+//   return (
+//     < >
+//       <TitleWrapper>
+//         <Title children="Product" />
+//         <TitleRemoveWrap>
+//           <Title children="Number" />
+//           <Title children="Remove" />
+//         </TitleRemoveWrap>
+//       </TitleWrapper>
+
+//        <IngredientsList>
+//         {ingredients &&
+//           ingredients.map(({ id: { _id, ttl, thb }, measure }) => {
+//             return (
+//               <IngredientsItem key={_id}>
+//                  <ItemTitleWrapper>
+//                     <div>
+//                       <img
+//                         src={thb ? thb : defaultIngredientsImg}
+//                         alt="Ingredient"
+//                       />
+//                     </div>
+//                     <IngredientsTitle children={ttl} />
+//                 </ItemTitleWrapper>
+//                 <MeasureWrapper>
+//                     <p children={measure} />
+//                     <button onClick={() => deleteIngridients(_id)}><GrClose /></button>
+//                   </MeasureWrapper>
+//               </IngredientsItem>
+//             );
+//           })}
+//       </IngredientsList>
+//     </>
+//   )
+
+// }
 
 
- // коли запроцює передаца ингридиентив на цю сторинку
 
-      //  <IngredientsList>
-      //   {ingredients &&
-      //     ingredients.map(({ id: { _id, ttl, thb }, measure }) => {
-      //       return (
-      //         <IngredientsItem key={_id}>
-      //            <ItemTitleWrapper>
-      //               <div>
-      //                 <img
-      //                   src={thb ? thb : defaultIngredientsImg}
-      //                   alt="Ingredient"
-      //                 />
-      //               </div>
-      //               <IngredientsTitle children={ttl} />
-      //           </ItemTitleWrapper>
-      //           <MeasureWrapper>
-      //               <p children={measure} />
-      //               <button ><GrClose /></button>
-      //             </MeasureWrapper>
-      //         </IngredientsItem>
-      //       );
-      //     })}
-      // </IngredientsList>
+ 
+

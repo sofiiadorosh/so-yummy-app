@@ -35,9 +35,10 @@ export const SearchTypeSelector = () => {
         styles={{
           dropdownIndicator: (base, state) => ({
             ...base,
-            color: state.isFocused ? 'green' : 'grey',
+
+            color: state.isFocused ? '#8BAA36' : '#BDBDBD',
             '&:hover': {
-              color: 'green',
+              color: '#8BAA36',
             },
           }),
           control: (provided, state) => ({
@@ -48,9 +49,8 @@ export const SearchTypeSelector = () => {
             opacity: '0.5',
             borderStyle: 'none',
             outline: 'none',
-            // borderColor: state.isFocused ? 'none' : provided.borderColor,
-            // boxShadow: state.isFocused ? 'none' : provided.boxShadow,
-            color: '#rgba(0, 0, 0, 0.5)',
+            borderColor: 'none',
+            boxShadow: 'none',
             width: '146px',
             height: '34px',
             '&:hover': {
@@ -93,7 +93,6 @@ export const SearchTypeSelector = () => {
             paddingBottom: '5px',
             font: '12px',
             lineHeight: '18px',
-            color: '#rgba(0, 0, 0, 0.5)',
             backgroundColor: '#ffffff',
             borderRadius: '6px',
             border: 'none',

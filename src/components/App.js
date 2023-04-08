@@ -17,9 +17,9 @@ import { ShoppingListPage } from 'pages/ShoppingListPage';
 import { SearchPage } from 'pages/SearchPage';
 import { RecipePage } from 'pages/RecipePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { WelcomePage } from 'pages/WelcomePage';
-import { RegisterPage } from 'pages/RegisterPage';
-import { SigninPage } from 'pages/SigninPage';
+// import { WelcomePage } from 'pages/WelcomePage';
+// import { RegisterPage } from 'pages/RegisterPage';
+// import { SigninPage } from 'pages/SigninPage';
 
 import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
 import { getCurrentUser } from 'redux/auth/operations';
@@ -39,8 +39,6 @@ export const App = () => {
     }
   }, [dispatch, isLoggedIn, token]);
 
-
-
   const { darkTheme } = useSelector(state => state.theme);
 
   return (
@@ -48,7 +46,7 @@ export const App = () => {
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={
+          {/* <Route path="/" element={
             <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
           } />
           <Route path="register" element={
@@ -56,12 +54,14 @@ export const App = () => {
           } />
           <Route path="signin" element={
             <PublicRoute component={<SigninPage />} restricted redirectTo="/main" />
-          } />
+          } /> */}
 
-          <Route path="/" element={<SharedLayout />} >
-            <Route path="main" index element={
-              <PrivateRoute component={<MainPage />} />
-            } />
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              path="main"
+              index
+              element={<PrivateRoute component={<MainPage />} />}
+            />
             <Route
               path="categories/:categoryName"
               element={<CategoriesPage />}
@@ -74,9 +74,8 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-         
         </Routes>
       </ThemeProvider>
     </div>
   );
-}; 
+};

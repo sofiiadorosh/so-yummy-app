@@ -10,4 +10,4 @@ const Logo = ({ inv, width, height }) => {
   return <SvgLogo style={{ width: width, height: height }} />;
 };
 
-export default Logo;
+export { Logo };

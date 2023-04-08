@@ -1,6 +1,6 @@
-import SocialLinks from './SocialLinks/SocialLinks';
+import { SocialLinks } from './SocialLinks/SocialLinks';
 
-import FooterNavigation from './FooterNavigation/FooterNavigation';
+import { FooterNavigation } from './FooterNavigation/FooterNavigation';
 
 import {
   LeafsOnFooter,

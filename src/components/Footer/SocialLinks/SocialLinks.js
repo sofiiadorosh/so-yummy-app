@@ -43,4 +43,4 @@ const SocialLinks = ({ type }) => {
   );
 };
 
-export default SocialLinks;
+export { SocialLinks };

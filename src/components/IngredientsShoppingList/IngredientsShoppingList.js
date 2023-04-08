@@ -1,55 +1,101 @@
 import { GrClose } from 'react-icons/gr';
-import plugIngr from '../../images/plugIngr.png';
+import defaultIngredientsImg from '../../images/noPhoto.svg';
 import { useDeleteIngridientsMutation } from '../../redux/ShoppingList/shoppingListAPI';
 
 import {
-  ListTitle,
-  ProductTitle,
-  NumberTitle,
-  RemoveTitle,
-  ListIngrid,
-  // ItemIngrid,
-  PicterIngrid,
-  NameIngrid,
-  QuantityIngrid,
-  DeletIngrid
+  TitleWrapper,
+  Title,
+  TitleRemoveWrap,
+  IngredientsList,
+  IngredientsItem,
+  ItemTitleWrapper,
+  IngredientsTitle, 
+  MeasureWrapper,
 } from './IngredientsShoppingList.styled'
 
 
 
-export const IngredientsShoppingList = ({ id }) => {
+export const IngredientsShoppingList = ({ _id }) => {
 
   const [deleteIngridients] = useDeleteIngridientsMutation();
   
   return (
     < >
-      <ListTitle>
-        <ProductTitle>Product</ProductTitle>
-        <NumberTitle>Number</NumberTitle>
-        <RemoveTitle>Remove</RemoveTitle>
-      </ListTitle>
+      <TitleWrapper>
+        <Title children="Product" />
+        <TitleRemoveWrap>
+          <Title children="Number" />
+          <Title children="Remove" />
+        </TitleRemoveWrap>
+      </TitleWrapper>
 
-      <ListIngrid>
-        <li style={{ display: 'flex' }} >
-          <PicterIngrid>
-            <img src={plugIngr} alt="plugIngr" />
-          </PicterIngrid>
-          <NameIngrid>Salmon</NameIngrid>
-          <QuantityIngrid>5</QuantityIngrid>
-          <DeletIngrid><GrClose /></DeletIngrid>
-        </li>
-        <li  style={{ display: 'flex' }}>
-          <PicterIngrid>
-            <img src={plugIngr} alt="plugIngr" />
-          </PicterIngrid>
-          <NameIngrid>Cucumber</NameIngrid>
-          <QuantityIngrid>1000000</QuantityIngrid>
-          <DeletIngrid onClick={() => deleteIngridients(id)} ><GrClose /></DeletIngrid>
-        </li>
-      </ListIngrid>
-
-
+      <IngredientsList>
+              <IngredientsItem >
+                 <ItemTitleWrapper>
+                    <div>
+                      <img
+                        src={ defaultIngredientsImg}
+                        alt="Ingredient"
+                      />
+                    </div>
+                    <IngredientsTitle children="Avokadoo" />
+                </ItemTitleWrapper>
+                <MeasureWrapper>
+                    <p children="100" />
+                     <button onClick={() => deleteIngridients(_id)} ><GrClose /></button>
+                </MeasureWrapper>
+            </IngredientsItem>
+      </IngredientsList>
     </>
   )
-
 };
+
+
+
+// коли запроцює передаца ингридиентив на цю сторинку
+
+// export const IngredientsShoppingList = ({ingredients }) => {
+
+//   const [deleteIngridients] = useDeleteIngridientsMutation();
+
+//   return (
+//     < >
+//       <TitleWrapper>
+//         <Title children="Product" />
+//         <TitleRemoveWrap>
+//           <Title children="Number" />
+//           <Title children="Remove" />
+//         </TitleRemoveWrap>
+//       </TitleWrapper>
+
+//        <IngredientsList>
+//         {ingredients &&
+//           ingredients.map(({ id: { _id, ttl, thb }, measure }) => {
+//             return (
+//               <IngredientsItem key={_id}>
+//                  <ItemTitleWrapper>
+//                     <div>
+//                       <img
+//                         src={thb ? thb : defaultIngredientsImg}
+//                         alt="Ingredient"
+//                       />
+//                     </div>
+//                     <IngredientsTitle children={ttl} />
+//                 </ItemTitleWrapper>
+//                 <MeasureWrapper>
+//                     <p children={measure} />
+//                     <button onClick={() => deleteIngridients(_id)}><GrClose /></button>
+//                   </MeasureWrapper>
+//               </IngredientsItem>
+//             );
+//           })}
+//       </IngredientsList>
+//     </>
+//   )
+
+// }
+
+
+
+ 
+

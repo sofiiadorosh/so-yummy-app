@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import recExmpl from '../../images/recExmpl.png';
 import logoTrash from '../../images/logo-trash.png';
 
@@ -12,8 +14,9 @@ import {
 } from './MyRecipesItem.styled';
 
 
-export const MyRecipesItem = () => {
-  return(
+export const MyRecipesItem = ({ _id}) => {
+  return (
+
     <li style={{ display: 'flex' }}>
       <PicterItem src={recExmpl} alt="plugIngr" />
       <ItemBox>
@@ -25,9 +28,13 @@ export const MyRecipesItem = () => {
         <LogoTrash >
           <img src={logoTrash} alt="logo" />
         </LogoTrash>
-        <ItemBoxButton>See reecipe</ItemBoxButton>
-
+        <NavLink to={`/recipe/${_id}`}>
+          <ItemBoxButton>See reecipe</ItemBoxButton>
+        </NavLink>
       </ItemBox>
+
+      
     </li>
+    
   )
 };

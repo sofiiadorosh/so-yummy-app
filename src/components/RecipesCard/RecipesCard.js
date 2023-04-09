@@ -1,8 +1,7 @@
-// import { useMediaQuery } from '@mui/material';
-// import { Link } from 'react-router-dom';
+import { useMediaQuery } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-import recExmpl from '../../images/recExmpl.png';
-import logoTrash from '../../images/logo-trash.png';
+import { TrashButton } from './TrashButton/TrashButton';
 
 import {
   PicterItem,
@@ -37,27 +36,42 @@ export const RecipesCard = ({
   time,
   text,
   imgComponent,
-  trashClass,
   onDelete,
 }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
-    <li style={{ display: 'flex' }}>
-      <PicterItem src={recExmpl} alt="plugIngr" />
-      <ItemBox>
-        <ItemBoxTitle>Apple Frangipan Tart</ItemBoxTitle>
-        <ItemBoxText>
-          Apple Frangipane Tart is a classic and elegant treat fit for any
-          dessert table. A crisp, sweet-crust is filled with rich almond
-          frangipane filling, baked with sliced apples and finished with apricot
-          preserves.
-        </ItemBoxText>
-        <ItemBoxTime>20 min</ItemBoxTime>
-        <LogoTrash>
-          <img src={logoTrash} alt="logo" />
-        </LogoTrash>
-        <ItemBoxButton>See reecipe</ItemBoxButton>
-      </ItemBox>
-    </li>
+    <>
+      {isMobile && (
+        <Link to={`/recipe/${id}`}>
+          <PicterItem src={imgComponent} alt="dish photo" />
+          <ItemBox>
+            <ItemBoxTitle>{title}</ItemBoxTitle>
+            <ItemBoxText>{text}</ItemBoxText>
+            <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
+            <LogoTrash>
+              <TrashButton onDelete={onDelete} />
+            </LogoTrash>
+          </ItemBox>
+        </Link>
+      )}
+      {!isMobile && (
+        <>
+          <PicterItem src={imgComponent} alt="dish photo" />
+          <ItemBox>
+            <ItemBoxTitle>{title}</ItemBoxTitle>
+            <ItemBoxText>{text}</ItemBoxText>
+            <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
+            <LogoTrash>
+              <TrashButton onDelete={onDelete} />
+            </LogoTrash>
+            <Link to={`/recipe/${id}`}>
+              <ItemBoxButton>See reecipe</ItemBoxButton>
+            </Link>
+          </ItemBox>
+        </>
+      )}
+    </>
   );
 };
 

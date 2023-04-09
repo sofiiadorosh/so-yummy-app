@@ -1,4 +1,4 @@
-.trashButton {
+/* .trashButton {
   width: 24px;
   height: 24px;
   border-radius: 4px;
@@ -63,4 +63,4 @@
 .trashButton.darkBcg:focus {
   background-color: var(--ingridientsBcg);
   stroke: var(--secondaryBlackColor);
-}
+} */

@@ -11,12 +11,19 @@ const instance = axios.create({
 });
 
 const setToken = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 }; 
 
 const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
 }; 
+
+// instance.interceptors.request.use(config => {
+//   const accessToken = localStorage.getItem("accessToken");
+//   config.headers.common.Authorization = `Bearer ${accessToken}`
+//   return config;
+// })
+
 
 instance.interceptors.response.use(response => response, async (error) => {
   if (error.response.status === 401) {
@@ -33,6 +40,9 @@ instance.interceptors.response.use(response => response, async (error) => {
   }
   return Promise.reject(error);
 })
+
+
+
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -98,7 +108,7 @@ export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkAPI) => {
-    const persistedAccessToken = localStorage.setItem('accessToken');
+    const persistedAccessToken = localStorage.getItem('accessToken');
     if (!persistedAccessToken) {
       return thunkAPI.rejectWithValue();
     }
@@ -125,3 +135,5 @@ export const updateUserInfo = createAsyncThunk(
     }
   }
 );
+
+export default instance;

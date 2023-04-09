@@ -101,10 +101,20 @@ export const deleteFromFavorite = async id => {
 //   }
 // };
 
+const getShoppingList = async () => {
+  try {
+    const response = await axios.get('shopping-list');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export {
   getCategoryList,
   getCategoryRecipes,
   getRecipesByCategory,
   getRecipesById,
+  getShoppingList,
   // delIngridSchoppingListById
 };

@@ -14,7 +14,6 @@ import sprite from '../../../../images/Footer/sprite.svg';
 import MediaQuery from 'react-responsive';
 import { useAuth } from 'hooks/useAuth';
 import { getColor } from '../../../../constants/formikColors';
-import 'react-toastify/dist/ReactToastify.css';
 const LoginSchema = Yup.object().shape({
   email: Yup.mixed().test({
     name: 'email',

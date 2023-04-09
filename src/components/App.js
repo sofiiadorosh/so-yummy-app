@@ -23,7 +23,7 @@ import { SigninPage } from 'pages/SigninPage';
 
 // import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
 import { setIsLoggedIn } from 'redux/auth/slice';
-// import { getCurrentUser } from 'redux/auth/operations';
+import { getCurrentUser } from 'redux/auth/operations';
 
 import { GlobalStyle } from './GlobalStyle';
 
@@ -45,6 +45,9 @@ export const App = () => {
   useEffect(() => {
     const isLoggedIn = Boolean(localStorage.getItem('accessToken'));
     dispatch(setIsLoggedIn(isLoggedIn));
+    if (isLoggedIn) {
+      dispatch(getCurrentUser());
+    }
   }, [dispatch]);
 
   const { darkTheme } = useSelector(state => state.theme);

@@ -29,12 +29,12 @@ instance.interceptors.response.use(
         });
         setToken(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken);
         return instance(error.config);
       } catch (error) {
         return Promise.reject(error);
       }
     }
-    return Promise.reject(error);
   }
 );
 
@@ -61,6 +61,7 @@ export const login = createAsyncThunk(
       const { data } = await instance.post('/users/login', credentials);
       setToken(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.getItem('accessToken', data.accessToken);
       Notify.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
@@ -82,20 +83,37 @@ export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   }
 });
 
+// export const getCurrentUser = createAsyncThunk(
+//   'auth/getCurrentUser',
+//   async (_, ThunkAPI) => {
+//     const state = ThunkAPI.getState();
+//     const persistedAccessToken = state.auth.accessToken;
+//     if (!persistedAccessToken) {
+//       return ThunkAPI.rejectWithValue();
+//     }
+//     try {
+//       setToken(persistedAccessToken);
+//       const { data } = await instance.get('/users/current');
+//       return data;
+//     } catch (error) {
+//       return ThunkAPI.rejectWithValue(error.message);
+//     }
+//   },
+// );
+
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
-  async (_, ThunkAPI) => {
-    const state = ThunkAPI.getState();
-    const persistedAccessToken = state.auth.accessToken;
+  async (_, thunkAPI) => {
+    const persistedAccessToken = localStorage.setItem('accessToken');
     if (!persistedAccessToken) {
-      return ThunkAPI.rejectWithValue();
+      return thunkAPI.rejectWithValue();
     }
+    setToken(persistedAccessToken);
     try {
-      setToken(persistedAccessToken);
       const { data } = await instance.get('/users/current');
       return data;
     } catch (error) {
-      return ThunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

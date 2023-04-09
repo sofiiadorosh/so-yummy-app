@@ -9,11 +9,11 @@ import {
 } from './operations';
 
 const handlerPending = state => {
-  state.loadind = true;
+  state.loading = true;
 };
 
 const handlerRejected = state => {
-  state.loadind = false;
+  state.loading = false;
 };
 
 const authSlice = createSlice({
@@ -33,6 +33,9 @@ const authSlice = createSlice({
     updateUserAvatar(state, { payload }) {
       state.user.avatarURL = payload;
       state.isLoggedIn = true;
+    },
+    setIsLoggedIn(state, { payload }) {
+      state.isLoggedIn = payload;
     },
   },
   extraReducers: builder =>
@@ -85,6 +88,7 @@ const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.avatarURL = payload.user.avatarURL;
         state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
         state.loading = false;
         state.isLoggedIn = true;
       })
@@ -99,5 +103,6 @@ const authSlice = createSlice({
       .addCase(updateUserInfo.rejected, handlerRejected),
 });
 
-export const { updateUserName, updateUserAvatar } = authSlice.actions;
+export const { updateUserName, updateUserAvatar, setIsLoggedIn } =
+  authSlice.actions;
 export const authReducer = authSlice.reducer;

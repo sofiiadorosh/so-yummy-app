@@ -18,9 +18,6 @@ const FooterContainer = styled.div`
   background-color: ${props => props.theme.colors.darkAccent};
   position: relative;
   max-width: 100% !important;
-  button {
-    background-color: ${props => props.theme.colors.greenAccent};
-  }
 `;
 
 const FooterBlock = styled.footer`
@@ -56,6 +53,7 @@ const SocialLinksWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 18px;
+  margin-top: 44px;
   a svg > path {
     fill: ${props => props.theme.colors.greenAccent};
   }
@@ -65,9 +63,11 @@ const SocialLinksWrapper = styled.div`
     fill: ${props => props.theme.colors.whiteText};
   }
   @media only screen and (min-width: 768px) {
+    margin-top: 38px;
     padding-bottom: 24px;
   }
   @media only screen and (min-width: 1440px) {
+    margin-top: 41px;
     padding-bottom: 50px;
   }
 `;

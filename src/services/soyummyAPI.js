@@ -11,7 +11,6 @@ const getCategoryList = async () => {
   }
 };
 
-
 const getCategoryRecipes = async quantity => {
   try {
     const response = await axios.get(`recipes/main-page?limit=${quantity}`);
@@ -39,7 +38,6 @@ const getRecipesById = async id => {
   }
 };
 
-
 export const getSearchByTitle = async (query, page = 1, limit) => {
   try {
     const response = await axios.get(
@@ -62,34 +60,11 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
     console.log(error.message);
     return null;
   }
-
-
 };
 
-
-
-// const delIngridSchoppingListById = async id => {
-//   try {
-//     const response = await axios.delete(`shoppingList/${id}`);
-//     return response.data;
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
-
-const getShoppingList = async () => {
-  try {
-    const response = await axios.get('shopping-list');
-    return response.data;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
 export {
   getCategoryList,
   getCategoryRecipes,
   getRecipesByCategory,
   getRecipesById,
-  getShoppingList
-  // delIngridSchoppingListById
 };

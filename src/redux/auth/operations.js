@@ -10,38 +10,45 @@ const instance = axios.create({
   baseURL: 'https://so-yummy-app-backend.onrender.com/api/',
 });
 
-const setToken = (token) => {
+const setToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-}; 
+};
 
 const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
-}; 
+};
 
-instance.interceptors.response.use(response => response, async (error) => {
-  if (error.response.status === 401) {
-    const refreshToken = localStorage.getItem('refreshToken');
-    try {
-      const { data } = await instance.post('/users/refresh', { refreshToken });
-      setToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      return instance(error.config);
-    } catch (error) {
-      return Promise.reject(error);
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const { data } = await instance.post('/users/refresh', {
+          refreshToken,
+        });
+        setToken(data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        return instance(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
+    return Promise.reject(error);
   }
-  return Promise.reject(error);
-})
+);
 
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/users/register', credentials);
-       Notify.success('You successfully registered. You can log in to your account now!');
+      Notify.success(
+        'You successfully registered. You can log in to your account now!'
+      );
       return response.data.user;
     } catch (error) {
-      Notify.failure("Something went wrong, try again");
+      Notify.failure('Something went wrong, try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -53,7 +60,7 @@ export const login = createAsyncThunk(
     try {
       const { data } = await instance.post('/users/login', credentials);
       setToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken)
+      localStorage.setItem('refreshToken', data.refreshToken);
       Notify.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
@@ -61,7 +68,7 @@ export const login = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-); 
+);
 
 export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
@@ -70,10 +77,10 @@ export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
     Notify.success('You successfully logged out! Hope to see you soon again!');
     return;
   } catch (error) {
-    Notify.warning('You logged out, please login again!')
+    Notify.warning('You logged out, please login again!');
     return thunkAPI.rejectWithValue(error.message);
   }
-}); 
+});
 
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
@@ -90,8 +97,8 @@ export const getCurrentUser = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error.message);
     }
-  },
-); 
+  }
+);
 
 export const updateUserInfo = createAsyncThunk(
   'auth/update',

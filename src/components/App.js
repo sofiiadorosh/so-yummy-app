@@ -39,8 +39,6 @@ export const App = () => {
     }
   }, [dispatch, isLoggedIn, token]);
 
-
-
   const { darkTheme } = useSelector(state => state.theme);
 
   return (
@@ -48,20 +46,37 @@ export const App = () => {
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={
-            <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
-          } />
-          <Route path="register" element={
-            <PublicRoute component={<RegisterPage />} restricted />
-          } />
-          <Route path="signin" element={
-            <PublicRoute component={<SigninPage />} restricted redirectTo="/main" />
-          } />
+          <Route
+            path="/"
+            element={
+              <PublicRoute
+                component={<WelcomePage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
+          <Route
+            path="register"
+            element={<PublicRoute component={<RegisterPage />} restricted />}
+          />
+          <Route
+            path="signin"
+            element={
+              <PublicRoute
+                component={<SigninPage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
 
-          <Route path="/" element={<SharedLayout />} >
-            <Route path="main" index element={
-              <PrivateRoute component={<MainPage />} />
-            } />
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              path="main"
+              index
+              element={<PrivateRoute component={<MainPage />} />}
+            />
             <Route
               path="categories/:categoryName"
               element={<CategoriesPage />}
@@ -74,9 +89,8 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-         
         </Routes>
       </ThemeProvider>
     </div>
   );
-}; 
+};

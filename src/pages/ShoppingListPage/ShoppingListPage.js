@@ -35,21 +35,24 @@ export const ShoppingListPage = () => {
   //   return;
   // }
 
+
+
   return (
-  <>
+
 
       <ShoppingListSection>
         <Container>
           <Square />
           <Title>
             <MainPageTitle title="Shopping list" />
-          </Title>
+          </Title>         
           <IngredientsShoppingList />
+
           <Outlet />
         </Container>
       </ShoppingListSection>
-    )
-  </>
+    
+
   )
 
 

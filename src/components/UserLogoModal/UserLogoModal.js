@@ -7,7 +7,7 @@ import { LogoutBtn } from 'components/LogoutBtn';
 
 import { Modal, EditButton, LogoutButton } from './UserLogoModal.styled';
 
-export const UserLogoModal = () => {
+export const UserLogoModal = ({avatar, user}) => {
   const [userInfoModal, setUserInfoModal] = useState('closed');
   const [logoutModal, setlogoutModal] = useState('closed');
 
@@ -27,7 +27,7 @@ export const UserLogoModal = () => {
         <UserModal
           state={userInfoModal}
           stateFn={setUserInfoModal}
-          children={<UserInfoModal />}
+          children={<UserInfoModal avatar={avatar} user={user} />}
         />
       )}
       {logoutModal === 'opened' && (
@@ -40,3 +40,41 @@ export const UserLogoModal = () => {
     </>
   );
 };
+
+
+
+
+
+// export const UserLogoModal = ({avatar, user}) => {
+//   const [userInfoModal, setUserInfoModal] = useState(state);
+//   const [logoutModal, setlogoutModal] = useState('closed');
+
+//   return (
+//     <>
+//       <Modal>
+//         <EditButton type="button" onClick={() => setUserInfoModal('opened')}>
+//           <span>Edit profile</span>
+//           <FiEdit2 size={14} />
+//         </EditButton>
+//         <LogoutButton type="button" onClick={() => setlogoutModal('opened')}>
+//           <span>Log out</span>
+//           <FiArrowRight size={18} />
+//         </LogoutButton>
+//       </Modal>
+//       {userInfoModal === 'opened' && (
+//         <UserModal
+//           state={userInfoModal}
+//           stateFn={stateFn}
+//           children={<UserInfoModal avatar={avatar} user={user} />}
+//         />
+//       )}
+//       {logoutModal === 'opened' && (
+//         <UserModal
+//           state={logoutModal}
+//           stateFn={setlogoutModal}
+//           children={<LogoutBtn />}
+//         />
+//       )}
+//     </>
+//   );
+// };

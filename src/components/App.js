@@ -21,7 +21,7 @@ import { WelcomePage } from 'pages/WelcomePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { SigninPage } from 'pages/SigninPage';
 
-import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
+// import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
 import { setIsLoggedIn} from 'redux/auth/slice';
 import { getCurrentUser } from 'redux/auth/operations';
 
@@ -29,7 +29,7 @@ import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
   //   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectAccessToken);
+  // const token = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
 

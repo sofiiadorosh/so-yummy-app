@@ -1,6 +1,13 @@
 import { GrClose } from 'react-icons/gr';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  deleteFromShoppingList,
+  getShoppingList,
+} from 'redux/shoppingList.js/operations';
+import { selectShoppingList } from 'redux/shoppingList.js/selectors';
+
 import defaultIngredientsImg from '../../images/noPhoto.svg';
-import { useDeleteIngridientsMutation } from '../../redux/ShoppingList/shoppingListAPI';
 
 import {
   TitleWrapper,
@@ -9,18 +16,20 @@ import {
   IngredientsList,
   IngredientsItem,
   ItemTitleWrapper,
-  IngredientsTitle, 
+  IngredientsTitle,
   MeasureWrapper,
-} from './IngredientsShoppingList.styled'
+} from './IngredientsShoppingList.styled';
 
+export const IngredientsShoppingList = () => {
+  const ingredients = useSelector(selectShoppingList);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getShoppingList());
+  }, [dispatch]);
 
-export const IngredientsShoppingList = ({ _id }) => {
-
-  const [deleteIngridients] = useDeleteIngridientsMutation();
-  
   return (
-    < >
+    <>
       <TitleWrapper>
         <Title children="Product" />
         <TitleRemoveWrap>
@@ -28,74 +37,27 @@ export const IngredientsShoppingList = ({ _id }) => {
           <Title children="Remove" />
         </TitleRemoveWrap>
       </TitleWrapper>
-
       <IngredientsList>
-              <IngredientsItem >
-                 <ItemTitleWrapper>
-                    <div>
-                      <img
-                        src={ defaultIngredientsImg}
-                        alt="Ingredient"
-                      />
-                    </div>
-                    <IngredientsTitle children="Avokadoo" />
-                </ItemTitleWrapper>
-                <MeasureWrapper>
-                    <p children="100" />
-                     <button onClick={() => deleteIngridients(_id)} ><GrClose /></button>
-                </MeasureWrapper>
-            </IngredientsItem>
+        {ingredients.map(({ ingredient: { ttl, thb }, measure, _id }) => (
+          <IngredientsItem key={_id}>
+            <ItemTitleWrapper>
+              <div>
+                <img src={thb ? thb : defaultIngredientsImg} alt={ttl} />
+              </div>
+              <IngredientsTitle children={ttl} />
+            </ItemTitleWrapper>
+            <MeasureWrapper>
+              <p children={measure} />
+              <button
+                type="button"
+                onClick={() => dispatch(deleteFromShoppingList(_id))}
+              >
+                <GrClose />
+              </button>
+            </MeasureWrapper>
+          </IngredientsItem>
+        ))}
       </IngredientsList>
     </>
-  )
+  );
 };
-
-
-
-// коли запроцює передаца ингридиентив на цю сторинку
-
-// export const IngredientsShoppingList = ({ingredients }) => {
-
-//   const [deleteIngridients] = useDeleteIngridientsMutation();
-
-//   return (
-//     < >
-//       <TitleWrapper>
-//         <Title children="Product" />
-//         <TitleRemoveWrap>
-//           <Title children="Number" />
-//           <Title children="Remove" />
-//         </TitleRemoveWrap>
-//       </TitleWrapper>
-
-//        <IngredientsList>
-//         {ingredients &&
-//           ingredients.map(({ id: { _id, ttl, thb }, measure }) => {
-//             return (
-//               <IngredientsItem key={_id}>
-//                  <ItemTitleWrapper>
-//                     <div>
-//                       <img
-//                         src={thb ? thb : defaultIngredientsImg}
-//                         alt="Ingredient"
-//                       />
-//                     </div>
-//                     <IngredientsTitle children={ttl} />
-//                 </ItemTitleWrapper>
-//                 <MeasureWrapper>
-//                     <p children={measure} />
-//                     <button onClick={() => deleteIngridients(_id)}><GrClose /></button>
-//                   </MeasureWrapper>
-//               </IngredientsItem>
-//             );
-//           })}
-//       </IngredientsList>
-//     </>
-//   )
-
-// }
-
-
-
- 
-

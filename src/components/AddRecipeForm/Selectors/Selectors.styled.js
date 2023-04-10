@@ -5,7 +5,7 @@ export const SearchForm = styled.form`
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  
+ 
 `;
 
 export const Text = styled.span`

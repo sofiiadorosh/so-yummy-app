@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logout, getCurrentUser, updateUserInfo  } from './operations';
 
 const handlerPending = state => {
-  state.loadind = true;
+  state.loading = true;
 };
 
 const handlerRejected = (state) => {
-  state.loadind = false;
+  state.loading = false;
 };
 
 const authSlice = createSlice({
@@ -21,25 +21,35 @@ const authSlice = createSlice({
 
   },
   reducers: {
+    updateDataUser(state, { payload }) {
+      state.refreshToken = payload.refreshToken;
+      state.accessToken = payload.accessToken;
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.user.avatarURL = payload.user.avatarURL;
+    },
     updateUserName(state, { payload }) {
       state.user.name = payload;
-       state.isLoggedIn = true;
+      state.isLoggedIn = true;
     },
     updateUserAvatar(state, { payload }) {
       state.user.avatarURL = payload;
-       state.isLoggedIn = true;
+      state.isLoggedIn = true;
+    },
+    setIsLoggedIn(state, { payload }) {
+      state.isLoggedIn = payload;
     },
   },
   extraReducers: builder =>
     builder
-       .addCase(register.pending, handlerPending)
-       .addCase(register.fulfilled, (state, { payload }) => {
+      .addCase(register.pending, handlerPending)
+      .addCase(register.fulfilled, (state, { payload }) => {
         state.user.name = payload.name;
         state.user.email = payload.email;
-         state.user.avatarURL = payload.avatarURL;
-         state.loading = false;
-         state.isLoggedIn = false;
-       })
+        state.user.avatarURL = payload.avatarURL;
+        state.loading = false;
+        state.isLoggedIn = false;
+      })
       .addCase(register.rejected, handlerRejected)
 
       .addCase(login.pending, handlerPending)
@@ -50,7 +60,7 @@ const authSlice = createSlice({
         state.refreshToken = payload.refreshToken;
         state.accessToken = payload.accessToken;
         state.loading = false;
-         state.isLoggedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(login.rejected, handlerRejected)
 
@@ -62,9 +72,9 @@ const authSlice = createSlice({
         state.refreshToken = null;
         state.accessToken = null;
         state.loading = false;
-         state.isLoggedIn = false;
+        state.isLoggedIn = false;
       })
-        .addCase(logout.rejected, (state, { payload }) => {
+      .addCase(logout.rejected, (state, { payload }) => {
         state.user.email = '';
         state.user.name = '';
         state.user.avatarURL = '';
@@ -72,7 +82,7 @@ const authSlice = createSlice({
         state.accessToken = '';
         state.loading = false;
         state.error = payload;
-        })
+      })
       
       .addCase(getCurrentUser.pending, handlerPending)
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
@@ -80,8 +90,9 @@ const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.avatarURL = payload.user.avatarURL;
         state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
         state.loading = false;
-         state.isLoggedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(getCurrentUser.rejected, handlerRejected)
       
@@ -89,13 +100,15 @@ const authSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
         state.user.name = payload.user.name;
         state.user.avatar = payload.user.avatarURL;
-        state.isLoggedIn = true; 
+        state.isLoggedIn = true;
       })
       .addCase(updateUserInfo.rejected, handlerRejected),
-});
+}); 
 
 export const {
   updateUserName,
   updateUserAvatar,
-} = authSlice.actions;
+  setIsLoggedIn,
+  updateDataUser,
+} = authSlice.actions; 
 export const authReducer = authSlice.reducer;

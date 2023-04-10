@@ -36,7 +36,9 @@ export const UserLogo = () => {
         <UserName>{userName}</UserName>
       </UserLogoWrapper>
       <Modal status={modal}>
-        <UserLogoModal />
+        <UserLogoModal
+          avatar={avatarURL} user={userName}
+        />
       </Modal>
     </div>
   );

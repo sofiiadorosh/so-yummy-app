@@ -1,20 +1,34 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik } from "formik";
+import { Formik } from 'formik';
 import * as yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import { register } from 'redux/auth/operations';
 // import { selectError, selectLoading } from 'redux/auth/selectors';
 
-import { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, NameIcon, EmailIcon, PasswordIcon, FormInput, FormButton , AuthLink} from './RegisterForm.styled';
-
-
+import {
+  RegisterBackground,
+  RegisterContainer,
+  ImageContainer,
+  AuthImage,
+  RegisterFormBox,
+  Title,
+  FormBox,
+  InputBox,
+  IconBox,
+  NameIcon,
+  EmailIcon,
+  PasswordIcon,
+  FormInput,
+  FormButton,
+  AuthLink,
+} from './RegisterForm.styled';
 
 let initialValues = {
-  name: "",
-  email: "",
-  password: "",
+  name: '',
+  email: '',
+  password: '',
 };
 
 export const RegisterForm = () => {
@@ -24,7 +38,7 @@ export const RegisterForm = () => {
   // const erorMessage = useSelector(selectError);
 
   const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const nameRegExp = /^(?:[\p{L}\p{M}]+(?:[ '-][\p{L}\p{M}]+)*|\d+)$/u;
   const emailRegExp = /^\w+([.-]?\w+){2}@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -60,31 +74,33 @@ export const RegisterForm = () => {
       .max(16, 'Your password must be 16 characters max')
       .required('Enter your password please'),
   });
-  
-  const getColor = (errors, values, defaultColor = 'rgba(255, 255, 255, 0.8)') => {
+
+  const getColor = (
+    errors,
+    values,
+    defaultColor = 'rgba(255, 255, 255, 0.8)'
+  ) => {
     if (errors === 'Your password is little secure') {
-      return '#F6C23E'
+      return '#F6C23E';
     }
     return values ? (errors && '#E74A3B') || '#3CBC81' : defaultColor;
   };
-  
+
   const onSubmitHandler = async (values, { setSubmitting, resetForm }) => {
     const { name, email, password } = values;
-    dispatch(register({ name, email, password }))
-      .then(res => {
-        if (res.payload.name === "AxiosError") {
-          setSubmitting(false);
-        } else {
-          resetForm();
-          navigate('/signin');
-        }
-      });
+    dispatch(register({ name, email, password })).then(res => {
+      if (res.payload.name === 'AxiosError') {
+        setSubmitting(false);
+      } else {
+        resetForm();
+        navigate('/signin');
+      }
+    });
   };
-  
+
   const passwordShownToggle = () => {
     setPasswordShown(!passwordShown);
   };
-
 
   return (
     <>
@@ -114,7 +130,7 @@ export const RegisterForm = () => {
                   <FormInput
                     autoComplete="name"
                     placeholder="Name"
-                    type='text'
+                    type="text"
                     name="name"
                     color={getColor(errors.name, values.name)}
                     bordercolor={getColor(
@@ -136,7 +152,7 @@ export const RegisterForm = () => {
                   <FormInput
                     autoComplete="email"
                     placeholder="Email"
-                    type='text'
+                    type="text"
                     name="email"
                     color={getColor(errors.email, values.email)}
                     bordercolor={getColor(
@@ -148,7 +164,9 @@ export const RegisterForm = () => {
                 </InputBox>
                 <InputBox>
                   <IconBox onClick={passwordShownToggle}>
-                    <PasswordIcon color={getColor(errors.password, values.password)} />
+                    <PasswordIcon
+                      color={getColor(errors.password, values.password)}
+                    />
                   </IconBox>
                   {/* {values.name && (
                     <ErrorIconBox>
@@ -158,7 +176,7 @@ export const RegisterForm = () => {
                   <FormInput
                     autoComplete="password"
                     placeholder="Password"
-                    type={passwordShown ? "text" : "password"}
+                    type={passwordShown ? 'text' : 'password'}
                     name="password"
                     color={getColor(errors.password, values.password)}
                     bordercolor={getColor(
@@ -172,7 +190,12 @@ export const RegisterForm = () => {
               <FormButton
                 type="submit"
                 disabled={
-                  errors.password || errors.email || errors.name || !values.password ? true : false
+                  errors.password ||
+                  errors.email ||
+                  errors.name ||
+                  !values.password
+                    ? true
+                    : false
                 }
               >
                 Sign up
@@ -183,6 +206,5 @@ export const RegisterForm = () => {
         </Formik>
       </RegisterContainer>
     </>
-  )
-}; 
-
+  );
+};

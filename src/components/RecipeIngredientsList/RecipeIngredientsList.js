@@ -45,10 +45,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
     const oldIngredient = shoppingList.find(
       item => item.ingredient === ingredient
     );
-    console.log(oldIngredient);
 
     const checkbox = checked.find(elem => elem.id === ingredient);
-    console.log(checkbox.checked);
 
     if (!checkbox.checked) {
       dispatch(addToShoppingList({ ingredient, measure }));

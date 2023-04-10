@@ -82,6 +82,7 @@ const getCategoryList = async () => {
 };
 
 
+
 const getCategoryRecipes = async quantity => {
   try {
     const response = await instance.get(`recipes/main-page?limit=${quantity}`);
@@ -132,9 +133,16 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
     console.log(error.message);
     return null;
   }
-
-
 };
+
+const geMyRecipesList = async () => {
+   try {
+    const response = await instance.get('ownRecipes');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+ }
 
 
 export {
@@ -142,4 +150,5 @@ export {
   getCategoryRecipes,
   getRecipesByCategory,
   getRecipesById,
+  geMyRecipesList
 };

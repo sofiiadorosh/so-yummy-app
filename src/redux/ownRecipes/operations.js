@@ -20,7 +20,7 @@ export const addToOwnRecipes = createAsyncThunk(
   'ownRecipes/addRecipe',
   async (recipe, thunkAPI) => {
     try {
-      const response = await axios.post('/shopping-list', recipe);
+      const response = await axios.post('/ownRecipes', recipe);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -32,7 +32,7 @@ export const deleteFromOwnRecipes = createAsyncThunk(
   'ownRecipes/deleteRecipe',
   async (recipeId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/shopping-list/${recipeId}`);
+      const response = await axios.delete(`/ownRecipes/${recipeId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

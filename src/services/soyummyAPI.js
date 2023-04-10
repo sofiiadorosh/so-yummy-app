@@ -133,7 +133,9 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
 
 export const getAllFavorites = async (page, limit) => {
   try {
-    const response = await axios.get(`/favorite?page=${page}&limit=${limit}`);
+    const response = await instance.get(
+      `/favorite?page=${page}&limit=${limit}`
+    );
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -143,7 +145,7 @@ export const getAllFavorites = async (page, limit) => {
 
 export const addToFavorite = async id => {
   try {
-    const response = await axios.post(`/favorite`);
+    const response = await instance.post(`/favorite`);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -152,7 +154,7 @@ export const addToFavorite = async id => {
 };
 export const deleteFromFavorite = async id => {
   try {
-    const response = await axios.delete(`/favorite/${id}`);
+    const response = await instance.delete(`/favorite/${id}`);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -168,6 +170,7 @@ const getShoppingList = async () => {
     console.log(error.message);
   }
 };
+
 export {
   getCategoryList,
   getCategoryRecipes,

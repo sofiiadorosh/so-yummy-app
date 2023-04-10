@@ -86,13 +86,13 @@ border-color:transparent;
 
 export const MainWrapIngredients = styled.div`
   margin-top: 44px;
-  margin-bottom: 18px;
+
   width: 100%;
 
 `;
 
 export const WrapIngredients = styled.div`
-  margin-bottom: 24px;
+ 
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

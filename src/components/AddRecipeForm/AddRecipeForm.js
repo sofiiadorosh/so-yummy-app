@@ -14,10 +14,10 @@ import {
   ImgUploadWrap,
   InputDescriptionWrap,
   InputDescription,
-  InputIngredientsWrap,
+  
   MainWrapIngredients,
   WrapPreparation,
-  WrapButtonAdd,
+ 
   Description,
   
 } from './AddRecipeForm.styled';
@@ -124,14 +124,8 @@ export const AddRecipeForm = () => {
             onSetValue={handleSetValue}
           />
          
-
-          <InputIngredientsWrap>
-            
-          
-          </InputIngredientsWrap>
-          <InputIngredientsWrap>
-        
-          </InputIngredientsWrap>
+         </MainWrapIngredients>
+         
 
           <WrapPreparation>
           <RecipePreparationFields
@@ -139,10 +133,6 @@ export const AddRecipeForm = () => {
               inputs={descriptionFields}
             />
           </WrapPreparation>
-        </MainWrapIngredients>
-        <WrapButtonAdd>
-         
-        </WrapButtonAdd>
         <PopularRecipe/>
       </Form>
     </Wrap>

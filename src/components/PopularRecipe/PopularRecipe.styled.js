@@ -3,14 +3,16 @@ import styled from 'styled-components';
 
 export const WrapperPopular = styled.div`
   margin-top: 72px;
+  
   @media screen and (min-width: 768px) {
     margin-top: 0;
   }
 `;
 
 export const TitlePopular = styled.h3`
-  color: ;
-  font-weight: ;
+  color: #3E4462 ;
+  text-align: start;
+  font-weight: 600;
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
@@ -69,16 +71,19 @@ export const ItemWrapper = styled.div``;
 
 export const ItemTitle = styled.h4`
   margin-bottom: 3px;
-  color:;
-  font-weight: ;
+  font-family: 'Poppins';
+  color:#3E4462;
+  font-weight: 500 ;
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.24px;
+  text-align: start;
 `;
 
 export const ItemText = styled.p`
   color: #7e7e7e;
-  font-weight:;
+  text-align: start;
+  font-weight:400;
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: -0.24px;

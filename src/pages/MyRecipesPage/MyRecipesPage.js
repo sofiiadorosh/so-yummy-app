@@ -1,6 +1,7 @@
 // import { Outlet } from 'react-router-dom';
  import { useState, useEffect } from 'react'
 
+ import {geMyRecipesList} from 'services/soyummyAPI'
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
@@ -38,7 +39,8 @@ import { MyRecipesPageSection, Container, Title} from './MyRecipesPage.styled';
 
     const getData = async () => {
       try {
-        setRecipes(recipes);
+        const data = await geMyRecipesList();
+        setRecipes(data.recipes);
       } catch (error) {
         setError(error.message);
       }

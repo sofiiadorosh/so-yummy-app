@@ -16,8 +16,9 @@ import {
 
 export const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  console.log(id);
 
-  const addFavorite = ({ id }) => {
+  const addFavorite = () => {
     addToFavorite(id)
       .then(res => {
         console.log(res);
@@ -25,9 +26,11 @@ export const RecipePageHero = ({ title, description, time, id }) => {
           Notiflix.Notify.warning(
             `Неможливо додати рецепт по якійсь причині...`
           );
+          return;
+        } else {
+          setIsFavorite(true);
+          Notiflix.Notify.warning(`Added to favorite!`);
         }
-        setIsFavorite(true);
-        Notiflix.Notify.warning(`Added to favorite!`);
       })
       .catch(err => {
         console.log(err.message);
@@ -42,6 +45,7 @@ export const RecipePageHero = ({ title, description, time, id }) => {
           Notiflix.Notify.warning(
             `Неможливо видалити рецепт по якійсь причині...`
           );
+          return;
         }
         setIsFavorite(false);
         Notiflix.Notify.warning(`Removed from favorite!`);

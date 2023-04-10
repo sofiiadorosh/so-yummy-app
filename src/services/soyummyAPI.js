@@ -144,7 +144,7 @@ export const getAllFavorites = async () => {
 export const addToFavorite = async id => {
   try {
     const response = await instance.post(`/favorite/${id}`);
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error.message);
     return null;

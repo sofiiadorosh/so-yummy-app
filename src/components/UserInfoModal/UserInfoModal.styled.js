@@ -61,6 +61,13 @@ const PictureField = styled.div`
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
+
+  img {
+     width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 `;
 
 const PickButton = styled.button`

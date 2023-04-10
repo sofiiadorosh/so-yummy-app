@@ -21,6 +21,13 @@ const authSlice = createSlice({
 
   },
   reducers: {
+       updateDataUser(state, { payload }) {
+      state.refreshToken = payload.refreshToken;
+      state.accessToken = payload.accessToken;
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.user.avatarURL = payload.user.avatarURL;
+    },
     updateUserName(state, { payload }) {
       state.user.name = payload;
        state.isLoggedIn = true;
@@ -101,6 +108,7 @@ const authSlice = createSlice({
 export const {
   updateUserName,
   updateUserAvatar,
-  setIsLoggedIn
+  setIsLoggedIn, 
+  updateDataUser,
 } = authSlice.actions;
 export const authReducer = authSlice.reducer;

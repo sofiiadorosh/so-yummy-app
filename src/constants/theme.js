@@ -24,6 +24,7 @@ export const lightTheme = Object.freeze({
     primaryLightText: '#FAFAFA',
     secondaryLightText: '#e0e0e0',
     tertiaryLightText: '#BDBDBD',
+    popularRecipeText: '#7e7e7e',
 
     whiteText: '#ffffff',
 

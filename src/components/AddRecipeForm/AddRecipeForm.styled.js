@@ -157,29 +157,3 @@ export const WrapButtonAdd = styled.div`
   margin-right: auto;
 `;
 
-export const ButtonAdd = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  /* position: absolute; */
-  /* top: 0; */
-  right: 25px;
-  width: 113px;
-  height: 52px;
-
-  border-radius: 24px 44px;
-  border: none;
-
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-
-
-  &:hover,
-  &:focus {
-background-color:#22252A;
-color:#fff;
-  }
-`;

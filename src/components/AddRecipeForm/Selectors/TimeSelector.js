@@ -92,7 +92,7 @@ export const TimeTypeSelector = () => {
             flexDirection: 'column',
             paddingTop: '8px',
             height: "154px",
-            overflow: 'scroll',
+            overflow: 'auto',
             marginBottom: '10px',
             paddingBottom: '5px',
             font: '12px',

@@ -16,14 +16,12 @@ import {
   InputDescription,
   InputIngredientsWrap,
   MainWrapIngredients,
-  TitlePreparation,
   WrapPreparation,
-  TextAreaPreparation,
-  ButtonAdd,
   WrapButtonAdd,
   Description,
   
 } from './AddRecipeForm.styled';
+import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 import {IngredientsField} from "./RecipeIngredientsFields/RecipeIngredientsFields"
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
@@ -136,18 +134,14 @@ export const AddRecipeForm = () => {
           </InputIngredientsWrap>
 
           <WrapPreparation>
-            <TitlePreparation>Recipe Preparation</TitlePreparation>
-            <TextAreaPreparation
-              name=""
-              id=""
-              // cols="30"
-              rows="7"
-              placeholder="Enter recipe"
-            ></TextAreaPreparation>
+          <RecipePreparationFields
+              onInput={handleChange}
+              inputs={descriptionFields}
+            />
           </WrapPreparation>
         </MainWrapIngredients>
         <WrapButtonAdd>
-          <ButtonAdd type="submit">Add</ButtonAdd>
+         
         </WrapButtonAdd>
         <PopularRecipe/>
       </Form>

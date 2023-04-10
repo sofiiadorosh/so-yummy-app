@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
   DeleteBtn,
- 
+  // InputIngredients,
   InputIngredientsWrap,
   
   TitleIngredients,
@@ -14,11 +14,11 @@ import { Counter } from '../Counter/Counter';
 import { useSearchParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
-const getIngredientsByQuery = async query => {
+const getIngredientsByQuery = async () => {
   const response = await axios.get(
-    `https://soyummy-tw3y.onrender.com/api/v1/ingredients?query=${query}`
+    `https://so-yummy-app-backend.onrender.com/api/ingredients/list`
   );
-  const { data } = response.data;
+  const { data } = response;
   return data;
 };
 
@@ -99,9 +99,9 @@ export const IngredientsField = ({
 
   const handleDelete = fieldId => {
     setInputFields(inputFields.filter(({ id }) => id !== fieldId));
-    // onSetValue(inputs.ingredients);
+ 
     setCount(state => state - 1);
-    // onSetValue(inputFields);
+   
   };
 
   return (
@@ -118,7 +118,12 @@ export const IngredientsField = ({
       {inputFields.map((inputField, index) => (
         <div key={inputField.id}>
           <InputIngredientsWrap>
-            
+          {/* <InputIngredients
+              name="field"
+              id={inputField.id}
+              value={inputField.field}
+              onChange={event => handleChangeInput(index, event)}
+            /> */}
             <IngredientsSelector/>
           <MeasureTypeSelector/>
             <DeleteBtn onClick={() => handleDelete(inputField.id)} />

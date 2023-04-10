@@ -21,24 +21,46 @@ import { WelcomePage } from 'pages/WelcomePage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { SigninPage } from 'pages/SigninPage';
 
-import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
+// import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
+import { setIsLoggedIn} from 'redux/auth/slice';
 import { getCurrentUser } from 'redux/auth/operations';
 
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectAccessToken);
+  //   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const token = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   if (token === null) return;
+  //   if (isLoggedIn && token) {
+  //     dispatch(getCurrentUser());
+  //   }
+  // }, [dispatch, isLoggedIn, token]);
+  
+
+  // const dispatch = useDispatch();
+  
+  //   useEffect(() => {
+  //   const isLoggedIn = Boolean(token);
+  //   dispatch(setIsLoggedIn(isLoggedIn));
+  //      if (isLoggedIn) {
+  //     dispatch(getCurrentUser());
+  //   }
+     
+  // }, [dispatch, token]);
+
+
   useEffect(() => {
-    if (token === null) return;
-    if (isLoggedIn && token) {
+    const isLoggedIn = Boolean(localStorage.getItem('accessToken'));
+    dispatch(setIsLoggedIn(isLoggedIn));
+       if (isLoggedIn) {
       dispatch(getCurrentUser());
     }
-  }, [dispatch, isLoggedIn, token]);
-
+     
+  }, [dispatch]);
 
 
   const { darkTheme } = useSelector(state => state.theme);
@@ -80,3 +102,4 @@ export const App = () => {
     </div>
   );
 }; 
+

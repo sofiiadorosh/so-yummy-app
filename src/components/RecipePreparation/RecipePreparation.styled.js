@@ -20,8 +20,6 @@ const PreparationSection = styled.section`
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 164px;
-
     background-image: url(${leavesDesktop});
     background-position: bottom -520px left;
   }

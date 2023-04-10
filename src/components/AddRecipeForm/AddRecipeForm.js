@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { IoCloseOutline } from 'react-icons/io5';
+
+import axios from 'axios';
 
 import {TimeTypeSelector} from "./Selectors/TimeSelector";
 import {CategorySearchSelector} from "./Selectors/CategorySelector";
-import{MeasureTypeSelector} from "./Selectors/MeasureSelector";
-import{IngredientsSelector} from "./Selectors/IngredientsSelector";
-import { Counter } from './Counter/Counter';
+
+
 import {
   InputUpload,
   Wrap,
@@ -14,8 +14,6 @@ import {
   ImgUploadWrap,
   InputDescriptionWrap,
   InputDescription,
-  TitleIngredients,
-  WrapIngredients,
   InputIngredientsWrap,
   MainWrapIngredients,
   TitlePreparation,
@@ -26,18 +24,62 @@ import {
   Description,
   
 } from './AddRecipeForm.styled';
+import {IngredientsField} from "./IngredientsField/IngredientsField"
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
-export const AddRecipeForm = () => { 
-  const [count, setCount] = useState(1);
 
-  const handleIncrement = () => {
-    setCount(state => state + 1);
+
+const initialValues = {
+  title: '',
+  description: '',
+  category: '',
+  time: '',
+  ingredients: [],
+  instructions: '',
+};
+
+
+
+
+export const AddRecipeForm = () => {
+  const [descriptionFields, setDescriptionFields] = useState(initialValues);
+
+  const addRecipe = async text => {
+    try {
+      const response = await axios.post(
+        'https://soyummy-tw3y.onrender.com/api/v1/own-recipes',
+        text
+      );
+      return response.data;
+    } catch (error) {
+      return error.message;
+    }
+  };
+ 
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setDescriptionFields(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleDecrement = () => {
-    setCount(state => state - 1);
+  const handleSetValue = data => {
+    const filteredFields = data.filter(({ field }) => field !== '');
+    const fields = filteredFields.map(({ field }) => field);
+
+    // console.log(fields);
+    setDescriptionFields(prevState => ({
+      ...prevState,
+      ingredients: fields,
+    }));
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(descriptionFields);
+    addRecipe(descriptionFields);
+    reset();
+  };
+
  return ( <Wrap>
 
   <Form>
@@ -76,25 +118,21 @@ export const AddRecipeForm = () => {
           </div>
         </Description>
         <MainWrapIngredients>
-          <WrapIngredients>
-            <TitleIngredients>Ingredients</TitleIngredients>
-            <Counter
-              count={count}
-              handleIncrement={handleIncrement}
-              handleDecrement={handleDecrement}
-            />
-          </WrapIngredients>
+          
+          <IngredientsField
+            handleSubmit={handleSubmit}
+            onInput={handleChange}
+            inputs={descriptionFields}
+            onSetValue={handleSetValue}
+          />
+         
 
           <InputIngredientsWrap>
             
-            <IngredientsSelector/>
-              <MeasureTypeSelector/>
-            
-            <IoCloseOutline size={18} />
+          
           </InputIngredientsWrap>
           <InputIngredientsWrap>
-          <MeasureTypeSelector/>
-            <IoCloseOutline size={18} />
+        
           </InputIngredientsWrap>
 
           <WrapPreparation>

@@ -95,12 +95,10 @@ export const WrapIngredients = styled.div`
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-
+  flex-wrap: wrap;
 `;
 
-export const TitleIngredients = styled.h2`
 
-`;
 
 export const InputIngredientsWrap = styled.div`
   margin-top: 18px;

@@ -71,10 +71,29 @@ export const Favorite = () => {
   return (
     <>
       {loader && <Loader />}
-      {!allRecipes.length && (
+      {!allRecipes ? (
         <NoRecipesText>You dont have any favorites...</NoRecipesText>
+      ) : (
+        <ul>
+          {allRecipes.length !== 0 &&
+            allRecipes.map(({ _id, title, description, time, preview }) => {
+              return (
+                <RecipesCard
+                  key={_id}
+                  id={_id}
+                  title={title}
+                  time={time}
+                  text={description}
+                  onDelete={e => {
+                    handelDelete(_id, e);
+                  }}
+                  imgComponent={preview}
+                />
+              );
+            })}
+        </ul>
       )}
-      <ul>
+      {/* <ul>
         {allRecipes.length !== 0 &&
           allRecipes.map(({ _id, title, description, time, preview }) => {
             return (
@@ -91,7 +110,7 @@ export const Favorite = () => {
               />
             );
           })}
-      </ul>
+      </ul> */}
       <PaginationWrp>
         {count > 1 && (
           <Paginator count={count} page={page} isChange={onPageChange} />

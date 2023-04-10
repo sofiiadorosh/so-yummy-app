@@ -44,7 +44,7 @@ const ItemBoxTitle = styled.p`
   }
 `
 
-const ItemBoxText = styled.p`
+const ItemBoxDescript = styled.p`
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: 8px;
   color: ${props => props.theme.colors.primaryDarkText};
@@ -152,7 +152,7 @@ export {
   PicterItem,
   ItemBox,
   ItemBoxTitle,
-  ItemBoxText,
+  ItemBoxDescript,
   ItemBoxTime,
   LogoTrash,
   ItemBoxButton

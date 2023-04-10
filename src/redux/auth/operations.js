@@ -11,7 +11,8 @@ const instance = axios.create({
 });
 
 const setToken = (token) => {
-     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    const accessToken = localStorage.getItem("accessToken");
+     instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 }; 
 
 const clearAuthHeader = () => {
@@ -65,7 +66,7 @@ export const login = createAsyncThunk(
       const { data } = await instance.post('/users/login', credentials);
       setToken(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
-       localStorage.getItem('accessToken', data.accessToken);
+       localStorage.setItem('accessToken', data.accessToken);
       Notify.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
@@ -79,6 +80,8 @@ export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/users/logout');
     clearAuthHeader();
+     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('accessToken');
     Notify.success('You successfully logged out! Hope to see you soon again!');
     return;
   } catch (error) {

@@ -20,7 +20,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: { name: null, email: null, avatarURL: null },
-    refreshToken: null,
     accessToken: null,
     isLoggedIn: false,
     loading: false,
@@ -45,6 +44,7 @@ const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
         state.user.avatarURL = payload.avatarURL;
+        state.accessToken = payload.accessToken;
         state.loading = false;
         state.isLoggedIn = false;
       })
@@ -55,7 +55,6 @@ const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
         state.user.avatarURL = payload.user.avatarURL;
-        state.refreshToken = payload.refreshToken;
         state.accessToken = payload.accessToken;
         state.loading = false;
         state.isLoggedIn = true;
@@ -67,7 +66,6 @@ const authSlice = createSlice({
         state.user.email = null;
         state.user.name = null;
         state.user.avatarURL = null;
-        state.refreshToken = null;
         state.accessToken = null;
         state.loading = false;
         state.isLoggedIn = false;
@@ -75,8 +73,7 @@ const authSlice = createSlice({
       .addCase(logout.rejected, (state, { payload }) => {
         state.user.email = '';
         state.user.name = '';
-        state.user.avatarURL = '';
-        state.refreshToken = '';
+        state.user.avatarURL = ''
         state.accessToken = '';
         state.loading = false;
         state.error = payload;
@@ -88,7 +85,6 @@ const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.avatarURL = payload.user.avatarURL;
         state.accessToken = payload.accessToken;
-        state.refreshToken = payload.refreshToken;
         state.loading = false;
         state.isLoggedIn = true;
       })

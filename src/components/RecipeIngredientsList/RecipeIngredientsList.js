@@ -22,38 +22,38 @@ import {
 
 import defaultIngredientsImg from '../../images/noPhoto.svg';
 
+const getInitialState = items => {
+  return items
+    .map(({ id }) => id._id)
+    .map(elem => {
+      return { id: elem, checked: false };
+    });
+};
+
 export const RecipeIngredientsList = ({ ingredients }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(getInitialState(ingredients));
   const shoppingList = useSelector(selectShoppingList);
   const dispatch = useDispatch();
 
-  const changeIngredientsNumber = (ondNumber, newNumber) => {
-    const number = newNumber.replace(new RegExp(/[0-9]+/g), '');
-    const newMeasure = parseFloat(ondNumber) + parseFloat(newNumber) + number;
-    return newMeasure;
-  };
-
   const addIngredientHandler = ({ ingredient, measure }) => {
-    setChecked(prevState => !prevState);
-
-    const oldIngredient = shoppingList.find(
-      item => item.ingredient._id === ingredient
+    setChecked(prevState =>
+      prevState.map(elem =>
+        elem.id === ingredient ? { ...elem, checked: !elem.checked } : elem
+      )
     );
 
-    if (checked && !oldIngredient) {
-      return dispatch(addToShoppingList({ ingredient, measure }));
-    } else if (checked && oldIngredient) {
-      const newNumber = changeIngredientsNumber(oldIngredient.measure, measure);
-      return dispatch(addToShoppingList({ ingredient, measure: newNumber }));
-    } else if (!checked && oldIngredient) {
-      if (parseFloat(oldIngredient.measure) > parseFloat(measure)) {
-        const newNumber = changeIngredientsNumber(
-          oldIngredient.measure,
-          measure
-        );
-        return dispatch(addToShoppingList({ ingredient, measure: newNumber }));
-      }
-      dispatch(deleteFromShoppingList(oldIngredient._id));
+    const oldIngredient = shoppingList.find(
+      item => item.ingredient === ingredient
+    );
+    console.log(oldIngredient);
+
+    const checkbox = checked.find(elem => elem.id === ingredient);
+    console.log(checkbox.checked);
+
+    if (!checkbox.checked) {
+      dispatch(addToShoppingList({ ingredient, measure }));
+    } else {
+      dispatch(deleteFromShoppingList(oldIngredient?._id));
     }
   };
 
@@ -87,7 +87,7 @@ export const RecipeIngredientsList = ({ ingredients }) => {
                       <input
                         type="checkbox"
                         id={_id}
-                        checked={checked}
+                        checked={checked[_id]}
                         onChange={() =>
                           addIngredientHandler({
                             ingredient: _id,

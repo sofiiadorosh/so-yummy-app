@@ -49,7 +49,7 @@ const shoppingListSlice = createSlice({
         return {
           ...state,
           items: state.items.filter(
-            ingredient => ingredient.id !== action.payload.id
+            ingredient => ingredient._id !== action.payload._id
           ),
           isLoading: false,
           error: null,

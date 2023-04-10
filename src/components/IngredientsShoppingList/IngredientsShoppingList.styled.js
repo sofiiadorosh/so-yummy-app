@@ -183,6 +183,8 @@ const MeasureWrapper = styled.div`
     border: none;
     outline: none;
 
+    cursor: pointer;
+
     @media screen and (min-width: 768px) {
       width: 20px;
       height: 20px;

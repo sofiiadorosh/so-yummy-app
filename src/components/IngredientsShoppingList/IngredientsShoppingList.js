@@ -1,6 +1,10 @@
 import { GrClose } from 'react-icons/gr';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteFromShoppingList } from 'redux/shoppingList.js/operations';
+import {
+  deleteFromShoppingList,
+  getShoppingList,
+} from 'redux/shoppingList.js/operations';
 import { selectShoppingList } from 'redux/shoppingList.js/selectors';
 
 import defaultIngredientsImg from '../../images/noPhoto.svg';
@@ -20,6 +24,10 @@ export const IngredientsShoppingList = () => {
   const ingredients = useSelector(selectShoppingList);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getShoppingList());
+  }, [dispatch]);
+
   return (
     <>
       <TitleWrapper>
@@ -30,7 +38,7 @@ export const IngredientsShoppingList = () => {
         </TitleRemoveWrap>
       </TitleWrapper>
       <IngredientsList>
-        {ingredients.map(({ id: { _id, ttl, thb }, measure }) => (
+        {ingredients.map(({ ingredient: { ttl, thb }, measure, _id }) => (
           <IngredientsItem key={_id}>
             <ItemTitleWrapper>
               <div>

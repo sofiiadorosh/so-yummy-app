@@ -38,7 +38,7 @@ export const IngredientsShoppingList = () => {
         </TitleRemoveWrap>
       </TitleWrapper>
       <IngredientsList>
-        {ingredients.map(({ ingredient: { ttl, thb }, measure, _id }) => (
+        {ingredients.map(({ _id, ingredient: { ttl, thb }, measure }) => (
           <IngredientsItem key={_id}>
             <ItemTitleWrapper>
               <div>

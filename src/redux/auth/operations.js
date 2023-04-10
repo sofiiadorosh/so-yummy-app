@@ -10,50 +10,45 @@ const instance = axios.create({
   baseURL: 'https://so-yummy-app-backend.onrender.com/api/',
 });
 
-const setToken = (token) => {
-    const accessToken = localStorage.getItem("accessToken");
-     instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-}; 
+const setToken = token => {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
-}; 
+};
 
-// instance.interceptors.request.use(config => {
-//   const accessToken = localStorage.getItem("accessToken");
-//   config.headers.common.Authorization = `Bearer ${accessToken}`
-//   return config;
-// })
-
-
-instance.interceptors.response.use(response => response, async (error) => {
-  if (error.response.status === 401) {
-    const refreshToken = localStorage.getItem('refreshToken');
-    try {
-      const { data } = await instance.post('/users/refresh', { refreshToken });
-      setToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      localStorage.setItem('accessToken', data.accessToken);
-      return instance(error.config);
-    } catch (error) {
-      return Promise.reject(error);
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const { data } = await instance.post('/users/refresh', {
+          refreshToken,
+        });
+        setToken(data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken);
+        return instance(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
   }
-  return Promise.reject(error);
-})
-
-
-
+);
 
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post('/users/register', credentials);
-       Notify.success('You successfully registered. You can log in to your account now!');
+      Notify.success(
+        'You successfully registered. You can log in to your account now!'
+      );
       return response.data.user;
     } catch (error) {
-      Notify.failure("Something went wrong, try again");
+      Notify.failure('Something went wrong, try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -66,7 +61,7 @@ export const login = createAsyncThunk(
       const { data } = await instance.post('/users/login', credentials);
       setToken(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
-       localStorage.setItem('accessToken', data.accessToken);
+      localStorage.getItem('accessToken', data.accessToken);
       Notify.success(`Welcome back, ${data.user.name}`);
       return data;
     } catch (error) {
@@ -74,21 +69,19 @@ export const login = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-); 
+);
 
 export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/users/logout');
     clearAuthHeader();
-     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('accessToken');
     Notify.success('You successfully logged out! Hope to see you soon again!');
     return;
   } catch (error) {
-    Notify.warning('You logged out, please login again!')
+    Notify.warning('You logged out, please login again!');
     return thunkAPI.rejectWithValue(error.message);
   }
-}); 
+});
 
 // export const getCurrentUser = createAsyncThunk(
 //   'auth/getCurrentUser',
@@ -106,12 +99,12 @@ export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
 //       return ThunkAPI.rejectWithValue(error.message);
 //     }
 //   },
-// ); 
+// );
 
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkAPI) => {
-    const persistedAccessToken = localStorage.getItem('accessToken');
+    const persistedAccessToken = localStorage.setItem('accessToken');
     if (!persistedAccessToken) {
       return thunkAPI.rejectWithValue();
     }
@@ -138,5 +131,3 @@ export const updateUserInfo = createAsyncThunk(
     }
   }
 );
-
-export default instance;

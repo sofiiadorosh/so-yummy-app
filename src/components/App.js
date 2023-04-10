@@ -22,7 +22,7 @@ import { RegisterPage } from 'pages/RegisterPage';
 import { SigninPage } from 'pages/SigninPage';
 
 // import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
-import { setIsLoggedIn} from 'redux/auth/slice';
+import { setIsLoggedIn } from 'redux/auth/slice';
 import { getCurrentUser } from 'redux/auth/operations';
 
 import { GlobalStyle } from './GlobalStyle';
@@ -31,7 +31,7 @@ export const App = () => {
   //   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const token = useSelector(selectAccessToken);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   if (token === null) return;
@@ -39,29 +39,16 @@ export const App = () => {
   //     dispatch(getCurrentUser());
   //   }
   // }, [dispatch, isLoggedIn, token]);
-  
 
-  // const dispatch = useDispatch();
-  
-  //   useEffect(() => {
-  //   const isLoggedIn = Boolean(token);
-  //   dispatch(setIsLoggedIn(isLoggedIn));
-  //      if (isLoggedIn) {
-  //     dispatch(getCurrentUser());
-  //   }
-     
-  // }, [dispatch, token]);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const isLoggedIn = Boolean(localStorage.getItem('accessToken'));
     dispatch(setIsLoggedIn(isLoggedIn));
-       if (isLoggedIn) {
+    if (isLoggedIn) {
       dispatch(getCurrentUser());
     }
-     
   }, [dispatch]);
-
 
   const { darkTheme } = useSelector(state => state.theme);
 
@@ -70,20 +57,37 @@ export const App = () => {
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={
-            <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
-          } />
-          <Route path="register" element={
-            <PublicRoute component={<RegisterPage />} restricted />
-          } />
-          <Route path="signin" element={
-            <PublicRoute component={<SigninPage />} restricted redirectTo="/main" />
-          } />
+          <Route
+            path="/"
+            element={
+              <PublicRoute
+                component={<WelcomePage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
+          <Route
+            path="register"
+            element={<PublicRoute component={<RegisterPage />} restricted />}
+          />
+          <Route
+            path="signin"
+            element={
+              <PublicRoute
+                component={<SigninPage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
 
-          <Route path="/" element={<SharedLayout />} >
-            <Route path="main" index element={
-              <PrivateRoute component={<MainPage />} />
-            } />
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              path="main"
+              index
+              element={<PrivateRoute component={<MainPage />} />}
+            />
             <Route
               path="categories/:categoryName"
               element={<CategoriesPage />}
@@ -96,9 +100,8 @@ export const App = () => {
             <Route path="recipe/:recipeId" element={<RecipePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-         
         </Routes>
       </ThemeProvider>
     </div>
   );
-}; 
+};

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import {TimeTypeSelector} from "./Selectors/TimeSelector";
 import {CategorySearchSelector} from "./Selectors/CategorySelector";
-
+import { PopularRecipe } from 'components/PopularRecipe';
 
 import {
   InputUpload,
@@ -24,7 +24,7 @@ import {
   Description,
   
 } from './AddRecipeForm.styled';
-import {IngredientsField} from "./IngredientsField/IngredientsField"
+import {IngredientsField} from "./RecipeIngredientsFields/RecipeIngredientsFields"
 import recipeButtonImage from "images/add-recipe-placeholder-button.png"
 
 
@@ -149,6 +149,7 @@ export const AddRecipeForm = () => {
         <WrapButtonAdd>
           <ButtonAdd type="submit">Add</ButtonAdd>
         </WrapButtonAdd>
+        <PopularRecipe/>
       </Form>
     </Wrap>
   );

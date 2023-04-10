@@ -7,7 +7,7 @@ import {
   
   TitleIngredients,
   WrapIngredients,
-} from './IngredientsField.styled';
+} from './RecipeIngredientsFields.styled';
 import {MeasureTypeSelector} from '../Selectors/MeasureSelector';
 import {IngredientsSelector} from '../Selectors/IngredientsSelector';
 import { Counter } from '../Counter/Counter';

@@ -10,10 +10,10 @@ const instance = axios.create({
   baseURL: 'https://so-yummy-app-backend.onrender.com/api/',
 });
 
-const setToken = (token) => {
-    const accessToken = localStorage.getItem("accessToken");
-     instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-}; 
+const setToken = token => {
+  const accessToken = localStorage.getItem('accessToken');
+  instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+};
 
 const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
@@ -140,6 +140,5 @@ export const updateUserInfo = createAsyncThunk(
     }
   }
 );
-
 
 export default instance;

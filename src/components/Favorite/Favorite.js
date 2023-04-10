@@ -18,22 +18,18 @@ export const Favorite = () => {
 
   useEffect(() => {
     setLoader(true);
-    try {
-      getAllFavorites(page, 4).then(res => {
+    getAllFavorites(page, 4)
+      .then(res => {
         console.log(res);
-        if (!res) {
-          setLoader(false);
-          return;
-        }
-        setLoader(false);
         const totalPages = Math.ceil(res.total / 4);
         setCount(totalPages);
         setAllRecipes(res.recipes);
+        setLoader(false);
+      })
+      .catch(error => {
+        console.log(error.message);
+        setLoader(false);
       });
-    } catch (error) {
-      setLoader(false);
-      console.log(error.message);
-    }
   }, [page]);
 
   const handelDelete = async (id, event) => {
@@ -42,26 +38,26 @@ export const Favorite = () => {
     }
     event.target.disabled = true;
 
-    await deleteFromFavorite(id);
-    setLoader(true);
-    console.log(id);
-    Notiflix.Notify.warning('Recipe was deleted from favorite list');
-    await getAllFavorites(page, 4)
-      .then(res => {
-        setLoader(false);
-        console.log(res);
-        if (!res) {
-          return;
-        }
-        setPage(1);
-        const totalPages = Math.ceil(res.total / 4);
-        setCount(totalPages);
-        setAllRecipes(res.recipes ?? []);
-      })
-      .catch(e => {
-        console.log(e.message);
-        setLoader(false);
-      });
+    try {
+      await deleteFromFavorite(id);
+      setLoader(true);
+      console.log(id);
+      Notiflix.Notify.warning('Recipe was deleted from favorite list');
+      const res = await getAllFavorites(page, 4);
+      setLoader(false);
+      console.log(res);
+      if (!res) {
+        return;
+      }
+      setPage(1);
+      const totalPages = Math.ceil(res.total / 4);
+      setCount(totalPages);
+      setAllRecipes(res.recipes ?? []);
+    } catch (e) {
+      console.log(e.message);
+      setLoader(false);
+      Notiflix.Notify.failure('Failed to delete recipe from favorite list');
+    }
   };
 
   const onPageChange = (e, page) => {
@@ -71,7 +67,7 @@ export const Favorite = () => {
   return (
     <>
       {loader && <Loader />}
-      {!allRecipes ? (
+      {!allRecipes.length ? (
         <NoRecipesText>You dont have any favorites...</NoRecipesText>
       ) : (
         <ul>

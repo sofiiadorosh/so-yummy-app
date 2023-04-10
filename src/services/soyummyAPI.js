@@ -131,10 +131,15 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
   }
 };
 
-export const getAllFavorites = async () => {
+export const getAllFavorites = async (page = 1, limit = 4) => {
   try {
-    const response = await instance.get(`/favorite`);
-    return response.data;
+    const response = await instance.get(
+      `/favorite?page=${page}&limit=${limit}`
+    );
+    if (response && response.data) {
+      return response.data;
+    }
+    return null;
   } catch (error) {
     console.log(error.message);
     return null;
@@ -143,7 +148,7 @@ export const getAllFavorites = async () => {
 
 export const addToFavorite = async id => {
   try {
-    const response = await instance.post(`/favorite/${id}`);
+    const response = await instance.post(`/favorite`, { favorite: id });
     return response;
   } catch (error) {
     console.log(error.message);

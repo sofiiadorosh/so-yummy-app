@@ -14,9 +14,8 @@ import {
   RecipeTime,
 } from './RecipePageHero.styled';
 
-export const RecipePageHero = ({ title, description, time, id }) => {
+export const RecipePageHero = ({ title, description, time, id, favorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  console.log(id);
 
   const addFavorite = () => {
     addToFavorite(id)

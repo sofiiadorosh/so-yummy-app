@@ -47,7 +47,7 @@ export const AddRecipeForm = () => {
   const addRecipe = async text => {
     try {
       const response = await axios.post(
-        'https://soyummy-tw3y.onrender.com/api/v1/own-recipes',
+        'https://so-yummy-app-backend.onrender.com/api/ownRecipes',
         text
       );
       return response.data;

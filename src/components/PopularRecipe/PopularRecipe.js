@@ -28,22 +28,22 @@ export const PopularRecipe = () => {
     const popularRecipes = async () => {
       try {
         const response = await axios.get(
-          ''
+          'https://so-yummy-app-backend.onrender.com/api/popular-recipe'
         );
-        const { data } = response.data;
+        const { data } = response;
 
         if (response) {
           setLoading(false);
-          setRecipes(data);
+          setRecipes(data.recipes);
         }
       } catch {
         setError('Failed to fetch');
         setRecipes([]);
       }
-    };
+    }; 
     popularRecipes();
   }, []);
-
+ 
   return (
     <WrapperPopular>
       <MediaQuery minWidth={1440}>
@@ -67,7 +67,7 @@ export const PopularRecipe = () => {
         </ListPopular>
       }
       {error && !loading && (
-        <ErrorMessage>Something wrong! Reload the page...</ErrorMessage>
+        <ErrorMessage>Something wrong! Reload the page please...</ErrorMessage>
       )}
       {loading && <Loader />}
     </WrapperPopular>

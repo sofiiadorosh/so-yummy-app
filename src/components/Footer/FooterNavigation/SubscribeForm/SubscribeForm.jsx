@@ -12,7 +12,8 @@ import {
 } from './SubscribeForm.styled';
 import sprite from '../../../../images/Footer/sprite.svg';
 import MediaQuery from 'react-responsive';
-import { useAuth } from 'hooks/useAuth';
+import { selectAccessToken } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
 import { getColor } from '../../../../constants/formikColors';
 const LoginSchema = Yup.object().shape({
   email: Yup.mixed().test({
@@ -23,13 +24,24 @@ const LoginSchema = Yup.object().shape({
   }),
 });
 export const SubscribeForm = () => {
-  const { token } = useAuth();
+  const token = useSelector(selectAccessToken);
   const subscribeEmail = async values => {
     try {
-      const results = await instance.post(`/users/subscribe`, values, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return results.data;
+      const sendSubscriptionEmail = await instance.post(
+        `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
+        values,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const addSubscription = await instance.get(
+        `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
+        values,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return sendSubscriptionEmail.data && addSubscription.data;
     } catch (error) {
       throw new Error(error.response.status);
     }

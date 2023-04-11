@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { updateSearchType } from 'redux/search/searchSlice';
 
-import { SearchForm,} from '../../SearchTypeSelector/SearchTypeSelector.styled';
+import { SearchForm} from '../../SearchTypeSelector/SearchTypeSelector.styled';
 
 const options = [
   { value: 'tbs', label: 'tbs' },
@@ -41,13 +41,14 @@ export const MeasureTypeSelector = () => {
             borderRadius: '6px',
             backgroundColor: '#f2ecec',
             opacity: '0.5',
+            position: 'absolute',
             borderStyle: 'none',
             outline: 'none',
             borderColor: state.isFocused ? 'none' : provided.borderColor,
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
             color: '#rgba(0, 0, 0, 0.5)',
             width: '84px',
-            height: '34px',
+            height: '53px',
             '&:hover': {
               backgroundColor: '#ffffff',
               borderStyle: 'none',
@@ -64,9 +65,7 @@ export const MeasureTypeSelector = () => {
               width: '198px',
               height: '49px',
             },
-          }),dropdownIndicator: (base, state) => ({
-            ...base,
-            color: '#8BAA36',}),
+          }),
           indicatorSeparator: () => ({
             display: 'none',
           }),
@@ -77,6 +76,10 @@ export const MeasureTypeSelector = () => {
             font: '14',
             lineHeight: '1.5',
             display: 'none',
+          }),
+          dropdownIndicator: (base, state) => ({
+            ...base,
+            color: '#8BAA36',
           }),
           menu: () => ({
             border: 'none',

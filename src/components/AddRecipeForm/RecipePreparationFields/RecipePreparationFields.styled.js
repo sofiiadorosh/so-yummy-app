@@ -17,7 +17,8 @@ export const TitlePreparation = styled.h3`
 export const TextAreaPreparation = styled.textarea`
   padding-top: 10px;
   padding-left: 16px;
-  width: 100%;
+  width: 343px;
+  height:154px;
   color:#000000;
   font-family:'Poppins';
   font-weight:400;
@@ -26,7 +27,8 @@ export const TextAreaPreparation = styled.textarea`
   background:#F5F5F5;
   border: none;
   @media screen and (min-width: 768px) {
-    max-width: 505px;
+    min-width: 505px;
+    min-height:224px;
   }
 `;
 export const ButtonAdd = styled.button`

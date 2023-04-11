@@ -18,15 +18,15 @@ const getIngredientsByQuery = async (query) => {
   const response = await axios.get(
     `https://so-yummy-app-backend.onrender.com/api/ingredients/list`
   );
-  const { data } = response.data;
-  return data; 
+  const { data } = response;
+  return data.ingredients; 
 };
 
 export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
   const [count, setCount] = useState(0);
   const [ingredients, setIngredients] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [searchValue, setSearchValue] = useState("");
   const [inputFields, setInputFields] = useState([]);
 
   const [activeInputIndex, setActiveInputIndex] = useState(-1);
@@ -39,8 +39,12 @@ export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
     if (event.target.name !== 'measure') {
       updateQueryString(event);
     }
+    setSearchValue(event.target.value);
+    
   };
 
+
+  
   const handleAddFields = () => {
     setInputFields([...inputFields, { id: nanoid(), field: '', measure: '' }]);
   };
@@ -110,25 +114,26 @@ export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
               id={inputField.id}
               value={inputField.field}
               onChange={event => handleChangeInput(index, event)}
+              
             />
             <SelectWrap>
-              <span>
+              
                 <CustomInput
                   autoComplete="off"
-                  type="text"
+                  type="number"
                   name="measure"
                   id={inputField.id}
                   value={inputField.measure}
                   onChange={event => handleChangeInput(index, event)}
                 />
                 <MeasureTypeSelector/>
-              </span>
+              
             </SelectWrap>
             <DeleteBtn onClick={() => handleDelete(inputField.id)} />
           </InputIngredientsWrap>
           {activeInputIndex === index && (
             <ul>
-              {ingredients.map(({ _id, ttl }) => {
+              {ingredients.filter((item)=>item.ttl.toLowerCase().includes(searchValue.toLowerCase())).map(({ _id, ttl }) => {
                 return (
                   <li
                     key={_id}

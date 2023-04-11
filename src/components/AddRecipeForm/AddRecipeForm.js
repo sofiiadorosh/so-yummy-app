@@ -72,7 +72,7 @@ export const AddRecipeForm = () => {
         <Description>
           <ImgUploadWrap>
             <label htmlFor="file-input">
-              <img src={recipeButtonImage} alt="recipeButtonImage" />
+              <img  src={recipeButtonImage} alt="recipeButtonImage"  />
             </label>
             <InputUpload
               id="file-input"

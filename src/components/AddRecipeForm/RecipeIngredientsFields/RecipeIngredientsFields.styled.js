@@ -2,10 +2,11 @@ import { IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 
 export const WrapIngredients = styled.div`
- 
+margin-bottom: 28px;
   display: flex;
   justify-content: space-between;
-  @media screen and (min-width: 768px) { margin-bottom: 32px;}
+  @media screen and (min-width: 768px) {
+     margin-bottom: 32px;}
 `;
 
 export const TitleIngredients = styled.h3`
@@ -20,7 +21,7 @@ export const TitleIngredients = styled.h3`
 `;
 
 export const InputIngredientsWrap = styled.div`
-  margin-top: 18px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +33,7 @@ export const InputIngredients = styled.input`
   height: 53px;
   padding-left: 16px;
   border: none;
+ 
   background:#F5F5F5;
   border-radius: 6px;
   @media screen and (min-width: 768px) {
@@ -58,9 +60,8 @@ export const SelectIngredients = styled.select`
 export const DeleteBtn = styled(IoCloseOutline)`
   width: 20px;
   height: 20px;
-  &:hover {
-    color: ;
-  }
+  color:#333;
+  
 `;
 
 export const SelectWrap = styled.div`
@@ -69,8 +70,8 @@ export const SelectWrap = styled.div`
 `;
 
 export const CustomInput = styled.input`
-  height: 18px;
-  position: relative;
+
+  position:relative;
   left: 3px;
   height: 53px;
   border: none;

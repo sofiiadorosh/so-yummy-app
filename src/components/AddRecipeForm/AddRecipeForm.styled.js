@@ -116,7 +116,8 @@ export const SelectOptionIngredients = styled.option`
 export const WrapPreparation = styled.div`
   margin-top: 44px;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
 `;
 
 export const TitlePreparation = styled.h2`
@@ -124,13 +125,6 @@ export const TitlePreparation = styled.h2`
 
 `;
 
-export const TextAreaPreparation = styled.textarea`
-  padding-top: 10px;
-  padding-left: 16px;
-  width: 100%;
-  background-color:#D9D9D9;
-  border:none;
-`;
 
 export const WrapButtonAdd = styled.div`
   margin-right: auto;

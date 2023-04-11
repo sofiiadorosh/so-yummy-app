@@ -60,11 +60,9 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
   }
 };
 
-const getAllFavorites = async (page = 1, limit = 4) => {
+const getAllFavorites = async () => {
   try {
-    const response = await instance.get(
-      `/favorite?page=${page}&limit=${limit}`
-    );
+    const response = await instance.get(`/favorite`);
     if (response && response.data) {
       return response.data;
     }

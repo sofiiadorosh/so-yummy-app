@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const PicterItem = styled.img`
   min-width: 124px;
+   border-radius: 8px;
+
 
   @media screen and (min-width: 768px) {
     min-width: 228px;

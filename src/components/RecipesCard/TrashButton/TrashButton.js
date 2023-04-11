@@ -1,10 +1,11 @@
 import React from 'react';
 import { ReactComponent as TrashIconSvg } from '../../../images/Icon.svg';
+import { TrashButtonStyled } from './TrashButton.styled';
 
 export const TrashButton = ({ onDelete }) => {
   return (
-    <button type="button" onClick={onDelete}>
+    <TrashButtonStyled type="button" onClick={onDelete}>
       <TrashIconSvg />
-    </button>
+    </TrashButtonStyled>
   );
 };

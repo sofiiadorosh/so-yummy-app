@@ -14,22 +14,22 @@ import {
   RecipeTime,
 } from './RecipePageHero.styled';
 
-export const RecipePageHero = ({ title, description, time, id, favorite }) => {
+export const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const addFavorite = () => {
     addToFavorite(id)
       .then(res => {
         console.log(res);
-        if (!res) {
-          Notiflix.Notify.warning(
-            `Неможливо додати рецепт по якійсь причині...`
-          );
-          return;
-        } else {
-          setIsFavorite(true);
-          Notiflix.Notify.warning(`Added to favorite!`);
-        }
+        // if (!res) {
+        //   Notiflix.Notify.warning(
+        //     `Неможливо додати рецепт по якійсь причині...`
+        //   );
+        //   return;
+        // } else {
+        //   setIsFavorite(true);
+        //   Notiflix.Notify.warning(`Added to favorite!`);
+        // }
       })
       .catch(err => {
         console.log(err.message);

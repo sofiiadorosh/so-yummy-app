@@ -77,7 +77,9 @@ const getAllFavorites = async (page = 1, limit = 4) => {
 
 const addToFavorite = async id => {
   try {
-    const response = await instance.post(`/favorite`, { favorite: id });
+    const response = await instance.post(`/favorite`, {
+      favorite: id,
+    });
     return response;
   } catch (error) {
     console.log(error.message);

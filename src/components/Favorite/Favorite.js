@@ -21,6 +21,10 @@ export const Favorite = () => {
     getAllFavorites(page, 4)
       .then(res => {
         console.log(res);
+        if (!res) {
+          setLoader(false);
+          return;
+        }
         const totalPages = Math.ceil(res.total / 4);
         setCount(totalPages);
         setAllRecipes(res.recipes);

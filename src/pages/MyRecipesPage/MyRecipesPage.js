@@ -1,13 +1,13 @@
 // import { Outlet } from 'react-router-dom';
- import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
- import {geMyRecipesList} from 'services/soyummyAPI'
+import { geMyRecipesList } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
 import { MyRecipesList } from 'components/MyRecipesList';
 
-import { MyRecipesPageSection, Container, Title} from './MyRecipesPage.styled';
+import { MyRecipesPageSection, Container, Title } from './MyRecipesPage.styled';
 
 // export const MyRecipesPage = () => {
 //   return (
@@ -24,25 +24,19 @@ import { MyRecipesPageSection, Container, Title} from './MyRecipesPage.styled';
 //   );
 // };
 
-
 // робочий варінт
 
-
-
-
- export const MyRecipesPage = () => {
- 
- const [recipes, setRecipes] = useState([]);
- const [error, setError] = useState(null);
+export const MyRecipesPage = () => {
+  const [recipes, setRecipes] = useState([]);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
-
     const getData = async () => {
       try {
         const data = await geMyRecipesList();
         setRecipes(data.recipes);
       } catch (error) {
-        setError(error.message);
+        console.log(error.message);
       }
     };
     getData();
@@ -56,9 +50,7 @@ import { MyRecipesPageSection, Container, Title} from './MyRecipesPage.styled';
           <MainPageTitle title="My recipes" />
         </Title>
         <MyRecipesList items={recipes} />
-
       </Container>
     </MyRecipesPageSection>
   );
 };
-

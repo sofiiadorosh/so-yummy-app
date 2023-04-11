@@ -60,7 +60,7 @@ export const getSearchByIngredients = async (query, page = 1, limit) => {
   }
 };
 
-export const getAllFavorites = async (page = 1, limit = 4) => {
+const getAllFavorites = async (page = 1, limit = 4) => {
   try {
     const response = await instance.get(
       `/favorite?page=${page}&limit=${limit}`
@@ -75,7 +75,7 @@ export const getAllFavorites = async (page = 1, limit = 4) => {
   }
 };
 
-export const addToFavorite = async id => {
+const addToFavorite = async id => {
   try {
     const response = await instance.post(`/favorite`, { favorite: id });
     return response;
@@ -85,7 +85,7 @@ export const addToFavorite = async id => {
   }
 };
 
-export const deleteFromFavorite = async id => {
+const deleteFromFavorite = async id => {
   try {
     const response = await instance.delete(`/favorite/${id}`);
     return response.data;
@@ -95,13 +95,8 @@ export const deleteFromFavorite = async id => {
   }
 };
 
-const getShoppingList = async () => {
-  try {
-    const response = await instance.get('shopping-list');
-};
-
 const geMyRecipesList = async () => {
-   try {
+  try {
     const response = await instance.get('ownRecipes');
     return response.data;
   } catch (error) {
@@ -109,12 +104,43 @@ const geMyRecipesList = async () => {
   }
 };
 
+const getShoppingList = async () => {
+  try {
+    const response = await instance.get('shopping-list');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const addToShoppingList = async ingredient => {
+  try {
+    const response = await instance.post('shopping-list', ingredient);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const deleteFromShoppingList = async id => {
+  try {
+    const response = await instance.delete(`/shopping-list/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 export {
   getCategoryList,
   getCategoryRecipes,
   getRecipesByCategory,
   getRecipesById,
+  geMyRecipesList,
   getShoppingList,
-  geMyRecipesList
+  addToShoppingList,
+  deleteFromShoppingList,
+  getAllFavorites,
+  addToFavorite,
+  deleteFromFavorite,
 };

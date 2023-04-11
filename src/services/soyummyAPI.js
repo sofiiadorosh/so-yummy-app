@@ -95,7 +95,7 @@ const deleteFromFavorite = async id => {
   }
 };
 
-const geMyRecipesList = async () => {
+const getMyRecipesList = async () => {
   try {
     const response = await instance.get('ownRecipes');
     return response.data;
@@ -103,6 +103,24 @@ const geMyRecipesList = async () => {
     console.log(error.message);
   }
 };
+const addToMyRecipesList = async id => {
+  try {
+    const response = await instance.post('ownRecipes', { recipe: id });
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const deleteFromMyRecipesList = async id => {
+  try {
+    const response = await instance.delete(`/ownRecipes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 
 const getShoppingList = async () => {
   try {
@@ -136,7 +154,9 @@ export {
   getCategoryRecipes,
   getRecipesByCategory,
   getRecipesById,
-  geMyRecipesList,
+  addToMyRecipesList,
+  getMyRecipesList,
+  deleteFromMyRecipesList,
   getShoppingList,
   addToShoppingList,
   deleteFromShoppingList,

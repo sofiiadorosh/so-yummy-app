@@ -37,5 +37,23 @@ const Title = styled.div`
     margin-bottom: 72px;
   }
 `;
+ const NoRecipesText = styled.div`
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 101px;
+  margin-top: 101px;
+  opacity: 0.5;
 
-export { MyRecipesPageSection,Container,Title };
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 200px;
+    color: var(--secondaryTextColor);
+  }
+`;
+
+export { MyRecipesPageSection,Container,Title, NoRecipesText };

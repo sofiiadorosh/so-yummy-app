@@ -1,46 +1,49 @@
 // import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { geMyRecipesList } from 'services/soyummyAPI';
+import { getMyRecipesList } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
 import { MyRecipesList } from 'components/MyRecipesList';
+import { Loader } from 'components/Loader';
+import { MyRecipesPageSection, Container, Title, NoRecipesText } from './MyRecipesPage.styled';
 
-import { MyRecipesPageSection, Container, Title } from './MyRecipesPage.styled';
-
-// export const MyRecipesPage = () => {
-//   return (
-//     <MyRecipesPageSection>
-//       <Container>
-//         <Square />
-//         <Title>
-//           <MainPageTitle title="My recipes" />
-//         </Title>
-//         <MyRecipesList />
-
-//       </Container>
-//     </MyRecipesPageSection>
-//   );
-// };
-
-// робочий варінт
 
 export const MyRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
-  // const [error, setError] = useState(null);
+   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { recipesCard } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     const getData = async () => {
       try {
-        const data = await geMyRecipesList();
+        const data = await getMyRecipesList(recipesCard);
         setRecipes(data.recipes);
+        setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+       setError(error.message);
       }
     };
     getData();
-  }, [recipes]);
+  }, [recipesCard]);
+
+  //  const deleteHandler = id => {
+  //   try {
+  //     const remove = async () => {
+  //       const data = await deleteFromMyRecipesList(id);
+  //       return data;
+  //     };
+  //     remove();
+  //     setRecipes(prevState => prevState.filter(elem => elem._id !== id));
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <MyRecipesPageSection>
@@ -49,8 +52,12 @@ export const MyRecipesPage = () => {
         <Title>
           <MainPageTitle title="My recipes" />
         </Title>
-        <MyRecipesList items={recipes} />
+        {isLoading && <Loader />}
+        {recipes.length > 0 && !isLoading && <MyRecipesList items={recipes}/>}
+        {error && <NoRecipesText>You dont have own recipes...</NoRecipesText>}
       </Container>
     </MyRecipesPageSection>
   );
 };
+
+// deleteMyRecipes={deleteHandler} в 56 строку

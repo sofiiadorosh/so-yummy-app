@@ -17,9 +17,9 @@ import { ShoppingListPage } from 'pages/ShoppingListPage';
 import { SearchPage } from 'pages/SearchPage';
 import { RecipePage } from 'pages/RecipePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
-// import { WelcomePage } from 'pages/WelcomePage';
-// import { RegisterPage } from 'pages/RegisterPage';
-// import { SigninPage } from 'pages/SigninPage';
+import { WelcomePage } from 'pages/WelcomePage';
+import { RegisterPage } from 'pages/RegisterPage';
+import { SigninPage } from 'pages/SigninPage';
 
 // import { selectIsLoggedIn, selectAccessToken } from 'redux/auth/selectors';
 import { setIsLoggedIn } from 'redux/auth/slice';
@@ -28,7 +28,7 @@ import { getCurrentUser } from 'redux/auth/operations';
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
-  //   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   // const token = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
@@ -42,13 +42,12 @@ export const App = () => {
 
   // const dispatch = useDispatch();
 
-  //   useEffect(() => {
+  // useEffect(() => {
   //   const isLoggedIn = Boolean(token);
   //   dispatch(setIsLoggedIn(isLoggedIn));
-  //      if (isLoggedIn) {
+  //   if (isLoggedIn) {
   //     dispatch(getCurrentUser());
   //   }
-
   // }, [dispatch, token]);
 
   useEffect(() => {
@@ -66,15 +65,30 @@ export const App = () => {
       <ThemeProvider theme={darkTheme ? theme.dark : theme.light}>
         <GlobalStyle />
         <Routes>
-          {/* <Route path="/" element={
-            <PublicRoute component={<WelcomePage />} restricted redirectTo="/main" />
-          } />
-          <Route path="register" element={
-            <PublicRoute component={<RegisterPage />} restricted />
-          } />
-          <Route path="signin" element={
-            <PublicRoute component={<SigninPage />} restricted redirectTo="/main" />
-          } /> */}
+          <Route
+            path="/"
+            element={
+              <PublicRoute
+                component={<WelcomePage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
+          <Route
+            path="register"
+            element={<PublicRoute component={<RegisterPage />} restricted />}
+          />
+          <Route
+            path="signin"
+            element={
+              <PublicRoute
+                component={<SigninPage />}
+                restricted
+                redirectTo="/main"
+              />
+            }
+          />
 
           <Route path="/" element={<SharedLayout />}>
             <Route

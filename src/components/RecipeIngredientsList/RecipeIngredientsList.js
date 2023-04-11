@@ -1,11 +1,7 @@
 import { GrFormCheckmark } from 'react-icons/gr';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  addToShoppingList,
-  deleteFromShoppingList,
-} from 'redux/shoppingList.js/operations';
-import { selectShoppingList } from 'redux/shoppingList.js/selectors';
+
+import { addToShoppingList } from 'services/soyummyAPI';
 
 import {
   SectionIngredients,
@@ -32,8 +28,6 @@ const getInitialState = items => {
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const [checked, setChecked] = useState(getInitialState(ingredients));
-  const shoppingList = useSelector(selectShoppingList);
-  const dispatch = useDispatch();
 
   const addIngredientHandler = ({ ingredient, measure }) => {
     setChecked(prevState =>
@@ -42,16 +36,14 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       )
     );
 
-    const oldIngredient = shoppingList.find(
-      item => item.ingredient === ingredient
-    );
-
     const checkbox = checked.find(elem => elem.id === ingredient);
 
     if (!checkbox.checked) {
-      dispatch(addToShoppingList({ ingredient, measure }));
-    } else {
-      dispatch(deleteFromShoppingList(oldIngredient?._id));
+      const add = async () => {
+        const data = await addToShoppingList({ ingredient, measure });
+        return data;
+      };
+      add();
     }
   };
 

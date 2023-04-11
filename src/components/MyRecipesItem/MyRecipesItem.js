@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import recExmpl from '../../images/recExmpl.png';
+// import recExmpl from '../../images/recExmpl.png';
 import logoTrash from '../../images/logo-trash.png';
 
 import {
@@ -10,9 +10,8 @@ import {
   ItemBoxDescript,
   ItemBoxTime,
   LogoTrash,
-  ItemBoxButton
+  ItemBoxButton,
 } from './MyRecipesItem.styled';
-
 
 // export const MyRecipesItem = ({ _id}) => {
 //   return (
@@ -30,35 +29,30 @@ import {
 //         <NavLink to={`/recipe/${_id}`}>
 //           <ItemBoxButton>See reecipe</ItemBoxButton>
 //         </NavLink>
-//       </ItemBox>   
-//     </li>   
+//       </ItemBox>
+//     </li>
 //   )
 // };
 
-
 // робочий варінат з реальними даними з бд
 
-
- 
- export const MyRecipesItem = ({ item: { _id, time,  title, description, thumb } }) => {
- 
+export const MyRecipesItem = ({
+  item: { _id, time, title, description, thumb },
+}) => {
   return (
-          <li style={{ display: 'flex' }}>
-            <PicterItem src={thumb} alt="title" />
-            <ItemBox>
-              <ItemBoxTitle>{title}</ItemBoxTitle>
-              <ItemBoxDescript>{description}</ItemBoxDescript>
-              <ItemBoxTime>{time}min</ItemBoxTime>
-              <LogoTrash
-                type="button"
-                
-              >
-                <img src={logoTrash} alt="logo" />
-              </LogoTrash>
-              <NavLink to={`/recipe/${_id}`}>
-                <ItemBoxButton>See reecipe</ItemBoxButton>
-              </NavLink>
-            </ItemBox>   
-          </li>  
-  )
-}
+    <li style={{ display: 'flex' }}>
+      <PicterItem src={thumb} alt="title" />
+      <ItemBox>
+        <ItemBoxTitle>{title}</ItemBoxTitle>
+        <ItemBoxDescript>{description}</ItemBoxDescript>
+        <ItemBoxTime>{time}min</ItemBoxTime>
+        <LogoTrash type="button">
+          <img src={logoTrash} alt="logo" />
+        </LogoTrash>
+        <NavLink to={`/recipe/${_id}`}>
+          <ItemBoxButton>See reecipe</ItemBoxButton>
+        </NavLink>
+      </ItemBox>
+    </li>
+  );
+};

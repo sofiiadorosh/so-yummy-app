@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-import {TimeTypeSelector} from "./Selectors/TimeSelector";
-import {CategorySearchSelector} from "./Selectors/CategorySelector";
+import { TimeTypeSelector } from './Selectors/TimeSelector';
+import { CategorySearchSelector } from './Selectors/CategorySelector';
 import { PopularRecipe } from 'components/PopularRecipe';
 
 import {
@@ -14,18 +14,13 @@ import {
   ImgUploadWrap,
   InputDescriptionWrap,
   InputDescription,
-  
   MainWrapIngredients,
   WrapPreparation,
- 
   Description,
-  
 } from './AddRecipeForm.styled';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
-import {IngredientsField} from "./RecipeIngredientsFields/RecipeIngredientsFields"
-import recipeButtonImage from "images/add-recipe-placeholder-button.png"
-
-
+import { IngredientsField } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import recipeButtonImage from 'images/add-recipe-placeholder-button.png';
 
 const initialValues = {
   title: '',
@@ -35,9 +30,6 @@ const initialValues = {
   ingredients: [],
   instructions: '',
 };
-
-
-
 
 export const AddRecipeForm = () => {
   const [descriptionFields, setDescriptionFields] = useState(initialValues);
@@ -53,7 +45,6 @@ export const AddRecipeForm = () => {
       return error.message;
     }
   };
- 
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -75,20 +66,24 @@ export const AddRecipeForm = () => {
     e.preventDefault();
     console.log(descriptionFields);
     addRecipe(descriptionFields);
-    reset();
+    e.reset();
   };
 
- return ( <Wrap>
-
-  <Form>
-    <Description>
-      <ImgUploadWrap>
-    <label htmlFor='file-input'>
-      <img src={recipeButtonImage} alt="recipeButtonImage" />
-    </label>
-    <InputUpload  id="file-input" type='file' accept="image/png, image/jpeg" />
-  </ImgUploadWrap>
-  <div>
+  return (
+    <Wrap>
+      <Form>
+        <Description>
+          <ImgUploadWrap>
+            <label htmlFor="file-input">
+              <img src={recipeButtonImage} alt="recipeButtonImage" />
+            </label>
+            <InputUpload
+              id="file-input"
+              type="file"
+              accept="image/png, image/jpeg"
+            />
+          </ImgUploadWrap>
+          <div>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"
@@ -106,34 +101,31 @@ export const AddRecipeForm = () => {
               />
             </InputDescriptionWrap>
             <InputDescriptionWrap>
-                  <CategorySearchSelector/>
-                    <UnderLane/>
+              <CategorySearchSelector />
+              <UnderLane />
             </InputDescriptionWrap>
-                <InputDescriptionWrap>
-                  <TimeTypeSelector/>
-                    <UnderLane/>
+            <InputDescriptionWrap>
+              <TimeTypeSelector />
+              <UnderLane />
             </InputDescriptionWrap>
           </div>
         </Description>
         <MainWrapIngredients>
-          
           <IngredientsField
             handleSubmit={handleSubmit}
             onInput={handleChange}
             inputs={descriptionFields}
             onSetValue={handleSetValue}
           />
-         
-         </MainWrapIngredients>
-         
+        </MainWrapIngredients>
 
-          <WrapPreparation>
+        <WrapPreparation>
           <RecipePreparationFields
-              onInput={handleChange}
-              inputs={descriptionFields}
-            />
-          </WrapPreparation>
-        <PopularRecipe/>
+            onInput={handleChange}
+            inputs={descriptionFields}
+          />
+        </WrapPreparation>
+        <PopularRecipe />
       </Form>
     </Wrap>
   );

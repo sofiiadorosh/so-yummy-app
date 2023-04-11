@@ -46,6 +46,7 @@ export const lightTheme = Object.freeze({
 
     line: '#e0e0e0',
 
+    trashGreen: '#EBF3D4',
     searchBtnHover: '#22252A',
   },
 });
@@ -101,6 +102,7 @@ export const darkTheme = Object.freeze({
     line: '#e0e0e0',
 
     searchBtnHover: '#22252A',
+    trashGreen: '#EBF3D4',
   },
 });
 

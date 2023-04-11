@@ -2,27 +2,36 @@ import styled from 'styled-components';
 
 const ItemWrap = styled.div`
   border-radius: 8px;
-  padding: 25px;
+  padding: 14px;
   background-color: ${props => props.theme.colors.whiteBackground};
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+
+  @media screen and (min-width: 768px) {
+    padding: 24px;
+  }
 `;
 
 const PicterItem = styled.img`
   height: 124px;
   width: 124px;
+  min-width: 124px;
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
     width: 228px;
+    min-width: 228px;
     height: 232px;
   }
   @media screen and (min-width: 1440px) {
     width: 318px;
+    min-width: 318px;
     height: 324px;
   }
 `;
+
 const ItemBox = styled.div`
   position: relative;
+  width: 100%;
   margin-left: 14px;
 
   @media screen and (min-width: 768px) {
@@ -64,6 +73,7 @@ const ItemBoxDescript = styled.p`
     font-size: 18px;
   }
 `;
+
 const ItemBoxTime = styled.span`
   position: absolute;
   bottom: 0;
@@ -89,7 +99,49 @@ const LogoTrash = styled.button`
   width: 24px;
   height: 24px;
 
-  background-color: ${props => props.theme.colors.greenAccent};
+  background-color: ${props => props.theme.colors.darkAccent};
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 38px;
+    height: 38px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 44px;
+    height: 44px;
+  }
+
+  & > img {
+    width: 14px;
+    height: 14px;
+    stroke: #fafafa;
+
+    @media screen and (min-width: 768px) {
+      width: 22px;
+      height: 22px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+`;
+
+const LogoTrashMobile = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+
+  background-color: ${props => props.theme.colors.darkAccent};
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -130,7 +182,7 @@ const ItemBoxButton = styled.button`
   width: 87px;
   height: 27px;
 
-  background-color: ${props => props.theme.colors.greenAccent};
+  background-color: ${props => props.theme.colors.darkAccent};
   color: ${props => props.theme.colors.primaryLightText};
 
   font-weight: ${props => props.theme.fontWeights.regular};
@@ -161,4 +213,5 @@ export {
   ItemBoxTime,
   LogoTrash,
   ItemBoxButton,
+  LogoTrashMobile,
 };

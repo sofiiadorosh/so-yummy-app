@@ -21,10 +21,20 @@ export const Favorite = () => {
     getAllFavorites(page, 4)
       .then(res => {
         console.log(res);
-        const totalPages = Math.ceil(res.total / 4);
-        setCount(totalPages);
-        setAllRecipes(res.recipes);
-        setLoader(false);
+        if (!res) {
+          setLoader(false);
+          return;
+        }
+        if (res.length === 0) {
+          setLoader(false);
+          Notiflix.Notify.warning('Your Favorites is ampty');
+        }
+        if (res.length > 0) {
+          setLoader(false);
+          const totalPages = Math.ceil(res.length / 4);
+          setCount(totalPages);
+          setAllRecipes(res);
+        }
       })
       .catch(error => {
         console.log(error.message);
@@ -33,26 +43,27 @@ export const Favorite = () => {
   }, [page]);
 
   const handelDelete = async (id, event) => {
-    if (event.target.disabled) {
-      return;
-    }
-    event.target.disabled = true;
+    // if (event.target.disabled) {
+    //   return;
+    // }
+    // event.target.disabled = true;
 
     try {
       await deleteFromFavorite(id);
       setLoader(true);
       console.log(id);
       Notiflix.Notify.warning('Recipe was deleted from favorite list');
-      const res = await getAllFavorites(page, 4);
       setLoader(false);
+
+      const res = await getAllFavorites(page, 4);
       console.log(res);
       if (!res) {
         return;
       }
       setPage(1);
-      const totalPages = Math.ceil(res.total / 4);
+      const totalPages = Math.ceil(res.length / 4);
       setCount(totalPages);
-      setAllRecipes(res.recipes ?? []);
+      setAllRecipes(res ?? []);
     } catch (e) {
       console.log(e.message);
       setLoader(false);
@@ -71,8 +82,8 @@ export const Favorite = () => {
         <NoRecipesText>You dont have any favorites...</NoRecipesText>
       ) : (
         <ul>
-          {allRecipes.length !== 0 &&
-            allRecipes.map(({ _id, title, description, time, preview }) => {
+          {allRecipes.length > 0 &&
+            allRecipes.map(({ _id, title, description, time, thumb }) => {
               return (
                 <RecipesCard
                   key={_id}
@@ -83,7 +94,7 @@ export const Favorite = () => {
                   onDelete={e => {
                     handelDelete(_id, e);
                   }}
-                  imgComponent={preview}
+                  imgComponent={thumb}
                 />
               );
             })}

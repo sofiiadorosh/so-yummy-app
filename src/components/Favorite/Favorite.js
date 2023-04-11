@@ -83,7 +83,7 @@ export const Favorite = () => {
       ) : (
         <ul>
           {allRecipes.length > 0 &&
-            allRecipes.map(({ _id, title, description, time, preview }) => {
+            allRecipes.map(({ _id, title, description, time, thumb }) => {
               return (
                 <RecipesCard
                   key={_id}
@@ -94,7 +94,7 @@ export const Favorite = () => {
                   onDelete={e => {
                     handelDelete(_id, e);
                   }}
-                  imgComponent={preview}
+                  imgComponent={thumb}
                 />
               );
             })}

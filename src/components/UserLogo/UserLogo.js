@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { UserLogoModal } from 'components/UserLogoModal';
+import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
 
 import { selectUserName, selectUserAvatar } from 'redux/auth/selectors';
 

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik } from "formik";
 import * as yup from 'yup';
 
-import { login } from 'redux/auth/operations';
+import { login, getCurrentUser } from 'redux/auth/operations';
 import { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, EmailIcon, PasswordIcon, FormInput, FormButton , AuthLink} from '../RegisterForm/RegisterForm.styled';
 
 
@@ -65,6 +65,7 @@ export const SigninForm = () => {
           setSubmitting(false);
         } else {
           resetForm();
+          dispatch(getCurrentUser());
         }
       });
   };

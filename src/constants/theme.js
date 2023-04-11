@@ -45,6 +45,8 @@ export const lightTheme = Object.freeze({
     formBackground: '#F0F0F0',
 
     line: '#e0e0e0',
+
+    searchBtnHover: '#22252A',
   },
 });
 
@@ -74,8 +76,8 @@ export const darkTheme = Object.freeze({
     primaryLightText: '#FAFAFA',
     secondaryLightText: '#e0e0e0',
     tertiaryLightText: '#BDBDBD',
-    textSubTitle: "#3E4462",
-    backgroundAccent: "#EBF3D4",
+    textSubTitle: '#3E4462',
+    backgroundAccent: '#EBF3D4',
 
     whiteText: '#ffffff',
 
@@ -97,6 +99,8 @@ export const darkTheme = Object.freeze({
     formBackground: 'rgba(250, 250, 250, 0.2)',
 
     line: '#e0e0e0',
+
+    searchBtnHover: '#22252A',
   },
 });
 

@@ -11,13 +11,11 @@ export const NoRecipesImg = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
   margin-bottom: 33px;
 
   @media screen and (min-width: 768px) {
     width: 350px;
     height: 225px;
-    margin-bottom: 33px;
   }
 `;
 
@@ -27,27 +25,20 @@ export const NoRecipesText = styled.p`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.02em;
-  margin-bottom: 101px;
   opacity: 0.5;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1;
     letter-spacing: -0.02em;
-    margin-bottom: 200px;
     color: var(--secondaryTextColor);
   }
 `;
 
 export const PaginationWrp = styled.div`
   margin-top: 40px;
-  margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
     margin-top: 50px;
-    margin-bottom: 200px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 100px;
   }
 `;

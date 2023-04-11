@@ -57,7 +57,7 @@ const SearchInput = styled.input`
   font-size: ${props => props.theme.fontSizes[2]}px;
   line-height: 1.5;
   padding: 0px 0px 0px 32px;
-  color: '${props => props.theme.colors.tertiaryLightText}';
+  color: ${props => props.theme.colors.secondaryDarkText};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     border: 1px solid transparent;
@@ -78,7 +78,7 @@ const SearchInput = styled.input`
     font-weight: ${props => props.theme.fontWeights.regular};
     font-size: ${props => props.theme.fontSizes[4]}px;
     line-height: 1.5;
-    color: '${props => props.theme.colors.tertiaryLightText}';
+    /* color: '${props => props.theme.colors.inputText}'; */
   }
   @media (min-width: 768px) {
     font-weight: ${props => props.theme.fontWeights.regular};
@@ -97,6 +97,7 @@ const ButtonSearch = styled.button`
   top: 0;
   width: 113px;
   height: 52px;
+  right: -5px;
   background-color: ${props => props.theme.colors.greenAccent};
   border-radius: 24px 44px;
   border: none;
@@ -108,17 +109,17 @@ const ButtonSearch = styled.button`
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.quaternaryDarkText};
+    background-color: ${props => props.theme.colors.searchBtnHover};
   }
   @media screen and (min-width: 768px) {
     width: 161px;
     height: 59px;
-    left: 210px;
+    left: 215px;
   }
   @media screen and (min-width: 1440px) {
     font-size: ${props => props.theme.fontSizes[4]}px;
-    height: 70px;
-    left: 350px;
+    height: 72px;
+    left: 353px;
   }
 `;
 

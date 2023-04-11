@@ -21,15 +21,15 @@ export const RecipePageHero = ({ title, description, time, id }) => {
     addToFavorite(id)
       .then(res => {
         console.log(res);
-        // if (!res) {
-        //   Notiflix.Notify.warning(
-        //     `Неможливо додати рецепт по якійсь причині...`
-        //   );
-        //   return;
-        // } else {
-        //   setIsFavorite(true);
-        //   Notiflix.Notify.warning(`Added to favorite!`);
-        // }
+        if (!res) {
+          Notiflix.Notify.warning(
+            `Неможливо додати рецепт по якійсь причині...`
+          );
+          return;
+        } else {
+          setIsFavorite(true);
+          Notiflix.Notify.warning(`Added to favorite!`);
+        }
       })
       .catch(err => {
         console.log(err.message);

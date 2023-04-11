@@ -38,25 +38,26 @@ export const IngredientsShoppingList = () => {
         </TitleRemoveWrap>
       </TitleWrapper>
       <IngredientsList>
-        {ingredients.map(({ _id, ingredient: { ttl, thb }, measure }) => (
-          <IngredientsItem key={_id}>
-            <ItemTitleWrapper>
-              <div>
-                <img src={thb ? thb : defaultIngredientsImg} alt={ttl} />
-              </div>
-              <IngredientsTitle children={ttl} />
-            </ItemTitleWrapper>
-            <MeasureWrapper>
-              <p children={measure} />
-              <button
-                type="button"
-                onClick={() => dispatch(deleteFromShoppingList(_id))}
-              >
-                <GrClose />
-              </button>
-            </MeasureWrapper>
-          </IngredientsItem>
-        ))}
+        {ingredients.length > 0 &&
+          ingredients.map(({ _id, ingredient: { ttl, thb }, measure }) => (
+            <IngredientsItem key={_id}>
+              <ItemTitleWrapper>
+                <div>
+                  <img src={thb ? thb : defaultIngredientsImg} alt={ttl} />
+                </div>
+                <IngredientsTitle children={ttl} />
+              </ItemTitleWrapper>
+              <MeasureWrapper>
+                <p children={measure} />
+                <button
+                  type="button"
+                  onClick={() => dispatch(deleteFromShoppingList(_id))}
+                >
+                  <GrClose />
+                </button>
+              </MeasureWrapper>
+            </IngredientsItem>
+          ))}
       </IngredientsList>
     </>
   );

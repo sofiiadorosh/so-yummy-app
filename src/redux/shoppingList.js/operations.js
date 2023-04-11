@@ -30,7 +30,7 @@ export const deleteFromShoppingList = createAsyncThunk(
   async (ingredientId, thunkAPI) => {
     try {
       const response = await instance.delete(`/shopping-list/${ingredientId}`);
-      return response.data.ingredient;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

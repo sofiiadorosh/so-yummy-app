@@ -1,21 +1,29 @@
 import styled from 'styled-components';
 
+const ItemWrap = styled.div`
+  border-radius: 8px;
+  padding: 25px;
+  background-color: ${props => props.theme.colors.whiteBackground};
+  margin-bottom: 20px;
+`;
+
 const PicterItem = styled.img`
-  min-width: 124px;
+  height: 124px;
+  width: 124px;
+  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    min-width: 228px;
-    min-height: 232px;
+    width: 228px;
+    height: 232px;
   }
   @media screen and (min-width: 1440px) {
-    min-width: 318px;
-    min-height: 324px;
+    width: 318px;
+    height: 324px;
   }
 `;
 const ItemBox = styled.div`
   position: relative;
   margin-left: 14px;
-  /* display: block; */
 
   @media screen and (min-width: 768px) {
     margin-left: 24px;
@@ -44,7 +52,7 @@ const ItemBoxTitle = styled.p`
   }
 `;
 
-const ItemBoxText = styled.p`
+const ItemBoxDescript = styled.p`
   font-weight: ${props => props.theme.fontWeights.regular};
   font-size: 8px;
   color: ${props => props.theme.colors.primaryDarkText};
@@ -145,10 +153,11 @@ const ItemBoxButton = styled.button`
 `;
 
 export {
+  ItemWrap,
   PicterItem,
   ItemBox,
   ItemBoxTitle,
-  ItemBoxText,
+  ItemBoxDescript,
   ItemBoxTime,
   LogoTrash,
   ItemBoxButton,

@@ -1,13 +1,14 @@
 import { useMediaQuery } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import { TrashButton } from './TrashButton/TrashButton';
+import logoTrash from '../../images/logo-trash.png';
 
 import {
+  ItemWrap,
   PicterItem,
   ItemBox,
   ItemBoxTitle,
-  ItemBoxText,
+  ItemBoxDescript,
   ItemBoxTime,
   LogoTrash,
   ItemBoxButton,
@@ -41,81 +42,36 @@ export const RecipesCard = ({
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
-    <>
+    <ItemWrap>
       {isMobile && (
-        <Link to={`/recipe/${id}`}>
-          <PicterItem src={imgComponent} alt="dish photo" />
+        <NavLink to={`/recipe/${id}`} style={{ display: 'flex' }}>
+          <PicterItem src={imgComponent} alt="title" />
           <ItemBox>
             <ItemBoxTitle>{title}</ItemBoxTitle>
-            <ItemBoxText>{text}</ItemBoxText>
+            <ItemBoxDescript>{text}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash>
-              <TrashButton onDelete={onDelete} />
+            <LogoTrash type="button">
+              <img src={logoTrash} alt="logo" />
             </LogoTrash>
           </ItemBox>
-        </Link>
+        </NavLink>
       )}
       {!isMobile && (
-        <>
-          <PicterItem src={imgComponent} alt="dish photo" />
+        <div style={{ display: 'flex' }}>
+          <PicterItem src={imgComponent} alt="title" />
           <ItemBox>
             <ItemBoxTitle>{title}</ItemBoxTitle>
-            <ItemBoxText>{text}</ItemBoxText>
+            <ItemBoxDescript>{text}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash>
-              <TrashButton onDelete={onDelete} />
+            <LogoTrash type="button">
+              <img src={logoTrash} alt="logo" />
             </LogoTrash>
-            <Link to={`/recipe/${id}`}>
+            <NavLink to={`/recipe/${id}`}>
               <ItemBoxButton>See reecipe</ItemBoxButton>
-            </Link>
+            </NavLink>
           </ItemBox>
-        </>
+        </div>
       )}
-    </>
+    </ItemWrap>
   );
 };
-
-// export const RecipesCard = ({
-//   id,
-//   title,
-//   time,
-//   text,
-//   imgComponent,
-//   trashClass,
-//   onDelete,
-// }) => {
-//   const isMobile = useMediaQuery('(max-width: 767px)');
-
-//   return (
-//     <li className={css.dish}>
-//       {isMobile ? (
-//         <Link to={`/recipe/${id}`}>
-//           <img src={imgComponent} className={css.dishImg} alt="dish visually" />
-//         </Link>
-//       ) : (
-//         <img src={imgComponent} className={css.dishImg} alt="dish visually" />
-//       )}
-//       <div className={css.cardWrapper}>
-//         <div className={css.titleWrapper}>
-//           {isMobile ? (
-//             <Link to={`/recipe/${id}`}>
-//               <h3 className={css.dishTitle}>{title}</h3>
-//             </Link>
-//           ) : (
-//             <h3 className={css.dishTitle}>{title}</h3>
-//           )}
-//           <div className={css.trashLogo}>
-//             <TrashButton bgColorClass={trashClass} onDelete={onDelete} />
-//           </div>
-//         </div>
-//         <p className={css.dishDiscriptionFirst}>{text}</p>
-//         <div className={css.bottomWrapper}>
-//           <p className={css.dishTime}>{getTimeFromMins(time)}</p>
-//           <div className={css.dishButton}>
-//             <Link to={`/recipe/${id}`}>recipe</Link>
-//           </div>
-//         </div>
-//       </div>
-//     </li>
-//   );
-// };

@@ -1,24 +1,19 @@
 import { useEffect, useState } from 'react';
-
 import Notiflix from 'notiflix';
 
 import { deleteFromFavorite, getAllFavorites } from 'services/soyummyAPI';
-
-import { Paginator } from 'components/Paginator/Paginator';
 import { Loader } from 'components/Loader';
-
-import { PaginationWrp, NoRecipesText } from './Favorite.styled';
 import { RecipesCard } from 'components/RecipesCard/RecipesCard';
+
+import { NoRecipesText } from './Favorite.styled';
 
 export const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     setLoader(true);
-    getAllFavorites(page, 4)
+    getAllFavorites()
       .then(res => {
         console.log(res);
         if (!res) {
@@ -31,8 +26,6 @@ export const Favorite = () => {
         }
         if (res.length > 0) {
           setLoader(false);
-          const totalPages = Math.ceil(res.length / 4);
-          setCount(totalPages);
           setAllRecipes(res);
         }
       })
@@ -40,39 +33,27 @@ export const Favorite = () => {
         console.log(error.message);
         setLoader(false);
       });
-  }, [page]);
+  }, []);
 
   const handelDelete = async (id, event) => {
-    // if (event.target.disabled) {
-    //   return;
-    // }
-    // event.target.disabled = true;
-
     try {
       await deleteFromFavorite(id);
       setLoader(true);
-      console.log(id);
       Notiflix.Notify.warning('Recipe was deleted from favorite list');
       setLoader(false);
 
-      const res = await getAllFavorites(page, 4);
+      const res = await getAllFavorites();
       console.log(res);
+
       if (!res) {
         return;
       }
-      setPage(1);
-      const totalPages = Math.ceil(res.length / 4);
-      setCount(totalPages);
       setAllRecipes(res ?? []);
     } catch (e) {
       console.log(e.message);
       setLoader(false);
       Notiflix.Notify.failure('Failed to delete recipe from favorite list');
     }
-  };
-
-  const onPageChange = (e, page) => {
-    setPage(page);
   };
 
   return (
@@ -100,11 +81,6 @@ export const Favorite = () => {
             })}
         </ul>
       )}
-      <PaginationWrp>
-        {count > 1 && (
-          <Paginator count={count} page={page} isChange={onPageChange} />
-        )}
-      </PaginationWrp>
     </>
   );
 };

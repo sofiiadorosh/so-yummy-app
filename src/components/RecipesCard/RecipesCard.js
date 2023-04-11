@@ -12,6 +12,7 @@ import {
   ItemBoxTime,
   LogoTrash,
   ItemBoxButton,
+  LogoTrashMobile,
 } from './RecipesCard.styled';
 
 export function getTimeFromMins(mins) {
@@ -44,17 +45,19 @@ export const RecipesCard = ({
   return (
     <ItemWrap>
       {isMobile && (
-        <NavLink to={`/recipe/${id}`} style={{ display: 'flex' }}>
-          <PicterItem src={imgComponent} alt="title" />
+        <div style={{ display: 'flex' }}>
+          <NavLink to={`/recipe/${id}`}>
+            <PicterItem src={imgComponent} alt="title" />
+          </NavLink>
           <ItemBox>
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{text}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash type="button">
+            <LogoTrashMobile type="button" onClick={onDelete}>
               <img src={logoTrash} alt="logo" />
-            </LogoTrash>
+            </LogoTrashMobile>
           </ItemBox>
-        </NavLink>
+        </div>
       )}
       {!isMobile && (
         <div style={{ display: 'flex' }}>
@@ -63,7 +66,7 @@ export const RecipesCard = ({
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{text}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash type="button">
+            <LogoTrash type="button" onClick={onDelete}>
               <img src={logoTrash} alt="logo" />
             </LogoTrash>
             <NavLink to={`/recipe/${id}`}>

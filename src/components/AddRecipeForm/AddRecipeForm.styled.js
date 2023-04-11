@@ -51,29 +51,8 @@ export const InputUpload = styled.input`
   height: 0;
 `;
 
-export const InputDescriptionWrap = styled.div`
-  position: relative;
-  margin-top: 24px;
-`;
 
-export const InputDescription = styled.input`
-  padding-bottom: 18px;
-  width: 343px;
-  height: 43px;
-  border: none;
-  border-bottom: 1px solid grey;
-  background: transparent;
-  }
-`;
 
-export const UnderLane = styled.div`
-padding-bottom: 18px;
-  width: 343px;
-  border: none;
-  border-bottom: 1px solid grey;
-  background: transparent;
-  }
-`;
 
 
 export const SelectOption = styled.option`

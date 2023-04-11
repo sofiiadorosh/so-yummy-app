@@ -5,7 +5,7 @@ export const WrapperPopular = styled.div`
   margin-top: 72px;
   
   @media screen and (min-width: 768px) {
-    margin-top: 0;
+    margin-top: 100px;
   }
 `;
 

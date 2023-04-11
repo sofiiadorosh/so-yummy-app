@@ -13,6 +13,7 @@ export const Text = styled.span`
   color: #000;
   font-weight: 400 ;
   font-size: 14 px;
+  letter-spacing:-0.02em;
   line-height: 1.29;
 
   @media screen and (min-width: 768px) {

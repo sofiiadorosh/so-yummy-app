@@ -32,7 +32,7 @@ export const InputIngredients = styled.input`
   height: 53px;
   padding-left: 16px;
   border: none;
- 
+  background:#F5F5F5;
   border-radius: 6px;
   @media screen and (min-width: 768px) {
     margin-right: 32px;
@@ -60,5 +60,29 @@ export const DeleteBtn = styled(IoCloseOutline)`
   height: 20px;
   &:hover {
     color: ;
+  }
+`;
+
+export const SelectWrap = styled.div`
+  float: left;
+  width: 50%;
+`;
+
+export const CustomInput = styled.input`
+  height: 18px;
+  position: relative;
+  left: 3px;
+  height: 53px;
+  border: none;
+  &:focus-within {
+    outline: none;
+  }
+  background:#F5F5F5;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  @media screen and (min-width: 768px) {
+    width: 97px;
+    height: 59px;
+    text-align: center;
   }
 `;

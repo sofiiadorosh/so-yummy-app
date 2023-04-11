@@ -57,14 +57,16 @@ export const MeasureTypeSelector = () => {
               boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',
             },
             '@media (min-width: 768px)': {
-              width: '175px',
-              height: '41px',
+              width: '97px',
+              height: '59px',
             },
             '@media (min-width: 1440px)': {
               width: '198px',
               height: '49px',
             },
-          }),
+          }),dropdownIndicator: (base, state) => ({
+            ...base,
+            color: '#8BAA36',}),
           indicatorSeparator: () => ({
             display: 'none',
           }),
@@ -74,6 +76,7 @@ export const MeasureTypeSelector = () => {
             color: '#000000',
             font: '14',
             lineHeight: '1.5',
+            display: 'none',
           }),
           menu: () => ({
             border: 'none',
@@ -116,7 +119,7 @@ export const MeasureTypeSelector = () => {
             width: '146px',
 
             '@media (min-width: 768px)': {
-              width: '175px',
+              width: '97px',
 
               font: '14px',
               lineHeight: '21px',

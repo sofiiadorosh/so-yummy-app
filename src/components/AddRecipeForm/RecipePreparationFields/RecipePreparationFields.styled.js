@@ -23,7 +23,7 @@ export const TextAreaPreparation = styled.textarea`
   font-weight:400;
   font-size:14px;
   letter-spacing:-0.02em;
-  background:#D9D9D9;
+  background:#F5F5F5;
   border: none;
   @media screen and (min-width: 768px) {
     max-width: 505px;

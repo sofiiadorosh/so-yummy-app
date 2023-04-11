@@ -1,154 +1,159 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import {
-//   DeleteBtn,
-//   // InputIngredients,
-//   InputIngredientsWrap,
-//   TitleIngredients,
-//   WrapIngredients,
-// } from './RecipeIngredientsFields.styled';
-// import { MeasureTypeSelector } from '../Selectors/MeasureSelector';
-// import { IngredientsSelector } from '../Selectors/IngredientsSelector';
-// import { Counter } from '../Counter/Counter';
-// import { useSearchParams } from 'react-router-dom';
-// import { nanoid } from 'nanoid';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import {
+  DeleteBtn,
+  InputIngredients,
+  InputIngredientsWrap,
+  TitleIngredients,
+  WrapIngredients,
+  SelectWrap,
+  CustomInput,
+} from './RecipeIngredientsFields.styled';
+import { MeasureTypeSelector } from '../Selectors/MeasureSelector';
+import { Counter } from '../Counter/Counter';
+import { useSearchParams } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
-// const getIngredientsByQuery = async () => {
-//   const response = await axios.get(
-//     `https://so-yummy-app-backend.onrender.com/api/ingredients/list`
-//   );
-//   const { data } = response;
-//   return data;
-// };
+const getIngredientsByQuery = async (query) => {
+  const response = await axios.get(
+    `https://so-yummy-app-backend.onrender.com/api/ingredients/list`
+  );
+  const { data } = response.data;
+  return data; 
+};
 
-// export const IngredientsField = ({
-//   onInput,
-//   inputs,
-//   onSetValue,
-//   handleSubmit,
-// }) => {
-//   const [count, setCount] = useState(0);
-//   const [ingredients, setIngredients] = useState([]);
-//   const [searchParams, setSearchParams] = useSearchParams();
+export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
+  const [count, setCount] = useState(0);
+  const [ingredients, setIngredients] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-//   const [inputFields, setInputFields] = useState([]);
+  const [inputFields, setInputFields] = useState([]);
 
-//   const [activeInputIndex, setActiveInputIndex] = useState(-1);
+  const [activeInputIndex, setActiveInputIndex] = useState(-1);
 
-//   const handleChangeInput = (index, event) => {
-//     const values = [...inputFields];
-//     values[index][event.target.name] = event.target.value;
-//     setInputFields(values);
-//     // onSetValue(inputFields);
-//     setActiveInputIndex(index);
-//     updateQueryString(event);
-//   };
+  const handleChangeInput = (index, event) => {
+    const values = [...inputFields];
+    values[index][event.target.name] = event.target.value;
+    setInputFields(values);
+    setActiveInputIndex(index);
+    if (event.target.name !== 'measure') {
+      updateQueryString(event);
+    }
+  };
 
-//   const handleSetInputFields = inputFields => {
-//     onSetValue(inputFields);
-//   };
+  const handleAddFields = () => {
+    setInputFields([...inputFields, { id: nanoid(), field: '', measure: '' }]);
+  };
 
-//   const handleAddFields = () => {
-//     setInputFields([...inputFields, { id: nanoid(), field: '' }]);
-//   };
+  const handleRemoveFields = index => {
+    const values = [...inputFields];
+    values.splice(index, 1);
+    setInputFields(values);
+  };
 
-//   const handleRemoveFields = index => {
-//     const values = [...inputFields];
-//     values.splice(index, 1);
-//     setInputFields(values);
-//     // onSetValue(inputFields);
-//   };
+  const query = searchParams.get('query' ?? '');
 
-//   const query = searchParams.get('query' ?? '');
+  useEffect(() => {
+    if (query === '') {
+      return;
+    }
+    const getIngredients = async () => {
+      try {
+        const data = await getIngredientsByQuery(query);
+        setIngredients(data);
+      } catch {}
+    };
+    getIngredients();
+  }, [query]);
 
-//   useEffect(() => {
-//     if (query === '') {
-//       return;
-//     }
-//     const getIngredients = async () => {
-//       try {
-//         const data = await getIngredientsByQuery(query);
-//         setIngredients(data);
-//       } catch {}
-//     };
-//     getIngredients();
-//   }, [query]);
+  const updateQueryString = e => {
+    const { value } = e.target;
+    onInput(e);
+    setSearchParams(value !== '' ? { query: value } : {});
+  };
 
-//   // const setInputField = (index, event) => {
-//   //   // console.log(event.currentTarget);
-//   //   // console.log(index);
-//   //   // inputFields.map(({field, index}) => )
-//   // };
+  const handleIncrement = () => {
+    setCount(state => state + 1);
+    handleAddFields();
+  };
 
-//   const updateQueryString = e => {
-//     const { value } = e.target;
-//     onInput(e);
-//     setSearchParams(value !== '' ? { query: value } : {});
-//   };
+  const handleDecrement = () => {
+    setCount(state => state - 1);
+    handleRemoveFields();
+  };
 
-//   const handleIncrement = () => {
-//     setCount(state => state + 1);
-//     handleAddFields();
-//   };
+  const handleDelete = fieldId => {
+    const newFields = inputFields.filter(({ id }) => id !== fieldId);
 
-//   const handleDecrement = () => {
-//     setCount(state => state - 1);
-//     handleRemoveFields();
-//   };
+    setInputFields(newFields);
+    onSetValue(newFields);
+    setCount(state => state - 1);
+  };
 
-//   const handleDelete = fieldId => {
-//     setInputFields(inputFields.filter(({ id }) => id !== fieldId));
+  return (
+    <>
+      <WrapIngredients>
+        <TitleIngredients>Ingredients</TitleIngredients>
+        <Counter
+          count={count}
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+        />
+      </WrapIngredients>
 
-//     setCount(state => state - 1);
-//   };
-
-//   return (
-//     <>
-//       <WrapIngredients>
-//         <TitleIngredients>Ingredients</TitleIngredients>
-//         <Counter
-//           count={count}
-//           handleIncrement={handleIncrement}
-//           handleDecrement={handleDecrement}
-//         />
-//       </WrapIngredients>
-
-//       {inputFields.map((inputField, index) => (
-//         <div key={inputField.id}>
-//           <InputIngredientsWrap>
-//             {/* <InputIngredients
-//               name="field"
-//               id={inputField.id}
-//               value={inputField.field}
-//               onChange={event => handleChangeInput(index, event)}
-//             /> */}
-//             <IngredientsSelector />
-//             <MeasureTypeSelector />
-//             <DeleteBtn onClick={() => handleDelete(inputField.id)} />
-//           </InputIngredientsWrap>
-//           {activeInputIndex === index && (
-//             <ul>
-//               {ingredients.map(({ _id, ttl }) => {
-//                 return (
-//                   <li
-//                     key={_id}
-//                     id={_id}
-//                     onClick={() => {
-//                       // console.log(inputFields);
-//                       inputField.field = ttl;
-//                       setActiveInputIndex(-1);
-//                       handleSetInputFields(inputFields);
-//                       // handleChangeInput(index, event);
-//                     }}
-//                   >
-//                     <p>{ttl}</p>
-//                   </li>
-//                 );
-//               })}
-//             </ul>
-//           )}
-//         </div>
-//       ))}
-//     </>
-//   );
-// };
+      {inputFields.map((inputField, index) => (
+        <div key={inputField.id}>
+          <InputIngredientsWrap>
+            <InputIngredients
+              autoComplete="off"
+              name="field"
+              id={inputField.id}
+              value={inputField.field}
+              onChange={event => handleChangeInput(index, event)}
+            />
+            <SelectWrap>
+              <span>
+                <CustomInput
+                  autoComplete="off"
+                  type="text"
+                  name="measure"
+                  id={inputField.id}
+                  value={inputField.measure}
+                  onChange={event => handleChangeInput(index, event)}
+                />
+                <MeasureTypeSelector/>
+              </span>
+            </SelectWrap>
+            <DeleteBtn onClick={() => handleDelete(inputField.id)} />
+          </InputIngredientsWrap>
+          {activeInputIndex === index && (
+            <ul>
+              {ingredients.map(({ _id, ttl }) => {
+                return (
+                  <li
+                    key={_id}
+                    id={_id}
+                    onClick={() => {
+                      inputField.field = ttl;
+                      setActiveInputIndex(-1);
+                      inputFields.map(item => {
+                        if (item.id === inputField.id) {
+                          inputField.id = _id;
+                        }
+                        return item;
+                      });
+                      onSetValue(inputFields);
+                      // setSearchParams(null);
+                    }}
+                  >
+                    <p>{ttl}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      ))}
+    </>
+  );
+};

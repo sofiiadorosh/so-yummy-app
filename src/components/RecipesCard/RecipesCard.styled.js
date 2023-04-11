@@ -28,8 +28,10 @@ const PicterItem = styled.img`
     height: 324px;
   }
 `;
+
 const ItemBox = styled.div`
   position: relative;
+  width: 100%;
   margin-left: 14px;
 
   @media screen and (min-width: 768px) {
@@ -71,6 +73,7 @@ const ItemBoxDescript = styled.p`
     font-size: 18px;
   }
 `;
+
 const ItemBoxTime = styled.span`
   position: absolute;
   bottom: 0;

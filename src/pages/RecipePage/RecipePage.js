@@ -16,6 +16,7 @@ export const RecipePage = () => {
     const getData = async () => {
       try {
         const data = await getRecipesById(recipeId);
+        console.log(data.recipe);
         setRecipe(data.recipe);
       } catch (error) {
         setError(error.message);
@@ -28,11 +29,19 @@ export const RecipePage = () => {
     return;
   }
 
+  const { description, time, title, _id, favorite } = recipe;
+
   return (
     <main>
       {recipe && (
         <>
-          <RecipePageHero item={recipe} />
+          <RecipePageHero
+            title={title}
+            description={description}
+            time={time}
+            favorite={favorite}
+            id={_id}
+          />
           <RecipeIngredientsList ingredients={recipe.ingredients} />
           <RecipePreparation item={recipe} />
         </>

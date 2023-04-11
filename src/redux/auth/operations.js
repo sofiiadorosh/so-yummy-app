@@ -45,6 +45,7 @@ instance.interceptors.response.use(
   }
 );
 
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -131,14 +132,15 @@ export const updateUserInfo = createAsyncThunk(
   'auth/update',
   async (user, ThunkAPI) => {
     try {
-      const data = await instance.patch('/users/update');
+      const data = await instance.patch('/users/update', user);
       Notify.success('You successfully updated your profile');
       return data;
     } catch (error) {
-      Notify.failure('error.response.data.message');
+      Notify.failure(error.response.data.message);
       return ThunkAPI.rejectWithValue(error);
     }
   }
 );
+
 
 export default instance;

@@ -13,40 +13,22 @@ import {
   ItemBoxButton,
 } from './MyRecipesItem.styled';
 
-// export const MyRecipesItem = ({ _id}) => {
-//   return (
-//     <li style={{ display: 'flex' }}>
-//       <PicterItem src={recExmpl} alt="plugIngr" />
-//       <ItemBox>
-//         <ItemBoxTitle>Apple Frangipan Tart</ItemBoxTitle>
-//         <ItemBoxDescript>Apple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is filled with rich almond frangipane filling,
-//           baked with sliced apples and finished with apricot preserves.
-//         </ItemBoxDescript>
-//         <ItemBoxTime>20 min</ItemBoxTime>
-//         <LogoTrash >
-//           <img src={logoTrash} alt="logo" />
-//         </LogoTrash>
-//         <NavLink to={`/recipe/${_id}`}>
-//           <ItemBoxButton>See reecipe</ItemBoxButton>
-//         </NavLink>
-//       </ItemBox>
-//     </li>
-//   )
-// };
 
-// робочий варінат з реальними даними з бд
 
-export const MyRecipesItem = ({
-  item: { _id, time, title, description, thumb },
+
+export const MyRecipesItem = ({item: { _id, time, title, description, imageURL },
 }) => {
   return (
     <li style={{ display: 'flex' }}>
-      <PicterItem src={thumb} alt="title" />
+      <PicterItem src={imageURL} alt="title" />
       <ItemBox>
         <ItemBoxTitle>{title}</ItemBoxTitle>
         <ItemBoxDescript>{description}</ItemBoxDescript>
-        <ItemBoxTime>{time}min</ItemBoxTime>
-        <LogoTrash type="button">
+        <ItemBoxTime>{time} min</ItemBoxTime>
+        <LogoTrash
+          type="button"
+
+        >
           <img src={logoTrash} alt="logo" />
         </LogoTrash>
         <NavLink to={`/recipe/${_id}`}>

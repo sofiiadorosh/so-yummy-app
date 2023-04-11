@@ -97,7 +97,8 @@ export const CategorySearchSelector = () => {
             display: 'flex',
             flexDirection: 'column',
             paddingTop: '8px',
-
+            height: "154px",
+            overflow: 'auto',
             marginBottom: '10px',
             paddingBottom: '5px',
             font: '12px',

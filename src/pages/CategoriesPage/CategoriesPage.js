@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getRecipesByCategory } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
-import { CategoriesList } from 'components/CategoriesList';
+// import { CategoriesList } from 'components/CategoriesList';
 import { Square } from 'components/Square';
 import { RecipesList } from 'components/RecipesList';
 import { Loader } from 'components/Loader';
@@ -39,7 +39,7 @@ export const CategoriesPage = () => {
         <Title>
           <MainPageTitle title="Categories" />
         </Title>
-        <CategoriesList />
+        {/* <CategoriesList /> */}
         {isLoading && <Loader />}
         {recipes.length > 0 && !isLoading && <RecipesList items={recipes} />}
         {error && <p>Whoops, something went wrong...</p>}

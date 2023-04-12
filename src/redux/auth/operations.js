@@ -131,7 +131,7 @@ export const updateUserInfo = createAsyncThunk(
   'auth/update',
   async (user, ThunkAPI) => {
     try {
-      const data = await instance.patch('/users/update');
+      const data = await instance.patch('/users/update', user);
       Notify.success('You successfully updated your profile');
       return data;
     } catch (error) {

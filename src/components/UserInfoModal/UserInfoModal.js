@@ -96,18 +96,18 @@ const dispatch = useDispatch();
     }
   };
 
-  const onSubmitHandler = async e => {
-    e.preventDefault();
-    const files = e.target.elements[0].files[0];
-    const data = {};
-    if (files) {
-      data.avatarURL = files;
-    }
-    if (name) {
-      data.name = name;
-    }
-    dispatch(updateUserInfo(data));
-  };
+const onSubmitHandler = async e => {
+  e.preventDefault();
+  const files = e.target.elements[0]?.files?.[0];
+  const data = {};
+  if (files) {
+    data.avatarURL = files;
+  }
+  if (name) {
+    data.name = name;
+  }
+  dispatch(updateUserInfo(data));
+};
 
   const handlePicture = e => {
     e.preventDefault();

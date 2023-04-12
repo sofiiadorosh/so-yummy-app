@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const UserForm = styled.div`
+const UserForm = styled.form`
   width: 330px;
   height: 327px;
   padding: 32px 24px;

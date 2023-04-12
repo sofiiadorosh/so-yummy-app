@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
 
-import { selectUserName, selectUserAvatar } from 'redux/auth/selectors';
+import { selectUser} from 'redux/auth/selectors';
 
 import {
   UserLogoWrapper,
@@ -15,8 +15,7 @@ import {
 export const UserLogo = () => {
   const [modal, setModal] = useState(false);
 
-  const userName = useSelector(selectUserName);
-  const avatarURL = useSelector(selectUserAvatar); 
+  const { name, avatarURL } = useSelector(selectUser);
 
   return (
     <div style={{ position: 'relative' }}>
@@ -33,11 +32,11 @@ export const UserLogo = () => {
             alt="User"
             /> }
         </UserLogoButton>
-        <UserName>{userName}</UserName>
+        <UserName>{name}</UserName>
       </UserLogoWrapper>
       <Modal status={modal}>
         <UserLogoModal
-          avatar={avatarURL} user={userName}
+          avatar={avatarURL} user={name}
         />
       </Modal>
     </div>

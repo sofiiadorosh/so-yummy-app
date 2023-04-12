@@ -157,6 +157,12 @@ const NameField = styled.div`
     }
   }
 
+  input:hover,
+  input:focus {
+    font-weight: ${props => props.theme.fontWeights.medium};
+    color: ${props => props.theme.colors.blackText};
+    border: 2px solid ${props => props.theme.colors.blackText};
+  }
   button {
     position: absolute;
     top: 18px;

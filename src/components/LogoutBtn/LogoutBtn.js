@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,15 +12,28 @@ import {
   CancelButton,
 } from './LogoutBtn.styled';
 
-export const LogoutBtn = () => {
+export const LogoutBtn = ({onClose}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+    useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   const logoutHandler = () => {
     dispatch(logout())
       .then(() => {
         navigate('/signin');
       });
+    onClose();
   };
 
   return (
@@ -27,7 +41,7 @@ export const LogoutBtn = () => {
       <p>Are you sure you want to log out?</p>
       <ButtonWrapper>
         <LogoutButton type="button" onClick={logoutHandler} >Log out</LogoutButton>
-        <CancelButton type="button">Cancel</CancelButton>
+        <CancelButton onClick={() => { onClose()}} type="button">Cancel</CancelButton>
       </ButtonWrapper>
     </LogoutForm>
   );

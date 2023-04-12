@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 
@@ -39,6 +40,7 @@ export const Search = () => {
   const [loader, setLoader] = useState(false);
 
   const lastSearchQuery = useRef('');
+  const [searchParams, setSearchParams] = useSearchParams({});
 
   const onPageChange = (e, page) => {
     setPage(page);
@@ -70,6 +72,8 @@ export const Search = () => {
   }, [setRecipeLimit]);
 
   useEffect(() => {
+    const searchQuery = searchParams.get('query');
+
     if (location?.state?.ingredient) {
       dispatch(updateSearchType('ingredient'));
       location.state.ingredient = false;
@@ -90,7 +94,6 @@ export const Search = () => {
               dispatch(updateSearchResult([]));
               Notiflix.Notify.warning('Try another search query');
             }
-            console.log(res);
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / recipeLimit);
             setCount(totalPages);
@@ -128,25 +131,28 @@ export const Search = () => {
     searchQuery,
     searchType,
     recipeLimit,
+    searchParams,
   ]);
 
   const onFormSubmit = e => {
     e.preventDefault();
     const newSearchQuery = e.target.elements.search.value;
+    setSearchParams(newSearchQuery ? { query: newSearchQuery } : {});
     setPage(1);
-    if (
-      !newSearchQuery ||
-      (newSearchQuery === searchQuery && searchResult.length === 0)
-    ) {
-      Notiflix.Notify.warning('Type new query');
-      return;
-    }
+    // if (
+    //   !newSearchQuery ||
+    //   (newSearchQuery === searchQuery && searchResult.length === 0)
+    // ) {
+    //   Notiflix.Notify.warning('Type new query');
+    //   return;
+    // }
+
     dispatch(updateSearchQuery(newSearchQuery));
   };
 
   return (
     <>
-      <SearchBar onSubmit={onFormSubmit} />
+      <SearchBar onSubmit={onFormSubmit} searchParams={searchParams} />
       {loader && <Loader />}
       {searchResult.length === 0 && (
         <>

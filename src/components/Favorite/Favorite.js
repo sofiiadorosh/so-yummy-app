@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Notiflix from 'notiflix';
 
 import { deleteFromFavorite, getAllFavorites } from 'services/soyummyAPI';
 import { Loader } from 'components/Loader';
@@ -17,42 +16,27 @@ export const Favorite = () => {
       .then(res => {
         console.log(res);
         if (!res) {
-          setLoader(false);
           return;
         }
-        if (res.length === 0) {
-          setLoader(false);
-          Notiflix.Notify.warning('Your Favorites is ampty');
-        }
-        if (res.length > 0) {
-          setLoader(false);
-          setAllRecipes(res);
-        }
+        setAllRecipes(res);
       })
       .catch(error => {
         console.log(error.message);
+      })
+      .finally(() => {
         setLoader(false);
       });
   }, []);
 
-  const handelDelete = async (id, event) => {
+  const handleDelete = async (id, event) => {
     try {
       await deleteFromFavorite(id);
       setLoader(true);
-      Notiflix.Notify.warning('Recipe was deleted from favorite list');
-      setLoader(false);
-
       const res = await getAllFavorites();
-      console.log(res);
-
-      if (!res) {
-        return;
-      }
       setAllRecipes(res ?? []);
-    } catch (e) {
-      console.log(e.message);
       setLoader(false);
-      Notiflix.Notify.failure('Failed to delete recipe from favorite list');
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -73,7 +57,7 @@ export const Favorite = () => {
                   time={time}
                   text={description}
                   onDelete={e => {
-                    handelDelete(_id, e);
+                    handleDelete(_id, e);
                   }}
                   imgComponent={thumb}
                 />

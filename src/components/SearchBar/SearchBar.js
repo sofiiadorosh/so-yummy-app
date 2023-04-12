@@ -9,8 +9,11 @@ import {
   Container,
 } from './SearchBar.styled';
 
-export const SearchBar = ({ onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
+export const SearchBar = ({ onSubmit, searchParams }) => {
+  const [inputValue, setInputValue] = useState(() => {
+    const query = searchParams.get('query');
+    return query ? query : '';
+  });
 
   function handleInputChange(event) {
     setInputValue(event.target.value);

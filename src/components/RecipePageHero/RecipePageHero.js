@@ -2,7 +2,11 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import React, { useState } from 'react';
 import Notiflix from 'notiflix';
 
-import { addToFavorite, deleteFromFavorite } from 'services/soyummyAPI';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+  getAllFavorites,
+} from 'services/soyummyAPI';
 
 import {
   RecipeHeroWrapper,
@@ -17,23 +21,25 @@ import {
 export const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const addFavorite = () => {
-    addToFavorite(id)
-      .then(res => {
-        console.log(res);
-        if (!res) {
-          Notiflix.Notify.warning(
-            `Неможливо додати рецепт по якійсь причині...`
-          );
-          return;
+  const addFavorite = async () => {
+    try {
+      const favorites = await getAllFavorites();
+      console.log(favorites);
+      if (favorites.some(favorite => favorite._id === id)) {
+        Notiflix.Notify.warning(`Recipe is already in favorites`);
+        setIsFavorite(true);
+      } else {
+        const newFavorite = await addToFavorite(id);
+        console.log(newFavorite);
+        if (!newFavorite) {
+          Notiflix.Notify.warning(`Internal error`);
         } else {
           setIsFavorite(true);
-          Notiflix.Notify.warning(`Added to favorite!`);
         }
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const deleteFavorite = () => {
@@ -41,13 +47,9 @@ export const RecipePageHero = ({ title, description, time, id }) => {
       .then(res => {
         console.log(res);
         if (!res) {
-          Notiflix.Notify.warning(
-            `Неможливо видалити рецепт по якійсь причині...`
-          );
           return;
         }
         setIsFavorite(false);
-        Notiflix.Notify.warning(`Removed from favorite!`);
       })
       .catch(err => {
         console.log(err.message);

@@ -28,8 +28,9 @@ import { getCurrentUser } from 'redux/auth/operations';
 import { GlobalStyle } from './GlobalStyle';
 
 export const App = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const userAuth = useSelector(selectIsLoggedIn);
   // const token = useSelector(selectAccessToken);
+  const token = localStorage.getItem('accessToken');
 
   const dispatch = useDispatch();
 
@@ -42,21 +43,22 @@ export const App = () => {
 
   // const dispatch = useDispatch();
 
+  useEffect(() => {
+    const isLoggedIn = Boolean(token);
+    if (isLoggedIn && token) {
+    dispatch(setIsLoggedIn(isLoggedIn));
+    dispatch(getCurrentUser());
+    }
+    
+  }, [dispatch, token]);
+
   // useEffect(() => {
-  //   const isLoggedIn = Boolean(token);
+  //   const isLoggedIn = Boolean(localStorage.getItem('accessToken'));
   //   dispatch(setIsLoggedIn(isLoggedIn));
   //   if (isLoggedIn) {
   //     dispatch(getCurrentUser());
   //   }
-  // }, [dispatch, token]);
-
-  useEffect(() => {
-    const isLoggedIn = Boolean(localStorage.getItem('accessToken'));
-    dispatch(setIsLoggedIn(isLoggedIn));
-    if (isLoggedIn) {
-      dispatch(getCurrentUser());
-    }
-  }, [dispatch]);
+  // }, [dispatch]);
 
   const { darkTheme } = useSelector(state => state.theme);
 

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-import { PopularRecipe } from 'components/PopularRecipe';
+
 
 import {
   InputUpload,
@@ -105,7 +105,7 @@ export const AddRecipeForm = () => {
           />
         </WrapPreparation>
         </div>
-        <PopularRecipe />
+        
         </MainRecipe>
       </Form>
     </Wrap>

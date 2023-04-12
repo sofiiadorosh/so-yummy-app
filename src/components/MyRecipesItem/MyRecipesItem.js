@@ -14,7 +14,6 @@ import {
   ItemBoxButton,
 } from './MyRecipesItem.styled';
 
-
 export const MyRecipesItem = ({deleteRecipe, item: { _id, time, title, description, imageURL },
 }) => {
   return (

@@ -2,6 +2,7 @@
 
 import { NavLink } from 'react-router-dom';
 import logoTrash from '../../images/logo-trash.png';
+
 import {
   PicterItem,
   ItemBox,

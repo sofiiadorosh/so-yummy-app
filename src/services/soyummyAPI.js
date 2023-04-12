@@ -97,7 +97,7 @@ const deleteFromFavorite = async id => {
 
 const getMyRecipesList = async () => {
   try {
-    const response = await instance.get('ownRecipes');
+    const response = await instance.get('/ownRecipes');
     return response.data;
   } catch (error) {
     console.log(error.message);

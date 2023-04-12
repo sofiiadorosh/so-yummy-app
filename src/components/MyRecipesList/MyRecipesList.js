@@ -1,5 +1,4 @@
 //====================== вар 1 
-
 import Notiflix from 'notiflix';
 import { useState, useEffect} from 'react';
 import { List } from './MyRecipesList.styled.js';
@@ -27,19 +26,56 @@ export const MyRecipesList = ({ items }) => {
     getData();
   }, []);
 
-  const deleteHandler = async (id, event) => {
-      try {
-      await deleteFromMyRecipesList(id);
-      Notiflix.Notify.warning('Recipe was deleted from favorite list');
-      const res = await getMyRecipesList(recipes);
-      console.log(res);
-      if (!res) {
-        return;
-      }
-      setRecipes(res ?? []);
-    } catch (e) {
-      console.log(e.message);
-      Notiflix.Notify.failure('Failed to delete recipe from favorite list');
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getMyRecipesList()
+  //     .then(res => {
+  //       console.log(res);
+  //       if (!res) {
+  //         setIsLoading(false);
+  //         return;
+  //       }
+  //       if (res.length === 0) {
+  //         setIsLoading(false);
+  //         Notiflix.Notify.warning('Your Favorites is ampty');
+  //       }
+  //       if (res.length > 0) {
+  //         setIsLoading(false);
+  //         getMyRecipesList(res);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error.message);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
+
+  // const deleteHandler = async (id, event) => {
+  //     try {
+  //     await deleteFromMyRecipesList(id);
+  //     Notiflix.Notify.warning('Recipe was deleted from favorite list');
+  //     const res = await getMyRecipesList(recipes);
+  //     console.log(res);
+  //     if (!res) {
+  //       return;
+  //     }
+  //     setRecipes(res ?? []);
+  //   } catch (e) {
+  //     console.log(e.message);
+  //     Notiflix.Notify.failure('Failed to delete recipe from favorite list');
+  //   }
+  // };
+
+    const deleteHandler = id => {
+    try {
+      const remove = async () => {
+        const data = await deleteFromMyRecipesList(id);
+        return data;
+      };
+      remove();
+      setRecipes(prevState => prevState.filter(elem => elem._id !== id));
+    } catch (error) {
+      console.log(error.message);
     }
   };
 

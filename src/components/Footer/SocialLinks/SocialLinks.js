@@ -1,14 +1,9 @@
-import { css } from 'styled-components';
 import React from 'react';
-import clsx from 'clsx';
+import sprite from 'images/Footer/sprite.svg';
 
-import { ReactComponent as Facebook } from './images/Facebook.svg';
-import { ReactComponent as Youtube } from './images/Youtube.svg';
-import { ReactComponent as Twitter } from './images/Twitter.svg';
+import { Wrapper, Link } from './SocialLinks.styled';
 
-import { Wrapper, Link, InstagramIcon } from './SocialLinks.styled';
-
-const SocialLinks = ({ type }) => {
+const SocialLinks = () => {
   return (
     <Wrapper>
       <Link
@@ -16,28 +11,36 @@ const SocialLinks = ({ type }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Facebook width="20" height="20" />
+        <svg width={20} height={20}>
+          <use href={sprite + '#icon-facebook'}></use>
+        </svg>
       </Link>
       <Link
         href="https://www.youtube.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Youtube width="20" height="15" />
+        <svg width={20} height={20}>
+          <use href={sprite + '#icon-youtube'}></use>
+        </svg>
       </Link>
       <Link
         href="https://www.twitter.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Twitter width="20" height="16" />
+        <svg width={20} height={20}>
+          <use href={sprite + '#icon-twitter'}></use>
+        </svg>
       </Link>
       <Link
         href="https://www.instagram.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <InstagramIcon className={clsx(css.instagramm)} />
+        <svg width={20} height={20}>
+          <use href={sprite + '#icon-instagram'}></use>
+        </svg>
       </Link>
     </Wrapper>
   );

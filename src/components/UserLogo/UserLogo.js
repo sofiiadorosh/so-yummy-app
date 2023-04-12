@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
 
-import { selectUserName, selectUserAvatar } from 'redux/auth/selectors';
+import { selectUserName, selectUserAvatar, selectUser } from 'redux/auth/selectors';
 
 import {
   UserLogoWrapper,
@@ -15,29 +15,31 @@ import {
 export const UserLogo = () => {
   const [modal, setModal] = useState(false);
 
-  const userName = useSelector(selectUserName);
-  const avatarURL = useSelector(selectUserAvatar); 
+  // const userName = useSelector(selectUserName);
+  // const avatarURL = useSelector(selectUserAvatar);
+
+  const user = useSelector(selectUser); 
 
   return (
     <div style={{ position: 'relative' }}>
       <UserLogoWrapper>
         <UserLogoButton onClick={() => setModal(prevState => !prevState)}>
-          {!avatarURL && 
+          {!user.avatarURL && 
             <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxeVKKhcw5BVb33-sIFbVwBxpGvFjAORNkHA&usqp=CAU"
             alt="User"
             />}
-          {avatarURL &&
+          {user.avatarURL &&
             <img
-            src={avatarURL}
+            src={user.avatarURL}
             alt="User"
             /> }
         </UserLogoButton>
-        <UserName>{userName}</UserName>
+        <UserName>{user.name}</UserName>
       </UserLogoWrapper>
       <Modal status={modal}>
         <UserLogoModal
-          avatar={avatarURL} user={userName}
+          avatar={user.avatarURL} name={user.name}
         />
       </Modal>
     </div>

@@ -7,7 +7,7 @@ import { LogoutBtn } from 'components/LogoutBtn';
 
 import { Modal, EditButton, LogoutButton } from './UserLogoModal.styled';
 
-export const UserLogoModal = ({avatar, user}) => {
+export const UserLogoModal = ({avatar, name}) => {
   const [userInfoModal, setUserInfoModal] = useState('closed');
   const [logoutModal, setlogoutModal] = useState('closed');
 
@@ -27,7 +27,7 @@ export const UserLogoModal = ({avatar, user}) => {
         <UserModal
           state={userInfoModal}
           stateFn={setUserInfoModal}
-          children={<UserInfoModal avatar={avatar} user={user} />}
+          children={<UserInfoModal avatar={avatar} name={name} />}
         />
       )}
       {logoutModal === 'opened' && (

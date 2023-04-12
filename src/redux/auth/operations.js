@@ -129,10 +129,12 @@ export const getCurrentUser = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   'auth/update',
-  async (user, ThunkAPI) => {
+  async (formData, ThunkAPI) => {
     try {
-      const data = await instance.patch('/users/update');
-      Notify.success('You successfully updated your profile');
+      const data = await instance.patch('/users/update', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+       Notify.success('You successfully updated your profile');
       return data;
     } catch (error) {
       Notify.failure('error.response.data.message');

@@ -98,8 +98,8 @@ const authSlice = createSlice({
       
       .addCase(updateUserInfo.pending, handlerPending)
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
-        state.user.name = payload.user.name;
-        state.user.avatar = payload.user.avatarURL;
+          state.user.name = payload.user.name;
+          state.user.avatarURL = payload.user.avatarURL;
         state.isLoggedIn = true;
       })
       .addCase(updateUserInfo.rejected, handlerRejected),

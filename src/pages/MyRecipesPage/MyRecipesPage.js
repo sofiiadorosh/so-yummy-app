@@ -1,6 +1,7 @@
-// import { Outlet } from 'react-router-dom';
+//============================================ 1 вари
+
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+
 
 import { getMyRecipesList } from 'services/soyummyAPI';
 
@@ -12,17 +13,16 @@ import { MyRecipesPageSection, Container, Title, NoRecipesText } from './MyRecip
 
 
 export const MyRecipesPage = () => {
-  const [recipes, setRecipes] = useState([]);
-   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  const { recipesCard } = useParams();
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
       try {
-        const data = await getMyRecipesList(recipesCard);
+        const data = await getMyRecipesList();
         setRecipes(data.recipes);
         setIsLoading(false);
       } catch (error) {
@@ -30,20 +30,9 @@ export const MyRecipesPage = () => {
       }
     };
     getData();
-  }, [recipesCard]);
+  }, []);
 
-  //  const deleteHandler = id => {
-  //   try {
-  //     const remove = async () => {
-  //       const data = await deleteFromMyRecipesList(id);
-  //       return data;
-  //     };
-  //     remove();
-  //     setRecipes(prevState => prevState.filter(elem => elem._id !== id));
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+
 
   return (
     <MyRecipesPageSection>
@@ -60,4 +49,27 @@ export const MyRecipesPage = () => {
   );
 };
 
-// deleteMyRecipes={deleteHandler} в 56 строку
+
+//==================== переиспользования фейворитс
+
+// import { MyRecipesList } from 'components/MyRecipesList/MyRecipesList';
+// import { MainPageTitle } from 'components/MainPageTitle';
+// import { Square } from 'components/Square';
+
+// import { CategoriesSection, Container, Title } from '../FavoritePage/FavoritePage.styled';
+
+// export const MyRecipesPage = () => {
+//   return (
+//     <>
+//       <CategoriesSection>
+//         <Container>
+//           <Square />
+//           <Title>
+//             <MainPageTitle title="My recipes" />
+//           </Title>
+//           <MyRecipesList />
+//         </Container>
+//       </CategoriesSection>
+//     </>
+//   );
+// };

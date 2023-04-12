@@ -11,12 +11,9 @@ export const SearchForm = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-
     const query = e.currentTarget.elements.query.value;
-
     dispatch(updateSearchQuery(query));
-
-    navigate(`/search`);
+    navigate(`/search?query=${query}`);
   };
 
   return (

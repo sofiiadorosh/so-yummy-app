@@ -94,7 +94,6 @@ export const Search = () => {
               dispatch(updateSearchResult([]));
               Notiflix.Notify.warning('Try another search query');
             }
-            console.log(res);
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / recipeLimit);
             setCount(totalPages);

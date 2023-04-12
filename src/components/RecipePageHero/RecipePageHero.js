@@ -21,34 +21,25 @@ import {
 export const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const addFavorite = () => {
-    getAllFavorites()
-      .then(res => {
-        if (!res || res.length === 0) {
-          return;
-        }
-        if (res.find(item => item._id === id)) {
-          Notiflix.Notify.warning(`Recipe is already in favorites`);
+  const addFavorite = async () => {
+    try {
+      const favorites = await getAllFavorites();
+      console.log(favorites);
+      if (favorites.some(favorite => favorite._id === id)) {
+        Notiflix.Notify.warning(`Recipe is already in favorites`);
+        setIsFavorite(true);
+      } else {
+        const newFavorite = await addToFavorite(id);
+        console.log(newFavorite);
+        if (!newFavorite) {
+          Notiflix.Notify.warning(`Internal error`);
+        } else {
           setIsFavorite(true);
-          return;
         }
-        addToFavorite(id)
-          .then(res => {
-            if (!res) {
-              Notiflix.Notify.warning(`Internal error`);
-              return;
-            } else {
-              setIsFavorite(true);
-              Notiflix.Notify.warning(`Added to favorite!`);
-            }
-          })
-          .catch(e => {
-            console.log(e.message);
-          });
-      })
-      .catch(e => {
-        console.log(e.message);
-      });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const deleteFavorite = () => {
@@ -56,11 +47,9 @@ export const RecipePageHero = ({ title, description, time, id }) => {
       .then(res => {
         console.log(res);
         if (!res) {
-          Notiflix.Notify.warning(`Internal error`);
           return;
         }
         setIsFavorite(false);
-        Notiflix.Notify.warning(`Removed from favorite!`);
       })
       .catch(err => {
         console.log(err.message);

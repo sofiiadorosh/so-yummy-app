@@ -4,7 +4,8 @@ import {
     UnderLane,
     InputDescriptionWrap,
     InputDescription,
-    
+    MainWrap,
+    LastInputDescriptionWrap
   } from './RecipeDescriptionFields.styled';
 import { TimeTypeSelector } from '../Selectors/TimeSelector';
 import { CategorySearchSelector } from '../Selectors/CategorySelector';
@@ -16,7 +17,7 @@ export const RecipeDescriptionFields = ({ onInput, inputs }) => {
     };
   
     return (
-<div>
+<MainWrap>
             <InputDescriptionWrap>
               <InputDescription
                 type="text"
@@ -39,11 +40,11 @@ export const RecipeDescriptionFields = ({ onInput, inputs }) => {
               <CategorySearchSelector />
               <UnderLane />
             </InputDescriptionWrap>
-            <InputDescriptionWrap>
+            <LastInputDescriptionWrap>
               <TimeTypeSelector />
               <UnderLane />
-            </InputDescriptionWrap>
-          </div>
+            </LastInputDescriptionWrap>
+          </MainWrap>
 
     );
 };

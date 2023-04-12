@@ -13,6 +13,8 @@ import {
   MainWrapIngredients,
   WrapPreparation,
   Description,
+  ImageInput,
+  MainRecipe,
 } from './AddRecipeForm.styled';
 import {RecipeDescriptionFields} from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
@@ -61,7 +63,7 @@ export const AddRecipeForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(descriptionFields);
+    
     addRecipe(descriptionFields);
     e.reset();
   };
@@ -69,10 +71,13 @@ export const AddRecipeForm = () => {
   return (
     <Wrap>
       <Form>
+        
+          <MainRecipe>
+          <div>
         <Description>
           <ImgUploadWrap>
             <label htmlFor="file-input">
-              <img  src={recipeButtonImage} alt="recipeButtonImage"  />
+              <ImageInput  src={recipeButtonImage} alt="recipeButtonImage"  />
             </label>
             <InputUpload
               id="file-input"
@@ -99,7 +104,9 @@ export const AddRecipeForm = () => {
             inputs={descriptionFields}
           />
         </WrapPreparation>
+        </div>
         <PopularRecipe />
+        </MainRecipe>
       </Form>
     </Wrap>
   );

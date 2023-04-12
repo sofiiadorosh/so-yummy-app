@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   padding-top: 50px;
   padding-bottom: 72px;
+  @media screen and (min-width: 1440px) {
+  padding-top:0px
+  
+  } 
 `;
 
 export const Title = styled.h2`
@@ -14,25 +18,34 @@ export const Title = styled.h2`
   font-feature-settings: 'liga' off;
 `;
 
+export const MainRecipe = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+@media screen and (min-width: 1440px) {
+ gap: 121px;
+ flex-direction: row;
+ 
+} 
+`;
+
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+
 `;
 
 export const Description = styled.div`
 @media screen and (min-width: 768px) {
  
     display: flex;
-    justify-content: space-between;
+    
     width: 100%;
   }
 
   @media screen and (min-width: 1440px) {
     
     display: flex;
-    justify-content: space-between;
+    
     width: 100%;
   } 
 `;
@@ -41,7 +54,9 @@ export const ImgUploadWrap = styled.div`
   margin-bottom: 32px;
    display:flex;
    justify-content: center;
-
+   @media screen and (min-width: 768px) {
+ margin-bottom:0px;
+   }
   
 `;
 
@@ -65,9 +80,10 @@ border-color:transparent;
 
 export const MainWrapIngredients = styled.div`
   margin-top: 44px;
-
   width: 100%;
-
+  @media screen and (min-width: 768px) {
+   margin-top: 104px;
+  }
 `;
 
 export const WrapIngredients = styled.div`
@@ -118,6 +134,9 @@ export const WrapPreparation = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+    @media screen and (min-width: 768px) {
+    margin-top:104px;
+  }
 `;
 
 export const TitlePreparation = styled.h2`
@@ -130,3 +149,12 @@ export const WrapButtonAdd = styled.div`
   margin-right: auto;
 `;
 
+export const ImageInput = styled.img`
+width:279px;
+height:268px;
+@media screen and (min-width: 1440px) {
+    
+  width:357px;
+  height:344px;
+} 
+`

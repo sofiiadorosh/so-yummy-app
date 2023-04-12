@@ -29,6 +29,8 @@ export const TextAreaPreparation = styled.textarea`
   @media screen and (min-width: 768px) {
     min-width: 505px;
     min-height:224px;
+    max-width: 505px;
+    max-height: 224px;
   }
 `;
 export const ButtonAdd = styled.button`

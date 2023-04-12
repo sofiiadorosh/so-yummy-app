@@ -64,26 +64,48 @@ export const DeleteBtn = styled(IoCloseOutline)`
   
 `;
 
-export const SelectWrap = styled.div`
-  float: left;
-  width: 50%;
+
+
+export const CustomList = styled.ul`
+background:#ffffff;
+width:398px;
+height:172px;
+overflow:auto;
 `;
 
-export const CustomInput = styled.input`
-
-  position:relative;
-  left: 3px;
-  height: 53px;
-  border: none;
-  &:focus-within {
-    outline: none;
-  }
-  background:#F5F5F5;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  @media screen and (min-width: 768px) {
-    width: 97px;
-    height: 59px;
-    text-align: center;
-  }
+export const CustomItem = styled.li`
+margin-bottom:6px;
+text-align: start;
 `;
+
+export const CustomText = styled.p`
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+letter-spacing: -0.02em;
+
+color: #000000;
+
+opacity: 0.5;
+`;
+// export const CustomInput = styled.input`
+// width: 40px;
+ 
+//   height: 53px;
+//   border: none;
+//   &:focus-within {
+//     outline: none;
+//   }
+//   background:#F5F5F5;
+//   border-top-left-radius: 6px;
+//   border-bottom-left-radius: 6px;
+//   @media screen and (min-width: 768px) {
+//     width: 97px;
+//     height: 59px;
+//     text-align: center;
+//   }
+// `;

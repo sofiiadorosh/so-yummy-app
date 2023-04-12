@@ -6,8 +6,10 @@ import {
   InputIngredientsWrap,
   TitleIngredients,
   WrapIngredients,
-  SelectWrap,
-  CustomInput,
+ 
+  CustomList,
+  CustomItem,
+  CustomText
 } from './RecipeIngredientsFields.styled';
 import { MeasureTypeSelector } from '../Selectors/MeasureSelector';
 import { Counter } from '../Counter/Counter';
@@ -116,26 +118,16 @@ export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
               onChange={event => handleChangeInput(index, event)}
               
             />
-            <SelectWrap>
-              
-                <CustomInput
-                  autoComplete="off"
-                  type="number"
-                  name="measure"
-                  id={inputField.id}
-                  value={inputField.measure}
-                  onChange={event => handleChangeInput(index, event)}
-                />
+           
                 <MeasureTypeSelector/>
-              
-            </SelectWrap>
+            
             <DeleteBtn onClick={() => handleDelete(inputField.id)} />
           </InputIngredientsWrap>
           {activeInputIndex === index && (
-            <ul>
+            <CustomList>
               {ingredients.filter((item)=>item.ttl.toLowerCase().includes(searchValue.toLowerCase())).map(({ _id, ttl }) => {
                 return (
-                  <li
+                  <CustomItem
                     key={_id}
                     id={_id}
                     onClick={() => {
@@ -151,11 +143,11 @@ export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
                       // setSearchParams(null);
                     }}
                   >
-                    <p>{ttl}</p>
-                  </li>
+                    <CustomText>{ttl}</CustomText>
+                  </CustomItem>
                 );
               })}
-            </ul>
+            </CustomList>
           )}
         </div>
       ))}

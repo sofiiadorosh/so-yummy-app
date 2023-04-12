@@ -147,7 +147,7 @@ const FormBtn = styled.button`
   height: 38px;
   border-radius: 6px;
   border: none;
-  background-color: ${props => props.theme.colors.greenAccent};
+  background-color: ${props => props.theme.colors.footerLink};
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;

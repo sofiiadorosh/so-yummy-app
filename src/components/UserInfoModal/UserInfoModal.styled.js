@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const UserForm = styled.div`
+const UserForm = styled.form`
   width: 330px;
   height: 327px;
   padding: 32px 24px;
@@ -157,6 +157,12 @@ const NameField = styled.div`
     }
   }
 
+  input:hover,
+  input:focus {
+    font-weight: ${props => props.theme.fontWeights.medium};
+    color: ${props => props.theme.colors.blackText};
+    border: 2px solid ${props => props.theme.colors.blackText};
+  }
   button {
     position: absolute;
     top: 18px;

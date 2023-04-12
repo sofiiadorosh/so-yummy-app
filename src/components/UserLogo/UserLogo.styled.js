@@ -61,7 +61,17 @@ const Modal = styled.div`
     return status
       ? 'opacity: 1; pointer-events: auto; visibility: visible;'
       : 'opacity: 0; pointer-events: none; visibility: hidden;';
-  }}
+}}
+    /* &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.0);
+    ${({ status }) => status ? 'visibility: visible;' : 'visibility: hidden;'}
+  } */
 `;
 
 export { UserLogoWrapper, UserLogoButton, UserName, Modal };

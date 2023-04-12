@@ -18,7 +18,7 @@ export const MeasureSearchForm = styled.form`
 
 export const Text = styled.span`
   opacity:0.5;
-  color: #000;
+  color: ${props => props.theme.colors.blackText};
   font-weight: 400 ;
   font-size: 14 px;
   letter-spacing:-0.02em;

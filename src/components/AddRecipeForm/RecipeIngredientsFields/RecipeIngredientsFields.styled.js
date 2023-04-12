@@ -10,7 +10,7 @@ margin-bottom: 28px;
 `;
 
 export const TitleIngredients = styled.h3`
-  color: #3E4462 ;
+  color: ${props => props.theme.colors.secondaryDarkText};
   font-weight: 600 ;
   font-size: 24px;
   font-family:'Poppins';
@@ -25,6 +25,7 @@ export const InputIngredientsWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
 `;
 
 export const InputIngredients = styled.input`

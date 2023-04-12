@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TitlePreparation = styled.h3`
   margin-bottom: 24px;
-  color: #3e4462 ;
+  color: ${props => props.theme.colors.secondaryDarkText};
   font-family:'Poppins';
   font-weight: 600 ;
   font-size: 24px;

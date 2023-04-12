@@ -25,7 +25,7 @@ export const LastInputDescriptionWrap = styled.div`
 
 export const InputDescription = styled.input`
   padding-bottom: 18px;
-  color:#000000;
+  color:${props => props.theme.colors.blackText};
   font-family:'Poppins';
   font-weight:400;
   font-size:14px;

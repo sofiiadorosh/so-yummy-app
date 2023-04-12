@@ -1,9 +1,7 @@
 //==================== вариант 1
 
 import { NavLink } from 'react-router-dom';
-
 import logoTrash from '../../images/logo-trash.png';
-
 import {
   PicterItem,
   ItemBox,
@@ -14,7 +12,7 @@ import {
   ItemBoxButton,
 } from './MyRecipesItem.styled';
 
-export const MyRecipesItem = ({deleteRecipe, item: { _id, time, title, description, imageURL },
+export const MyRecipesItem = ({deleteRecipe, items: { _id, time, title, description, imageURL },
 }) => {
   return (
     <li style={{ display: 'flex' }}>

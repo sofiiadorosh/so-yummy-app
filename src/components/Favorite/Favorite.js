@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { deleteFromFavorite, getAllFavorites } from 'services/soyummyAPI';
 import { Loader } from 'components/Loader';
 import { RecipesCard } from 'components/RecipesCard/RecipesCard';
+import { getCurrentUser } from 'redux/auth/operations';
 
 import { NoRecipesText } from './Favorite.styled';
 
@@ -10,7 +12,10 @@ export const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [loader, setLoader] = useState(false);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(getCurrentUser());
     setLoader(true);
     getAllFavorites()
       .then(res => {

@@ -1,7 +1,11 @@
 //============================================ 1 вари
 
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { getMyRecipesList, deleteFromMyRecipesList } from 'services/soyummyAPI';
+import { getCurrentUser } from 'redux/auth/operations';
+
 import { Loader } from 'components/Loader';
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
@@ -14,11 +18,14 @@ import { NoRecipesText } from '../../components/Favorite/Favorite.styled';
 export const MyRecipesPage = () => {
 
 
-const [recipes, setRecipes] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
-const [error, setError] = useState(null);
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getCurrentUser());
     setIsLoading(true);
     const getData = async () => {
       try {
@@ -26,18 +33,18 @@ const [error, setError] = useState(null);
         setRecipes(data.recipes);
         setIsLoading(false);
       } catch (error) {
-       setError(error.message);
+        setError(error.message);
       }
     };
     getData();
-  }, []);
+  }, [dispatch]);
 
   const deleteHandler = id => {
     try {
       const remove = async () => {
         const data = await deleteFromMyRecipesList(id);
         console.log(data)
-        return data;  
+        return data;
       };
       remove();
       setRecipes(prevState => prevState.filter(elem => elem._id !== id));
@@ -60,9 +67,9 @@ const [error, setError] = useState(null);
         ) : (
           <MyRecipesList
             recipes={recipes}
-            onDelete = {deleteHandler}
+            onDelete={deleteHandler}
           />
-          )
+        )
         }
         {error && <p>Whoops, something went wrong...</p>}
       </Container>

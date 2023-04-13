@@ -46,7 +46,7 @@ export const Header = () => {
   };
 
   const mobileMenuHandler = e => {
-    if (e.target.closest('li')) {
+    if (e.target.closest('li') && window.innerWidth < 1439) {
       return setToggleMenu(prevState => !prevState);
     }
   };

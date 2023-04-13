@@ -31,7 +31,7 @@ export const Favorite = () => {
       .finally(() => {
         setLoader(false);
       });
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = async (id, event) => {
     try {

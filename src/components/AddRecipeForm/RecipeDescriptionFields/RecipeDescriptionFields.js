@@ -20,6 +20,7 @@ export const RecipeDescriptionFields = ({ onInput, inputs }) => {
 <MainWrap>
             <InputDescriptionWrap>
               <InputDescription
+              required
                 type="text"
                 name=""
                 id=""
@@ -29,6 +30,7 @@ export const RecipeDescriptionFields = ({ onInput, inputs }) => {
             </InputDescriptionWrap>
             <InputDescriptionWrap>
               <InputDescription
+              required 
                 type="text"
                 name=""
                 id=""

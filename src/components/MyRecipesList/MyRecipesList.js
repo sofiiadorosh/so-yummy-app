@@ -92,12 +92,12 @@ export const MyRecipesList = ({onDelete, recipes}) => {
          <MyRecipesItem
            key={item._id}
            items={item}
-<<<<<<< Updated upstream
-           deleteRecipe={deleteHandler}
-=======
+
+
+
            onDelete={onDelete}
            
->>>>>>> Stashed changes
+
            />
       ))}
       </List>

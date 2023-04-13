@@ -91,7 +91,6 @@ export const MyRecipesList = ({ items }) => {
            key={item._id}
            items={item}
            deleteRecipe={deleteHandler}
-           
            />
       ))}
       </ul>

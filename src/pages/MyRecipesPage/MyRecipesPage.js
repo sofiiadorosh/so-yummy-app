@@ -1,13 +1,13 @@
 //============================================ 1 вари
 
-import { useState, useEffect } from 'react';
-import { getMyRecipesList } from 'services/soyummyAPI';
+// import { useState, useEffect } from 'react';
+// import { getMyRecipesList } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
 import { MyRecipesList } from 'components/MyRecipesList';
-import { Loader } from 'components/Loader';
-import { MyRecipesPageSection, Container, Title, NoRecipesText } from './MyRecipesPage.styled';
+// import { Loader } from 'components/Loader';
+import { MyRecipesPageSection, Container, Title } from './MyRecipesPage.styled';
 
 
 export const MyRecipesPage = () => {
@@ -40,9 +40,6 @@ export const MyRecipesPage = () => {
           <MainPageTitle title="My recipes" />
         </Title>
         <MyRecipesList/>
-        {/* {isLoading && <Loader />}
-        {recipes.length > 0 && !isLoading && <MyRecipesList items={recipes}/>}
-        {error && <NoRecipesText>You dont have own recipes...</NoRecipesText>} */}
       </Container>
     </MyRecipesPageSection>
   );

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.7f9d87bf.js",
+    "main.js": "/so-yummy-app/static/js/main.8ab39c59.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
     "static/media/recipePage-desktop-2x.png": "/so-yummy-app/static/media/recipePage-desktop-2x.6904cb243428a2ffb577.png",
     "static/media/recipePage-laptop-2x.png": "/so-yummy-app/static/media/recipePage-laptop-2x.399681fcf2a7135ce0e3.png",
@@ -39,20 +39,16 @@
     "static/media/mob 2x-min.png": "/so-yummy-app/static/media/mob 2x-min.22a3d13d8b1b8ea6d3d5.png",
     "static/media/left-leaves-mobile.png": "/so-yummy-app/static/media/left-leaves-mobile.2781d5e75e2dea2fb74f.png",
     "static/media/tab 1x-min.png": "/so-yummy-app/static/media/tab 1x-min.a4276bf2f89a59b177f0.png",
-    "static/media/sprite.svg": "/so-yummy-app/static/media/sprite.056ce509eaab05c7b4c5ff14ef910877.svg",
-    "static/media/Instagram.svg": "/so-yummy-app/static/media/Instagram.1acb0ebf5f316d14661cb6936e60bf37.svg",
+    "static/media/sprite.svg": "/so-yummy-app/static/media/sprite.99f9a6c2defd0d4804962541d804843a.svg",
     "static/media/noPhoto.svg": "/so-yummy-app/static/media/noPhoto.d5abba0d2a5cd1f9bb1aa90c017384f8.svg",
     "index.html": "/so-yummy-app/index.html",
-    "static/media/Twitter.svg": "/so-yummy-app/static/media/Twitter.89a5fb90ab347acfd9d5bf1b3f5c9a60.svg",
     "static/media/logoInv.svg": "/so-yummy-app/static/media/logoInv.cb2ee2046e8dc8a3017f87fe46c6bae3.svg",
     "static/media/logoFooter.svg": "/so-yummy-app/static/media/logoFooter.3a6003aab9d5748d5e757f5a183c97e1.svg",
-    "static/media/Youtube.svg": "/so-yummy-app/static/media/Youtube.bd4b8539637af41fe408d04b1befe2f1.svg",
-    "static/media/Facebook.svg": "/so-yummy-app/static/media/Facebook.5db139c60aae837f50c543e89fbb3d43.svg",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.7f9d87bf.js.map": "/so-yummy-app/static/js/main.7f9d87bf.js.map"
+    "main.8ab39c59.js.map": "/so-yummy-app/static/js/main.8ab39c59.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.7f9d87bf.js"
+    "static/js/main.8ab39c59.js"
   ]
 }

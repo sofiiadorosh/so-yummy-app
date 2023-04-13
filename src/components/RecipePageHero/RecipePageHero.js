@@ -1,6 +1,5 @@
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import React, { useState } from 'react';
-import Notiflix from 'notiflix';
+import React, { useState, useEffect } from 'react';
 
 import {
   addToFavorite,
@@ -18,42 +17,34 @@ import {
   RecipeTime,
 } from './RecipePageHero.styled';
 
-export const RecipePageHero = ({ title, description, time, id }) => {
+export const RecipePageHero = ({ title, description, time, id, location }) => {
+  const [favorite, setFavorite] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const addFavorite = async () => {
+  useEffect(() => {
+    const getFavorites = async () => {
+      const data = await getAllFavorites();
+      setFavorite(data);
+    };
+    getFavorites();
+  }, []);
+
+  useEffect(() => {
+    setIsFavorite(favorite.some(recipe => recipe._id === id));
+  }, [favorite, id]);
+
+  const favoriteHandler = async id => {
     try {
-      const favorites = await getAllFavorites();
-      console.log(favorites);
-      if (favorites.some(favorite => favorite._id === id)) {
-        Notiflix.Notify.warning(`Recipe is already in favorites`);
-        setIsFavorite(true);
-      } else {
-        const newFavorite = await addToFavorite(id);
-        console.log(newFavorite);
-        if (!newFavorite) {
-          Notiflix.Notify.warning(`Internal error`);
-        } else {
-          setIsFavorite(true);
-        }
+      if (isFavorite) {
+        await deleteFromFavorite(id);
+        setIsFavorite(prevState => !prevState);
+        return;
       }
+      await addToFavorite(id);
+      setIsFavorite(prevState => !prevState);
     } catch (error) {
       console.log(error.message);
     }
-  };
-
-  const deleteFavorite = () => {
-    deleteFromFavorite(id)
-      .then(res => {
-        console.log(res);
-        if (!res) {
-          return;
-        }
-        setIsFavorite(false);
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
   };
 
   return (
@@ -61,29 +52,18 @@ export const RecipePageHero = ({ title, description, time, id }) => {
       <Container>
         <RecipeTitle>{title}</RecipeTitle>
         <RecipeDescription>{description}</RecipeDescription>
-
-        {isFavorite === false && (
+        {location !== '/my' && (
           <RecipeAddToFavotite
             type="button"
             onClick={() => {
-              addFavorite();
+              favoriteHandler(id);
             }}
           >
-            Add to favorite recipes
+            {isFavorite
+              ? 'Delete from favorite recipes'
+              : 'Add to favorite recipes'}
           </RecipeAddToFavotite>
         )}
-
-        {isFavorite === true && (
-          <RecipeAddToFavotite
-            type="button"
-            onClick={() => {
-              deleteFavorite();
-            }}
-          >
-            Delete favorite recipes
-          </RecipeAddToFavotite>
-        )}
-
         <RecipeTimer>
           <AiOutlineClockCircle />
           <RecipeTime>{time}min</RecipeTime>

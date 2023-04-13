@@ -36,13 +36,10 @@
 //   );
 // };
 
-
-
 //==================== переиспользования фейворитс
 
-
 import { useMediaQuery } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import logoTrash from '../../images/logo-trash.png';
 
@@ -75,22 +72,25 @@ export function getTimeFromMins(mins) {
   return `${minutes} min`;
 }
 
-export const MyRecipesItem = ({onDelete, items: { _id, time, title, description, imageURL } }) => {
+export const MyRecipesItem = ({
+  onDelete,
+  items: { _id, time, title, description, imageURL },
+}) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
-  console.log(_id)
+  const location = useLocation();
 
   return (
     <ItemWrap>
       {isMobile && (
         <div style={{ display: 'flex' }}>
-          <NavLink to={`/recipe/${_id}`}>
+          <NavLink to={`/recipe/${_id}`} state={{ from: location }}>
             <PicterItem src={imageURL} alt="title" />
           </NavLink>
           <ItemBox>
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{description}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrashMobile type="button" onClick={ () => onDelete(_id)}>
+            <LogoTrashMobile type="button" onClick={() => onDelete(_id)}>
               <img src={logoTrash} alt="logo" />
             </LogoTrashMobile>
           </ItemBox>
@@ -103,11 +103,11 @@ export const MyRecipesItem = ({onDelete, items: { _id, time, title, description,
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{description}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash type="button" onClick={ () => onDelete(_id)}>
+            <LogoTrash type="button" onClick={() => onDelete(_id)}>
               <img src={logoTrash} alt="logo" />
             </LogoTrash>
-            <NavLink to={`/recipe/${_id}`}>
-              <ItemBoxButton>See reecipe</ItemBoxButton>
+            <NavLink to={`/recipe/${_id}`} state={{ from: location }}>
+              <ItemBoxButton>See recipe</ItemBoxButton>
             </NavLink>
           </ItemBox>
         </div>
@@ -115,5 +115,3 @@ export const MyRecipesItem = ({onDelete, items: { _id, time, title, description,
     </ItemWrap>
   );
 };
-
-

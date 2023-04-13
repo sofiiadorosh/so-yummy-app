@@ -1,109 +1,30 @@
 //====================== вар 1 
-
-import { useState, useEffect } from 'react';
-// import Notiflix from 'notiflix';
-import { Loader } from 'components/Loader';
 import { List } from './MyRecipesList.styled.js';
 import { MyRecipesItem } from 'components/MyRecipesItem/MyRecipesItem.js';
-import { deleteFromMyRecipesList, getMyRecipesList } from 'services/soyummyAPI';
 
-
-export const MyRecipesList = ({onDelete, recipes}) => {
-  
-  // const [recipes, setRecipes] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   const getData = async () => {
-  //     try {
-  //       const data = await getMyRecipesList();
-  //       setRecipes(data.recipes);
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //      setError(error.message);
-  //     }
-  //   };
-  //   getData();
-  // }, []);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   getMyRecipesList()
-  //     .then(res => {
-  //       console.log(res);
-  //       if (!res) {
-  //         setIsLoading(false);
-  //         return;
-  //       }
-  //       if (res.length === 0) {
-  //         setIsLoading(false);
-  //         Notiflix.Notify.warning('Your Favorites is ampty');
-  //       }
-  //       if (res.length > 0) {
-  //         setIsLoading(false);
-  //         getMyRecipesList(res);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.log(error.message);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
-  // const deleteHandler = async (id, event) => {
-  //     try {
-  //     await deleteFromMyRecipesList(id);
-  //     Notiflix.Notify.warning('Recipe was deleted from favorite list');
-  //     const res = await getMyRecipesList(recipes);
-  //     console.log(res);
-  //     if (!res) {
-  //       return;
-  //     }
-  //     setRecipes(res ?? []);
-  //   } catch (e) {
-  //     console.log(e.message);
-  //     Notiflix.Notify.failure('Failed to delete recipe from favorite list');
-  //   }
-  // };
-
-
-  //   const deleteHandler = id => {
-  //   try {
-  //     const remove = async () => {
-  //       const data = await deleteFromMyRecipesList(id);
-  //       console.log(data)
-  //       return data;  
-  //     };
-  //     remove();
-  //     setRecipes(prevState => prevState.filter(elem => elem._id !== id));
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-
+export const MyRecipesList = ({ onDelete, recipes }) => {
   return (
   <>
-    {/* {isLoading && <Loader />} */}
     <List>
        {recipes.map(item => (
          <MyRecipesItem
            key={item._id}
            items={item}
-
-
-
            onDelete={onDelete}
-           
-
            />
       ))}
       </List>
   </>
   );
 };
+
+
+
+
+
+
+
+
 
 //==================== переиспользования фейворитс
 

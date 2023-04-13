@@ -13,7 +13,7 @@
 //   ItemBoxButton,
 // } from './MyRecipesItem.styled';
 
-// export const MyRecipesItem = ({deleteRecipe, items: { _id, time, title, description, imageURL },
+// export const MyRecipesItem = ({onDelete, items: { _id, time, title, description, imageURL },
 // }) => {
 //   return (
 //     <li style={{ display: 'flex' }}>
@@ -24,7 +24,7 @@
 //         <ItemBoxTime>{time} min</ItemBoxTime>
 //         <LogoTrash
 //           type="button"
-//           onClick={() => deleteRecipe(_id)}
+//           onClick={() => onDelete(_id)}
 //         >
 //           <img src={logoTrash} alt="logo" />
 //         </LogoTrash>
@@ -103,7 +103,7 @@ export const MyRecipesItem = ({onDelete, items: { _id, time, title, description,
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{description}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash type="button" onClick={onDelete}>
+            <LogoTrash type="button" onClick={ () => onDelete(_id)}>
               <img src={logoTrash} alt="logo" />
             </LogoTrash>
             <NavLink to={`/recipe/${_id}`}>

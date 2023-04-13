@@ -1,4 +1,4 @@
-import { GrClose } from 'react-icons/gr';
+import { MdOutlineClose } from 'react-icons/md';
 
 import defaultIngredientsImg from '../../images/noPhoto.svg';
 
@@ -17,7 +17,7 @@ export const IngredientsShoppingList = ({ ingredients, deleteIngredient }) => {
   return (
     <>
       <TitleWrapper>
-        <Title children="Product" />
+        <Title children="Products" />
         <TitleRemoveWrap>
           <Title children="Number" />
           <Title children="Remove" />
@@ -36,7 +36,7 @@ export const IngredientsShoppingList = ({ ingredients, deleteIngredient }) => {
               <MeasureWrapper>
                 <p children={measure} />
                 <button type="button" onClick={() => deleteIngredient(_id)}>
-                  <GrClose />
+                  <MdOutlineClose size={20} />
                 </button>
               </MeasureWrapper>
             </IngredientsItem>

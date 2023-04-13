@@ -97,7 +97,7 @@ const IngredientsItem = styled.li`
   width: 100%;
   padding: 10.5px 29px 10.5px 10px;
 
-  background-color: ${props => props.theme.colors.primaryGreenBackground};
+  background-color: ${props => props.theme.colors.secondaryGreenBackground};
 
   border-radius: 8px;
 

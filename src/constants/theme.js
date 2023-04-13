@@ -44,10 +44,12 @@ export const lightTheme = Object.freeze({
     primaryDarkBackground: '#1E1F28',
     primaryGreenBackground: '#EBF3D4',
     secondaryDarkBackground: '#22252A',
+    secondaryGreenBackground: '#EBF3D4',
     switchBackground: '#efefef',
     formBackground: '#F0F0F0',
 
     line: '#e0e0e0',
+    close: '#333333',
 
     trashGreen: '#EBF3D4',
     searchBtnHover: '#22252A',
@@ -102,10 +104,12 @@ export const darkTheme = Object.freeze({
     primaryDarkBackground: '#1E1F28',
     primaryGreenBackground: '#1E1F28',
     secondaryDarkBackground: '#8BAA36',
+    secondaryGreenBackground: '#2A2C36',
     switchBackground: '#efefef',
     formBackground: 'rgba(250, 250, 250, 0.2)',
 
-    line: '#e0e0e0',
+    line: 'rgba(250, 250, 250, 0.3)',
+    close: '#fafafa',
 
     searchBtnHover: '#22252A',
     trashGreen: '#EBF3D4',

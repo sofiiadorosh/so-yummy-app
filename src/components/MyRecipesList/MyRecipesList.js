@@ -1,7 +1,9 @@
 //====================== вар 1 
-import Notiflix from 'notiflix';
-import { useState, useEffect} from 'react';
-import { List } from './MyRecipesList.styled.js';
+
+import { useState, useEffect } from 'react';
+// import Notiflix from 'notiflix';
+import { Loader } from 'components/Loader';
+// import { List } from './MyRecipesList.styled.js';
 import { MyRecipesItem } from 'components/MyRecipesItem/MyRecipesItem.js';
 import { deleteFromMyRecipesList, getMyRecipesList } from 'services/soyummyAPI';
 
@@ -81,7 +83,9 @@ export const MyRecipesList = ({ items }) => {
 
 
   return (
-    <List>
+  <>
+    {isLoading && <Loader />}
+    <ul>
        {recipes.map(item => (
          <MyRecipesItem
            key={item._id}
@@ -90,7 +94,8 @@ export const MyRecipesList = ({ items }) => {
            
            />
       ))}
-    </List>
+      </ul>
+  </>
   );
 };
 

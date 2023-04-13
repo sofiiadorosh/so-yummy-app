@@ -99,7 +99,7 @@ const LogoTrash = styled.button`
   width: 24px;
   height: 24px;
 
-  background-color: ${props => props.theme.colors.darkAccent};
+  background-color: ${props => props.theme.colors.greenAccent};
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -141,7 +141,7 @@ const LogoTrashMobile = styled.button`
   width: 24px;
   height: 24px;
 
-  background-color: ${props => props.theme.colors.darkAccent};
+  background-color: ${props => props.theme.colors.greenAccent};
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -182,7 +182,7 @@ const ItemBoxButton = styled.button`
   width: 87px;
   height: 27px;
 
-  background-color: ${props => props.theme.colors.darkAccent};
+  background-color: ${props => props.theme.colors.greenAccent};
   color: ${props => props.theme.colors.primaryLightText};
 
   font-weight: ${props => props.theme.fontWeights.regular};

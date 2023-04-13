@@ -158,3 +158,23 @@ height:268px;
   height:344px;
 } 
 `
+
+
+export const ButtonAdd = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top:18px;
+  right: 25px;
+  width: 113px;
+  height: 52px;
+  background-color:#22252A;
+  color:#fff;
+  border-radius: 24px 44px;
+  border: none;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+`;

@@ -2,8 +2,9 @@ import React from 'react';
 import {
   TextAreaPreparation,
   TitlePreparation,
-  ButtonAdd,
+  
 } from './RecipePreparationFields.styled';
+
 
 export const RecipePreparationFields = ({ onInput, inputs }) => {
   const handleInputChange = e => {
@@ -21,7 +22,7 @@ export const RecipePreparationFields = ({ onInput, inputs }) => {
         placeholder="Enter recipe"
         onChange={handleInputChange}
       ></TextAreaPreparation>
-       <ButtonAdd type="submit">Add</ButtonAdd>
+      
     </>
   );
 };

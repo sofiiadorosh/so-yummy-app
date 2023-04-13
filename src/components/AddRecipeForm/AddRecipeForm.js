@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import axios from 'axios';
+import { getCurrentUser } from 'redux/auth/operations';
+import { addToOwnRecipes } from 'redux/ownRecipes/operations';
 
 import {
   InputUpload,
@@ -20,6 +22,7 @@ import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredi
 import recipeButtonImage from 'images/add-recipe-placeholder-button.png';
 
 
+
 const initialValues = {
   title: '',
   description: '',
@@ -35,6 +38,8 @@ export const AddRecipeForm = () => {
   const [recipes, setRecipes] = useState(initialValues);
   // const [image, setImage] = useState(uploadImg);
   const [fieldsVisibility, setFieldsVisibility] = useState(true);
+
+  const dispatch = useDispatch();
 
   // const onImageChange = event => {
   //   setImage(event.target.files[0]);
@@ -63,17 +68,7 @@ export const AddRecipeForm = () => {
   //   handleApiImage();
   // }, [image]);
 
-  const addRecipe = async text => {
-    try {
-      const response = await axios.post(
-        'https://so-yummy-app-backend.onrender.com/api/ownRecipes',
-        text
-      );
-      return response.data;
-    } catch (error) {
-      return error.message;
-    }
-  };
+
 
   const toggleVisibility = () => {
     setFieldsVisibility(true);
@@ -84,23 +79,20 @@ export const AddRecipeForm = () => {
     setRecipes(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleSetValue = data => {
-    const fields = data.map(({ id, measure }) => {
-      const _id = id;
-      return { _id, measure };
-    });
-
-    setRecipes(prevState => ({
-      ...prevState,
-      ingredients: fields,
-    }));
-  };
+const handleSetValue = data => {
+  const ingredients = data.map(({ id }) => id);
+  setRecipes(prevState => ({
+    ...prevState,
+    ingredients,
+  }));
+};
 
   const handleSubmit = e => {
     e.preventDefault();
     
-    addRecipe(recipes);
+    dispatch(addToOwnRecipes(recipes));
     reset();
+    dispatch(getCurrentUser());
   };
 
   const reset = () => {

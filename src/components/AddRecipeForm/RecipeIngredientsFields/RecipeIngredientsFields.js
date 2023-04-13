@@ -46,10 +46,12 @@ export const RecipeIngredientsFields = ({ onInput, onSetValue }) => {
   };
 
 
-  
   const handleAddFields = () => {
-    setInputFields([...inputFields, { id: nanoid(), field: '', measure: '' }]);
-  };
+  setInputFields([
+    ...inputFields,
+    { id: nanoid(), field: '', measure: '' }
+  ]);
+};
 
   const handleRemoveFields = index => {
     const values = [...inputFields];

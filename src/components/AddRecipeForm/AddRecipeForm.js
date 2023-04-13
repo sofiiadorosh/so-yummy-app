@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getCurrentUser } from 'redux/auth/operations';
+// import { getCurrentUser } from 'redux/auth/operations';
 import { addToOwnRecipes } from 'redux/ownRecipes/operations';
 
 import {
@@ -36,71 +36,73 @@ const initialValues = {
 
 export const AddRecipeForm = () => {
   const [recipes, setRecipes] = useState(initialValues);
-  // const [image, setImage] = useState(uploadImg);
+  const [picture, setPicture] = useState(recipeButtonImage);
   const [fieldsVisibility, setFieldsVisibility] = useState(true);
 
   const dispatch = useDispatch();
 
-  // const onImageChange = event => {
-  //   setImage(event.target.files[0]);
-  // };
-
-  // useEffect(() => {
-  //   const handleApiImage = () => {
-  //     if (image === uploadImg) {
-  //       return;
-  //     }
-  //     const formData = new FormData();
-  //     formData.append('image', image);
-  //     try {
-  //       axios
-  //         .patch(
-  //           'https://soyummy-tw3y.onrender.com/api/v1/own-recipes/upload',
-  //           formData
-  //         )
-  //         .then(({ data }) => {
-  //           setImage(data.data);
-  //         });
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   handleApiImage();
-  // }, [image]);
-
-
+  const picOnChange = e => {
+    const [file] = e.target.files;
+    if (file) {
+      setPicture(URL.createObjectURL(file));
+    }
+  };
 
   const toggleVisibility = () => {
     setFieldsVisibility(true);
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setRecipes(prevState => ({ ...prevState, [name]: value }));
-  };
+const handleChange = event => {
+  const { name, value } = event.target;
+  setRecipes(prevState => ({ ...prevState, [name]: value }));
+};
 
 const handleSetValue = data => {
-  const ingredients = data.map(({ id }) => id);
+  const ingredients = data.map(({ id, name }) => ({ id, name }));
   setRecipes(prevState => ({
     ...prevState,
     ingredients,
   }));
 };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+const handleSubmit = e => {
+  e.preventDefault();
+  const files = document.getElementById('image').files[0];
+  const formData = new FormData();
+  if (files) {
+    formData.append('image', files);
+    console.log('image', files);
     
-    dispatch(addToOwnRecipes(recipes));
+  }
+  // formData.append("recipes", recipes);
+  // console.log("recipes", recipes)
+    formData.append('title', recipes.title);
+     console.log('title', recipes.title);
+    formData.append('description', recipes.description);
+     console.log('description', recipes.description);
+    formData.append('category', recipes.category);
+    console.log('category', recipes.category);
+    formData.append('time', recipes.time);
+    console.log('time', recipes.time);
+    formData.append('instructions', recipes.instructions);
+    console.log('instructions', recipes.instructions);
+    formData.append('ingredients', JSON.stringify(recipes.ingredients));
+    console.log('ingredients', JSON.stringify(recipes.ingredients));
+  try {
+    dispatch(addToOwnRecipes(formData));
     reset();
-    dispatch(getCurrentUser());
-  };
-
+    // dispatch(getCurrentUser());
+    console.log('form submitted');
+  } catch (error) {
+    console.error(error);
+  }
+};
+  
   const reset = () => {
     setFieldsVisibility(false);
     setRecipes(initialValues);
    
   };
-
 
   return (
     <Wrap>
@@ -109,13 +111,14 @@ const handleSetValue = data => {
           <div>
             <Description>
               <ImgUploadWrap>
-                <label htmlFor="file-input">
-                  <ImageInput src={recipeButtonImage} alt="recipeButtonImage" />
+                <label htmlFor="image">
+                  <ImageInput src={picture} alt="recipeButtonImage" />
                 </label>
                 <InputUpload
-                  id="file-input"
+                  id="image"
                   type="file"
-                  accept="image/png, image/jpeg"
+                  accept="image/*, .jpg, .png, .gif, .web, .jpeg"
+                  onChange={picOnChange}
                 />
               </ImgUploadWrap>
               <RecipeDescriptionFields

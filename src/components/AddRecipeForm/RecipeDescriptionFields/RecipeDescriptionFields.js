@@ -12,41 +12,46 @@ import { CategorySearchSelector } from '../Selectors/CategorySelector';
 
 
 export const RecipeDescriptionFields = ({ onInput, inputs }) => {
-    const handleInputChange = e => {
-      onInput(e);
-    };
+  const handleInputChange = e => {
+    onInput(e);
+  };
   
-    return (
-<MainWrap>
-            <InputDescriptionWrap>
-              <InputDescription
-              required
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter item title"
-                onChange={handleInputChange}
-              />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <InputDescription
-              required 
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter about recipe"
-                onChange={handleInputChange}
-              />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <CategorySearchSelector />
-              <UnderLane />
-            </InputDescriptionWrap>
-            <LastInputDescriptionWrap>
-              <TimeTypeSelector />
-              <UnderLane />
-            </LastInputDescriptionWrap>
-          </MainWrap>
+  return (
+    <MainWrap>
+      <InputDescriptionWrap>
+        <InputDescription
+          required
+          type="text"
+          name="title"
+          id="title"
+          value={inputs.title}
+          placeholder="Enter item title"
+          onChange={handleInputChange}
+        />
+      </InputDescriptionWrap>
+      <InputDescriptionWrap>
+        <InputDescription
+          required
+          type="text"
+          name="description"
+          id="description"
+          value={inputs.description}
+          placeholder="Enter about recipe"
+          onChange={handleInputChange}
+        />
+      </InputDescriptionWrap>
+      <InputDescriptionWrap>
+        <CategorySearchSelector
+          name="category"
+          id="description"
+          value={inputs.category} />
+        <UnderLane />
+      </InputDescriptionWrap>
+      <LastInputDescriptionWrap>
+        <TimeTypeSelector />
+        <UnderLane />
+      </LastInputDescriptionWrap>
+    </MainWrap>
 
-    );
-};
+  );
+}; 

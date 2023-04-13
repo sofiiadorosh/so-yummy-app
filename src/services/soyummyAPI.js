@@ -159,6 +159,15 @@ const deleteFromShoppingList = async id => {
   }
 };
 
+const getPopularRecipes = async () => {
+  try {
+    const response = await instance.get('popular-recipe');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export {
   getCategoryList,
   getCategoryRecipes,
@@ -174,4 +183,5 @@ export {
   getAllFavorites,
   addToFavorite,
   deleteFromFavorite,
+  getPopularRecipes,
 };

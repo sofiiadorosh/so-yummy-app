@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import * as yup from 'yup';
 
 import { login, getCurrentUser } from 'redux/auth/operations';
-import { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, EmailIcon, PasswordIcon, FormInput, FormButton , AuthLink} from '../RegisterForm/RegisterForm.styled';
+import { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, EmailIcon, PasswordIcon, FormInput, ErrorMessage, FormButton, AuthLink} from '../RegisterForm/RegisterForm.styled';
 
 
 let initialValues = {
@@ -36,7 +36,7 @@ export const SigninForm = () => {
       .string()
       .trim()
       .matches(/[a-zа-яA-ZА-ЯіїЇІєЄ]/, 'Your password is little secure.')
-      .matches(passwordRegExp)
+      .matches(passwordRegExp, 'Enter a valid password' )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
       .required('Enter your password please'),
@@ -94,11 +94,6 @@ export const SigninForm = () => {
                   <IconBox>
                     <EmailIcon color={getColor(errors.email, values.email)} />
                   </IconBox>
-                  {/* {values.name && (
-                    <ErrorIconBox>
-                      <ErrorIcon /> 
-                  </ErrorIconBox>
-                )} */}
                   <FormInput
                     autoComplete="email"
                     placeholder="Email"
@@ -111,16 +106,19 @@ export const SigninForm = () => {
                       'rgba(255, 255, 255, 0.3)'
                     )}
                   />
+                     {values.email && (
+                  <ErrorMessage
+                    id="feedback"
+                    color={getColor(errors.email, values.email)}
+                  >
+                    {errors.email || 'Email is secure'}
+                  </ErrorMessage>
+                )}
                 </InputBox>
                 <InputBox>
                   <IconBox onClick={passwordShownToggle}>
                     <PasswordIcon color={getColor(errors.password, values.password)} />
                   </IconBox>
-                  {/* {values.name && (
-                    <ErrorIconBox>
-                      <ErrorIcon /> 
-                  </ErrorIconBox>
-                )} */}
                   <FormInput
                     autoComplete="password"
                     placeholder="Password"
@@ -133,6 +131,14 @@ export const SigninForm = () => {
                       'rgba(255, 255, 255, 0.3)'
                     )}
                   />
+                      {values.password && (
+                  <ErrorMessage
+                    id="feedback"
+                    color={getColor(errors.password, values.password)}
+                  >
+                    {errors.password || 'Password is secure'}
+                  </ErrorMessage>
+                )}
                 </InputBox>
               </FormBox>
               <FormButton
@@ -151,3 +157,4 @@ export const SigninForm = () => {
     </>
   )
 }; 
+

@@ -4,7 +4,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { getRecipesById, getMyRecipeById } from 'services/soyummyAPI';
 
 import { RecipePageHero } from 'components/RecipePageHero';
-import { RecipeIngredientsList } from 'components/RecipeIngredientsList';
+import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation';
 
 export const RecipePage = () => {

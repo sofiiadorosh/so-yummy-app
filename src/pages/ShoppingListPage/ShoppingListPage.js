@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { getShoppingList, deleteFromShoppingList } from 'services/soyummyAPI';
+import { getCurrentUser } from 'redux/auth/operations';
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
-import { IngredientsShoppingList } from 'components/IngredientsShoppingList';
+import { IngredientsShoppingList } from 'components/IngredientsShoppingList/IngredientsShoppingList';
 
 import {
   ShoppingListSection,
@@ -14,6 +16,7 @@ import {
 
 export const ShoppingListPage = () => {
   const [ingredients, setIngredients] = useState([]);
+  const dispatch = useDispatch();
 
   const deleteHandler = id => {
     try {
@@ -29,12 +32,13 @@ export const ShoppingListPage = () => {
   };
 
   useEffect(() => {
+    dispatch(getCurrentUser()); 
     const getIngredients = async () => {
       const data = await getShoppingList();
       setIngredients(data.ingredients);
     };
     getIngredients();
-  }, []);
+  }, [dispatch]);
 
   return (
     <ShoppingListSection>

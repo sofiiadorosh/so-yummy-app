@@ -57,7 +57,7 @@ export const CategorySearchSelector = () => {
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
             color: '#000',
             width: '146px',
-            height: '34px',
+            height: '24px',
             '&:hover': {
               backgroundColor: 'transparent',
               borderStyle: 'none',
@@ -68,11 +68,11 @@ export const CategorySearchSelector = () => {
             },
             '@media (min-width: 768px)': {
               width: '175px',
-              height: '41px',
+              height: '24px',
             },
             '@media (min-width: 1440px)': {
               width: '198px',
-              height: '49px',
+              height: '24px',
             },
           }),dropdownIndicator: (base, state) => ({
             ...base,
@@ -97,7 +97,7 @@ export const CategorySearchSelector = () => {
             display: 'flex',
             flexDirection: 'column',
             paddingTop: '8px',
-            height: "154px",
+            height: "144px",
             overflow: 'auto',
             marginBottom: '10px',
             paddingBottom: '5px',
@@ -128,7 +128,7 @@ export const CategorySearchSelector = () => {
               outline: 'none',
             },
 
-            width: '146px',
+            width: '132px',
 
             '@media (min-width: 768px)': {
               width: '175px',

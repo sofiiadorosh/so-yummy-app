@@ -39,3 +39,10 @@ const Title = styled.div`
 `;
 
 export { AddRecipeSection, Container, Title };
+
+export const PageWrapper = styled.div`
+@media screen and (min-width: 1440px) {
+  display: flex;
+  gap: 102px;
+}
+`;

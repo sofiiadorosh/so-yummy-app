@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-import { TimeTypeSelector } from './Selectors/TimeSelector';
-import { CategorySearchSelector } from './Selectors/CategorySelector';
-import { PopularRecipe } from 'components/PopularRecipe';
+
+
 
 import {
   InputUpload,
   Wrap,
-  UnderLane,
   Form,
   ImgUploadWrap,
-  InputDescriptionWrap,
-  InputDescription,
   MainWrapIngredients,
   WrapPreparation,
   Description,
+  ImageInput,
+  MainRecipe,
 } from './AddRecipeForm.styled';
+import {RecipeDescriptionFields} from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
-import { IngredientsField } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import recipeButtonImage from 'images/add-recipe-placeholder-button.png';
 
 const initialValues = {
@@ -54,8 +53,8 @@ export const AddRecipeForm = () => {
   const handleSetValue = data => {
     const filteredFields = data.filter(({ field }) => field !== '');
     const fields = filteredFields.map(({ field }) => field);
-
-    // console.log(fields);
+    
+    
     setDescriptionFields(prevState => ({
       ...prevState,
       ingredients: fields,
@@ -64,7 +63,7 @@ export const AddRecipeForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(descriptionFields);
+    
     addRecipe(descriptionFields);
     e.reset();
   };
@@ -72,10 +71,13 @@ export const AddRecipeForm = () => {
   return (
     <Wrap>
       <Form>
+        
+          <MainRecipe>
+          <div>
         <Description>
           <ImgUploadWrap>
             <label htmlFor="file-input">
-              <img src={recipeButtonImage} alt="recipeButtonImage" />
+              <ImageInput  src={recipeButtonImage} alt="recipeButtonImage"  />
             </label>
             <InputUpload
               id="file-input"
@@ -83,35 +85,12 @@ export const AddRecipeForm = () => {
               accept="image/png, image/jpeg"
             />
           </ImgUploadWrap>
-          <div>
-            <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter item title"
-              />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter about recipe"
-              />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <CategorySearchSelector />
-              <UnderLane />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <TimeTypeSelector />
-              <UnderLane />
-            </InputDescriptionWrap>
-          </div>
+          <RecipeDescriptionFields
+          onInput={handleChange}
+          inputs={descriptionFields}/>
         </Description>
         <MainWrapIngredients>
-          <IngredientsField
+          <RecipeIngredientsFields
             handleSubmit={handleSubmit}
             onInput={handleChange}
             inputs={descriptionFields}
@@ -125,7 +104,9 @@ export const AddRecipeForm = () => {
             inputs={descriptionFields}
           />
         </WrapPreparation>
-        <PopularRecipe />
+        </div>
+        
+        </MainRecipe>
       </Form>
     </Wrap>
   );

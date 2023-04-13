@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { ReactComponent as Instagram } from './images/Instagram.svg';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,41 +13,14 @@ const Wrapper = styled.div`
 `;
 
 const Link = styled.a`
-  * {
-    fill: ${props => props.theme.colors.greenAccent};
-  }
-  &:hover * {
-    fill: ${props => props.theme.colors.whiteText};
-  }
-  ${({ type }) =>
-    type === 'dark' &&
-    css`
-      * {
-        fill: ${props => props.theme.colors.whiteText};
-      }
-      &:hover * {
-        fill: ${props => props.theme.colors.normalDark};
-      }
-    `}
-  ${({ type }) =>
-    type === 'green' &&
-    css`
-      * {
-        fill: ${props => props.theme.colors.whiteText};
-      }
-      &:hover * {
-        fill: ${props => props.theme.colors.normalDark};
-      }
-    `}
-`;
-
-const InstagramIcon = styled(Instagram)`
-  width: 17px;
-  height: 17px;
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
+  svg {
+    fill: ${props => props.theme.colors.socialLinks};
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    :hover,
+    :focus {
+      fill: ${props => props.theme.colors.socialLinksHover};
+    }
   }
 `;
 
-export { Wrapper, Link, InstagramIcon };
+export { Wrapper, Link };

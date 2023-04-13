@@ -14,8 +14,9 @@ import {
   ListPopular,
   TitlePopular,
   WrapperPopular,
+  TitleFollowUS
 } from './PopularRecipe.styled';
-
+import {SocialLinks} from '../Footer/SocialLinks/SocialLinks'
 
 export const PopularRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -47,8 +48,8 @@ export const PopularRecipe = () => {
   return (
     <WrapperPopular>
       <MediaQuery minWidth={1440}>
-        <TitlePopular>Follow us</TitlePopular>
-        
+        <TitleFollowUS>Follow us</TitleFollowUS>
+        <SocialLinks/>
       </MediaQuery>
       <TitlePopular>Popular recipe</TitlePopular>
       {

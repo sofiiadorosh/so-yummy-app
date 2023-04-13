@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5ba677e9.css",
-    "main.js": "/so-yummy-app/static/js/main.9e9f4dc8.js",
+    "main.js": "/so-yummy-app/static/js/main.153a0fd8.js",
     "static/media/hero-tablet-2x.jpg": "/so-yummy-app/static/media/hero-tablet-2x.5beb45d6a35b5a8a68ba.jpg",
     "static/media/recipePage-desktop-2x.png": "/so-yummy-app/static/media/recipePage-desktop-2x.6904cb243428a2ffb577.png",
     "static/media/recipePage-laptop-2x.png": "/so-yummy-app/static/media/recipePage-laptop-2x.399681fcf2a7135ce0e3.png",
@@ -45,10 +45,10 @@
     "static/media/logoInv.svg": "/so-yummy-app/static/media/logoInv.cb2ee2046e8dc8a3017f87fe46c6bae3.svg",
     "static/media/logoFooter.svg": "/so-yummy-app/static/media/logoFooter.3a6003aab9d5748d5e757f5a183c97e1.svg",
     "main.5ba677e9.css.map": "/so-yummy-app/static/css/main.5ba677e9.css.map",
-    "main.9e9f4dc8.js.map": "/so-yummy-app/static/js/main.9e9f4dc8.js.map"
+    "main.153a0fd8.js.map": "/so-yummy-app/static/js/main.153a0fd8.js.map"
   },
   "entrypoints": [
     "static/css/main.5ba677e9.css",
-    "static/js/main.9e9f4dc8.js"
+    "static/js/main.153a0fd8.js"
   ]
 }

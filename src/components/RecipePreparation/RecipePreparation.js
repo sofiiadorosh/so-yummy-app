@@ -12,7 +12,9 @@ import {
   CookingPicture,
 } from './RecipePreparation.styled';
 
-export const RecipePreparation = ({ item: { title, instructions, thumb } }) => {
+export const RecipePreparation = ({
+  item: { title, instructions, thumb, imageURL },
+}) => {
   const [steps, setSteps] = useState([]);
 
   useEffect(() => {
@@ -41,7 +43,10 @@ export const RecipePreparation = ({ item: { title, instructions, thumb } }) => {
           </CookingSteps>
         </CookingDescr>
         <CookingPicture>
-          <img src={thumb ? thumb : defaultIngredientsImg} alt={title} />
+          <img
+            src={thumb ? thumb : imageURL ? imageURL : defaultIngredientsImg}
+            alt={title}
+          />
         </CookingPicture>
       </Container>
     </PreparationSection>

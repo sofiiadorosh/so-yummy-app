@@ -44,6 +44,7 @@ const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    justify-content: space-between;
 
     width: 1440px;
     padding: 0 100px;

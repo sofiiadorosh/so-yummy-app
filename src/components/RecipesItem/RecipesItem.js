@@ -1,13 +1,11 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Recipe, RecipeWrapper, RecipeDescr } from './RecipesItem.styled';
 
 export const RecipesItem = ({ item: { _id, title, thumb } }) => {
-  const location = useLocation();
-
   return (
     <Recipe>
-      <NavLink to={`/recipe/${_id}`} state={{ from: location }}>
+      <NavLink to={`/recipe/${_id}`}>
         <RecipeWrapper>
           <img src={thumb} alt={title} />
           <RecipeDescr>

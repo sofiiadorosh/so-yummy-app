@@ -15,35 +15,44 @@ export const RecipePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getData = async getFn => {
+    if (location === '/my') {
+      const getData = async () => {
+        try {
+          const data = await getMyRecipeById(recipeId);
+          setRecipe(data.recipe);
+        } catch (error) {
+          setError(error);
+        }
+      };
+      getData();
+      return;
+    }
+    const getData = async () => {
       try {
-        const data = await getFn(recipeId);
+        const data = await getRecipesById(recipeId);
         setRecipe(data.recipe);
       } catch (error) {
-        setError(error.message);
+        setError(error);
       }
     };
-    if (location === '/my') {
-      getData(getMyRecipeById);
-    }
-    getData(getRecipesById);
+    getData();
   }, [recipeId, location]);
 
   if (!recipe) {
     return;
   }
 
-  const { description, time, title, _id, favorite } = recipe;
+  const { description, time, title, _id } = recipe;
 
   return (
     <main>
       {recipe && (
         <>
           <RecipePageHero
+            location={location}
             title={title}
             description={description}
             time={time}
-            favorite={favorite}
             id={_id}
           />
           <RecipeIngredientsList ingredients={recipe.ingredients} />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
-import { getRecipesById } from 'services/soyummyAPI';
+import { getRecipesById, getMyRecipeById } from 'services/soyummyAPI';
 
 import { RecipePageHero } from 'components/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList';
@@ -9,21 +9,25 @@ import { RecipePreparation } from 'components/RecipePreparation';
 
 export const RecipePage = () => {
   const { recipeId } = useParams();
+  const { state } = useLocation();
+  const location = state?.from?.pathname;
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async getFn => {
       try {
-        const data = await getRecipesById(recipeId);
-        console.log(data.recipe);
+        const data = await getFn(recipeId);
         setRecipe(data.recipe);
       } catch (error) {
         setError(error.message);
       }
     };
-    getData();
-  }, [recipeId]);
+    if (location === '/my') {
+      getData(getMyRecipeById);
+    }
+    getData(getRecipesById);
+  }, [recipeId, location]);
 
   if (!recipe) {
     return;

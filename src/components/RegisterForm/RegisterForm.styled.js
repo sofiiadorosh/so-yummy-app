@@ -132,12 +132,12 @@ const Title = styled.h1`
 `; 
 
 const FormBox = styled.div`
-  gap: 12px;
+  gap: 22px;
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    gap: 25px;
+    gap: 32px;
   }
 `;
 
@@ -233,6 +233,20 @@ const FormInput = styled(Field)`
   }
 `;
 
+const ErrorMessage = styled.p`
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  font-size: 11px;
+
+  color: ${({ color }) => color};
+  @media screen and (min-width: 768px) {
+    top: 70px;
+    left: 10px;
+    font-size: 14px;
+  }
+`;
+
 const FormButton = styled.button`
   width: 100%;
   height: 45px;
@@ -283,4 +297,4 @@ const AuthLink = styled(Link)`
   }
 `
 
-export { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, NameIcon, EmailIcon, FormInput, PasswordIcon, FormButton, AuthLink }
+export { RegisterBackground, RegisterContainer, ImageContainer, AuthImage, RegisterFormBox, Title, FormBox, InputBox, IconBox, NameIcon, EmailIcon, FormInput, PasswordIcon, FormButton, AuthLink, ErrorMessage }

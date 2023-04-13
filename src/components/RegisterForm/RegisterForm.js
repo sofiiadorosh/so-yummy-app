@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import { register } from 'redux/auth/operations';
-// import { selectError, selectLoading } from 'redux/auth/selectors';
 
 import {
   RegisterBackground,
@@ -21,6 +20,7 @@ import {
   EmailIcon,
   PasswordIcon,
   FormInput,
+  ErrorMessage,
   FormButton,
   AuthLink,
 } from './RegisterForm.styled';
@@ -33,9 +33,6 @@ let initialValues = {
 
 export const RegisterForm = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-
-  // const loading = useSelector(selectLoading);
-  // const erorMessage = useSelector(selectError);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,8 +65,8 @@ export const RegisterForm = () => {
     password: yup
       .string()
       .trim()
-      .matches(/[a-zа-яA-ZА-ЯіїЇІєЄ]/, 'Your password is little secure.')
-      .matches(passwordRegExp)
+      .matches(passwordRegExp, 'Password must contain a letter and a number')
+      .matches(/[a-zа-яA-ZА-ЯіїЇІєЄ]/, 'Your password is little secure.', )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
       .required('Enter your password please'),
@@ -161,6 +158,14 @@ export const RegisterForm = () => {
                       'rgba(255, 255, 255, 0.3)'
                     )}
                   />
+                  {values.email && (
+                  <ErrorMessage
+                    id="feedback"
+                    color={getColor(errors.email, values.email)}
+                  >
+                    {errors.email || 'Email is secure'}
+                  </ErrorMessage>
+                )}
                 </InputBox>
                 <InputBox>
                   <IconBox onClick={passwordShownToggle}>
@@ -185,6 +190,14 @@ export const RegisterForm = () => {
                       'rgba(255, 255, 255, 0.3)'
                     )}
                   />
+                      {values.password && (
+                  <ErrorMessage
+                    id="feedback"
+                    color={getColor(errors.password, values.password)}
+                  >
+                    {errors.password || 'Password is secure'}
+                  </ErrorMessage>
+                )}
                 </InputBox>
               </FormBox>
               <FormButton

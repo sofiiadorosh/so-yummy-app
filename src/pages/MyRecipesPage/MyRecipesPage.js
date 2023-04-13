@@ -64,7 +64,6 @@ const [error, setError] = useState(null);
           />
           )
         }
-       
         {error && <p>Whoops, something went wrong...</p>}
       </Container>
     </MyRecipesPageSection>

@@ -103,6 +103,16 @@ const getMyRecipesList = async () => {
     console.log(error.message);
   }
 };
+
+const getMyRecipeById = async id => {
+  try {
+    const response = await instance.get(`/ownRecipes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const addToMyRecipesList = async id => {
   try {
     const response = await instance.post('ownRecipes', { recipe: id });
@@ -111,6 +121,7 @@ const addToMyRecipesList = async id => {
     console.log(error.message);
   }
 };
+
 const deleteFromMyRecipesList = async id => {
   try {
     const response = await instance.delete(`ownRecipes/${id}`);
@@ -120,7 +131,6 @@ const deleteFromMyRecipesList = async id => {
     return null;
   }
 };
-
 
 const getShoppingList = async () => {
   try {
@@ -156,6 +166,7 @@ export {
   getRecipesById,
   addToMyRecipesList,
   getMyRecipesList,
+  getMyRecipeById,
   deleteFromMyRecipesList,
   getShoppingList,
   addToShoppingList,

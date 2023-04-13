@@ -1,4 +1,4 @@
-import { GrFormCheckmark } from 'react-icons/gr';
+import { AiOutlineCheck } from 'react-icons/ai';
 import { useState } from 'react';
 
 import { addToShoppingList } from 'services/soyummyAPI';
@@ -86,7 +86,7 @@ export const RecipeIngredientsList = ({ ingredients }) => {
                         }
                       />
                       <span>
-                        <GrFormCheckmark />
+                        <AiOutlineCheck />
                       </span>
                     </label>
                   </MeasureWrapper>

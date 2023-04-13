@@ -77,7 +77,7 @@ const RecipeTitle = styled.h1`
   letter-spacing: -0.02em;
   text-align: center;
 
-  color: ${props => props.theme.colors.greenAccent};
+  color: #8baa36;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
@@ -96,7 +96,7 @@ const RecipeDescription = styled.p`
   letter-spacing: -0.02em;
   text-align: center;
 
-  color: ${props => props.theme.colors.darkAccent};
+  color: #23262a;
 
   @media screen and (min-width: 768px) {
     width: 506px;
@@ -167,6 +167,7 @@ const RecipeTimer = styled.div`
   }
 
   svg {
+    fill: #23262a;
     width: 14px;
     height: 14px;
     @media screen and (min-width: 768px) {
@@ -182,7 +183,7 @@ const RecipeTime = styled.p`
   line-height: 1.4;
   letter-spacing: -0.24px;
 
-  color: ${props => props.theme.colors.primaryDarkText};
+  color: #23262a;
 
   @media screen and (min-width: 768px) {
     font-size: ${props => props.theme.fontSizes[3]}px;

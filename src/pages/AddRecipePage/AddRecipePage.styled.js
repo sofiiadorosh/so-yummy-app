@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const AddRecipeSection = styled.section`
-  padding: 115px 0 100px;
+  padding: 114px 0 100px;
 
   @media screen and (min-width: 768px) {
-    padding: 72px 0 200px;
+    padding: 136px 0 200px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 100px;
+    padding-top: 164px;
   }
 `;
 
@@ -31,18 +31,27 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 72px;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 100px;
   }
 `;
 
-export { AddRecipeSection, Container, Title };
-
-export const PageWrapper = styled.div`
-@media screen and (min-width: 1440px) {
+const PageWrapper = styled.div`
   display: flex;
-  gap: 102px;
-}
+  flex-direction: column;
+  gap: 72px;
+
+  @media screen and (min-width: 768px) {
+    gap: 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 121px;
+  }
 `;
+
+export { AddRecipeSection, Container, Title, PageWrapper };

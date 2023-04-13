@@ -5,7 +5,11 @@ export const WrapperPopular = styled.div`
   margin-top: 72px;
   
   @media screen and (min-width: 768px) {
-    margin-top: 0;
+    margin-top: 0px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 0px;
+    
   }
 `;
 
@@ -19,6 +23,28 @@ export const TitlePopular = styled.h3`
   margin-bottom: 32px;
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top:100px
+
+  }
+`;
+export const TitleFollowUS = styled.h3`
+  color: #3E4462 ;
+  text-align: start;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.24px;
+  margin-bottom: 32px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 0px
+
   }
 `;
 

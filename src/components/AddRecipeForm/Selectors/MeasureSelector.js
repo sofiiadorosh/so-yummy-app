@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { updateSearchType } from 'redux/search/searchSlice';
 
-import { SearchForm,} from '../../SearchTypeSelector/SearchTypeSelector.styled';
+import { MeasureSearchForm, CustomInput } from './Selectors.styled';
 
 const options = [
   { value: 'tbs', label: 'tbs' },
@@ -25,8 +25,12 @@ export const MeasureTypeSelector = () => {
   };
 
   return (
-    <SearchForm>
-      
+    <MeasureSearchForm>
+      <CustomInput
+      autoComplete="off"
+      type="number"
+      name="measure"
+      onChange={handleChange}/>
       <Select
         value={selectedOption}
         onChange={handleChange}
@@ -39,15 +43,16 @@ export const MeasureTypeSelector = () => {
             ...provided,
             border: 'none',
             borderRadius: '6px',
-            backgroundColor: '#f2ecec',
-            opacity: '0.5',
+            backgroundColor: '#F5F5F5',
+            
+            position: 'absolute',
             borderStyle: 'none',
             outline: 'none',
             borderColor: state.isFocused ? 'none' : provided.borderColor,
             boxShadow: state.isFocused ? 'none' : provided.boxShadow,
             color: '#rgba(0, 0, 0, 0.5)',
-            width: '84px',
-            height: '34px',
+            width: '80px',
+            height: '53px',
             '&:hover': {
               backgroundColor: '#ffffff',
               borderStyle: 'none',
@@ -57,12 +62,12 @@ export const MeasureTypeSelector = () => {
               boxShadow: '0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074)',
             },
             '@media (min-width: 768px)': {
-              width: '175px',
-              height: '41px',
+              width: '93px',
+              height: '59px',
             },
             '@media (min-width: 1440px)': {
-              width: '198px',
-              height: '49px',
+              width: '98px',
+              height: '59px',
             },
           }),
           indicatorSeparator: () => ({
@@ -74,6 +79,11 @@ export const MeasureTypeSelector = () => {
             color: '#000000',
             font: '14',
             lineHeight: '1.5',
+            display: 'none',
+          }),
+          dropdownIndicator: (base, state) => ({
+            ...base,
+            color: '#8BAA36',
           }),
           menu: () => ({
             border: 'none',
@@ -116,13 +126,13 @@ export const MeasureTypeSelector = () => {
             width: '146px',
 
             '@media (min-width: 768px)': {
-              width: '175px',
+              width: '97px',
 
               font: '14px',
               lineHeight: '21px',
             },
             '@media (min-width: 1440px)': {
-              width: '198px',
+              width: '98px',
             },
           }),
           option: (provided, state) => ({
@@ -144,6 +154,6 @@ export const MeasureTypeSelector = () => {
           }),
         }}
       />
-    </SearchForm>
+    </MeasureSearchForm>
   );
 };

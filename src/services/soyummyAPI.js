@@ -23,7 +23,7 @@ const getRecipesByCategory = async category => {
     const response = await instance.get(`recipes/category/${category}`);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -32,7 +32,7 @@ const getRecipesById = async id => {
     const response = await instance.get(`recipes/${id}`);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 

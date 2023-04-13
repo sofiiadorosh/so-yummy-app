@@ -70,7 +70,7 @@ export const RecipesCard = ({
               <img src={logoTrash} alt="logo" />
             </LogoTrash>
             <NavLink to={`/recipe/${id}`}>
-              <ItemBoxButton>See reecipe</ItemBoxButton>
+              <ItemBoxButton>See recipe</ItemBoxButton>
             </NavLink>
           </ItemBox>
         </div>

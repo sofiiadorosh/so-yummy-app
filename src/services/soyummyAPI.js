@@ -113,7 +113,7 @@ const addToMyRecipesList = async id => {
 };
 const deleteFromMyRecipesList = async id => {
   try {
-    const response = await instance.delete(`/ownRecipes/${id}`);
+    const response = await instance.delete(`ownRecipes/${id}`);
     return response.data;
   } catch (error) {
     console.log(error.message);

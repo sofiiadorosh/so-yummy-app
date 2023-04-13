@@ -34,7 +34,7 @@ export const SubscribeForm = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      const addSubscription = await instance.get(
+      const addSubscription = await instance.post(
         `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
         values,
         {

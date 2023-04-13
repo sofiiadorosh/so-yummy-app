@@ -1,8 +1,6 @@
 //============================================ 1 вари
 
 import { useState, useEffect } from 'react';
-
-
 import { getMyRecipesList } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
@@ -14,23 +12,23 @@ import { MyRecipesPageSection, Container, Title, NoRecipesText } from './MyRecip
 
 export const MyRecipesPage = () => {
 
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [recipes, setRecipes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setIsLoading(true);
-    const getData = async () => {
-      try {
-        const data = await getMyRecipesList();
-        setRecipes(data.recipes);
-        setIsLoading(false);
-      } catch (error) {
-       setError(error.message);
-      }
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const getData = async () => {
+  //     try {
+  //       const data = await getMyRecipesList();
+  //       setRecipes(data.recipes);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //      setError(error.message);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
 
 
@@ -41,9 +39,10 @@ export const MyRecipesPage = () => {
         <Title>
           <MainPageTitle title="My recipes" />
         </Title>
-        {isLoading && <Loader />}
+        <MyRecipesList/>
+        {/* {isLoading && <Loader />}
         {recipes.length > 0 && !isLoading && <MyRecipesList items={recipes}/>}
-        {error && <NoRecipesText>You dont have own recipes...</NoRecipesText>}
+        {error && <NoRecipesText>You dont have own recipes...</NoRecipesText>} */}
       </Container>
     </MyRecipesPageSection>
   );

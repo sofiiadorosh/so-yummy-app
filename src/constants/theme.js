@@ -24,6 +24,9 @@ export const lightTheme = Object.freeze({
     primaryLightText: '#FAFAFA',
     secondaryLightText: '#e0e0e0',
     tertiaryLightText: '#BDBDBD',
+    footerLink: '#8BAA36',
+    socialLinks: '#8BAA36',
+    socialLinksHover: '#ffffff',
 
     whiteText: '#ffffff',
 
@@ -71,6 +74,9 @@ export const darkTheme = Object.freeze({
     secondaryDarkText: '#FAFAFA',
     tertiaryDarkText: '#FAFAFA',
     quaternaryDarkText: '#FAFAFA',
+    footerLink: '#1E1F28',
+    socialLinks: '#FAFAFA',
+    socialLinksHover: '#1E1F28',
 
     blackText: '#FAFAFA',
 

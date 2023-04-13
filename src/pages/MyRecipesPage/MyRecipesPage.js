@@ -1,7 +1,7 @@
 //============================================ 1 вари
 
-// import { useState, useEffect } from 'react';
-// import { getMyRecipesList } from 'services/soyummyAPI';
+import { useState, useEffect } from 'react';
+import { getMyRecipesList, deleteFromMyRecipesList } from 'services/soyummyAPI';
 
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
@@ -30,6 +30,37 @@ export const MyRecipesPage = () => {
   //   getData();
   // }, []);
 
+const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const getData = async () => {
+      try {
+        const data = await getMyRecipesList();
+        setRecipes(data.recipes);
+        setIsLoading(false);
+      } catch (error) {
+       setError(error.message);
+      }
+    };
+    getData();
+  }, []);
+
+  const deleteHandler = id => {
+    try {
+      const remove = async () => {
+        const data = await deleteFromMyRecipesList(id);
+        console.log(data)
+        return data;  
+      };
+      remove();
+      setRecipes(prevState => prevState.filter(elem => elem._id !== id));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
 
   return (
@@ -37,9 +68,13 @@ export const MyRecipesPage = () => {
       <Container>
         <Square />
         <Title>
-          <MainPageTitle title="My recipes" />
+          <MainPageTitle title="My recipes"
+          />
         </Title>
-        <MyRecipesList/>
+        <MyRecipesList
+          recipes={recipes}
+          onDelete = {deleteHandler}
+        />
       </Container>
     </MyRecipesPageSection>
   );

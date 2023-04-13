@@ -3,30 +3,30 @@
 import { useState, useEffect } from 'react';
 // import Notiflix from 'notiflix';
 import { Loader } from 'components/Loader';
-// import { List } from './MyRecipesList.styled.js';
+import { List } from './MyRecipesList.styled.js';
 import { MyRecipesItem } from 'components/MyRecipesItem/MyRecipesItem.js';
 import { deleteFromMyRecipesList, getMyRecipesList } from 'services/soyummyAPI';
 
 
-export const MyRecipesList = ({ items }) => {
+export const MyRecipesList = ({onDelete, recipes}) => {
   
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [recipes, setRecipes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setIsLoading(true);
-    const getData = async () => {
-      try {
-        const data = await getMyRecipesList();
-        setRecipes(data.recipes);
-        setIsLoading(false);
-      } catch (error) {
-       setError(error.message);
-      }
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const getData = async () => {
+  //     try {
+  //       const data = await getMyRecipesList();
+  //       setRecipes(data.recipes);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //      setError(error.message);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   // useEffect(() => {
   //   setIsLoading(true);
@@ -68,32 +68,39 @@ export const MyRecipesList = ({ items }) => {
   //   }
   // };
 
-    const deleteHandler = id => {
-    try {
-      const remove = async () => {
-        const data = await deleteFromMyRecipesList(id);
-        return data;
-      };
-      remove();
-      setRecipes(prevState => prevState.filter(elem => elem._id !== id));
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+
+  //   const deleteHandler = id => {
+  //   try {
+  //     const remove = async () => {
+  //       const data = await deleteFromMyRecipesList(id);
+  //       console.log(data)
+  //       return data;  
+  //     };
+  //     remove();
+  //     setRecipes(prevState => prevState.filter(elem => elem._id !== id));
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
 
   return (
   <>
-    {isLoading && <Loader />}
-    <ul>
+    {/* {isLoading && <Loader />} */}
+    <List>
        {recipes.map(item => (
          <MyRecipesItem
            key={item._id}
            items={item}
+<<<<<<< Updated upstream
            deleteRecipe={deleteHandler}
+=======
+           onDelete={onDelete}
+           
+>>>>>>> Stashed changes
            />
       ))}
-      </ul>
+      </List>
   </>
   );
 };

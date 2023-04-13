@@ -75,8 +75,9 @@ export function getTimeFromMins(mins) {
   return `${minutes} min`;
 }
 
-export const MyRecipesItem = ({deleteRecipe, items: { _id, time, title, description, imageURL } }) => {
+export const MyRecipesItem = ({onDelete, items: { _id, time, title, description, imageURL } }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
+  console.log(_id)
 
   return (
     <ItemWrap>
@@ -89,7 +90,7 @@ export const MyRecipesItem = ({deleteRecipe, items: { _id, time, title, descript
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{description}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrashMobile type="button" onClick={deleteRecipe}>
+            <LogoTrashMobile type="button" onClick={ () => onDelete(_id)}>
               <img src={logoTrash} alt="logo" />
             </LogoTrashMobile>
           </ItemBox>
@@ -102,7 +103,7 @@ export const MyRecipesItem = ({deleteRecipe, items: { _id, time, title, descript
             <ItemBoxTitle>{title}</ItemBoxTitle>
             <ItemBoxDescript>{description}</ItemBoxDescript>
             <ItemBoxTime>{getTimeFromMins(time)}</ItemBoxTime>
-            <LogoTrash type="button" onClick={deleteRecipe}>
+            <LogoTrash type="button" onClick={onDelete}>
               <img src={logoTrash} alt="logo" />
             </LogoTrash>
             <NavLink to={`/recipe/${_id}`}>

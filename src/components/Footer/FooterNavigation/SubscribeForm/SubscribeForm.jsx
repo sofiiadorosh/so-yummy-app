@@ -1,6 +1,6 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import instance from 'axios';
+import instance from 'redux/auth/operations';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import {
@@ -12,7 +12,7 @@ import {
 } from './SubscribeForm.styled';
 import sprite from '../../../../images/Footer/sprite.svg';
 import MediaQuery from 'react-responsive';
-import { selectAccessToken } from 'redux/auth/selectors';
+import { selectAccessToken, selectUserEmail } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { getColor } from '../../../../constants/formikColors';
 const LoginSchema = Yup.object().shape({
@@ -25,23 +25,13 @@ const LoginSchema = Yup.object().shape({
 });
 export const SubscribeForm = () => {
   const token = useSelector(selectAccessToken);
+  const userEmail = useSelector(selectUserEmail);
   const subscribeEmail = async values => {
     try {
-      const sendSubscriptionEmail = await instance.post(
-        `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
-        values,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      const addSubscription = await instance.post(
-        `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
-        values,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      return sendSubscriptionEmail.data && addSubscription.data;
+      const sendSubscriptionEmail = await instance.post(`/subscribe`, values, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return sendSubscriptionEmail.data;
     } catch (error) {
       throw new Error(error.response.status);
     }
@@ -50,7 +40,7 @@ export const SubscribeForm = () => {
   return (
     <>
       <Formik
-        initialValues={{ email: `` }}
+        initialValues={{ email: userEmail || '' }}
         validationSchema={LoginSchema}
         onSubmit={(values, actions) => {
           subscribeEmail({ email: values.email })

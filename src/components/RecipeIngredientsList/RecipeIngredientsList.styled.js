@@ -230,6 +230,8 @@ const MeasureWrapper = styled.div`
       width: 14px;
       height: 14px;
 
+      cursor: pointer; 
+      
       fill: ${props => props.theme.colors.greenAccent};
 
       opacity: 0;

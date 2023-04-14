@@ -1,8 +1,11 @@
 import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // import { getCurrentUser } from 'redux/auth/operations';
 import { addToOwnRecipes } from 'redux/ownRecipes/operations';
+import { selectSearchType } from 'redux/search/searchSelectors';
+// import { selectIngredients } from 'redux/ownRecipes/selectors';
 
 import {
   InputUpload,
@@ -39,6 +42,9 @@ export const AddRecipeForm = () => {
   const [picture, setPicture] = useState(recipeButtonImage);
   const [fieldsVisibility, setFieldsVisibility] = useState(true);
 
+  const ingredient = useSelector(selectSearchType); 
+  console.log(ingredient)
+  // const ingredients = useSelector(selectIngredients);
   const dispatch = useDispatch();
 
   const picOnChange = e => {
@@ -80,14 +86,14 @@ const handleSubmit = e => {
      console.log('title', recipes.title);
     formData.append('description', recipes.description);
      console.log('description', recipes.description);
-    formData.append('category', recipes.category);
-    console.log('category', recipes.category);
+    // formData.append('category', selector.category);
+    // console.log('category', selector);
     formData.append('time', recipes.time);
     console.log('time', recipes.time);
     formData.append('instructions', recipes.instructions);
     console.log('instructions', recipes.instructions);
-    formData.append('ingredients', JSON.stringify(recipes.ingredients));
-    console.log('ingredients', JSON.stringify(recipes.ingredients));
+    formData.append('ingredients', ingredient);
+    console.log('ingredients', ingredient);
   try {
     dispatch(addToOwnRecipes(formData));
     reset();

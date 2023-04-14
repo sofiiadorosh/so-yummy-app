@@ -4,6 +4,8 @@ export const selectSearchQuery = s => {
 export const selectSearchType = s => {
   return s.search.searchType;
 };
+
+
 export const selectSearchResult = s => {
   return s.search.searchResult;
 };

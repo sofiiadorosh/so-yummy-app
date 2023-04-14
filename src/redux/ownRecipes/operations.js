@@ -39,3 +39,15 @@ export const deleteFromOwnRecipes = createAsyncThunk(
     }
   }
 );
+
+export const getAllIngredients = createAsyncThunk(
+  'ingredients/list',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get('/ingredients/list');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

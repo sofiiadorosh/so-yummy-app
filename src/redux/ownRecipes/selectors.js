@@ -1,3 +1,3 @@
-const selectOwnRecipes = state => state.shoppingList.items;
+const selectIngredients = state => state.ingredients.ingredients;
 
-export { selectOwnRecipes };
+export { selectIngredients };

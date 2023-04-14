@@ -1,6 +1,6 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import instance from 'axios';
+import instance from 'redux/auth/operations';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import {
@@ -28,13 +28,9 @@ export const SubscribeForm = () => {
   const userEmail = useSelector(selectUserEmail);
   const subscribeEmail = async values => {
     try {
-      const sendSubscriptionEmail = await instance.post(
-        `https://so-yummy-app-backend.onrender.com/api/users/subscribe`,
-        values,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const sendSubscriptionEmail = await instance.post(`/subscribe`, values, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       return sendSubscriptionEmail.data;
     } catch (error) {
       throw new Error(error.response.status);

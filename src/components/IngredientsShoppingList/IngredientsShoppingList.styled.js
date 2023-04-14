@@ -70,11 +70,12 @@ const IngredientsList = styled.ul`
 const IngredientsItem = styled.li`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 
   width: 100%;
   padding: 0px 19px 24px 0px;
 
-  border-bottom: 1px solid ${props => props.theme.colors.secondaryLightText};
+  border-bottom: 1px solid ${props => props.theme.colors.line};
 
   @media screen and (min-width: 768px) {
     padding: 0px 45px 43px 0px;
@@ -98,12 +99,13 @@ const ItemTitleWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 
     width: 60px;
     height: 60px;
 
     border-radius: 8px;
-    background-color: ${props => props.theme.colors.primaryGreenBackground};
+    background-color: ${props => props.theme.colors.secondaryGreenBackground};
 
     @media screen and (min-width: 768px) {
       width: 93px;
@@ -142,12 +144,13 @@ const MeasureWrapper = styled.div`
   }
 
   p {
+    flex-shrink: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 
     min-width: 37px;
-    height: 23px;
+    min-height: 23px;
 
     padding: 4px;
 
@@ -161,7 +164,7 @@ const MeasureWrapper = styled.div`
 
     @media screen and (min-width: 768px) {
       min-width: 68px;
-      height: 35px;
+      min-height: 35px;
 
       padding: 4px 8px;
 
@@ -191,7 +194,7 @@ const MeasureWrapper = styled.div`
     }
 
     svg {
-      fill: #333333;
+      fill: ${props => props.theme.colors.close};
     }
   }
 `;

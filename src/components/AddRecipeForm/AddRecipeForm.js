@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useDispatch } from 'react-redux';
 
-import axios from 'axios';
-
-import { TimeTypeSelector } from './Selectors/TimeSelector';
-import { CategorySearchSelector } from './Selectors/CategorySelector';
-import { PopularRecipe } from 'components/PopularRecipe';
+// import { getCurrentUser } from 'redux/auth/operations';
+import { addToOwnRecipes } from 'redux/ownRecipes/operations';
 
 import {
   InputUpload,
   Wrap,
-  UnderLane,
   Form,
   ImgUploadWrap,
-  InputDescriptionWrap,
-  InputDescription,
   MainWrapIngredients,
   WrapPreparation,
   Description,
+  ImageInput,
+  ButtonAdd,
+  MainRecipe,
 } from './AddRecipeForm.styled';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
-import { IngredientsField } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import recipeButtonImage from 'images/add-recipe-placeholder-button.png';
+
+
 
 const initialValues = {
   title: '',
@@ -31,101 +32,119 @@ const initialValues = {
   instructions: '',
 };
 
-export const AddRecipeForm = () => {
-  const [descriptionFields, setDescriptionFields] = useState(initialValues);
 
-  const addRecipe = async text => {
-    try {
-      const response = await axios.post(
-        'https://so-yummy-app-backend.onrender.com/api/ownRecipes',
-        text
-      );
-      return response.data;
-    } catch (error) {
-      return error.message;
+
+export const AddRecipeForm = () => {
+  const [recipes, setRecipes] = useState(initialValues);
+  const [picture, setPicture] = useState(recipeButtonImage);
+  const [fieldsVisibility, setFieldsVisibility] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const picOnChange = e => {
+    const [file] = e.target.files;
+    if (file) {
+      setPicture(URL.createObjectURL(file));
     }
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setDescriptionFields(prevState => ({ ...prevState, [name]: value }));
+  const toggleVisibility = () => {
+    setFieldsVisibility(true);
   };
 
-  const handleSetValue = data => {
-    const filteredFields = data.filter(({ field }) => field !== '');
-    const fields = filteredFields.map(({ field }) => field);
+const handleChange = event => {
+  const { name, value } = event.target;
+  setRecipes(prevState => ({ ...prevState, [name]: value }));
+};
 
-    // console.log(fields);
-    setDescriptionFields(prevState => ({
-      ...prevState,
-      ingredients: fields,
-    }));
-  };
+const handleSetValue = data => {
+  const ingredients = data.map(({ id, name }) => ({ id, name }));
+  setRecipes(prevState => ({
+    ...prevState,
+    ingredients,
+  }));
+};
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(descriptionFields);
-    addRecipe(descriptionFields);
-    e.reset();
+const handleSubmit = e => {
+  e.preventDefault();
+  const files = document.getElementById('image').files[0];
+  const formData = new FormData();
+  if (files) {
+    formData.append('image', files);
+    console.log('image', files);
+    
+  }
+  // formData.append("recipes", recipes);
+  // console.log("recipes", recipes)
+    formData.append('title', recipes.title);
+     console.log('title', recipes.title);
+    formData.append('description', recipes.description);
+     console.log('description', recipes.description);
+    formData.append('category', recipes.category);
+    console.log('category', recipes.category);
+    formData.append('time', recipes.time);
+    console.log('time', recipes.time);
+    formData.append('instructions', recipes.instructions);
+    console.log('instructions', recipes.instructions);
+    formData.append('ingredients', JSON.stringify(recipes.ingredients));
+    console.log('ingredients', JSON.stringify(recipes.ingredients));
+  try {
+    dispatch(addToOwnRecipes(formData));
+    reset();
+    // dispatch(getCurrentUser());
+    console.log('form submitted');
+  } catch (error) {
+    console.error(error);
+  }
+};
+  
+  const reset = () => {
+    setFieldsVisibility(false);
+    setRecipes(initialValues);
+   
   };
 
   return (
     <Wrap>
-      <Form>
-        <Description>
-          <ImgUploadWrap>
-            <label htmlFor="file-input">
-              <img src={recipeButtonImage} alt="recipeButtonImage" />
-            </label>
-            <InputUpload
-              id="file-input"
-              type="file"
-              accept="image/png, image/jpeg"
-            />
-          </ImgUploadWrap>
+      <Form onSubmit={handleSubmit}>
+        <MainRecipe>
           <div>
-            <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter item title"
+            <Description>
+              <ImgUploadWrap>
+                <label htmlFor="image">
+                  <ImageInput src={picture} alt="recipeButtonImage" />
+                </label>
+                <InputUpload
+                  id="image"
+                  type="file"
+                  accept="image/*, .jpg, .png, .gif, .web, .jpeg"
+                  onChange={picOnChange}
+                />
+              </ImgUploadWrap>
+              <RecipeDescriptionFields
+              
+                onInput={handleChange}
+                inputs={recipes}
               />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <InputDescription
-                type="text"
-                name=""
-                id=""
-                placeholder="Enter about recipe"
+            </Description>
+            <MainWrapIngredients>
+              <RecipeIngredientsFields
+                toggleVisibility={toggleVisibility}
+                fieldsVisibility={fieldsVisibility}
+                onInput={handleChange}
+                onSetValue={handleSetValue}
               />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <CategorySearchSelector />
-              <UnderLane />
-            </InputDescriptionWrap>
-            <InputDescriptionWrap>
-              <TimeTypeSelector />
-              <UnderLane />
-            </InputDescriptionWrap>
-          </div>
-        </Description>
-        <MainWrapIngredients>
-          <IngredientsField
-            handleSubmit={handleSubmit}
-            onInput={handleChange}
-            inputs={descriptionFields}
-            onSetValue={handleSetValue}
-          />
-        </MainWrapIngredients>
+            </MainWrapIngredients>
 
-        <WrapPreparation>
-          <RecipePreparationFields
-            onInput={handleChange}
-            inputs={descriptionFields}
-          />
-        </WrapPreparation>
-        <PopularRecipe />
+            <WrapPreparation>
+              <RecipePreparationFields
+                onInput={handleChange}
+                inputs={recipes}
+              />
+              <ButtonAdd type="submit">Add</ButtonAdd>
+            </WrapPreparation>
+          </div>
+        </MainRecipe>
       </Form>
     </Wrap>
   );

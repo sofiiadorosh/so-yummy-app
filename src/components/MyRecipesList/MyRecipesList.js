@@ -1,62 +1,30 @@
 //====================== вар 1 
-
-import Notiflix from 'notiflix';
-import { useState, useEffect} from 'react';
 import { List } from './MyRecipesList.styled.js';
 import { MyRecipesItem } from 'components/MyRecipesItem/MyRecipesItem.js';
-import { deleteFromMyRecipesList, getMyRecipesList } from 'services/soyummyAPI';
 
-
-export const MyRecipesList = ({ items }) => {
-  
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const getData = async () => {
-      try {
-        const data = await getMyRecipesList();
-        setRecipes(data.recipes);
-        setIsLoading(false);
-      } catch (error) {
-       setError(error.message);
-      }
-    };
-    getData();
-  }, []);
-
-  const deleteHandler = async (id, event) => {
-      try {
-      await deleteFromMyRecipesList(id);
-      Notiflix.Notify.warning('Recipe was deleted from favorite list');
-      const res = await getMyRecipesList(recipes);
-      console.log(res);
-      if (!res) {
-        return;
-      }
-      setRecipes(res ?? []);
-    } catch (e) {
-      console.log(e.message);
-      Notiflix.Notify.failure('Failed to delete recipe from favorite list');
-    }
-  };
-
-
+export const MyRecipesList = ({ onDelete, recipes }) => {
   return (
+  <>
     <List>
        {recipes.map(item => (
          <MyRecipesItem
            key={item._id}
            items={item}
-           deleteRecipe={deleteHandler}
-           
+           onDelete={onDelete}
            />
       ))}
-    </List>
+      </List>
+  </>
   );
 };
+
+
+
+
+
+
+
+
 
 //==================== переиспользования фейворитс
 

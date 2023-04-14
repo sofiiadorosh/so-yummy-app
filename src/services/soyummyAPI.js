@@ -23,7 +23,7 @@ const getRecipesByCategory = async category => {
     const response = await instance.get(`recipes/category/${category}`);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -32,7 +32,7 @@ const getRecipesById = async id => {
     const response = await instance.get(`recipes/${id}`);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -97,12 +97,22 @@ const deleteFromFavorite = async id => {
 
 const getMyRecipesList = async () => {
   try {
-    const response = await instance.get('ownRecipes');
+    const response = await instance.get('/ownRecipes');
     return response.data;
   } catch (error) {
     console.log(error.message);
   }
 };
+
+const getMyRecipeById = async id => {
+  try {
+    const response = await instance.get(`/ownRecipes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const addToMyRecipesList = async id => {
   try {
     const response = await instance.post('ownRecipes', { recipe: id });
@@ -111,16 +121,16 @@ const addToMyRecipesList = async id => {
     console.log(error.message);
   }
 };
+
 const deleteFromMyRecipesList = async id => {
   try {
-    const response = await instance.delete(`/ownRecipes/${id}`);
+    const response = await instance.delete(`ownRecipes/${id}`);
     return response.data;
   } catch (error) {
     console.log(error.message);
     return null;
   }
 };
-
 
 const getShoppingList = async () => {
   try {
@@ -149,6 +159,15 @@ const deleteFromShoppingList = async id => {
   }
 };
 
+const getPopularRecipes = async () => {
+  try {
+    const response = await instance.get('popular-recipe');
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export {
   getCategoryList,
   getCategoryRecipes,
@@ -156,6 +175,7 @@ export {
   getRecipesById,
   addToMyRecipesList,
   getMyRecipesList,
+  getMyRecipeById,
   deleteFromMyRecipesList,
   getShoppingList,
   addToShoppingList,
@@ -163,4 +183,5 @@ export {
   getAllFavorites,
   addToFavorite,
   deleteFromFavorite,
+  getPopularRecipes,
 };

@@ -45,6 +45,12 @@ export const Header = () => {
     dispatch(toggleTheme());
   };
 
+  const mobileMenuHandler = e => {
+    if (e.target.closest('li') && window.innerWidth < 1439) {
+      return setToggleMenu(prevState => !prevState);
+    }
+  };
+
   return (
     <AppBar>
       <Container>
@@ -59,7 +65,7 @@ export const Header = () => {
             <HiMenuAlt2 size={28} />
           </BurgerButton>
         </MobileOpenHeader>
-        <MobileMenu status={toggleMenu}>
+        <MobileMenu status={toggleMenu} onClick={mobileMenuHandler}>
           <MobileCloseHeader>
             <Logo />
             <CrossButton type="button" onClick={toggleMenuHandler}>

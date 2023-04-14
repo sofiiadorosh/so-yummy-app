@@ -1,35 +1,57 @@
 //============================================ 1 вари
 
 import { useState, useEffect } from 'react';
-import { getMyRecipesList } from 'services/soyummyAPI';
+import { useDispatch } from 'react-redux';
 
+import { getMyRecipesList, deleteFromMyRecipesList } from 'services/soyummyAPI';
+import { getCurrentUser } from 'redux/auth/operations';
+
+import { Loader } from 'components/Loader';
 import { MainPageTitle } from 'components/MainPageTitle';
 import { Square } from 'components/Square';
 import { MyRecipesList } from 'components/MyRecipesList';
-import { Loader } from 'components/Loader';
-import { MyRecipesPageSection, Container, Title, NoRecipesText } from './MyRecipesPage.styled';
+
+import { MyRecipesPageSection, Container, Title } from './MyRecipesPage.styled';
+import { NoRecipesText } from '../../components/Favorite/Favorite.styled';
 
 
 export const MyRecipesPage = () => {
 
-  // const [recipes, setRecipes] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   const getData = async () => {
-  //     try {
-  //       const data = await getMyRecipesList();
-  //       setRecipes(data.recipes);
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //      setError(error.message);
-  //     }
-  //   };
-  //   getData();
-  // }, []);
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getCurrentUser());
+    setIsLoading(true);
+    const getData = async () => {
+      try {
+        const data = await getMyRecipesList();
+        setRecipes(data.recipes);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    getData();
+  }, [dispatch]);
+
+  const deleteHandler = id => {
+    try {
+      const remove = async () => {
+        const data = await deleteFromMyRecipesList(id);
+        console.log(data)
+        return data;
+      };
+      remove();
+      setRecipes(prevState => prevState.filter(elem => elem._id !== id));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
 
   return (
@@ -37,12 +59,19 @@ export const MyRecipesPage = () => {
       <Container>
         <Square />
         <Title>
-          <MainPageTitle title="My recipes" />
+          <MainPageTitle title="My recipes"
+          />
         </Title>
-        <MyRecipesList/>
-        {/* {isLoading && <Loader />}
-        {recipes.length > 0 && !isLoading && <MyRecipesList items={recipes}/>}
-        {error && <NoRecipesText>You dont have own recipes...</NoRecipesText>} */}
+        {isLoading && <Loader />}
+        {!recipes.length ? (<NoRecipesText>You dont have any recipes...</NoRecipesText>
+        ) : (
+          <MyRecipesList
+            recipes={recipes}
+            onDelete={deleteHandler}
+          />
+        )
+        }
+        {error && <p>Whoops, something went wrong...</p>}
       </Container>
     </MyRecipesPageSection>
   );

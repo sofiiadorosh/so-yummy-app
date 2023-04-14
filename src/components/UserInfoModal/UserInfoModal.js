@@ -1,70 +1,3 @@
-// import { useState, useRef } from 'react';
-// import { HiPlus } from 'react-icons/hi';
-// import { FiUser, FiEdit2 } from 'react-icons/fi';
-
-// import {
-//   UserForm,
-//   PictureField,
-//   PickButton,
-//   NameField,
-//   SubmitButton,
-// } from './UserInfoModal.styled';
-
-// export const UserInfoModal = () => {
-//   const picturePicker = useRef(null);
-//   const [selectedFile, setSelectedFile] = useState(null);
-//   // const [uploadedFile, setUploadedFile] = useState(null);
-
-//   const pictureHandler = e => {
-//     setSelectedFile(e.target.files[0]);
-//   };
-
-//   const handlePicture = e => {
-//     e.preventDefault();
-//     picturePicker.current.click();
-//   };
-
-//   const handleUpload = () => {
-//     if (!selectedFile) {
-//       return;
-//     }
-//   };
-
-//   return (
-//     <UserForm onSubmit={handleUpload} autoComplete="off">
-//       <PictureField>
-//         <FiUser size={40} />
-//         <PickButton onClick={handlePicture}>
-//           <HiPlus size={18} />
-//         </PickButton>
-//         <label htmlFor="file">Choose new picture</label>
-//         <input
-//           id="file"
-//           ref={picturePicker}
-//           type="file"
-//           accept="image/*, .jpg, .png, .gif, .web"
-//           onChange={pictureHandler}
-//         />
-//       </PictureField>
-//       <NameField>
-//         <label htmlFor="name">
-//           <FiUser />
-//         </label>
-//         <input id="name" type="text" />
-//         <button>
-//           <FiEdit2 />
-//         </button>
-//       </NameField>
-//       <SubmitButton type="submit">Save changes</SubmitButton>
-//     </UserForm>
-//   );
-// };
-
-
-
-
-
-
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -81,15 +14,14 @@ import {
   SubmitButton,
 } from './UserInfoModal.styled';
 
-export const UserInfoModal = ({ avatar, user }) => {
-const [name, setName] = useState(user);
-const [picture, setPicture] = useState(avatar);
-const picturePicker = useRef(null);
-  
-  
-const dispatch = useDispatch();
+export const UserInfoModal = ({ avatar, user, onClose }) => {
+  const [name, setName] = useState(user);
+  const [picture, setPicture] = useState(avatar);
+  const picturePicker = useRef(null);
 
-    const picOnChange = e => {
+  const dispatch = useDispatch();
+
+  const picOnChange = e => {
     const [file] = e.target.files;
     if (file) {
       setPicture(URL.createObjectURL(file));
@@ -98,15 +30,21 @@ const dispatch = useDispatch();
 
   const onSubmitHandler = async e => {
     e.preventDefault();
-    const files = e.target.elements[0].files[0];
-    const data = {};
+    const files = document.getElementById('avatar').files[0];
+    const formData = new FormData();
     if (files) {
-      data.avatarURL = files;
+      formData.append('avatar', files);
     }
     if (name) {
-      data.name = name;
+      formData.append('name', name);
     }
-    dispatch(updateUserInfo(data));
+    try {
+      dispatch(updateUserInfo(formData));
+      onClose();
+      console.log('Update User Info operation dispatched!');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handlePicture = e => {
@@ -118,21 +56,20 @@ const dispatch = useDispatch();
     setName(e.target.value);
   };
 
-
   return (
     <UserForm onSubmit={onSubmitHandler} autoComplete="off">
       <PictureField>
         {picture ? (
-          <img src={picture} alt="user"/>
+          <img src={picture} alt="user" />
         ) : (
-            <FiUser size={40} />  
+          <FiUser size={40} />
         )}
         <PickButton onClick={handlePicture}>
           <HiPlus size={18} />
         </PickButton>
-        <label htmlFor="file">Choose new picture</label>
+        <label htmlFor="avatar">Choose new picture</label>
         <input
-          id="file"
+          id="avatar"
           ref={picturePicker}
           type="file"
           accept="image/*, .jpg, .png, .gif, .web, .jpeg"
